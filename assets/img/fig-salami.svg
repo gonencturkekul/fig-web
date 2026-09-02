@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="A log of fig salami with cut slices">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e6d1"/><stop offset="1" stop-color="#e2cdab"/>
+    </linearGradient>
+    <linearGradient id="log" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c4a2c"/><stop offset="1" stop-color="#4f2c18"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#sbg)"/>
+  <ellipse cx="320" cy="404" rx="250" ry="34" fill="#d6bd97" opacity=".6"/>
+
+  <!-- board -->
+  <rect x="60" y="300" width="520" height="26" rx="13" fill="#c9a97c"/>
+
+  <!-- salami log -->
+  <g transform="translate(160 236)">
+    <rect x="0" y="-56" width="300" height="112" rx="56" fill="url(#log)"/>
+    <ellipse cx="300" cy="0" rx="26" ry="56" fill="#8a5732"/>
+    <ellipse cx="300" cy="0" rx="19" ry="44" fill="#6b3f5c"/>
+    <g fill="#e9d3ab" opacity=".85">
+      <ellipse cx="296" cy="-18" rx="7" ry="5"/><ellipse cx="306" cy="8" rx="6" ry="4.5"/>
+      <ellipse cx="293" cy="24" rx="6" ry="4"/>
+    </g>
+    <!-- twine -->
+    <g stroke="#efe0c2" stroke-width="5" opacity=".8" fill="none">
+      <path d="M70-54v108M140-56v112M210-54v108"/>
+    </g>
+    <g fill="#a5764a" opacity=".35">
+      <circle cx="40" cy="-20" r="7"/><circle cx="100" cy="22" r="6"/><circle cx="180" cy="-24" r="6.5"/><circle cx="250" cy="18" r="6"/>
+    </g>
+  </g>
+
+  <!-- slices -->
+  <g transform="translate(150 350)">
+    <g>
+      <ellipse cx="0" cy="0" rx="56" ry="50" fill="#8a5732"/>
+      <ellipse cx="0" cy="0" rx="45" ry="40" fill="#6b3f5c"/>
+      <g fill="#eddab6">
+        <ellipse cx="-16" cy="-10" rx="8" ry="6"/><ellipse cx="12" cy="-14" rx="7" ry="5"/>
+        <ellipse cx="18" cy="12" rx="8" ry="6"/><ellipse cx="-10" cy="16" rx="7" ry="5"/>
+        <circle cx="0" cy="0" r="3.5"/><circle cx="-30" cy="6" r="3"/><circle cx="30" cy="-2" r="3"/>
+      </g>
+    </g>
+    <g transform="translate(120 14) rotate(-14)">
+      <ellipse cx="0" cy="0" rx="52" ry="46" fill="#8a5732"/>
+      <ellipse cx="0" cy="0" rx="42" ry="37" fill="#6b3f5c"/>
+      <g fill="#eddab6">
+        <ellipse cx="-14" cy="8" rx="7" ry="5"/><ellipse cx="14" cy="-10" rx="8" ry="6"/>
+        <ellipse cx="6" cy="18" rx="6" ry="4.5"/><circle cx="-24" cy="-8" r="3.2"/>
+      </g>
+    </g>
+    <g transform="translate(250 -4) rotate(9)">
+      <ellipse cx="0" cy="0" rx="48" ry="42" fill="#8a5732"/>
+      <ellipse cx="0" cy="0" rx="38" ry="33" fill="#6b3f5c"/>
+      <g fill="#eddab6">
+        <ellipse cx="10" cy="6" rx="7" ry="5"/><ellipse cx="-12" cy="-8" rx="7" ry="5"/><circle cx="16" cy="-14" r="3.2"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- walnut halves -->
+  <g transform="translate(505 330)" fill="#c48f52">
+    <ellipse cx="0" cy="0" rx="42" ry="36"/>
+    <path d="M0-34c10 12 10 24 0 34s-10 22 0 34" stroke="#a8763f" stroke-width="4" fill="none"/>
+    <path d="M-34-10c14 6 26 6 34 0M-34 14c14-6 26-6 34 0" stroke="#a8763f" stroke-width="3" fill="none"/>
+  </g>
+</svg>

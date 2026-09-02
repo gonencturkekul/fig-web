@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Sun-dried apricot halves">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdf1dd"/><stop offset="1" stop-color="#f0dab5"/>
+    </linearGradient>
+    <radialGradient id="aflesh" cx=".38" cy=".33" r=".78">
+      <stop offset="0" stop-color="#f9cd8a"/><stop offset="1" stop-color="#dd8724"/>
+    </radialGradient>
+    <radialGradient id="aflesh2" cx=".4" cy=".35" r=".8">
+      <stop offset="0" stop-color="#f6bd6c"/><stop offset="1" stop-color="#c9701f"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#abg)"/>
+  <circle cx="120" cy="86" r="110" fill="#f8e2bd" opacity=".75"/>
+
+  <g transform="translate(250 240)">
+    <circle cx="0" cy="0" r="128" fill="url(#aflesh)"/>
+    <circle cx="0" cy="0" r="104" fill="#f2b25e" opacity=".55"/>
+    <ellipse cx="0" cy="4" rx="46" ry="44" fill="#cf7c26" opacity=".55"/>
+    <path d="M-128 0a128 128 0 0 0 128 128z" fill="#c9701f" opacity=".18"/>
+    <g stroke="#c9701f" stroke-width="3" opacity=".35" fill="none">
+      <path d="M-96-52c30 18 66 22 104 10M-90 58c34 14 72 12 104-6"/>
+    </g>
+  </g>
+
+  <g transform="translate(452 178) rotate(-10)">
+    <circle cx="0" cy="0" r="86" fill="url(#aflesh2)"/>
+    <circle cx="0" cy="0" r="68" fill="#f0ae5c" opacity=".5"/>
+    <ellipse cx="0" cy="2" rx="30" ry="28" fill="#b8631a" opacity=".5"/>
+  </g>
+
+  <g transform="translate(496 350) rotate(14)">
+    <circle cx="0" cy="0" r="66" fill="url(#aflesh)"/>
+    <circle cx="0" cy="0" r="52" fill="#f2b25e" opacity=".5"/>
+    <ellipse cx="0" cy="2" rx="23" ry="21" fill="#cf7c26" opacity=".5"/>
+  </g>
+
+  <g transform="translate(120 400) rotate(-6)">
+    <circle cx="0" cy="0" r="52" fill="url(#aflesh2)"/>
+    <circle cx="0" cy="0" r="40" fill="#f0ae5c" opacity=".5"/>
+    <ellipse cx="0" cy="2" rx="18" ry="17" fill="#b8631a" opacity=".5"/>
+  </g>
+
+  <g fill="#4a6b3d" opacity=".8" transform="translate(70 160)">
+    <path d="M0 0c-18-6-28-24-24-44 18 2 32 15 36 33 6-17 23-27 41-24-2 20-17 35-36 37-6 1-12 0-17-2z"/>
+  </g>
+</svg>

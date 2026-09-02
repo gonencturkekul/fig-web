@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-label="Figs and apricots drying under the Aegean sun">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f9d9a4"/><stop offset="1" stop-color="#f3e7d7"/>
+    </linearGradient>
+    <linearGradient id="figskin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a4c7f"/><stop offset="1" stop-color="#4a2144"/>
+    </linearGradient>
+    <linearGradient id="apr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4b76a"/><stop offset="1" stop-color="#d97b28"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="620" fill="url(#sky)"/>
+  <circle cx="640" cy="130" r="82" fill="#f6c069" opacity=".65"/>
+
+  <!-- distant hills -->
+  <path d="M0 330c120-58 210 18 320-22s230-70 480 6v100H0z" fill="#cdb896" opacity=".55"/>
+  <path d="M0 380c150-40 250 26 400-8s290-42 400 14v90H0z" fill="#b7a07d" opacity=".5"/>
+
+  <!-- drying table -->
+  <rect x="0" y="430" width="800" height="190" fill="#e7d5bb"/>
+  <rect x="0" y="430" width="800" height="12" fill="#d8c09b"/>
+  <g stroke="#d0b795" stroke-width="3" opacity=".7">
+    <path d="M0 470h800M0 512h800M0 554h800M0 596h800"/>
+  </g>
+
+  <!-- dried figs -->
+  <g>
+    <g transform="translate(150 470)">
+      <ellipse cx="0" cy="0" rx="62" ry="52" fill="url(#figskin)"/>
+      <ellipse cx="0" cy="6" rx="44" ry="34" fill="#a35f96" opacity=".55"/>
+      <g fill="#f4d9a8" opacity=".9">
+        <circle cx="-14" cy="0" r="3.4"/><circle cx="4" cy="-10" r="3.4"/><circle cx="14" cy="8" r="3.4"/>
+        <circle cx="-4" cy="14" r="3.4"/><circle cx="-24" cy="14" r="3"/>
+      </g>
+      <path d="M0-52c2-14 12-22 26-24-2 16-10 24-26 24z" fill="#4a6b3d"/>
+    </g>
+
+    <g transform="translate(300 520) scale(.82)">
+      <ellipse cx="0" cy="0" rx="62" ry="52" fill="url(#figskin)"/>
+      <ellipse cx="0" cy="6" rx="44" ry="34" fill="#a35f96" opacity=".5"/>
+      <g fill="#f4d9a8" opacity=".9">
+        <circle cx="-12" cy="4" r="3.4"/><circle cx="8" cy="-8" r="3.4"/><circle cx="16" cy="12" r="3.4"/>
+      </g>
+      <path d="M0-52c2-14 12-22 26-24-2 16-10 24-26 24z" fill="#4a6b3d"/>
+    </g>
+  </g>
+
+  <!-- apricot halves -->
+  <g>
+    <g transform="translate(470 480)">
+      <circle cx="0" cy="0" r="54" fill="url(#apr)"/>
+      <ellipse cx="0" cy="0" rx="34" ry="34" fill="#f6cd92" opacity=".8"/>
+      <circle cx="0" cy="0" r="13" fill="#c9701f" opacity=".55"/>
+    </g>
+    <g transform="translate(600 545) scale(.78)">
+      <circle cx="0" cy="0" r="54" fill="url(#apr)"/>
+      <ellipse cx="0" cy="0" rx="34" ry="34" fill="#f6cd92" opacity=".8"/>
+      <circle cx="0" cy="0" r="13" fill="#c9701f" opacity=".55"/>
+    </g>
+    <g transform="translate(690 455) scale(.62)">
+      <circle cx="0" cy="0" r="54" fill="url(#apr)"/>
+      <ellipse cx="0" cy="0" rx="34" ry="34" fill="#f6cd92" opacity=".8"/>
+      <circle cx="0" cy="0" r="13" fill="#c9701f" opacity=".55"/>
+    </g>
+  </g>
+
+  <!-- fig leaves -->
+  <g fill="#4a6b3d" opacity=".85">
+    <path d="M60 570c-22-8-34-28-30-52 22 2 40 18 44 40 8-20 28-32 50-28-2 24-20 42-44 44-8 1-14 0-20-4z"/>
+  </g>
+</svg>
