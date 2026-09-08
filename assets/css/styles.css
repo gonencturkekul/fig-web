@@ -280,7 +280,9 @@ p { margin: 0 0 1.1em; }
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   background: var(--sand);
+  aspect-ratio: 3 / 2;
 }
+.hero__art img { width: 100%; height: 100%; object-fit: cover; }
 .hero .eyebrow { color: var(--apricot-lt); }
 
 .hero-stats {

@@ -25,7 +25,8 @@ every page, alongside a link to the full products listing.
 assets/
   css/styles.css   all styling for every page
   js/main.js       mobile menu, products dropdown, contact form validation
-  img/*.svg        logo and illustrations (hand-written SVG, no binary assets)
+  img/hero.jpg     home page hero photograph
+  img/*.svg        logo and product illustrations (hand-written SVG)
 ```
 
 ## Running it locally
