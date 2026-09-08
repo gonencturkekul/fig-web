@@ -370,8 +370,17 @@ p { margin: 0 0 1.1em; }
   transition: transform .18s ease, box-shadow .18s ease;
 }
 .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+/* The ratio lives on the image itself, so a portrait or square source is
+   cropped to the card's 4:3 window instead of stretching the card. The box
+   keeps a matching ratio to hold the layout if an image fails to load. */
 .product-card__media { background: var(--sand); aspect-ratio: 4 / 3; }
-.product-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.product-card__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 38%;
+}
 .product-card__body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .product-card__body h3 { margin-bottom: .35em; }
 .product-card__body p { color: var(--ink-soft); font-size: .96rem; }
