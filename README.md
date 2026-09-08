@@ -69,6 +69,9 @@ placeholders. Search and replace:
 - **Testimonials** on `index.html` — replace with real, attributable quotes.
 - **Product specifications** — the grades, calibres, moisture levels and HS codes
   are typical industry values; confirm them against your own spec sheets.
+- **Product range grids** — each product page lists trade grades and pack sizes
+  (Lerida 5 kg, Layer 250 g, diced 10×12 mm and so on). These are the formats a
+  Turkish dried fruit exporter typically offers; trim them to what you actually pack.
 
 Photography will lift the site further: the illustrations in `assets/img/` are
 placeholders sized 4:3 for the product cards, and can be swapped for real photos
