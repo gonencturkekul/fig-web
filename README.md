@@ -92,7 +92,8 @@ The copy is written as a complete, realistic site, but the company details are
 placeholders. Search and replace **in both languages** (the root files and `tr/`):
 
 - **Brand name** — `Aegean Sun` (also in `assets/img/logo.svg` if you redraw it)
-- **Email** — `sales@aegeansun.example`, `quality@aegeansun.example`
+- **Email** — `quality@aegeansun.example` on the contact page is still a
+  placeholder (the sales address is set to a real one)
 - **Phone** — `+90 256 000 00 00` (and the `tel:+902560000000` links)
 - **Address** — the sales office (Istanbul / Kağıthane) and factory (Aydın /
   Nazilli) lines, in the footer, the contact page and the home page card

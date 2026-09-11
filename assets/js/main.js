@@ -80,14 +80,14 @@
       email: "Please enter a valid email address.",
       short: "Please give us a little more detail (at least 10 characters).",
       invalid: "Please check the highlighted fields and try again.",
-      sent: "Thank you! Your enquiry has been recorded. Our export team replies within one business day."
+      sent: "Thank you! Your enquiry has been recorded. We reply to messages 24/7."
     },
     tr: {
       required: "Bu alanın doldurulması gerekiyor.",
       email: "Lütfen geçerli bir e-posta adresi girin.",
       short: "Lütfen biraz daha ayrıntı verin (en az 10 karakter).",
       invalid: "Lütfen işaretli alanları kontrol edip tekrar deneyin.",
-      sent: "Teşekkürler! Talebiniz bize ulaştı. İhracat ekibimiz bir iş günü içinde dönüş yapar."
+      sent: "Teşekkürler! Talebiniz bize ulaştı. Mesajlarınıza 7 gün 24 saat cevap verebiliriz."
     }
   };
   var T = MESSAGES[document.documentElement.lang] || MESSAGES.en;
