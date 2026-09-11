@@ -28,13 +28,13 @@
       });
 
       item.addEventListener("mouseenter", function () {
-        if (window.matchMedia("(min-width: 821px)").matches) {
+        if (window.matchMedia("(min-width: 981px)").matches) {
           item.classList.add("is-open");
           button.setAttribute("aria-expanded", "true");
         }
       });
       item.addEventListener("mouseleave", function () {
-        if (window.matchMedia("(min-width: 821px)").matches) {
+        if (window.matchMedia("(min-width: 981px)").matches) {
           item.classList.remove("is-open");
           button.setAttribute("aria-expanded", "false");
         }
@@ -60,6 +60,25 @@
     var slot = document.querySelector("[data-year]");
     if (slot) slot.textContent = String(new Date().getFullYear());
   }
+
+  /* ---------- Form messages, per page language ---------- */
+  var MESSAGES = {
+    en: {
+      required: "This field is required.",
+      email: "Please enter a valid email address.",
+      short: "Please give us a little more detail (at least 10 characters).",
+      invalid: "Please check the highlighted fields and try again.",
+      sent: "Thank you! Your enquiry has been recorded. Our export team replies within one business day."
+    },
+    tr: {
+      required: "Bu alanın doldurulması gerekiyor.",
+      email: "Lütfen geçerli bir e-posta adresi girin.",
+      short: "Lütfen biraz daha ayrıntı verin (en az 10 karakter).",
+      invalid: "Lütfen işaretli alanları kontrol edip tekrar deneyin.",
+      sent: "Teşekkürler! Talebiniz bize ulaştı. İhracat ekibimiz bir iş günü içinde dönüş yapar."
+    }
+  };
+  var T = MESSAGES[document.documentElement.lang] || MESSAGES.en;
 
   /* ---------- Contact form ---------- */
   /* The form validates in the browser and then hands off to whatever endpoint
@@ -106,17 +125,17 @@
         var value = (field.value || "").trim();
 
         if (field.hasAttribute("required") && !value) {
-          setError(field, "This field is required.");
+          setError(field, T.required);
           problems.push(field);
           return;
         }
         if (field.type === "email" && value && !emailPattern.test(value)) {
-          setError(field, "Please enter a valid email address.");
+          setError(field, T.email);
           problems.push(field);
           return;
         }
         if (field.name === "message" && value && value.length < 10) {
-          setError(field, "Please give us a little more detail (at least 10 characters).");
+          setError(field, T.short);
           problems.push(field);
         }
       });
@@ -134,7 +153,7 @@
 
       if (problems.length) {
         event.preventDefault();
-        showStatus("Please check the highlighted fields and try again.", "err");
+        showStatus(T.invalid, "err");
         problems[0].focus();
         return;
       }
@@ -142,10 +161,7 @@
       /* No endpoint wired up yet — confirm locally instead of navigating away. */
       if (!form.getAttribute("action")) {
         event.preventDefault();
-        showStatus(
-          "Thank you! Your enquiry has been recorded. Our export team replies within one business day.",
-          "ok"
-        );
+        showStatus(T.sent, "ok");
         form.reset();
       }
     });

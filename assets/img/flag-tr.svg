@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" role="img" aria-label="Türkiye">
+  <rect width="30" height="20" fill="#E30A17"/>
+  <circle cx="11.5" cy="10" r="5" fill="#fff"/>
+  <circle cx="13.2" cy="10" r="4" fill="#E30A17"/>
+  <polygon fill="#fff" points="18.7,7.9 19.194,9.321 20.697,9.351 19.499,10.26 19.934,11.699 18.7,10.84 17.466,11.699 17.901,10.26 16.703,9.351 18.206,9.321"/>
+</svg>
