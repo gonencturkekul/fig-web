@@ -94,7 +94,8 @@ placeholders. Search and replace **in both languages** (the root files and `tr/`
 - **Brand name** — `Aegean Sun` (also in `assets/img/logo.svg` if you redraw it)
 - **Email** — `sales@aegeansun.example`, `quality@aegeansun.example`
 - **Phone** — `+90 256 000 00 00` (and the `tel:+902560000000` links)
-- **Address** — `Incirliova OSB, 2. Cadde No. 14, 09600 Incirliova / Aydin`
+- **Address** — the sales office (Istanbul / Kağıthane) and factory (Aydın /
+  Nazilli) lines, in the footer, the contact page and the home page card
 - **Figures and claims** — founding year, capacity, grower count, export markets,
   and the certification list on `about.html`. Only claim certifications you hold.
 - **Testimonials** on `index.html` — replace with real, attributable quotes.
