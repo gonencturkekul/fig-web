@@ -22,6 +22,7 @@
     }
 
     function setOpen(item, open, viaHover) {
+      window.clearTimeout(item.closeTimer);
       item.classList.toggle("is-open", open);
       item.hoverOpened = open && viaHover === true;
       var b = item.querySelector(".menu__button");
@@ -41,11 +42,16 @@
         setOpen(item, open);
       });
 
+      /* Closing on a short delay forgives a pointer that cuts a corner on its
+         way from the button down to an item. */
       item.addEventListener("mouseenter", function () {
+        window.clearTimeout(item.closeTimer);
         if (isDesktop() && !item.classList.contains("is-open")) setOpen(item, true, true);
       });
       item.addEventListener("mouseleave", function () {
-        if (isDesktop()) setOpen(item, false);
+        if (!isDesktop()) return;
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(function () { setOpen(item, false); }, 250);
       });
     });
 

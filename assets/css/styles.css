@@ -215,11 +215,12 @@ p { margin: 0 0 1.1em; }
 .has-dropdown.is-open .menu__caret { transform: rotate(180deg); }
 
 .dropdown {
+  --drop-gap: 6px;
   list-style: none;
   margin: 0;
   padding: 8px;
   position: absolute;
-  top: calc(100% + 6px);
+  top: calc(100% + var(--drop-gap));
   left: 0;
   min-width: 250px;
   background: var(--white);
@@ -229,6 +230,17 @@ p { margin: 0 0 1.1em; }
   display: none;
 }
 .has-dropdown.is-open > .dropdown { display: block; }
+
+/* Bridges the gap between button and menu. Without it the pointer drops into
+   dead space on the way down, the menu closes, and the click lands on nothing. */
+.has-dropdown > .dropdown::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: var(--drop-gap);
+}
 
 .dropdown a {
   display: block;
@@ -284,8 +296,9 @@ p { margin: 0 0 1.1em; }
 
 /* Stays anchored under the flag at every width, including the stacked header. */
 .lang-switch .dropdown {
+  --drop-gap: 8px;
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + var(--drop-gap));
   right: 0;
   left: auto;
   min-width: 168px;
