@@ -246,35 +246,77 @@ p { margin: 0 0 1.1em; }
 .nav__cta { margin-left: 8px; }
 
 /* ---------- Language switcher ---------- */
+/* A flag button showing the current language; the other one sits underneath. */
 
 .lang-switch {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 4px;
   padding-left: 14px;
   border-left: 1px solid var(--border);
 }
-.lang-switch a {
+
+.lang-switch__button {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 11px;
+  gap: 8px;
+  padding: 7px 11px;
   border-radius: 999px;
   font-size: .82rem;
   font-weight: 700;
   letter-spacing: .05em;
-  text-decoration: none;
-  color: var(--ink-soft);
-  transition: background .18s ease, color .18s ease;
+  color: var(--ink);
+  background: none;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .18s ease, border-color .18s ease;
 }
-.lang-switch a:hover { background: var(--sand); color: var(--fig-dark); }
-.lang-switch a:focus-visible { outline: 3px solid var(--apricot); outline-offset: 2px; }
-.lang-switch a[aria-current="true"] { background: var(--fig); color: var(--white); }
-.lang-switch img {
+.lang-switch__button:hover { background: var(--sand); border-color: var(--sand); }
+.lang-switch__button:focus-visible { outline: 3px solid var(--apricot); outline-offset: 2px; }
+
+.lang-flag {
   height: 14px;
   width: auto;
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(43, 35, 32, .18);
+}
+
+/* Stays anchored under the flag at every width, including the stacked header. */
+.lang-switch .dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  min-width: 168px;
+  margin: 0;
+  padding: 6px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.lang-switch .dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.lang-switch .dropdown a:hover { background: var(--sand); color: var(--fig-dark); }
+.lang-switch .dropdown a[aria-current="true"] { color: var(--fig); background: var(--sand); }
+.lang-switch .dropdown a[aria-current="true"]::after {
+  content: "";
+  width: 13px;
+  height: 8px;
+  margin-left: auto;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg) translate(1px, -2px);
 }
 
 /* ---------- Hero ---------- */
@@ -762,6 +804,8 @@ p { margin: 0 0 1.1em; }
   .nav__toggle { display: block; }
   .nav { gap: 12px; }
   .lang-switch { order: 3; margin-left: auto; padding-left: 0; border-left: 0; }
+  .lang-switch .dropdown { display: none; }
+  .lang-switch.is-open > .dropdown { display: block; }
   .nav__toggle { order: 4; }
   .menu { order: 5; margin-left: 0; }
   .menu {
@@ -774,7 +818,8 @@ p { margin: 0 0 1.1em; }
     border-top: 1px solid var(--border);
   }
   .menu.is-open { display: flex; }
-  .menu a, .menu__button { width: 100%; justify-content: space-between; padding: 12px 10px; }
+  /* scoped to the nav menu: the language button must not stretch */
+  .menu a, .menu .menu__button { width: 100%; justify-content: space-between; padding: 12px 10px; }
   .dropdown {
     position: static;
     display: none;
@@ -796,14 +841,14 @@ p { margin: 0 0 1.1em; }
   .brand { font-size: 1rem; gap: 8px; }
   .brand__mark { width: 32px; height: 32px; }
   .brand__sub { font-size: .56rem; }
-  .lang-switch a { padding: 6px 7px; }
+  .lang-switch__button { padding: 7px 7px; }
 }
 
 @media (max-width: 620px) {
   body { font-size: 16px; }
-  /* Flags alone keep the header on one row; the label stays for screen readers. */
-  .lang-switch a { padding: 6px 9px; }
-  .lang-switch a span {
+  /* Flag alone keeps the header on one row; the code stays for screen readers. */
+  .lang-switch__button { padding: 7px 9px; gap: 6px; }
+  .lang-switch__button > span {
     position: absolute;
     width: 1px;
     height: 1px;

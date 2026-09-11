@@ -50,9 +50,15 @@
       <li class="nav__cta"><a class="btn btn--primary" href="iletisim.html#contact-form">Teklif Alın</a></li>
     </ul>
 
-      <div class="lang-switch" role="group" aria-label="Dil">
-        <a href="index.html" hreflang="tr" lang="tr" aria-current="true" title="Türkçe"><img src="../assets/img/flag-tr.svg" alt=""><span>TR</span></a>
-        <a href="../index.html" hreflang="en" lang="en" title="English"><img src="../assets/img/flag-en.svg" alt=""><span>EN</span></a>
+      <div class="lang-switch has-dropdown">
+        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-label="Dil: Türkçe">
+          <img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>TR</span>
+          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </button>
+        <ul class="dropdown">
+          <li><a href="../index.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" alt=""><span>English</span></a></li>
+          <li><a href="index.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>Türkçe</span></a></li>
+        </ul>
       </div>
   </nav>
 </header>

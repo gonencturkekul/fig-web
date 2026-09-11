@@ -24,9 +24,11 @@ navigation on every page, alongside a link to the full products listing.
 
 ## Language switching
 
-The switcher sits at the top right of the header, with a flag and a language
-code, and always points at the *same* page in the other language — Products goes
-to Ürünler, not back to the home page. Each page carries:
+The switcher sits at the top right of the header: a button showing the current
+language's flag and code, which opens a list underneath it with English first
+(the site default) and Türkçe below. Each entry points at the *same* page in the
+other language — Products goes to Ürünler, not back to the home page. Each page
+carries:
 
 - `<html lang="en">` or `<html lang="tr">`, which also selects the language of
   the contact form's validation messages (see `assets/js/main.js`)

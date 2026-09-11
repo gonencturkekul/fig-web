@@ -13,39 +13,45 @@
       });
     }
 
-    /* Products dropdown: click/tap on mobile, hover + click on desktop. */
+    /* Dropdowns (products menu, language switcher): click/tap everywhere,
+       hover as well on desktop. */
     var dropdowns = document.querySelectorAll(".has-dropdown");
+
+    function isDesktop() {
+      return window.matchMedia("(min-width: 981px)").matches;
+    }
+
+    function setOpen(item, open, viaHover) {
+      item.classList.toggle("is-open", open);
+      item.hoverOpened = open && viaHover === true;
+      var b = item.querySelector(".menu__button");
+      if (b) b.setAttribute("aria-expanded", String(open));
+    }
+
     Array.prototype.forEach.call(dropdowns, function (item) {
       var button = item.querySelector(".menu__button");
       if (!button) return;
 
       button.addEventListener("click", function (event) {
         event.stopPropagation();
-        var open = !item.classList.contains("is-open");
+        /* Moving the pointer here already opened it on desktop; a click then
+           has to keep it open rather than reading it as "close me". */
+        var open = !item.classList.contains("is-open") || item.hoverOpened === true;
         closeAllDropdowns();
-        item.classList.toggle("is-open", open);
-        button.setAttribute("aria-expanded", String(open));
+        setOpen(item, open);
       });
 
       item.addEventListener("mouseenter", function () {
-        if (window.matchMedia("(min-width: 981px)").matches) {
-          item.classList.add("is-open");
-          button.setAttribute("aria-expanded", "true");
-        }
+        if (isDesktop() && !item.classList.contains("is-open")) setOpen(item, true, true);
       });
       item.addEventListener("mouseleave", function () {
-        if (window.matchMedia("(min-width: 981px)").matches) {
-          item.classList.remove("is-open");
-          button.setAttribute("aria-expanded", "false");
-        }
+        if (isDesktop()) setOpen(item, false);
       });
     });
 
     function closeAllDropdowns() {
       Array.prototype.forEach.call(dropdowns, function (item) {
-        item.classList.remove("is-open");
-        var b = item.querySelector(".menu__button");
-        if (b) b.setAttribute("aria-expanded", "false");
+        setOpen(item, false);
       });
     }
 
