@@ -557,6 +557,14 @@ p { margin: 0 0 1.1em; }
   background: var(--sand);
   box-shadow: var(--shadow-md);
 }
+/* Same 4:3 window as the product cards, so a square photograph does not
+   stretch the column far past the text beside it. */
+.split__art img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
 
 .checklist { list-style: none; margin: 0 0 1.4em; padding: 0; }
 .checklist li {

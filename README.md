@@ -54,7 +54,8 @@ assets/
   js/main.js       mobile menu, products dropdown, contact form validation
                    (form messages are per-language, keyed off <html lang>)
   img/hero.jpg     home page hero photograph
-  img/dried-fig-basket.jpg  dried fig product card photograph
+  img/dried-fig-basket.jpg  dried fig photograph, home page card
+  img/dried-fig.webp        dried fig photograph, products pages
   img/flag-tr.svg, flag-en.svg  language switcher flags
   img/*.svg        logo and product illustrations (hand-written SVG)
 ```
