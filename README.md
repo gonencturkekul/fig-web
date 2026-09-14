@@ -56,6 +56,7 @@ assets/
   img/hero.jpg     home page hero photograph
   img/dried-fig-basket.jpg  dried fig photograph, home page card
   img/dried-fig.webp        dried fig photograph, products pages
+  img/dried-apricot.webp    dried apricot photograph
   img/flag-tr.svg, flag-en.svg  language switcher flags
   img/*.svg        logo and product illustrations (hand-written SVG)
 ```
