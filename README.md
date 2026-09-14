@@ -14,7 +14,7 @@ page links to its counterpart in the other language.
 | `index.html` | `tr/index.html` | Home — hero, product preview, why-us, process, regions, contact section |
 | `products.html` | `tr/urunler.html` | Products — full range, packaging, wholesale & export, comparison table |
 | `product-dried-fig.html` | `tr/kuru-incir.html` | Dried Fig — story, specification, grades, packaging, uses |
-| `product-fig-salami.html` | `tr/incir-sucugu.html` | Fig Salami — story, specification, formats, serving |
+| `product-fig-salami.html` | `tr/incir-salami.html` | Fig Salami — story, specification, formats, serving |
 | `product-dried-apricot.html` | `tr/kuru-kayisi.html` | Dried Apricot — story, specification, grades, packaging, uses |
 | `about.html` | `tr/hakkimizda.html` | About Us — history, values, quality & production, certifications |
 | `contact.html` | `tr/iletisim.html` | Contact Us — enquiry form, contact details, FAQ |
@@ -97,8 +97,9 @@ placeholders. Search and replace **in both languages** (the root files and `tr/`
 - **Brand name** — `Aegean Sun` (also in `assets/img/logo.svg` if you redraw it)
 - **Email** — `quality@aegeansun.example` on the contact page is still a
   placeholder (the sales address is set to a real one)
-- **Address** — the sales office (Istanbul / Kağıthane) and factory (Aydın /
-  Nazilli) lines, in the footer, the contact page and the home page card
+- **Address** — the sales office (Istanbul / Kağıthane), factory (Aydın /
+  Nazilli) and production plant (Athens) lines, in the footer, the contact page
+  and the home page card
 - **Figures and claims** — founding year, capacity, grower count, export markets,
   and the certification list on `about.html`. Only claim certifications you hold.
 - **Testimonials** on `index.html` — replace with real, attributable quotes.
