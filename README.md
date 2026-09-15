@@ -60,6 +60,7 @@ assets/
   img/dried-apricot.webp    dried apricot photograph
   img/fig-salami.webp       fig salami photograph
   img/dried-mulberry.webp   dried mulberry photograph
+  img/fig-box.webp          boxed dried figs, Products and About pages
   img/fig-drying.webp       figs drying in the field, home and About pages
   img/flag-tr.svg, flag-en.svg  language switcher flags
   img/*.svg        logo, flags, orchard and facility illustrations (hand-written SVG)
@@ -110,7 +111,8 @@ placeholders. Search and replace **in both languages** (the root files and `tr/`
   (Lerida 5 kg, Layer 250 g, diced 10×12 mm and so on). These are the formats a
   Turkish dried fruit exporter typically offers; trim them to what you actually pack.
 
-All four products are shown with photographs. The remaining drawings are
-the logo, the two flags, and the facility scene on the About page, which can be swapped for photographs the same way: drop the file
+Every picture on the site is a photograph; the only drawings left are the logo
+and the two language flags. The remaining drawings are
+the logo and the two language flags, which can be swapped for photographs the same way: drop the file
 in `assets/img/` and point the `<img>` at it. Product images are cropped to a
 4:3 window, so any shape of source photograph fits.
