@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="A heap of pale golden dried white mulberries">
+  <defs>
+    <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdf4e4"/><stop offset="1" stop-color="#eeddbe"/>
+    </linearGradient>
+    <linearGradient id="berry" x1=".3" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#f2dcaa"/><stop offset="1" stop-color="#c9a263"/>
+    </linearGradient>
+    <linearGradient id="berry2" x1=".3" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#e8cd94"/><stop offset="1" stop-color="#b58c50"/>
+    </linearGradient>
+    <linearGradient id="berry3" x1=".3" y1="0" x2=".7" y2="1">
+      <stop offset="0" stop-color="#f6e6c2"/><stop offset="1" stop-color="#d9b477"/>
+    </linearGradient>
+    <g id="mb">
+      <ellipse cx="0" cy="-30" rx="9" ry="9"/>
+      <ellipse cx="-2" cy="-15" rx="12" ry="10"/>
+      <ellipse cx="2" cy="0" rx="13" ry="11"/>
+      <ellipse cx="-2" cy="15" rx="12" ry="10"/>
+      <ellipse cx="1" cy="29" rx="9" ry="9"/>
+      <g fill="#a87f43" opacity=".3">
+        <circle cx="-3" cy="-29" r="1.9"/><circle cx="5" cy="-16" r="2"/>
+        <circle cx="-6" cy="-12" r="1.9"/><circle cx="6" cy="2" r="2"/>
+        <circle cx="-5" cy="4" r="1.9"/><circle cx="4" cy="17" r="1.9"/>
+        <circle cx="-4" cy="28" r="1.7"/>
+      </g>
+      <path d="M0,-38 c0,-6 2,-9 7,-11" stroke="#9aa86a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <rect width="640" height="480" fill="url(#mbg)"/>
+  <circle cx="524" cy="92" r="118" fill="#f8ebd1" opacity=".85"/>
+  <ellipse cx="320" cy="398" rx="232" ry="30" fill="#d6bc90" opacity=".5"/>
+
+  <g>
+    <use href="#mb" fill="url(#berry)" transform="translate(150,352) rotate(74) scale(1.15)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(214,368) rotate(-12) scale(1.30)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(286,376) rotate(8) scale(1.35)"/>
+    <use href="#mb" fill="url(#berry3)" transform="translate(360,366) rotate(-70) scale(1.28)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(432,350) rotate(24) scale(1.12)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(492,330) rotate(96) scale(0.95)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(186,318) rotate(-40) scale(1.10)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(252,326) rotate(62) scale(1.22)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(322,330) rotate(-18) scale(1.20)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(392,318) rotate(112) scale(1.10)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(452,300) rotate(-52) scale(0.95)"/>
+    <use href="#mb" fill="url(#berry3)" transform="translate(222,282) rotate(18) scale(1.02)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(290,288) rotate(-86) scale(1.08)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(356,280) rotate(44) scale(1.00)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(414,268) rotate(-24) scale(0.90)"/>
+    <use href="#mb" fill="url(#berry3)" transform="translate(258,246) rotate(74) scale(0.92)"/>
+    <use href="#mb" fill="url(#berry3)" transform="translate(324,244) rotate(-58) scale(0.95)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(386,234) rotate(12) scale(0.85)"/>
+    <use href="#mb" fill="url(#berry2)" transform="translate(292,208) rotate(30) scale(0.82)"/>
+    <use href="#mb" fill="url(#berry)" transform="translate(350,200) rotate(-40) scale(0.76)"/>
+  </g>
+</svg>
