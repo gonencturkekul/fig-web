@@ -63,8 +63,10 @@ assets/
   img/dried-mulberry.webp   dried mulberry photograph
   img/fig-box.webp          boxed dried figs, Products and About pages
   img/fig-drying.webp       figs drying in the field, home and About pages
+  img/logo-mark.webp        logo emblem, header and footer
+  img/logo-mark.png         same emblem at 96 px, used as the favicon
+  img/logo-caramel-fig.png  full Caramel Fig lockup (emblem + wordmark), not yet placed
   img/flag-tr.svg, flag-en.svg  language switcher flags
-  img/*.svg        logo, flags, orchard and facility illustrations (hand-written SVG)
 ```
 
 ## Running it locally
@@ -99,7 +101,7 @@ handler works — the script hands submission over to the browser as soon as an
 The copy is written as a complete, realistic site, but the company details are
 placeholders. Search and replace **in both languages** (the root files and `tr/`):
 
-- **Brand name** — `Aegean Sun` (also in `assets/img/logo.svg` if you redraw it)
+- **Brand name** — `Aegean Sun` (the logo artwork lives in `assets/img/logo-mark.webp`, `assets/img/logo-mark.png` and `assets/img/logo-caramel-fig.png`)
 - **Address** — the sales office (Istanbul / Kağıthane), factory (Aydın /
   Nazilli) and production plant (Athens) lines, in the footer, the contact page
   and the home page card
@@ -112,8 +114,7 @@ placeholders. Search and replace **in both languages** (the root files and `tr/`
   (Lerida 5 kg, Layer 250 g, diced 10×12 mm and so on). These are the formats a
   Turkish dried fruit exporter typically offers; trim them to what you actually pack.
 
-Every picture on the site is a photograph; the only drawings left are the logo
-and the two language flags. The remaining drawings are
-the logo and the two language flags, which can be swapped for photographs the same way: drop the file
-in `assets/img/` and point the `<img>` at it. Product images are cropped to a
+Every picture on the site is a photograph or the logo artwork; the only
+drawings left are the two language flags. Any of them can be swapped the same
+way: drop the file in `assets/img/` and point the `<img>` at it. Product images are cropped to a
 4:3 window, so any shape of source photograph fits.
