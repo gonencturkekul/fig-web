@@ -758,6 +758,8 @@ p { margin: 0 0 1.1em; }
 .info-list .info-list__icon { font-size: 1.2rem; line-height: 1.4; }
 .info-list strong { display: block; color: var(--fig-dark); font-size: .93rem; }
 .info-list a { color: var(--fig); }
+.rep-line { display: block; }
+.rep-note { font-size: .82rem; color: var(--ink-soft); margin-top: 2px; }
 .info-list span { color: var(--ink-soft); font-size: .93rem; }
 
 .map-embed {
