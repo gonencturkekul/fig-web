@@ -51,6 +51,7 @@ version they were linked to and switches by hand.
 
 ```
 assets/
+  video/fig-journey.mp4   film at the top of the Dried Fig pages
   css/styles.css   all styling for every page
   js/main.js       mobile menu, products dropdown, contact form validation
                    (form messages are per-language, keyed off <html lang>)
