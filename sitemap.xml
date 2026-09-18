@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.aegeansunfruit.com/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/products.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/urunler.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/products.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/urunler.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/urunler.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/products.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/product-dried-fig.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-fig.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-incir.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-fig.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/kuru-incir.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-incir.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-fig.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-fig.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/product-fig-salami.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-fig-salami.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/incir-salami.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-fig-salami.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/incir-salami.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/incir-salami.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-fig-salami.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-fig-salami.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/product-dried-apricot.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-apricot.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-kayisi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-apricot.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/kuru-kayisi.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-kayisi.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-apricot.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-apricot.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/product-dried-mulberry.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-mulberry.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-dut.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-mulberry.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/kuru-dut.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-dut.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-mulberry.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-mulberry.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/about.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/hakkimizda.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/hakkimizda.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/hakkimizda.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/contact.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/iletisim.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.aegeansunfruit.com/tr/iletisim.html</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/iletisim.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/contact.html"/>
+  </url>
+</urlset>

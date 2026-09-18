@@ -54,8 +54,8 @@ assets/
   video/fig-journey.mp4   film: home page process section and Dried Fig pages
   css/styles.css   all styling for every page
   js/main.js       mobile menu, products dropdown, contact form validation
-  js/chat.js       sales assistant widget, home pages only
                    (form messages are per-language, keyed off <html lang>)
+  js/chat.js       sales assistant widget, home pages only
   img/hero.jpg     home page hero photograph
   img/dried-fig-basket.jpg  dried fig photograph, home page card
   img/dried-fig.webp        dried fig photograph, products pages
@@ -68,6 +68,8 @@ assets/
   img/logo-mark.png         same emblem at 96 px, used as the favicon
   img/logo-caramel-fig.png  full Caramel Fig lockup (emblem + wordmark), not yet placed
   img/flag-tr.svg, flag-en.svg  language switcher flags
+sitemap.xml        all 16 URLs, with their language alternates
+robots.txt         points crawlers at the sitemap
 ```
 
 ## Running it locally
@@ -80,6 +82,33 @@ python3 -m http.server 8000
 ```
 
 Opening `index.html` directly from the file system also works.
+
+## Domain and search engines
+
+The site's address is **https://www.aegeansunfruit.com**. Every page carries an
+absolute `<link rel="canonical">`, `og:url` and `hreflang` pair built on that
+host, plus `og:image`, `og:site_name`, `og:locale` and a Twitter card, so a
+link pasted into WhatsApp, LinkedIn or Slack shows the hero photograph and the
+page title. `sitemap.xml` lists all 16 URLs with their language alternates, and
+`robots.txt` points at it. The two home pages also carry an `Organization`
+JSON-LD block (address, factory, plant, phone, e-mail, the three sales
+contacts).
+
+Two things to do on the hosting side, once:
+
+- pick one host and redirect the other — the apex `aegeansunfruit.com` should
+  301-redirect to `www.aegeansunfruit.com`, since that is what the canonicals
+  say. On Vercel: add both domains to the project and set the apex to redirect.
+- submit `https://www.aegeansunfruit.com/sitemap.xml` in Google Search Console
+  and Bing Webmaster Tools.
+
+If the address ever changes, the host appears in `sitemap.xml`, `robots.txt`
+and in the `canonical` / `og:url` / `hreflang` tags of all 16 pages. A
+find-and-replace over the repository covers it.
+
+The contact address on the site is still a Gmail one. A mailbox on the new
+domain (for example `sales@aegeansunfruit.com`) reads better to an importer;
+say the word and it can be swapped everywhere in one pass.
 
 ## The sales assistant
 
