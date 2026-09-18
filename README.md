@@ -54,6 +54,7 @@ assets/
   video/fig-journey.mp4   film: home page process section and Dried Fig pages
   css/styles.css   all styling for every page
   js/main.js       mobile menu, products dropdown, contact form validation
+  js/chat.js       sales assistant widget, home pages only
                    (form messages are per-language, keyed off <html lang>)
   img/hero.jpg     home page hero photograph
   img/dried-fig-basket.jpg  dried fig photograph, home page card
@@ -79,6 +80,41 @@ python3 -m http.server 8000
 ```
 
 Opening `index.html` directly from the file system also works.
+
+## The sales assistant
+
+Both home pages load `assets/js/chat.js`, which puts a small assistant in the
+bottom right corner. It is deliberately plain: no backend, no API key and no
+third-party script, so it costs nothing and cannot leak anything. It matches
+the visitor's words against a list of keywords and replies with a fixed answer,
+picking Turkish or English from `<html lang>`.
+
+Every answer in it is a fact that already appears on this site — MOQ, incoterms,
+lead times, certificates, samples, addresses, the representatives. When nothing
+matches, it says so and hands the visitor the enquiry form, the e-mail address
+and the phone number rather than guessing.
+
+To add or change an answer, edit the `KB` object near the top of the file. Each
+entry is:
+
+```js
+{ id: "moq",
+  k:  ["minimum", "moq", "palet"],   // keywords, accent- and case-insensitive
+  a:  "One pallet (roughly 500 kg) …", // the reply
+  links: [["FAQ", L.faq]],             // buttons under the reply
+  next:  ["Delivery time", "Price list"] }  // suggested follow-up chips
+```
+
+Keep `a` to something the site itself says; that is the whole point of it.
+
+To put it on more pages, add `<script src="assets/js/chat.js" defer></script>`
+to that page (`../assets/js/chat.js` under `tr/`).
+
+If you want a real AI assistant instead — one that answers in its own words —
+it needs a server to hold the API key, because anything in the browser is
+public. On Vercel that is one serverless function under `api/`, the key stored
+as an environment variable, and `chat.js` posting to it. That is a separate
+job, and it costs per message.
 
 ## Making the contact form live
 
