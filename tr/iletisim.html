@@ -175,6 +175,26 @@
       </div>
 
       <aside>
+        <div class="card newsletter" id="newsletter">
+          <span class="eyebrow">Bülten</span>
+          <h2>E-posta bültenimize katılın</h2>
+          <p class="muted">Hasat haberleri, yeni sezon ürün durumu ve fiyat güncellemeleri doğrudan e-posta kutunuza gelsin. Tek tıkla istediğiniz an çıkabilirsiniz.</p>
+
+          <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+          <!-- Bülteni canlıya almak için aşağıdaki forma action="https://liste-adresiniz" ekleyin.
+               Action olmadan demo modunda kalır ve yalnızca yerel onay gösterir. -->
+          <form id="newsletter-form" method="post" novalidate>
+            <div class="field">
+              <label for="newsletter-email">E-posta <span class="req">*</span></label>
+              <input type="email" id="newsletter-email" name="email" autocomplete="email" required placeholder="siz@firmaniz.com">
+              <span class="field__error"></span>
+            </div>
+            <button class="btn btn--primary" type="submit">Bültene katılın</button>
+            <p class="form-note mb-0">Adresinizi yalnızca bülten için kullanırız, hiçbir zaman üçüncü taraflarla paylaşmayız.</p>
+          </form>
+        </div>
+
         <h2>Doğrudan hatlar</h2>
         <ul class="info-list">
           <li>

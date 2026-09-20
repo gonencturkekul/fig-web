@@ -80,14 +80,16 @@
       email: "Please enter a valid email address.",
       short: "Please give us a little more detail (at least 10 characters).",
       invalid: "Please check the highlighted fields and try again.",
-      sent: "Thank you! Your enquiry has been recorded. We reply to messages 24/7."
+      sent: "Thank you! Your enquiry has been recorded. We reply to messages 24/7.",
+      subscribed: "Thank you! You are on the list. We will write when there is harvest or price news."
     },
     tr: {
       required: "Bu alanın doldurulması gerekiyor.",
       email: "Lütfen geçerli bir e-posta adresi girin.",
       short: "Lütfen biraz daha ayrıntı verin (en az 10 karakter).",
       invalid: "Lütfen işaretli alanları kontrol edip tekrar deneyin.",
-      sent: "Teşekkürler! Talebiniz bize ulaştı. Mesajlarınıza 7 gün 24 saat cevap verebiliriz."
+      sent: "Teşekkürler! Talebiniz bize ulaştı. Mesajlarınıza 7 gün 24 saat cevap verebiliriz.",
+      subscribed: "Teşekkürler! Listeye eklendiniz. Hasat ve fiyat haberleri olduğunda yazacağız."
     }
   };
   var T = MESSAGES[document.documentElement.lang] || MESSAGES.en;
@@ -179,9 +181,74 @@
     });
   }
 
+  /* ---------- Newsletter sign-up ---------- */
+  /* Same contract as the enquiry form: validate here, hand off to whatever
+     `action` is set on the form, and confirm locally while none is set. */
+  function initNewsletter() {
+    var form = document.getElementById("newsletter-form");
+    if (!form) return;
+
+    var status = document.getElementById("newsletter-status");
+    var field = document.getElementById("newsletter-email");
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setError(message) {
+      var wrapper = field.closest(".field");
+      if (wrapper) {
+        wrapper.classList.add("has-error");
+        var slot = wrapper.querySelector(".field__error");
+        if (slot) slot.textContent = message;
+      }
+      field.setAttribute("aria-invalid", "true");
+    }
+
+    function clearError() {
+      var wrapper = field.closest(".field");
+      if (wrapper) wrapper.classList.remove("has-error");
+      field.removeAttribute("aria-invalid");
+    }
+
+    function showStatus(message, kind) {
+      if (!status) return;
+      status.textContent = message;
+      status.className = "form-status is-visible form-status--" + kind;
+      status.focus();
+    }
+
+    form.addEventListener("input", clearError);
+
+    form.addEventListener("submit", function (event) {
+      var value = (field.value || "").trim();
+      clearError();
+
+      if (!value) {
+        event.preventDefault();
+        setError(T.required);
+        showStatus(T.invalid, "err");
+        field.focus();
+        return;
+      }
+      if (!emailPattern.test(value)) {
+        event.preventDefault();
+        setError(T.email);
+        showStatus(T.invalid, "err");
+        field.focus();
+        return;
+      }
+
+      /* No endpoint wired up yet — confirm locally instead of navigating away. */
+      if (!form.getAttribute("action")) {
+        event.preventDefault();
+        showStatus(T.subscribed, "ok");
+        form.reset();
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initYear();
     initContactForm();
+    initNewsletter();
   });
 })();

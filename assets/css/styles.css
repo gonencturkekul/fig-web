@@ -1124,3 +1124,11 @@ p { margin: 0 0 1.1em; }
   .chat__launcher { padding: 15px; }
   .chat.is-open .chat__launcher { display: none; }
 }
+
+/* ---------- Newsletter sign-up (contact page aside) ---------- */
+
+.newsletter { background: var(--sand); border-color: var(--border); margin-bottom: 30px; }
+.newsletter h2 { font-size: 1.35rem; margin-bottom: .45em; }
+.newsletter .field { margin-bottom: 14px; }
+.newsletter .btn { width: 100%; }
+.newsletter .form-status { margin-bottom: 16px; }

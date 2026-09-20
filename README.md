@@ -145,7 +145,7 @@ public. On Vercel that is one serverless function under `api/`, the key stored
 as an environment variable, and `chat.js` posting to it. That is a separate
 job, and it costs per message.
 
-## Making the contact form live
+## Making the forms live
 
 The form on `contact.html` validates in the browser and, with no `action` set,
 stays in demo mode: it shows a success message without sending anything.
@@ -160,6 +160,17 @@ Any form service (Formspree, Netlify Forms, Getform) or your own backend
 handler works — the script hands submission over to the browser as soon as an
 `action` is present, and the field `name` attributes (`name`, `company`, `email`,
 `phone`, `country`, `product`, `quantity`, `reason`, `message`) are posted as-is.
+
+The newsletter sign-up beside it (`#newsletter-form`, both contact pages) works
+the same way and is also in demo mode. Point its `action` at your mailing-list
+provider's subscribe endpoint (Mailchimp, Brevo, MailerLite, Buttondown …); it
+posts a single field, `email`. Remember to do it in `tr/iletisim.html` as well
+as `contact.html` — they are separate forms.
+
+Two things worth doing before you start collecting addresses: send a
+confirmation e-mail (double opt-in) and put a working unsubscribe link in every
+newsletter. The card promises one, and both are required under GDPR for
+European subscribers. Any of the providers above does this for you.
 
 ## Before going live — replace the placeholders
 

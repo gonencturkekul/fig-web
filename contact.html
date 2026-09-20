@@ -175,6 +175,26 @@
       </div>
 
       <aside>
+        <div class="card newsletter" id="newsletter">
+          <span class="eyebrow">Newsletter</span>
+          <h2>Join our e-mail newsletter</h2>
+          <p class="muted">Harvest news, new-season availability and price updates, straight to your inbox. One click unsubscribes you at any time.</p>
+
+          <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+          <!-- To make this live, set action="https://your-list-endpoint" below.
+               Without an action it stays in demo mode and confirms locally. -->
+          <form id="newsletter-form" method="post" novalidate>
+            <div class="field">
+              <label for="newsletter-email">Email <span class="req">*</span></label>
+              <input type="email" id="newsletter-email" name="email" autocomplete="email" required placeholder="you@company.com">
+              <span class="field__error"></span>
+            </div>
+            <button class="btn btn--primary" type="submit">Subscribe</button>
+            <p class="form-note mb-0">We use your address for the newsletter only and never share it with third parties.</p>
+          </form>
+        </div>
+
         <h2>Direct lines</h2>
         <ul class="info-list">
           <li>
