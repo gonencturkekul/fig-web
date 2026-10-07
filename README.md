@@ -102,6 +102,35 @@ Two things to do on the hosting side, once:
 - submit `https://www.aegeansunfruit.com/sitemap.xml` in Google Search Console
   and Bing Webmaster Tools.
 
+### Verifying the site with Google Search Console
+
+Search Console has to be shown that the domain is ours before it will report
+anything. It offers two routes, and they are satisfied in different places:
+
+- **DNS TXT record** (what a *Domain* property asks for). This lives at
+  whoever answers DNS for `aegeansunfruit.com` — nothing in this repository can
+  satisfy it. Add a TXT record on the root of the domain (name: `@`, or leave it
+  at the provider's default) with the value Search Console shows, and the
+  lowest TTL offered. On Vercel: Project → Settings → Domains → the domain →
+  DNS Records → Add → type `TXT`. At a registrar such as GoDaddy or Namecheap
+  it is under DNS management for the domain. The record can take a few minutes
+  to an hour to propagate; press *Verify* in Search Console afterwards. The
+  value issued on 2026-10-07 was
+  `google-site-verification=5ySKh33dsXBKKduZimTz87vZbeqgzu1cPMC8G2wBH9w`.
+  Leave the record in place — Google re-checks it, and removing it unverifies
+  the property.
+- **HTML tag or HTML file** (what a *URL prefix* property offers). These are
+  satisfied from this repository. For the tag, Search Console gives a
+  `<meta name="google-site-verification" content="…">` line, which goes in the
+  `<head>` of every page, next to the other meta tags. For the file, it gives a
+  name like `google1234abcd.html`, and the file at the site root contains the
+  single line `google-site-verification: google1234abcd.html`. Both tokens are
+  issued per method, so neither is interchangeable with the DNS value above.
+
+A Domain property covers `www`, the apex and both `http`/`https` at once, which
+is why Search Console offers it first; a URL-prefix property covers only the
+exact address you type.
+
 If the address ever changes, the host appears in `sitemap.xml`, `robots.txt`
 and in the `canonical` / `og:url` / `hreflang` tags of all 16 pages. A
 find-and-replace over the repository covers it.
