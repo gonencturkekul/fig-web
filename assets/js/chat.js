@@ -52,7 +52,7 @@
     }
   }[LANG];
 
-  var MAIL = "mturkekul@gmail.com";
+  var MAIL = "muzaffer.turkekul@aegeansunfruit.com";
   var TEL = "+90 507 863 40 45";
 
   /* ------------------------------------------------------------- answers */

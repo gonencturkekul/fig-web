@@ -135,9 +135,11 @@ If the address ever changes, the host appears in `sitemap.xml`, `robots.txt`
 and in the `canonical` / `og:url` / `hreflang` tags of all 16 pages. A
 find-and-replace over the repository covers it.
 
-The contact address on the site is still a Gmail one. A mailbox on the new
-domain (for example `sales@aegeansunfruit.com`) reads better to an importer;
-say the word and it can be swapped everywhere in one pass.
+The contact address on the site is `muzaffer.turkekul@aegeansunfruit.com`. It
+appears 49 times — `mailto:` links, the visible text beside them, the footers
+of all 16 pages, the sales assistant's answers and the home pages' JSON-LD — so
+changing it again is a find-and-replace over the repository, not an edit in one
+place.
 
 ## The sales assistant
 
