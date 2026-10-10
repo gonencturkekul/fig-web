@@ -141,6 +141,36 @@ of all 16 pages, the sales assistant's answers and the home pages' JSON-LD — s
 changing it again is a find-and-replace over the repository, not an edit in one
 place.
 
+## Visitor numbers
+
+Every page loads Vercel Web Analytics with one line in the `<head>`:
+
+```html
+<script defer src="/_vercel/insights/script.js"></script>
+```
+
+The npm package and `<Analytics />` component Vercel's dashboard shows by
+default are for Next.js and React; this site is plain HTML with no build step,
+so it takes the script-tag form instead (the same one under "HTML" in that
+dashboard's framework dropdown).
+
+Two things to know:
+
+- it only reports once **Web Analytics is enabled** for the project, under the
+  project's Analytics tab in Vercel. The tag alone does nothing.
+- `/_vercel/insights/script.js` is injected by Vercel's edge, not by this
+  repository, so it 404s when you run the site from a local server. That is
+  expected and harmless — the page works either way.
+
+It counts page views, referrers, countries and devices. It sets no cookies and
+stores no per-visitor identifier, so it does not need a cookie banner the way
+Google Analytics does — worth keeping that way, given how many visitors will be
+in the EU. Ad blockers do block it, so treat the numbers as a floor.
+
+Speed Insights (how fast pages load for real visitors) is a separate Vercel
+product with its own tag, `<script defer src="/_vercel/speed-insights/script.js"></script>`,
+and is not installed.
+
 ## The sales assistant
 
 Both home pages load `assets/js/chat.js`, which puts a small assistant in the
