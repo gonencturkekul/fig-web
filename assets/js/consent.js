@@ -1,8 +1,9 @@
 /* ==========================================================================
    Aegean Sun — cookie consent
-   Google Analytics is NOT loaded by the page itself. The head only declares
-   denied consent defaults and queues gtag(); this file shows the choice,
-   remembers it, and loads Analytics only once the visitor accepts.
+   Google Analytics and Google Tag Manager are NOT loaded by the page itself.
+   The head only declares denied consent defaults and queues gtag(); this file
+   shows the choice, remembers it, and loads both only once the visitor
+   accepts.
    Declining loads nothing and clears any cookie a previous visit left.
    The choice is kept in localStorage, which is not a cookie and never
    reaches the server.
@@ -11,6 +12,7 @@
   "use strict";
 
   var GA_ID = "G-YSX5V6H7JQ";
+  var GTM_ID = "GTM-P398DTWM";
   var KEY = "aegeansun-cookie-consent";
   var LANG = (document.documentElement.lang || "en").slice(0, 2).toLowerCase() === "tr" ? "tr" : "en";
 
@@ -70,15 +72,27 @@
   function loadAnalytics() {
     if (loaded) return;
     loaded = true;
+
     var gtag = gtagSafe();
     gtag("consent", "update", {
       analytics_storage: "granted"
     });
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-    document.head.appendChild(s);
+
+    /* Google Analytics 4, configured here rather than in the markup. */
+    var ga = document.createElement("script");
+    ga.async = true;
+    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.appendChild(ga);
     gtag("config", GA_ID);
+
+    /* Google Tag Manager. This is the snippet Google hands out, moved out of
+       the markup for the same reason: in the <head> it would reach Google
+       before the visitor had answered the bar. */
+    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var gtm = document.createElement("script");
+    gtm.async = true;
+    gtm.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
+    document.head.appendChild(gtm);
   }
 
   /* A visitor who accepted and then changed their mind keeps the cookies from

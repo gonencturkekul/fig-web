@@ -216,6 +216,32 @@ Details that are deliberate, not accidental, and should survive any redesign:
 Changing the copy means editing `COPY` at the top of `assets/js/consent.js`,
 which holds both languages.
 
+### Google Tag Manager
+
+Container `GTM-P398DTWM` is loaded by `assets/js/consent.js` too, next to GA4
+and under the same condition: nothing until Accept. Google's own instructions
+put the loader at the top of `<head>`, which here would reach Google before
+the visitor had answered the bar and make the privacy page untrue, so the
+snippet lives in `consent.js` instead. It is the same code Google gives, only
+moved.
+
+**The `<noscript>` iframe is deliberately not installed.** It exists to fire
+tags for visitors without JavaScript — exactly the visitors who can never be
+shown the consent bar, so it would be the one path around it. Measurement
+through GTM needs JavaScript anyway, so little is lost. Add it only if you
+decide that trade is worth it.
+
+**Do not add a GA4 configuration tag for `G-YSX5V6H7JQ` inside the container.**
+GA4 is already configured directly in `consent.js`; a second configuration in
+GTM would count every page view twice. Either leave GA4 where it is and use
+GTM for other tags, or move GA4 into GTM and delete the `gtag("config", ...)`
+call and the GA loader from `consent.js` — one or the other, not both.
+
+Tags you add inside GTM inherit the consent state: the container only loads
+after Accept, and `analytics_storage` is granted at that moment. A tag that
+needs ad storage would need its own consent category, which this bar does not
+offer — it asks one yes/no question.
+
 ## Privacy & Cookies page
 
 `privacy.html` and `tr/gizlilik.html` carry the privacy notice, linked from the
