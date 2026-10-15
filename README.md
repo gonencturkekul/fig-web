@@ -171,6 +171,29 @@ Speed Insights (how fast pages load for real visitors) is a separate Vercel
 product with its own tag, `<script defer src="/_vercel/speed-insights/script.js"></script>`,
 and is not installed.
 
+### Google Analytics 4
+
+All 16 pages also carry the GA4 tag for property `G-YSX5V6H7JQ`, placed
+immediately after the `<meta name="viewport">` line as Google's instructions
+ask. It is independent of the Vercel counter above; running both is fine, and
+their numbers will not agree — they count differently and are blocked by
+different things.
+
+**GA4 sets cookies** (`_ga` and `_ga_<id>`) and sends visitor data to Google.
+That is a different legal position from the Vercel counter: under the EU
+ePrivacy rules and GDPR, visitors in the EU have to consent *before* it loads,
+and this site has no consent banner yet. Most of the buyers this site is aimed
+at are in the EU. Two ways to settle it, whichever you prefer:
+
+- add a consent banner and hold the tag until the visitor accepts, via
+  `gtag('consent', 'default', {analytics_storage: 'denied'})` before the config
+  line and an update on accept; or
+- drop GA4 and keep only the Vercel counter, which is cookie-free and needs no
+  banner.
+
+Until one of those is done, the tag runs for everyone from the moment a page
+loads.
+
 ## The sales assistant
 
 Both home pages load `assets/js/chat.js`, which puts a small assistant in the
