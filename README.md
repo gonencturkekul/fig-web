@@ -243,6 +243,22 @@ all. In Tag Manager: a **Google Tag** with id `G-YSX5V6H7JQ`, triggered on
 container that has never been published serves an empty response, which is
 why the site can look wired up and still report nothing.
 
+### Against Google's basic consent mode guide
+
+Checked step by step against Google's "Set up consent mode" page. Where this
+site departs from the sample, it is on purpose:
+
+| Guide says | Here |
+| --- | --- |
+| Set the defaults in the data layer before the banner, with `wait_for_update` | Done, in the `<head>` of all 18 pages. `wait_for_update: 500` is inert in a basic setup — the container only loads after the update — but it is kept so the block matches the documented one if a tag is ever added earlier. |
+| Save the interaction in `localStorage` or a cookie | `localStorage`, under `aegeansun-cookie-consent`. |
+| Give every banner button an identifier | `#consent-accept` and `#consent-decline`. |
+| Push the banner interaction to the data layer | `{event: "consent_decision", consent_decision: "granted"\|"denied"}`, pushed before the container loads so a trigger inside it can fire on the event. |
+| Load the Google tag once consent is granted | `consent.js` sends the update, then loads `gtm.js`. |
+| Sample grants `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` on accept | **Only `analytics_storage`.** The bar asks one question, about measurement, and the privacy page describes only Analytics. Granting advertising consent nobody was asked for would be a false signal — and the guide itself says to decide this from your own policy rather than from the sample. Adding ad tags means asking about them in the bar first. |
+| With Tag Manager, the recommended approach is to load your banner *through* the container | **Not followed.** The container would have to load before the banner could ask anything, which is the one thing this setup refuses to do. The bar is part of the site instead: it works with the container unpublished, it is bilingual from `<html lang>`, and it is styled with the site's own CSS. |
+| Install the Google tag on every page (gtag.js route) | Not applicable — GA4 is a tag inside the container, so there is no `gtag.js` on any page. |
+
 ### Why consent mode stays "basic"
 
 Google offers two shapes of consent mode, and this site deliberately uses the

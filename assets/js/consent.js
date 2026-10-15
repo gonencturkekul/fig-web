@@ -77,7 +77,15 @@
     loaded = true;
 
     /* Granted before the container loads, so the tags inside it start in the
-       right state rather than firing denied and being corrected. */
+       right state rather than firing denied and being corrected.
+
+       Google's sample grants ad_storage, ad_user_data and ad_personalization
+       here as well. Ours does not, and that is the point: this bar asks one
+       question, about measurement, and the privacy page describes only
+       Analytics. Granting advertising consent the visitor was never asked for
+       would be a false signal. If ad tags are ever added, the bar has to ask
+       about them first — Google's own note says to decide this from your
+       policy, not from the sample. */
     gtagSafe()("consent", "update", {
       analytics_storage: "granted"
     });
@@ -182,8 +190,10 @@
        of the same size and weight — no greyed-out "decline". */
     var reject = el("button", "consent__btn consent__btn--ghost", COPY.reject);
     reject.type = "button";
+    reject.id = "consent-decline";
     var accept = el("button", "consent__btn consent__btn--primary", COPY.accept);
     accept.type = "button";
+    accept.id = "consent-accept";
     reject.addEventListener("click", function () { decide("denied"); });
     accept.addEventListener("click", function () { decide("granted"); });
     actions.appendChild(reject);
@@ -213,6 +223,10 @@
   function decide(value) {
     write(value);
     hide();
+    /* Pushed before the container loads, so it is in the queue GTM reads and
+       a trigger inside the container can fire on it. */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "consent_decision", consent_decision: value });
     if (value === "granted") {
       loadAnalytics();
     } else {
