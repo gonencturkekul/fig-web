@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YSX5V6H7JQ"></script>
+  <!-- Google tag (gtag.js). The loader is deliberately NOT here: consent
+       starts denied, and assets/js/consent.js fetches gtag.js and calls
+       config only once the visitor accepts. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied'
+    });
     gtag('js', new Date());
-
-    gtag('config', 'G-YSX5V6H7JQ');
   </script>
   <title>Dried Fig | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Whole sun-dried Turkish figs from Aydin. Lerida and Protoben grades, six calibres, retail and bulk packaging, aflatoxin tested on every lot.">
@@ -35,6 +40,7 @@
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-fig.html">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/consent.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
        so it 404s when the site is opened from a plain local server. -->
   <script defer src="/_vercel/insights/script.js"></script>
@@ -296,6 +302,7 @@
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
       <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
+      <span><a href="#" data-consent-open>Cookie preferences</a></span>
     </div>
   </div>
 </footer>

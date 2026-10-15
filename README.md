@@ -56,6 +56,7 @@ assets/
   js/main.js       mobile menu, products dropdown, contact form validation
                    (form messages are per-language, keyed off <html lang>)
   js/chat.js       sales assistant widget, home pages only
+  js/consent.js    cookie bar; loads Google Analytics only on consent
   img/hero.jpg     home page hero photograph
   img/dried-fig-basket.jpg  dried fig photograph, home page card
   img/dried-fig.webp        dried fig photograph, products pages
@@ -179,20 +180,41 @@ ask. It is independent of the Vercel counter above; running both is fine, and
 their numbers will not agree — they count differently and are blocked by
 different things.
 
-**GA4 sets cookies** (`_ga` and `_ga_<id>`) and sends visitor data to Google.
-That is a different legal position from the Vercel counter: under the EU
-ePrivacy rules and GDPR, visitors in the EU have to consent *before* it loads,
-and this site has no consent banner yet. Most of the buyers this site is aimed
-at are in the EU. Two ways to settle it, whichever you prefer:
+**GA4 sets cookies** (`_ga` and `_ga_<id>`) and sends visitor data to Google,
+so EU visitors have to consent before it loads. It therefore does not load on
+its own. The `<head>` of every page only declares denied defaults and queues
+`gtag()`:
 
-- add a consent banner and hold the tag until the visitor accepts, via
-  `gtag('consent', 'default', {analytics_storage: 'denied'})` before the config
-  line and an update on accept; or
-- drop GA4 and keep only the Vercel counter, which is cookie-free and needs no
-  banner.
+```html
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { analytics_storage: 'denied', ... });
+  gtag('js', new Date());
+</script>
+```
 
-Until one of those is done, the tag runs for everyone from the moment a page
-loads.
+`assets/js/consent.js` shows the bar, remembers the answer, and only on
+**Accept** appends the `gtag.js` loader, sends `consent update` and calls
+`config`. On **Decline** nothing is fetched from Google at all, and any `_ga`
+cookie a previous visit left is deleted. The answer is kept in `localStorage`
+under `aegeansun-cookie-consent` — not a cookie, never sent to the server,
+which is why it needs no consent itself.
+
+Details that are deliberate, not accidental, and should survive any redesign:
+
+- **Decline is the same size and weight as Accept.** Consent has to be as easy
+  to refuse as to give; a greyed-out or hidden "decline" invalidates it.
+- **Nothing is assumed from silence.** Closing or ignoring the bar is not
+  consent, so the bar has no X and no "by continuing you agree".
+- **The choice can be withdrawn** from the *Cookie preferences* link in every
+  footer, which reopens the bar.
+- The bar lists the cookies by name, purpose and lifetime, so it stands on its
+  own; a separate privacy page would be the usual home for that text, and the
+  site has none yet.
+
+Changing the copy means editing `COPY` at the top of `assets/js/consent.js`,
+which holds both languages.
 
 ## The sales assistant
 
