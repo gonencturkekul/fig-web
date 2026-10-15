@@ -1,9 +1,10 @@
 /* ==========================================================================
    Aegean Sun — cookie consent
-   Google Analytics and Google Tag Manager are NOT loaded by the page itself.
-   The head only declares denied consent defaults and queues gtag(); this file
-   shows the choice, remembers it, and loads both only once the visitor
-   accepts.
+   Google Tag Manager is NOT loaded by the page itself. The head only declares
+   denied consent defaults and queues gtag(); this file shows the choice,
+   remembers it, and loads the container only once the visitor accepts.
+   Google Analytics 4 is configured inside that container, not here, so there
+   is exactly one place that counts a page view.
    Declining loads nothing and clears any cookie a previous visit left.
    The choice is kept in localStorage, which is not a cookie and never
    reaches the server.
@@ -11,6 +12,8 @@
 (function () {
   "use strict";
 
+  /* GA4 runs from inside the container; the id is kept only to name the
+     cookie it sets, which the bar lists. */
   var GA_ID = "G-YSX5V6H7JQ";
   var GTM_ID = "GTM-P398DTWM";
   var KEY = "aegeansun-cookie-consent";
@@ -73,21 +76,16 @@
     if (loaded) return;
     loaded = true;
 
-    var gtag = gtagSafe();
-    gtag("consent", "update", {
+    /* Granted before the container loads, so the tags inside it start in the
+       right state rather than firing denied and being corrected. */
+    gtagSafe()("consent", "update", {
       analytics_storage: "granted"
     });
 
-    /* Google Analytics 4, configured here rather than in the markup. */
-    var ga = document.createElement("script");
-    ga.async = true;
-    ga.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
-    document.head.appendChild(ga);
-    gtag("config", GA_ID);
-
     /* Google Tag Manager. This is the snippet Google hands out, moved out of
-       the markup for the same reason: in the <head> it would reach Google
-       before the visitor had answered the bar. */
+       the markup: in the <head> it would reach Google before the visitor had
+       answered the bar. Everything measured, GA4 included, is a tag inside
+       this container. */
     window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
     var gtm = document.createElement("script");
     gtm.async = true;

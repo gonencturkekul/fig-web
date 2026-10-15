@@ -181,25 +181,25 @@ their numbers will not agree — they count differently and are blocked by
 different things.
 
 **GA4 sets cookies** (`_ga` and `_ga_<id>`) and sends visitor data to Google,
-so EU visitors have to consent before it loads. It therefore does not load on
-its own. The `<head>` of every page only declares denied defaults and queues
-`gtag()`:
+so EU visitors have to consent before any of it loads. Nothing Google-related
+is therefore in the markup. The `<head>` of every page only declares denied
+defaults and queues `gtag()`:
 
 ```html
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('consent', 'default', { analytics_storage: 'denied', ... });
-  gtag('js', new Date());
 </script>
 ```
 
 `assets/js/consent.js` shows the bar, remembers the answer, and only on
-**Accept** appends the `gtag.js` loader, sends `consent update` and calls
-`config`. On **Decline** nothing is fetched from Google at all, and any `_ga`
-cookie a previous visit left is deleted. The answer is kept in `localStorage`
-under `aegeansun-cookie-consent` — not a cookie, never sent to the server,
-which is why it needs no consent itself.
+**Accept** sends `consent update` and then loads the Tag Manager container —
+in that order, so the tags inside it start granted instead of firing denied
+and being corrected. On **Decline** nothing is fetched from Google at all, and
+any `_ga` cookie a previous visit left is deleted. The answer is kept in
+`localStorage` under `aegeansun-cookie-consent` — not a cookie, never sent to
+the server, which is why it needs no consent itself.
 
 Details that are deliberate, not accidental, and should survive any redesign:
 
@@ -209,9 +209,8 @@ Details that are deliberate, not accidental, and should survive any redesign:
   consent, so the bar has no X and no "by continuing you agree".
 - **The choice can be withdrawn** from the *Cookie preferences* link in every
   footer, which reopens the bar.
-- The bar lists the cookies by name, purpose and lifetime, so it stands on its
-  own; a separate privacy page would be the usual home for that text, and the
-  site has none yet.
+- The bar lists the cookies by name, purpose and lifetime, and links to the
+  privacy page.
 
 Changing the copy means editing `COPY` at the top of `assets/js/consent.js`,
 which holds both languages.
@@ -231,11 +230,18 @@ shown the consent bar, so it would be the one path around it. Measurement
 through GTM needs JavaScript anyway, so little is lost. Add it only if you
 decide that trade is worth it.
 
-**Do not add a GA4 configuration tag for `G-YSX5V6H7JQ` inside the container.**
-GA4 is already configured directly in `consent.js`; a second configuration in
-GTM would count every page view twice. Either leave GA4 where it is and use
-GTM for other tags, or move GA4 into GTM and delete the `gtag("config", ...)`
-call and the GA loader from `consent.js` — one or the other, not both.
+**GA4 lives inside the container.** There is no `gtag.js` loader and no
+`gtag("config", ...)` call anywhere in the site: the measurement id
+`G-YSX5V6H7JQ` appears in `consent.js` only to name the cookie the bar lists.
+A GA4 configuration tag in the container is therefore the one thing that
+counts a page view — add a second one anywhere and every view is counted
+twice.
+
+So the container must actually contain that tag, or nothing is measured at
+all. In Tag Manager: a **Google Tag** with id `G-YSX5V6H7JQ`, triggered on
+**Initialization — All Pages**, then **Submit** to publish the container. A
+container that has never been published serves an empty response, which is
+why the site can look wired up and still report nothing.
 
 Tags you add inside GTM inherit the consent state: the container only loads
 after Accept, and `analytics_storage` is granted at that moment. A tag that

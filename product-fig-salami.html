@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Tag Manager (GTM-P398DTWM) and the Google tag (gtag.js). Neither
-       loader is here on purpose: consent starts denied below, and
-       assets/js/consent.js fetches gtm.js and gtag.js only once the visitor
-       accepts. The GTM <noscript> iframe is left out as well — it would reach
-       Google for visitors who cannot be shown the consent bar at all. -->
+  <!-- Google Tag Manager (GTM-P398DTWM). The loader is not here on purpose:
+       consent starts denied below, and assets/js/consent.js fetches gtm.js
+       only once the visitor accepts. The <noscript> iframe is left out as
+       well — it would reach Google for visitors who cannot be shown the
+       consent bar at all. Google Analytics 4 is a tag inside the container,
+       so there is no gtag.js loader and no config call anywhere in the site. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -18,7 +19,6 @@
       ad_personalization: 'denied',
       analytics_storage: 'denied'
     });
-    gtag('js', new Date());
   </script>
   <title>Fig Salami | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Fig salami: pressed dried fig paste worked with spices and nuts into a sliceable log. Six varieties, 180 g each, 100% vegan with no added sugar.">
