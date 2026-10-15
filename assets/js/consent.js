@@ -27,7 +27,9 @@
         ["_ga_" + GA_ID.replace(/^G-/, ""), "Oturum durumunu saklar", "2 yıl"]
       ],
       note: "Tercihiniz yalnızca tarayıcınızda saklanır; çerez değildir ve bize gönderilmez. Dilediğiniz zaman sayfa altındaki “Çerez tercihleri” bağlantısından değiştirebilirsiniz.",
-      reopen: "Çerez tercihleri"
+      reopen: "Çerez tercihleri",
+      policy: "Gizlilik ve Çerezler",
+      policyHref: "gizlilik.html"
     },
     en: {
       title: "Your cookie choice",
@@ -41,7 +43,9 @@
         ["_ga_" + GA_ID.replace(/^G-/, ""), "Keeps session state", "2 years"]
       ],
       note: "Your choice is stored in your browser only; it is not a cookie and is never sent to us. You can change it at any time from the “Cookie preferences” link in the footer.",
-      reopen: "Cookie preferences"
+      reopen: "Cookie preferences",
+      policy: "Privacy &amp; Cookies",
+      policyHref: "privacy.html"
     }
   }[LANG];
 
@@ -127,7 +131,11 @@
     var h = el("strong", "consent__title", COPY.title);
     h.setAttribute("tabindex", "-1");
     text.appendChild(h);
-    text.appendChild(el("p", null, COPY.body));
+    var intro = el("p", null, COPY.body + " ");
+    var policy = el("a", "consent__policy", COPY.policy.replace("&amp;", "&"));
+    policy.href = COPY.policyHref;
+    intro.appendChild(policy);
+    text.appendChild(intro);
 
     var details = el("details", "consent__details");
     details.appendChild(el("summary", null, COPY.details));

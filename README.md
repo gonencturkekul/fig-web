@@ -216,6 +216,37 @@ Details that are deliberate, not accidental, and should survive any redesign:
 Changing the copy means editing `COPY` at the top of `assets/js/consent.js`,
 which holds both languages.
 
+## Privacy & Cookies page
+
+`privacy.html` and `tr/gizlilik.html` carry the privacy notice, linked from the
+footer of every page and from the cookie bar. They are built from the same
+shell as the rest of the site, so they have their own canonical, hreflang pair,
+Open Graph tags and sitemap entries; they are deliberately not in the top menu.
+
+The text describes what the site actually does — the enquiry form, the
+newsletter, the Vercel counter, consent-gated Google Analytics, server logs —
+with a purpose, a legal basis and a retention period for each, then cookies,
+recipients, transfers abroad, rights under the KVKK and the GDPR, and how to
+complain.
+
+**This is not legal advice, and it is not finished until you check three
+things:**
+
+1. **The enquiry form and the newsletter are still in demo mode.** The page
+   says enquiries reach us and newsletter addresses are stored. That becomes
+   true when those forms are wired to a provider; until then the page
+   over-describes, and worse, a visitor who fills the form believes they have
+   contacted you when nothing was sent.
+2. **Name the processors once chosen.** When the form and the list go live,
+   add the provider (Formspree, Brevo, Mailchimp …) to the "who we share with"
+   list — a processor that holds enquiry data has to be named.
+3. **Retention periods are stated in general terms** ("until the enquiry is
+   settled", "until you unsubscribe"). If you want firm periods, set them and
+   replace that wording.
+
+A lawyer should read it before you rely on it, particularly for KVKK
+registration obligations (VERBIS) which this page does not address.
+
 ## The sales assistant
 
 Both home pages load `assets/js/chat.js`, which puts a small assistant in the

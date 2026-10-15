@@ -1217,3 +1217,36 @@ p { margin: 0 0 1.1em; }
   .consent__btn { flex: 1 1 0; padding: 13px 10px; }
   .consent__table { font-size: .8rem; }
 }
+
+/* ---------- Legal pages (privacy) ---------- */
+
+.legal { max-width: 820px; }
+.legal__updated { color: var(--ink-soft); font-size: .88rem; margin: 0 0 26px; }
+.legal h2 {
+  font-size: 1.4rem;
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.legal__summary h2 { margin-top: 0; padding-top: 0; border-top: none; }
+.legal__summary { background: var(--sand); margin-bottom: 8px; }
+.legal p { line-height: 1.7; }
+.legal ul { padding-left: 1.15em; }
+.legal li { margin-bottom: 8px; line-height: 1.65; }
+.legal .spec-table { margin: 18px 0 8px; }
+.legal .spec-table th[scope="row"] { width: 28%; }
+.legal code {
+  background: var(--sand);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: .88em;
+}
+
+@media (max-width: 620px) {
+  .legal .spec-table, .legal .spec-table tbody, .legal .spec-table tr, .legal .spec-table td, .legal .spec-table th { display: block; }
+  .legal .spec-table thead { display: none; }
+  .legal .spec-table tr { border-bottom: 2px solid var(--border); padding: 12px 0; }
+  .legal .spec-table th, .legal .spec-table td { border: none; padding: 3px 0; width: auto !important; }
+  .legal .spec-table th[scope="row"] { font-weight: 700; color: var(--fig-dark); }
+}
+.consent__policy { color: var(--fig); font-weight: 600; white-space: nowrap; }
