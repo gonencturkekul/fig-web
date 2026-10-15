@@ -243,6 +243,43 @@ all. In Tag Manager: a **Google Tag** with id `G-YSX5V6H7JQ`, triggered on
 container that has never been published serves an empty response, which is
 why the site can look wired up and still report nothing.
 
+### Why consent mode stays "basic"
+
+Google offers two shapes of consent mode, and this site deliberately uses the
+stricter one.
+
+- **Basic** (what we do): no Google tag loads until the visitor accepts. A
+  visitor who declines, or ignores the bar, is never counted and nothing about
+  them reaches Google.
+- **Advanced**: the container loads for everyone immediately and, while
+  consent is denied, sends cookieless pings. Google then *models* the missing
+  visitors to fill the gap.
+
+Advanced measures more, and it is tempting for a site with worldwide traffic,
+where many visitors never touch the bar. It was weighed and rejected:
+
+1. **The modelling would not run.** Google only models once the property is
+   over its thresholds — reported by third-party guides as roughly 1,000
+   events a day from declining visitors for 7 days, and around 1,000 daily
+   consenting users across 7 of the last 28 days. A B2B exporter's site is
+   orders of magnitude below that, so advanced mode would buy the extra
+   exposure and deliver no modelled data at all.
+2. **It would contradict a published promise.** The privacy page states that
+   until you answer, the page does not even send a request to Google. Advanced
+   mode makes that false, and the page would have to be rewritten.
+3. **The company is Turkish and sells into the EU.** Both the KVKK's cookie
+   guidance and the EU ePrivacy rules point the same way: ask first.
+
+`region`-scoped defaults — `gtag('consent','default',{…, region:['DE','FR']})`
+— only change *which default applies where*; the tags still load everywhere,
+so they are a feature of advanced mode and do nothing in ours.
+
+If the picture changes (serious traffic, or an ads campaign that needs
+conversion modelling), switching is small: declare granted defaults outside
+the regulated regions, load the container in the head as Google documents,
+and update the privacy page to match. It is a legal decision before it is a
+technical one.
+
 Tags you add inside GTM inherit the consent state: the container only loads
 after Accept, and `analytics_storage` is granted at that moment. A tag that
 needs ad storage would need its own consent category, which this bar does not
