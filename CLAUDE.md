@@ -8,6 +8,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This project uses OpenWolf for context management. Read and follow .wolf/OPENWOLF.md every session. Check .wolf/cerebrum.md before generating code. Check .wolf/anatomy.md before reading files.
 
+# Design system
+
+**Read `DESIGN.md` before any new development or UI change.** It is the design system extracted from the shipped site: colour, type, spacing and radius tokens (YAML frontmatter, normative), component patterns, and the Do's and Don'ts. New UI elements must reuse those tokens and patterns instead of inventing new values. If a change alters the system (new token, new component pattern), update `DESIGN.md` in the same commit.
+
 # Project
 
 Bilingual (EN/TR) static marketing site for **Aegean Sun**, a Turkish dried fruit exporter, deployed on Vercel at `https://www.aegeansunfruit.com`. Plain HTML, one CSS file, vanilla JS. There is no build step, no package.json, no tests and no linter. `README.md` is the detailed operating manual. Read the relevant section of it before you change analytics, consent, forms or the chat widget.
