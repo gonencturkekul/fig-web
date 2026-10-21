@@ -22,9 +22,9 @@
     });
   </script>
   <title>Kuru İncir | Aegean Sun Kuru Meyve</title>
-  <meta name="description" content="Aydın'dan bütün kuru incir. Lerida ve Protoben kaliteleri, altı kalibre, perakende ve dökme ambalaj, her partide aflatoksin testi.">
+  <meta name="description" content="Aydın’dan bütün kuru incir. Lerida ve Protoben kaliteleri, altı kalibre, perakende ve dökme ambalaj, her partide aflatoksin testi.">
   <meta property="og:title" content="Kuru İncir | Aegean Sun Kuru Meyve">
-  <meta property="og:description" content="Aydın'dan bütün kuru incir. Lerida ve Protoben kaliteleri, altı kalibre, perakende ve dökme ambalaj, her partide aflatoksin testi.">
+  <meta property="og:description" content="Aydın’dan bütün kuru incir. Lerida ve Protoben kaliteleri, altı kalibre, perakende ve dökme ambalaj, her partide aflatoksin testi.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aegeansunfruit.com/tr/kuru-incir.html">
   <meta property="og:site_name" content="Aegean Sun">
@@ -35,7 +35,8 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Eskimiş bir ahşap masanın üzerinde üst üste dizilmiş kuru incirler, biri ikiye ayrılmış">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#5b2c53">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fdf8f1">
   <link rel="icon" href="../assets/img/logo-mark.png" type="image/png">
   <link rel="canonical" href="https://www.aegeansunfruit.com/tr/kuru-incir.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-incir.html">
@@ -44,6 +45,7 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script src="../assets/js/main.js" defer></script>
   <script src="../assets/js/consent.js" defer></script>
+  <script src="../assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
        so it 404s when the site is opened from a plain local server. -->
   <script defer src="/_vercel/insights/script.js"></script>
@@ -52,25 +54,25 @@
 <a class="skip-link" href="#main">İçeriğe geç</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Ana menü">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Aegean Sun Kuru Meyve — Ana sayfa">
       <img class="brand__mark" src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
       <span>Aegean Sun<span class="brand__sub">Kuru Meyve</span></span>
     </a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
       <span></span><span></span><span></span>
     </button>
 
     <ul class="menu" id="primary-menu">
       <li><a href="index.html">Ana Sayfa</a></li>
       <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false">
+        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
           Ürünler
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
             <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
-        <ul class="dropdown">
+        <ul class="dropdown" id="menu-products">
           <li><a href="urunler.html">Tüm Ürünler<small>Aegean Sun ürün yelpazesi</small></a></li>
           <li><a href="kuru-incir.html">Kuru İncir<small>Doğal Lerida ve Protoben</small></a></li>
           <li><a href="incir-salami.html">İncir Salamı<small>Altı çeşit, 180&nbsp;g</small></a></li>
@@ -84,13 +86,13 @@
     </ul>
 
       <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-label="Dil: Türkçe">
-          <img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>TR</span>
+        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="TR — Dil: Türkçe">
+          <img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <ul class="dropdown">
-          <li><a href="../product-dried-fig.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" alt=""><span>English</span></a></li>
-          <li><a href="kuru-incir.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>Türkçe</span></a></li>
+        <ul class="dropdown" id="menu-lang">
+          <li><a href="../product-dried-fig.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+          <li><a href="kuru-incir.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
         </ul>
       </div>
   </nav>
@@ -99,29 +101,10 @@
 
   <section class="page-banner">
     <div class="wrap">
-      <p class="breadcrumb"><a href="index.html">Ana Sayfa</a> &rsaquo; <a href="urunler.html">Ürünler</a> &rsaquo; Kuru İncir</p>
+      <nav class="breadcrumb" aria-label="Sayfa yolu"><ol><li><a href="index.html">Ana Sayfa</a></li><li><a href="urunler.html">Ürünler</a></li><li aria-current="page">Kuru İncir</li></ol></nav>
       <span class="eyebrow">Aydın, Ege Bölgesi</span>
       <h1>Kuru İncir</h1>
       <p>Dalında olgunlaşan, açık tepsilerde güneşte kurutulan ve elde boylanan bütün incirler. Hiçbir katkı yok &mdash; tatlılığın tamamı meyvenin kendisinden geliyor.</p>
-    </div>
-  </section>
-
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Bahçeden konteynere</span>
-        <h2>Aldığınız incirin yolculuğunu izleyin</h2>
-        <p class="lead">Hasattan kurutmaya, boylamadan sevkiyata: siparişiniz hazırlanana kadar incirin geçtiği yolu kendi gözlerinizle görün.</p>
-      </div>
-
-      <div class="video-frame" style="max-width:900px;margin-inline:auto">
-        <video controls preload="metadata" playsinline
-               poster="../assets/img/fig-drying.webp">
-          <source src="../assets/video/fig-journey.mp4" type="video/mp4">
-          Tarayıcınız video oynatmayı desteklemiyor.
-          <a href="../assets/video/fig-journey.mp4">Filmi indirin</a>.
-        </video>
-      </div>
     </div>
   </section>
 
@@ -136,12 +119,12 @@
         <p>Bahçelerimizi tonaj yerine ağaç üzerinden sözleşmeye bağlıyoruz; böylece üretici meyveyi erken toplamak yerine kendiliğinden düşmesini bekleyebiliyor. Maliyeti daha yüksek, ama incirlerimizin bu tadı taşımasının en büyük nedeni bu.</p>
         <ul class="checklist">
           <li>5&ndash;7 gün güneşte kurutma, %22&ndash;24 neme kadar dinlendirme</li>
-          <li>Tutarlı paketler için elde altı kaliteye boylama</li>
+          <li>Tutarlı paketler için elde altı kalibreye boylama</li>
           <li>Parti parti aflatoksin testi, her sevkiyatta sertifika</li>
           <li>Konvansiyonel ve sertifikalı organik seçenekler</li>
         </ul>
         <div class="btn-row">
-          <a class="btn btn--primary" href="iletisim.html#contact-form">Teklif alın</a>
+          <a class="btn btn--primary" href="iletisim.html?product=fig#contact-form">Teklif alın</a>
           <a class="btn btn--ghost" href="urunler.html">Ürünlere dön</a>
         </div>
       </div>
@@ -156,8 +139,8 @@
           <table class="spec-table">
             <tr><th scope="row">Botanik adı</th><td>Ficus carica, Sarılop çeşidi</td></tr>
             <tr><th scope="row">Menşe</th><td>Aydın, Türkiye</td></tr>
-            <tr><th scope="row">Üretim yeri</th><td>Aydın fabrikamız, Nazilli</td></tr>
-            <tr><th scope="row">Kaliteler</th><td>Lerida, Protoben, Bağlama, Garland, Çekme, Sanayi</td></tr>
+            <tr><th scope="row">Üretim yeri</th><td>Nazilli tesisimiz, Aydın</td></tr>
+            <tr><th scope="row">Kaliteler</th><td>Lerida, Protoben, Bağlama, Garland, Çekme, Layer, Makaroni, Küp</td></tr>
             <tr><th scope="row">Kalibre</th><td>1 numara (&le;38 adet/kg) ile 6 numara (&le;110 adet/kg) arası</td></tr>
             <tr><th scope="row">Nem</th><td>%22&ndash;24</td></tr>
             <tr><th scope="row">İçindekiler</th><td>%100 kuru incir (doğal kaliteler). Kükürtsüz.</td></tr>
@@ -187,6 +170,32 @@
     </div>
   </section>
 
+  <!-- Film bilerek teknik bilgilerden sonra: alıcılar önce spesifikasyon tablosu ve
+       kaliteler için gelir; film bunları destekler, önlerine geçmez. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Bahçeden konteynere</span>
+        <h2>Aldığınız incirin yolculuğunu izleyin</h2>
+        <p class="lead">Hasattan kurutmaya, boylamadan sevkiyata: siparişiniz hazırlanana kadar incirin geçtiği yolu kendi gözlerinizle görün.</p>
+      </div>
+
+      <div class="video-frame video-frame--narrow">
+        <video controls preload="metadata" playsinline poster="../assets/img/video-poster.webp">
+          <source src="../assets/video/fig-journey.mp4" type="video/mp4">
+          <!-- The film has English subtitles burned in; this track adds the Turkish translation. -->
+          <track kind="captions" src="../assets/video/fig-journey.tr.vtt" srclang="tr" label="Türkçe" default>
+          Tarayıcınız video oynatmayı desteklemiyor.
+          <a href="../assets/video/fig-journey.mp4">Filmi indirin</a>.
+        </video>
+      </div>
+      <details class="video-transcript">
+        <summary>Filmde neler görülüyor</summary>
+        <p>Sarılop incirini ağaçtan sofraya kadar izleyen, 74 saniyelik anlatımlı bir film. Ege bahçelerinde dalında olgunlaşan incirleri bir üretici tek tek kontrol eder. İncirler şafakta elle sepete toplanır, güneşte ve rüzgârda kurumak üzere yükseltilmiş ahşap tel kerevetlere serilir, ardından elle seçilip ahşap kasalara dizilir. Bir kamyon kasaları dağ yolundan işleme tesisine taşır; burada bone ve beyaz önlüklü bir çalışan incirleri bant üzerinde ayıklar. Film, depoda istiflenmiş kolilerle ve iple bağlanmış bir incir paketiyle biter.</p>
+      </details>
+    </div>
+  </section>
+
   <section class="section section--white">
     <div class="wrap">
       <div class="section-head">
@@ -198,48 +207,48 @@
       <div class="format-grid">
         <article class="format-card">
           <span class="format-card__meta">5&nbsp;kg &middot; 10&nbsp;kg koli</span>
-          <h4>Lerida</h4>
+          <h3>Lerida</h3>
           <p>En üst kalitemiz. İri, açık renkli, düzgün yuvarlak preslenmiş ve tek sıra dizilmiş incirler. Hediyelik ve üst segment perakende için tercih edilen sunum.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">500&nbsp;g &middot; 5&nbsp;kg</span>
-          <h4>Protoben</h4>
-          <p>Elde şekillendirilen bütün incirler. Kalibre ve düzgünlükte Lerida'nın bir basamak altında, ama aynı meyve. Günlük perakende paketlerin beygiri.</p>
+          <h3>Protoben</h3>
+          <p>Elde şekillendirilen bütün incirler. Kalibre ve düzgünlükte Lerida’nın bir basamak altında, ama aynı meyve. Günlük perakende paketlerin beygiri.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">5&nbsp;kg koli</span>
-          <h4>Bağlama</h4>
+          <h3>Bağlama</h3>
           <p>Preslenip sıra sıra bağlanarak paketlenen incirler &mdash; geleneksel Ege sunumu ve hâlâ birçok toptancının adıyla istediği format.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">4,5&nbsp;kg koli</span>
-          <h4>Garland (Çelenk)</h4>
+          <h3>Garland (Çelenk)</h3>
           <p>Köy evlerinin kuşaklardır sakladığı biçimde ipe dizilip halka yapılan incirler. Sezonluk ve şarküteri satışında güçlü bir ürün.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">800&nbsp;g &middot; 5&nbsp;kg</span>
-          <h4>Çekme</h4>
+          <h3>Çekme</h3>
           <p>Elde açılıp yassılaştırılan incirler; daha yumuşak bir doku ve market rafında hızlı dönen poşetli format sağlar.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">250&nbsp;g tabla</span>
-          <h4>Layer (Sıralı)</h4>
+          <h3>Layer (Sıralı)</h3>
           <p>Seçilmiş incirler sığ bir tablaya yassı dizilir, böylece meyve ezilmeden ulaşır. En gösterişli küçük paketimiz; hediyelik için önerdiğimiz format.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">5&nbsp;kg &middot; 10&nbsp;kg</span>
-          <h4>Makaroni</h4>
+          <h3>Makaroni</h3>
           <p>Dökme kolilerde daha küçük ve uzun incirler. Ezme, dolgu, bar ve infüzyon üreten sanayi alıcıları için fiyatlanır.</p>
         </article>
         <article class="format-card">
           <span class="format-card__meta">10&nbsp;kg dökme</span>
-          <h4>Küp 8&times;10&nbsp;mm</h4>
+          <h3>Küp 8&times;10&nbsp;mm</h3>
           <p>Fırıncılık, gevrek ve şekerleme hatları için pirinç unuyla kaplanmış, eşit kesilmiş incir küpleri. Farklı kesim ölçüleri talebe göre.</p>
         </article>
       </div>
 
       <p class="muted" style="margin-top:24px">Tüm kaliteler gıdaya uygun iç torbalı kolilerde sevk edilir; dökme partiler için ahşap kasa seçeneği vardır. Perakende birimler kendi etiketiniz ve barkodunuzla basılabilir.</p>
-      <a class="btn btn--primary" href="iletisim.html#contact-form">Güncel fiyat listesini isteyin</a>
+      <a class="btn btn--primary" href="iletisim.html?product=fig#contact-form">Güncel fiyat listesini isteyin</a>
     </div>
   </section>
 
@@ -247,9 +256,9 @@
     <div class="wrap cta-band__inner">
       <div>
         <h2>Karar vermeden önce deneyin</h2>
-        <p>Uygun alıcılara boylanmış numune setini gönderiyoruz.</p>
+        <p>Kalibreli numune setleri, nitelikli ticari alıcılara ücretsizdir.</p>
       </div>
-      <a class="btn btn--primary" href="iletisim.html#contact-form">Numune isteyin</a>
+      <a class="btn btn--primary" href="iletisim.html?product=fig#contact-form">Numune isteyin</a>
     </div>
   </section>
 
@@ -259,14 +268,14 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
+          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
           <span>Aegean Sun</span>
         </div>
         <p>Ege ve Doğu Anadolu bahçelerinden doğrudan gelen kuru incir, incir salamı, kuru kayısı ve kuru dut. Perakende, toplu tüketim ve sanayi için paketlenir.</p>
       </div>
 
       <div>
-        <h4>Ürünler</h4>
+        <h2 class="footer-title">Ürünler</h2>
         <ul>
           <li><a href="kuru-incir.html">Kuru İncir</a></li>
           <li><a href="incir-salami.html">İncir Salamı</a></li>
@@ -277,7 +286,7 @@
       </div>
 
       <div>
-        <h4>Kurumsal</h4>
+        <h2 class="footer-title">Kurumsal</h2>
         <ul>
           <li><a href="index.html">Ana Sayfa</a></li>
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
@@ -287,26 +296,22 @@
       </div>
 
       <div>
-        <h4>Bize ulaşın</h4>
+        <h2 class="footer-title">Bize ulaşın</h2>
         <ul>
           <li>Muzaffer Türkekul</li>
           <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
           <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Satış ofisi: İstanbul / Kağıthane</li>
-          <li>Fabrika: Aydın / Nazilli</li>
-          <li>Üretim fabrikası: Atina / Yunanistan</li>
-          <li>Kanada: <a href="tel:+15482556022">+1 548 255 6022</a></li>
-          <li>Yunanistan: <a href="tel:+306932850255">+30 693 285 0255</a></li>
           <li>Pzt&ndash;Cum, 08:30&ndash;18:00 (GMT+3)</li>
+          <li><a href="iletisim.html">Tüm iletişim bilgileri &rarr;</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Aegean Sun Kuru Meyve. Tüm hakları saklıdır.</span>
-      <span>Türkiye'de hasat edilir &middot; Dünyaya gönderilir</span>
+      <span>Türkiye’de hasat edilir &middot; Dünyaya gönderilir</span>
       <span><a href="gizlilik.html">Gizlilik ve Çerezler</a></span>
-      <span><a href="#" data-consent-open>Çerez tercihleri</a></span>
+      <span><button type="button" class="linklike" data-consent-open>Çerez tercihleri</button></span>
     </div>
   </div>
 </footer>

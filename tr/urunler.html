@@ -22,9 +22,9 @@
     });
   </script>
   <title>Ürünler | Aegean Sun Kuru Meyve</title>
-  <meta name="description" content="Türkiye'den kuru incir, incir salamı ve kuru kayısı. Toptan alıcılar için kaliteler, kalibreler, ambalaj formatları ve özel marka seçenekleri.">
+  <meta name="description" content="Türkiye’den kuru incir, incir salamı, kuru kayısı ve kuru dut. Toptan alıcılar için kaliteler, kalibreler, ambalaj formatları ve özel marka seçenekleri.">
   <meta property="og:title" content="Ürünler | Aegean Sun Kuru Meyve">
-  <meta property="og:description" content="Türkiye'den kuru incir, incir salamı ve kuru kayısı. Toptan alıcılar için kaliteler, kalibreler, ambalaj formatları ve özel marka seçenekleri.">
+  <meta property="og:description" content="Türkiye’den kuru incir, incir salamı, kuru kayısı ve kuru dut. Toptan alıcılar için kaliteler, kalibreler, ambalaj formatları ve özel marka seçenekleri.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.aegeansunfruit.com/tr/urunler.html">
   <meta property="og:site_name" content="Aegean Sun">
@@ -35,7 +35,8 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Eskimiş bir ahşap masanın üzerinde üst üste dizilmiş kuru incirler, biri ikiye ayrılmış">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#5b2c53">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fdf8f1">
   <link rel="icon" href="../assets/img/logo-mark.png" type="image/png">
   <link rel="canonical" href="https://www.aegeansunfruit.com/tr/urunler.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/urunler.html">
@@ -52,25 +53,25 @@
 <a class="skip-link" href="#main">İçeriğe geç</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Ana menü">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Aegean Sun Kuru Meyve — Ana sayfa">
       <img class="brand__mark" src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
       <span>Aegean Sun<span class="brand__sub">Kuru Meyve</span></span>
     </a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
       <span></span><span></span><span></span>
     </button>
 
     <ul class="menu" id="primary-menu">
       <li><a href="index.html">Ana Sayfa</a></li>
       <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false">
+        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
           Ürünler
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
             <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
-        <ul class="dropdown">
+        <ul class="dropdown" id="menu-products">
           <li><a href="urunler.html">Tüm Ürünler<small>Aegean Sun ürün yelpazesi</small></a></li>
           <li><a href="kuru-incir.html">Kuru İncir<small>Doğal Lerida ve Protoben</small></a></li>
           <li><a href="incir-salami.html">İncir Salamı<small>Altı çeşit, 180&nbsp;g</small></a></li>
@@ -84,13 +85,13 @@
     </ul>
 
       <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-label="Dil: Türkçe">
-          <img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>TR</span>
+        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="TR — Dil: Türkçe">
+          <img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <ul class="dropdown">
-          <li><a href="../products.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" alt=""><span>English</span></a></li>
-          <li><a href="urunler.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>Türkçe</span></a></li>
+        <ul class="dropdown" id="menu-lang">
+          <li><a href="../products.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+          <li><a href="urunler.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
         </ul>
       </div>
   </nav>
@@ -99,29 +100,32 @@
 
   <section class="page-banner">
     <div class="wrap">
-      <p class="breadcrumb"><a href="index.html">Ana Sayfa</a> &rsaquo; Ürünler</p>
+      <nav class="breadcrumb" aria-label="Sayfa yolu"><ol><li><a href="index.html">Ana Sayfa</a></li><li aria-current="page">Ürünler</li></ol></nav>
       <span class="eyebrow">Ürün yelpazemiz</span>
       <h1>Ürünler</h1>
-      <p>Türkiye'de kendi tesisimizde kuruttuğumuz ve paketlediğimiz dört uzmanlık ürünü. Aşağıdaki tüm kaliteler perakende, toplu tüketim ve sanayi formatlarında; talebe göre özel markayla sunulur.</p>
+      <p>Dört uzmanlık ürününü Türkiye’de kendimiz kurutup paketliyoruz. Aşağıdaki tüm kaliteleri perakende, toplu tüketim ve sanayi formatlarında, talebe göre özel markayla sunuyoruz.</p>
     </div>
   </section>
 
   <section class="section section--white">
     <div class="wrap">
+      <div class="section-head section-head--center">
+        <h2>Ürün yelpazesi</h2>
+      </div>
       <div class="grid grid--4">
         <article class="product-card">
-          <div class="product-card__media"><img src="../assets/img/dried-fig.webp" width="1280" height="1280" alt="Bütün kuru incirler ve çekirdekli içini gösterecek şekilde ikiye ayrılmış iki incir"></div>
+          <div class="product-card__media"><img src="../assets/img/dried-fig.webp" width="1280" height="1280" alt="Bütün kuru incirler ve çekirdekli içini gösterecek şekilde ikiye ayrılmış iki incir" loading="lazy" decoding="async"></div>
           <div class="product-card__body">
             <span class="tag">Aydın, Ege Bölgesi</span>
             <h3>Kuru İncir</h3>
-            <p>Güneşte kurutulan, Lerida'dan Protoben'e altı kaliteye elde ayrılan bütün incirler. Yumuşak, bal tadında ve katkısız.</p>
+            <p>Güneşte kurutulup Lerida’dan Protoben’e elde sekiz sınıfa ayrılan bütün incirler. Yumuşak, bal tadında ve katkısız.</p>
             <p class="muted" style="font-size:.9rem"><strong>Formatlar:</strong> 200&nbsp;g / 500&nbsp;g perakende &middot; 5&nbsp;kg toplu tüketim &middot; 10&nbsp;kg dökme</p>
             <a class="product-card__link" href="kuru-incir.html">Tüm teknik bilgiler &rarr;</a>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-card__media"><img src="../assets/img/fig-salami.webp" width="427" height="640" alt="Unlanmış incir salamı çubuğu ve kahverengi kâğıt üzerinde dilimlenmiş halkalar, yanında çatal"></div>
+          <div class="product-card__media"><img src="../assets/img/fig-salami.webp" width="427" height="640" alt="Unlanmış incir salamı çubuğu ve kahverengi kâğıt üzerinde dilimlenmiş halkalar, yanında çatal" loading="lazy" decoding="async"></div>
           <div class="product-card__body">
             <span class="tag">İmza ürünümüz</span>
             <h3>İncir Salamı</h3>
@@ -132,7 +136,7 @@
         </article>
 
         <article class="product-card">
-          <div class="product-card__media"><img src="../assets/img/dried-apricot.webp" width="600" height="400" alt="Eskimiş ahşap bir masada, koyu renkli kâsede tepeleme duran altın sarısı kuru kayısı yarımları"></div>
+          <div class="product-card__media"><img src="../assets/img/dried-apricot.webp" width="600" height="400" alt="Eskimiş ahşap bir masada, koyu renkli kâsede tepeleme duran altın sarısı kuru kayısı yarımları" loading="lazy" decoding="async"></div>
           <div class="product-card__body">
             <span class="tag">Malatya, Doğu Anadolu</span>
             <h3>Kuru Kayısı</h3>
@@ -142,7 +146,7 @@
           </div>
         </article>
         <article class="product-card">
-          <div class="product-card__media"><img src="../assets/img/dried-mulberry.webp" width="612" height="408" alt="Geniş bir tepside tepeleme duran altın sarısı kuru beyaz dut"></div>
+          <div class="product-card__media"><img src="../assets/img/dried-mulberry.webp" width="612" height="408" alt="Geniş bir tepside tepeleme duran altın sarısı kuru beyaz dut" loading="lazy" decoding="async"></div>
           <div class="product-card__body">
             <span class="tag">Anadolu</span>
             <h3>Kuru Dut</h3>
@@ -170,7 +174,7 @@
         <a class="btn btn--primary" href="iletisim.html#contact-form">Ambalajınızı konuşalım</a>
       </div>
       <div class="split__art">
-        <img src="../assets/img/fig-box.webp" width="1000" height="1000" alt="Ahşap kutuda sıra sıra dizilmiş bütün kuru incirler ve aralarına yerleştirilmiş defne yaprakları">
+        <img src="../assets/img/fig-box.webp" width="1000" height="1000" alt="Ahşap kutuda sıra sıra dizilmiş bütün kuru incirler ve aralarına yerleştirilmiş defne yaprakları" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -183,38 +187,38 @@
         <p class="lead">Biz bir mağaza değil, toptan tedarikçiyiz. Aşağıdaki her şey konteyner yükleri, tekrarlayan programlar ve bunlara eşlik etmesi gereken evrak düzeni için tasarlandı.</p>
       </div>
 
-      <div class="grid grid--3">
-        <div class="card">
-          <div class="feature__icon">&#128230;</div>
+      <ul class="feature-list">
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-box"></use></svg></span>
           <h3>Dökme formatlar</h3>
-          <p class="muted mb-0">Standart olarak 5&nbsp;kg, 10&nbsp;kg ve 12,5&nbsp;kg iç torbalı koliler; talebe göre ahşap kasa. ISPM&nbsp;15 ısıl işlemli paletlere istiflenir ve deniz yolu için streçlenir.</p>
-        </div>
-        <div class="card">
-          <div class="feature__icon">&#127991;</div>
+          <p>Standart olarak 5&nbsp;kg, 10&nbsp;kg ve 12,5&nbsp;kg iç torbalı koliler; talebe göre ahşap kasa. ISPM&nbsp;15 ısıl işlemli paletlere istiflenir ve deniz yolu için streçlenir.</p>
+        </li>
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-tag"></use></svg></span>
           <h3>Özel marka</h3>
-          <p class="muted mb-0">Doypack, bandrol ve kolileri sizin tasarımınızla basar; barkod ve çok dilli besin değeri tablolarını hazırlar, tekrar baskılar için kalıpları saklarız.</p>
-        </div>
-        <div class="card">
-          <div class="feature__icon">&#127760;</div>
+          <p>Doypack, bandrol ve kolileri sizin tasarımınızla basar; barkod ve çok dilli besin değeri tablolarını hazırlar, tekrar baskılar için kalıpları saklarız.</p>
+        </li>
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-certificate"></use></svg></span>
           <h3>İhracat evrakları</h3>
-          <p class="muted mb-0">Menşe şahadetnamesi, sağlık sertifikası, analiz raporu ve bitki sağlık sertifikası her sevkiyatla birlikte gider. Uygun hâllerde ATR ve EUR.1 düzenlenir.</p>
-        </div>
-        <div class="card">
-          <div class="feature__icon">&#9878;</div>
+          <p>Menşe şahadetnamesi, sağlık sertifikası, analiz raporu ve bitki sağlık sertifikası her sevkiyatla birlikte gider. Uygun hâllerde ATR ve EUR.1 düzenlenir.</p>
+        </li>
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-scale"></use></svg></span>
           <h3>Sipariş büyüklüğü</h3>
-          <p class="muted mb-0">Stoklu formatlarda tek paletten tam konteynere kadar. Üç ürün grubunu birlikte içeren karma konteynerler memnuniyetle karşılanır.</p>
-        </div>
-        <div class="card">
-          <div class="feature__icon">&#128674;</div>
+          <p>Stoklu formatlarda tek paletten tam konteynere kadar. Dört ürün grubunu aynı yüklemede birleştiren karma konteynerleri de memnuniyetle hazırlıyoruz.</p>
+        </li>
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-ship"></use></svg></span>
           <h3>Teslim şekli ve rotalar</h3>
-          <p class="muted mb-0">EXW, FOB İzmir, CIF ve DDP. İzmir'den deniz yolu, Avrupa'ya karayolu parsiyel, numune ve acil tamamlamalar için hava kargo.</p>
-        </div>
-        <div class="card">
-          <div class="feature__icon">&#128203;</div>
+          <p>EXW, FOB İzmir, CIF ve DDP. İzmir’den deniz yolu, Avrupa’ya karayolu parsiyel, numune ve acil tamamlamalar için hava kargo.</p>
+        </li>
+        <li class="feature-list__item">
+          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="../assets/img/icons.svg#i-document"></use></svg></span>
           <h3>Önce spesifikasyon</h3>
-          <p class="muted mb-0">Kalibre, nem, SO&#8322; limiti, ambalaj &mdash; spesifikasyonunuzu gönderin; parti parti neyi tutturabileceğimizi yazılı olarak teyit edelim.</p>
-        </div>
-      </div>
+          <p>Kalibre, nem, SO&#8322; limiti, ambalaj &mdash; spesifikasyonunuzu gönderin; parti parti neyi tutturabileceğimizi yazılı olarak teyit edelim.</p>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -224,8 +228,9 @@
         <span class="eyebrow">Tek bakışta</span>
         <h2>Ürünleri karşılaştırın</h2>
       </div>
-      <div class="card" style="overflow-x:auto">
+      <div class="card table-scroll" tabindex="0" role="region" aria-label="Ürün karşılaştırması">
         <table class="spec-table">
+          <caption class="sr-only">Dört ürünün menşe, kalite ve raf ömrü karşılaştırması</caption>
           <thead>
             <tr>
               <th scope="col">Ürün</th>
@@ -281,14 +286,14 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
+          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
           <span>Aegean Sun</span>
         </div>
         <p>Ege ve Doğu Anadolu bahçelerinden doğrudan gelen kuru incir, incir salamı, kuru kayısı ve kuru dut. Perakende, toplu tüketim ve sanayi için paketlenir.</p>
       </div>
 
       <div>
-        <h4>Ürünler</h4>
+        <h2 class="footer-title">Ürünler</h2>
         <ul>
           <li><a href="kuru-incir.html">Kuru İncir</a></li>
           <li><a href="incir-salami.html">İncir Salamı</a></li>
@@ -299,7 +304,7 @@
       </div>
 
       <div>
-        <h4>Kurumsal</h4>
+        <h2 class="footer-title">Kurumsal</h2>
         <ul>
           <li><a href="index.html">Ana Sayfa</a></li>
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
@@ -309,26 +314,22 @@
       </div>
 
       <div>
-        <h4>Bize ulaşın</h4>
+        <h2 class="footer-title">Bize ulaşın</h2>
         <ul>
           <li>Muzaffer Türkekul</li>
           <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
           <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Satış ofisi: İstanbul / Kağıthane</li>
-          <li>Fabrika: Aydın / Nazilli</li>
-          <li>Üretim fabrikası: Atina / Yunanistan</li>
-          <li>Kanada: <a href="tel:+15482556022">+1 548 255 6022</a></li>
-          <li>Yunanistan: <a href="tel:+306932850255">+30 693 285 0255</a></li>
           <li>Pzt&ndash;Cum, 08:30&ndash;18:00 (GMT+3)</li>
+          <li><a href="iletisim.html">Tüm iletişim bilgileri &rarr;</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Aegean Sun Kuru Meyve. Tüm hakları saklıdır.</span>
-      <span>Türkiye'de hasat edilir &middot; Dünyaya gönderilir</span>
+      <span>Türkiye’de hasat edilir &middot; Dünyaya gönderilir</span>
       <span><a href="gizlilik.html">Gizlilik ve Çerezler</a></span>
-      <span><a href="#" data-consent-open>Çerez tercihleri</a></span>
+      <span><button type="button" class="linklike" data-consent-open>Çerez tercihleri</button></span>
     </div>
   </div>
 </footer>

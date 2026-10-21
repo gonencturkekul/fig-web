@@ -35,7 +35,8 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Sun-dried Turkish figs stacked on a weathered wooden table, one of them halved">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#5b2c53">
+  <meta name="theme-color" content="#fdf8f1">
+  <meta name="color-scheme" content="light">
   <link rel="icon" href="assets/img/logo-mark.png" type="image/png">
   <link rel="canonical" href="https://www.aegeansunfruit.com/privacy.html">
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/privacy.html">
@@ -52,25 +53,25 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
       <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
       <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
     </a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
       <span></span><span></span><span></span>
     </button>
 
     <ul class="menu" id="primary-menu">
       <li><a href="index.html">Home</a></li>
       <li class="has-dropdown">
-        <button class="menu__button" type="button" aria-expanded="false">
+        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
           Products
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
             <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
-        <ul class="dropdown">
+        <ul class="dropdown" id="menu-products">
           <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
           <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
           <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
@@ -84,13 +85,13 @@
     </ul>
 
       <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-label="Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" alt=""><span>EN</span>
+        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
+          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <ul class="dropdown">
-          <li><a href="privacy.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" alt=""><span>English</span></a></li>
-          <li><a href="tr/gizlilik.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" alt=""><span>Türkçe</span></a></li>
+        <ul class="dropdown" id="menu-lang">
+          <li><a href="privacy.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+          <li><a href="tr/gizlilik.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
         </ul>
       </div>
   </nav>
@@ -99,7 +100,7 @@
 
   <section class="page-banner">
     <div class="wrap">
-      <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Privacy &amp; Cookies</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Privacy &amp; Cookies</li></ol></nav>
       <span class="eyebrow">Legal</span>
       <h1>Privacy &amp; Cookies</h1>
       <p>What personal data we handle when you use this site, why we handle it, and how long we keep it.</p>
@@ -125,7 +126,7 @@
       <p>The controller of personal data processed through this site is <strong>Aegean Sun Dried Fruits</strong>.</p>
       <ul>
         <li>Sales office: Ka&#287;&#305;thane, Istanbul, T&uuml;rkiye</li>
-        <li>Factory: Nazilli, Aydin, T&uuml;rkiye</li>
+        <li>Factory: Nazilli, Aydın, T&uuml;rkiye</li>
         <li>Production plant: Athens, Greece</li>
         <li>Email: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
         <li>Phone: <a href="tel:+905078634045">+90 507 863 40 45</a></li>
@@ -161,7 +162,7 @@
             <th scope="row">Visit statistics (page, country, referring site, device type)</th>
             <td>To see which parts of the site are useful</td>
             <td>Legitimate interest &mdash; cookie-free and aggregate; no individual is identified</td>
-            <td>Vercel's retention period</td>
+            <td>Vercel’s retention period</td>
           </tr>
           <tr>
             <th scope="row">Google Analytics data</th>
@@ -173,14 +174,15 @@
             <th scope="row">Server logs (IP address, browser information)</th>
             <td>To deliver the page, for security and fault finding</td>
             <td>Legitimate interest</td>
-            <td>The hosting provider's log retention</td>
+            <td>The hosting provider’s log retention</td>
           </tr>
         </tbody>
       </table>
+      <p>The enquiry form sends nothing by itself: it opens your own email program with your message filled in, and we receive it only when you press Send there. Newsletter sign-up is not live yet.</p>
       <p>We collect no special categories of personal data through this site, and we do no profiling or automated decision-making. The site is not aimed at children.</p>
 
       <h2>Cookies</h2>
-      <p>No cookie is needed for the site to work. The only cookies are Google Analytics', and they are <strong>not placed unless you accept</strong>; until you answer, the page does not even send a request to Google. Google Tag Manager, which we use to manage the measurement tags, is likewise loaded only after you accept.</p>
+      <p>No cookie is needed for the site to work. The only cookies are Google Analytics’, and they are <strong>not placed unless you accept</strong>; until you answer, the page does not even send a request to Google. Google Tag Manager, which we use to manage the measurement tags, is likewise loaded only after you accept.</p>
       <table class="spec-table">
         <thead>
           <tr><th scope="col">Cookie</th><th scope="col">What it does</th><th scope="col">Lifetime</th></tr>
@@ -190,8 +192,8 @@
           <tr><th scope="row">_ga_YSX5V6H7JQ</th><td>Keeps session state</td><td>2 years</td></tr>
         </tbody>
       </table>
-      <p>Your answer is stored in your browser's local storage as <code>aegeansun-cookie-consent</code>. It is not a cookie, it is never sent to us, and it stays on your device.</p>
-      <p><strong>You can change your mind.</strong> The <a href="#" data-consent-open>Cookie preferences</a> link at the bottom of every page reopens the choice. If you decline, any Google Analytics cookie placed earlier is deleted.</p>
+      <p>Your answer is stored in your browser’s local storage as <code>aegeansun-cookie-consent</code>. It is not a cookie, it is never sent to us, and it stays on your device.</p>
+      <p><strong>You can change your mind.</strong> The <button type="button" class="linklike" data-consent-open>Cookie preferences</button> link at the bottom of every page reopens the choice. If you decline, any Google Analytics cookie placed earlier is deleted.</p>
 
       <h2>Who we share with</h2>
       <p>We do not sell your data and we share it with nobody for marketing. The only recipients are the providers we need to run the site and the business:</p>
@@ -236,14 +238,14 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="">
+          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
           <span>Aegean Sun</span>
         </div>
         <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
       </div>
 
       <div>
-        <h4>Products</h4>
+        <h2 class="footer-title">Products</h2>
         <ul>
           <li><a href="product-dried-fig.html">Dried Fig</a></li>
           <li><a href="product-fig-salami.html">Fig Salami</a></li>
@@ -254,7 +256,7 @@
       </div>
 
       <div>
-        <h4>Company</h4>
+        <h2 class="footer-title">Company</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
@@ -264,17 +266,13 @@
       </div>
 
       <div>
-        <h4>Get in touch</h4>
+        <h2 class="footer-title">Get in touch</h2>
         <ul>
           <li>Muzaffer T&uuml;rkekul</li>
           <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
           <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Sales office: Istanbul / Ka&#287;&#305;thane</li>
-          <li>Factory: Aydin / Nazilli</li>
-          <li>Production plant: Athens / Greece</li>
-          <li>Canada: <a href="tel:+15482556022">+1 548 255 6022</a></li>
-          <li>Greece: <a href="tel:+306932850255">+30 693 285 0255</a></li>
           <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
+          <li><a href="contact.html">All contacts &rarr;</a></li>
         </ul>
       </div>
     </div>
@@ -283,7 +281,7 @@
       <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
       <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
       <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><a href="#" data-consent-open>Cookie preferences</a></span>
+      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
     </div>
   </div>
 </footer>

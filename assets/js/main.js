@@ -2,24 +2,45 @@
 (function () {
   "use strict";
 
+  var MAIL = "muzaffer.turkekul@aegeansunfruit.com";
+
+  function isDesktop() {
+    return window.matchMedia("(min-width: 981px)").matches;
+  }
+
   /* ---------- Mobile navigation ---------- */
   function initNav() {
     var toggle = document.querySelector(".nav__toggle");
     var menu = document.getElementById("primary-menu");
+
+    /* The open/close labels come from data attributes so this file stays
+       language-agnostic; without them the HTML's aria-label is left alone. */
+    function setMenu(open) {
+      if (!toggle || !menu) return;
+      menu.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      var label = toggle.getAttribute(open ? "data-label-close" : "data-label-open");
+      if (label) toggle.setAttribute("aria-label", label);
+    }
+    function menuIsOpen() {
+      return !!menu && menu.classList.contains("is-open");
+    }
+
     if (toggle && menu) {
       toggle.addEventListener("click", function () {
-        var open = menu.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", String(open));
+        setMenu(!menuIsOpen());
+      });
+
+      /* An open mobile menu has no meaning on desktop (the CSS shows the bar
+         anyway), and would reappear open if the window were shrunk again. */
+      window.addEventListener("resize", function () {
+        if (isDesktop() && menuIsOpen()) setMenu(false);
       });
     }
 
     /* Dropdowns (products menu, language switcher): click/tap everywhere,
        hover as well on desktop. */
     var dropdowns = document.querySelectorAll(".has-dropdown");
-
-    function isDesktop() {
-      return window.matchMedia("(min-width: 981px)").matches;
-    }
 
     function setOpen(item, open, viaHover) {
       window.clearTimeout(item.closeTimer);
@@ -53,6 +74,15 @@
         window.clearTimeout(item.closeTimer);
         item.closeTimer = window.setTimeout(function () { setOpen(item, false); }, 250);
       });
+
+      /* Tabbing past the last item must close the menu, otherwise it hangs
+         open over the page. relatedTarget is null when focus leaves the
+         window (or lands on something unfocusable); those cases are covered
+         by the document click handler, so only act on a real destination. */
+      item.addEventListener("focusout", function (event) {
+        var next = event.relatedTarget;
+        if (next && !item.contains(next)) setOpen(item, false);
+      });
     });
 
     function closeAllDropdowns() {
@@ -62,15 +92,44 @@
     }
 
     document.addEventListener("click", closeAllDropdowns);
+
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") closeAllDropdowns();
+      if (event.key !== "Escape") return;
+
+      /* Escape closes the innermost thing first: an open dropdown, then the
+         mobile menu. Focus goes back to the control that opened it so a
+         keyboard user is not dropped at the top of the page. */
+      var openItem = null;
+      Array.prototype.forEach.call(dropdowns, function (item) {
+        if (item.classList.contains("is-open")) openItem = item;
+      });
+      if (openItem) {
+        var button = openItem.querySelector(".menu__button");
+        var hadFocus = openItem.contains(document.activeElement);
+        closeAllDropdowns();
+        if (button && hadFocus) button.focus();
+        return;
+      }
+      if (menuIsOpen()) {
+        setMenu(false);
+        if (toggle) toggle.focus();
+      }
     });
   }
 
-  /* ---------- Footer year ---------- */
+  /* ---------- Footer year + "years since" counters ---------- */
   function initYear() {
+    var now = new Date().getFullYear();
     var slot = document.querySelector("[data-year]");
-    if (slot) slot.textContent = String(new Date().getFullYear());
+    if (slot) slot.textContent = String(now);
+
+    /* "58 years of harvests" must not go stale: the page states the founding
+       year and the number is derived from it. */
+    var since = document.querySelectorAll("[data-since]");
+    Array.prototype.forEach.call(since, function (node) {
+      var year = parseInt(node.getAttribute("data-since"), 10);
+      if (year > 1900 && year <= now) node.textContent = String(now - year);
+    });
   }
 
   /* ---------- Form messages, per page language ---------- */
@@ -80,24 +139,94 @@
       email: "Please enter a valid email address.",
       short: "Please give us a little more detail (at least 10 characters).",
       invalid: "Please check the highlighted fields and try again.",
-      sent: "Thank you! Your enquiry has been recorded. We reply to messages 24/7.",
-      subscribed: "Thank you! You are on the list. We will write when there is harvest or price news."
+      mailto: "Your email app should open with your enquiry filled in — press Send there to reach us. If nothing opened, write to " + MAIL + ".",
+      newsletterMailto: "Sign-up isn’t live yet — email us and we’ll add you.",
+      newsletterLink: "Email us to subscribe",
+      sending: "Sending…",
+      subjectEnquiry: "Website enquiry",
+      subjectNewsletter: "Newsletter"
     },
     tr: {
       required: "Bu alanın doldurulması gerekiyor.",
       email: "Lütfen geçerli bir e-posta adresi girin.",
       short: "Lütfen biraz daha ayrıntı verin (en az 10 karakter).",
       invalid: "Lütfen işaretli alanları kontrol edip tekrar deneyin.",
-      sent: "Teşekkürler! Talebiniz bize ulaştı. Mesajlarınıza 7 gün 24 saat cevap verebiliriz.",
-      subscribed: "Teşekkürler! Listeye eklendiniz. Hasat ve fiyat haberleri olduğunda yazacağız."
+      mailto: "E-posta uygulamanız talebiniz doldurulmuş olarak açılmalı — bize ulaşmak için orada Gönder’e basın. Hiçbir şey açılmadıysa " + MAIL + " adresine yazın.",
+      newsletterMailto: "Bülten kayıtları henüz açık değil — bize e-posta gönderin, sizi listeye ekleyelim.",
+      newsletterLink: "Abone olmak için e-posta gönderin",
+      sending: "Gönderiliyor…",
+      subjectEnquiry: "Web sitesi talebi",
+      subjectNewsletter: "Bülten"
     }
   };
-  var T = MESSAGES[document.documentElement.lang] || MESSAGES.en;
+  var T = MESSAGES[(document.documentElement.lang || "en").slice(0, 2).toLowerCase()] || MESSAGES.en;
+
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  /* ---------- Shared form helpers ---------- */
+
+  /* Each control's error slot gets an id and is referenced by aria-describedby,
+     so a screen reader reads the message with the field. The HTML already
+     carries both; this fills the gap if a page was edited without them. */
+  function linkErrorSlot(field) {
+    var wrapper = field.closest(".field");
+    var slot = wrapper && wrapper.querySelector(".field__error");
+    if (!slot) return null;
+    if (!slot.id) slot.id = "err-" + (field.name || field.id);
+    var ids = (field.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+    if (ids.indexOf(slot.id) === -1) {
+      ids.push(slot.id);
+      field.setAttribute("aria-describedby", ids.join(" "));
+    }
+    return slot;
+  }
+
+  /* Visible label text without the required-asterisk. */
+  function labelFor(field) {
+    var label = field.id && document.querySelector('label[for="' + field.id + '"]');
+    if (!label) return field.name;
+    var clone = label.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll(".req"), function (n) { n.remove(); });
+    return clone.textContent.trim();
+  }
+
+  function showStatus(status, message, kind, focus) {
+    if (!status) return;
+    status.textContent = message;
+    status.className = "form-status is-visible form-status--" + kind;
+    if (focus) status.focus();
+  }
+
+  /* Disable the submit button while the browser hands the form to its action
+     URL, so a double-click cannot post twice. Restored on pageshow because the
+     back button can bring this page back from the bfcache still disabled. */
+  function lockWhileSending(form) {
+    var btn = form.querySelector('[type="submit"]');
+    if (!btn) return;
+    var original = btn.textContent;
+    /* Deferred: disabling inside the submit event can drop the submission in some browsers. */
+    window.setTimeout(function () {
+      btn.disabled = true;
+      btn.textContent = T.sending;
+    }, 0);
+    window.addEventListener("pageshow", function restore() {
+      btn.disabled = false;
+      btn.textContent = original;
+    });
+  }
+
+  function openMailto(subject, bodyLines) {
+    var href = "mailto:" + MAIL +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(bodyLines.join("\r\n"));
+    window.location.href = href;
+  }
 
   /* ---------- Contact form ---------- */
   /* The form validates in the browser and then hands off to whatever endpoint
-     is set in the form's `action` attribute. With no action configured it stays
-     in demo mode: it shows a success message without sending anything.
+     is set in the form's `action` attribute. No endpoint exists yet, so without
+     one it falls back to the only honest channel: a pre-filled e-mail the
+     visitor sends themselves. It never claims the enquiry was received.
      To go live, point `action` at a form service (Formspree, Netlify Forms,
      your own /api/contact handler, ...) and keep method="post". */
   function initContactForm() {
@@ -105,13 +234,12 @@
     if (!form) return;
 
     var status = document.getElementById("form-status");
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     function setError(field, message) {
       var wrapper = field.closest(".field");
       if (!wrapper) return;
       wrapper.classList.add("has-error");
-      var slot = wrapper.querySelector(".field__error");
+      var slot = linkErrorSlot(field);
       if (slot) slot.textContent = message;
       field.setAttribute("aria-invalid", "true");
     }
@@ -121,13 +249,6 @@
       if (!wrapper) return;
       wrapper.classList.remove("has-error");
       field.removeAttribute("aria-invalid");
-    }
-
-    function showStatus(message, kind) {
-      if (!status) return;
-      status.textContent = message;
-      status.className = "form-status is-visible form-status--" + kind;
-      status.focus();
     }
 
     function validate() {
@@ -157,8 +278,51 @@
       return problems;
     }
 
+    /* Pre-select the product when a product page links here with ?product=.
+       Short names are the ones the product pages use; full option values work too. */
+    (function preselectProduct() {
+      var select = form.querySelector('select[name="product"]');
+      if (!select || !window.URLSearchParams) return;
+      var wanted = new URLSearchParams(window.location.search).get("product");
+      if (!wanted) return;
+      var alias = { fig: "dried-fig", salami: "fig-salami", apricot: "dried-apricot", mulberry: "dried-mulberry" };
+      var value = alias[wanted] || wanted;
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === value && !select.options[i].disabled) {
+          select.value = value;
+          return;
+        }
+      }
+    })();
+
+    /* Subject and body for the mailto fallback, built from whatever the
+       visitor filled in, labelled with the form's own visible labels. */
+    function buildMail() {
+      var lines = [];
+      var topic = "";
+      Array.prototype.forEach.call(form.elements, function (field) {
+        if (!field.name || field.type === "submit" || field.type === "hidden" || field.disabled) return;
+        if ((field.type === "checkbox" || field.type === "radio") && !field.checked) return;
+        var value = (field.value || "").trim();
+        if (!value) return;
+        if (field.tagName === "SELECT") {
+          value = field.options[field.selectedIndex].text.trim();
+          if (field.name === "product") topic = value;
+        }
+        if (field.name === "message") {
+          lines.push("", labelFor(field) + ":", value);
+        } else {
+          lines.push(labelFor(field) + ": " + value);
+        }
+      });
+      return { subject: T.subjectEnquiry + (topic ? " — " + topic : ""), lines: lines };
+    }
+
     /* Clear an error as soon as the visitor starts fixing it. */
     form.addEventListener("input", function (event) {
+      if (event.target.closest(".field.has-error")) clearError(event.target);
+    });
+    form.addEventListener("change", function (event) {
       if (event.target.closest(".field.has-error")) clearError(event.target);
     });
 
@@ -167,36 +331,43 @@
 
       if (problems.length) {
         event.preventDefault();
-        showStatus(T.invalid, "err");
+        /* The status line is a polite live region, so it announces by itself;
+           focus goes to the first invalid control, which is where the visitor
+           has to act. Focusing the status box first would hide that. */
+        showStatus(status, T.invalid, "err", false);
         problems[0].focus();
         return;
       }
 
-      /* No endpoint wired up yet — confirm locally instead of navigating away. */
+      /* No endpoint wired up yet: open a pre-filled e-mail instead. */
       if (!form.getAttribute("action")) {
         event.preventDefault();
-        showStatus(T.sent, "ok");
-        form.reset();
+        var mail = buildMail();
+        showStatus(status, T.mailto, "ok", true);
+        openMailto(mail.subject, mail.lines);
+        return;
       }
+
+      lockWhileSending(form);
     });
   }
 
   /* ---------- Newsletter sign-up ---------- */
   /* Same contract as the enquiry form: validate here, hand off to whatever
-     `action` is set on the form, and confirm locally while none is set. */
+     `action` is set on the form. With none, say plainly that sign-up is not
+     live and offer an e-mail instead of pretending the address was stored. */
   function initNewsletter() {
     var form = document.getElementById("newsletter-form");
     if (!form) return;
 
     var status = document.getElementById("newsletter-status");
     var field = document.getElementById("newsletter-email");
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     function setError(message) {
       var wrapper = field.closest(".field");
       if (wrapper) {
         wrapper.classList.add("has-error");
-        var slot = wrapper.querySelector(".field__error");
+        var slot = linkErrorSlot(field);
         if (slot) slot.textContent = message;
       }
       field.setAttribute("aria-invalid", "true");
@@ -208,40 +379,33 @@
       field.removeAttribute("aria-invalid");
     }
 
-    function showStatus(message, kind) {
-      if (!status) return;
-      status.textContent = message;
-      status.className = "form-status is-visible form-status--" + kind;
-      status.focus();
-    }
-
     form.addEventListener("input", clearError);
 
     form.addEventListener("submit", function (event) {
       var value = (field.value || "").trim();
       clearError();
 
-      if (!value) {
+      if (!value || !emailPattern.test(value)) {
         event.preventDefault();
-        setError(T.required);
-        showStatus(T.invalid, "err");
-        field.focus();
-        return;
-      }
-      if (!emailPattern.test(value)) {
-        event.preventDefault();
-        setError(T.email);
-        showStatus(T.invalid, "err");
+        setError(value ? T.email : T.required);
+        showStatus(status, T.invalid, "err", false);
         field.focus();
         return;
       }
 
-      /* No endpoint wired up yet — confirm locally instead of navigating away. */
       if (!form.getAttribute("action")) {
         event.preventDefault();
-        showStatus(T.subscribed, "ok");
-        form.reset();
+        showStatus(status, T.newsletterMailto + " ", "ok", true);
+        /* Built with DOM nodes, not innerHTML: the address is user input. */
+        var link = document.createElement("a");
+        link.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(T.subjectNewsletter) +
+          "&body=" + encodeURIComponent(value);
+        link.textContent = T.newsletterLink;
+        status.appendChild(link);
+        return;
       }
+
+      lockWhileSending(form);
     });
   }
 

@@ -16,24 +16,24 @@
     tr: {
       launch: "Sorunuz mu var?",
       title: "Satış yardımcısı",
-      subtitle: "Otomatik yanıtlar &middot; 7/24",
+      subtitle: "Otomatik yanıtlar",
       close: "Sohbeti kapat",
       placeholder: "Sorunuzu yazın…",
       send: "Gönder",
       note: "Bu otomatik bir yardımcıdır; yanıtlar sitedeki bilgilerden gelir.",
-      welcome: "Merhaba! Aegean Sun'ın otomatik satış yardımcısıyım. Ürünler, minimum sipariş, teslim şekilleri, numune ve sertifikalar hakkında sitedeki bilgileri hemen verebilirim.",
-      chips: ["Ürünleriniz neler?", "Minimum sipariş miktarı", "Numune alabilir miyim?", "Fiyat listesi"]
+      welcome: "Merhaba! Aegean Sun’ın otomatik satış yardımcısıyım. Ürünler, minimum sipariş, teslim şekilleri, numune ve sertifikalar hakkında sitedeki bilgileri hemen verebilirim.",
+      chips: ["Ürünleriniz neler?", "Minimum sipariş miktarı", "Numune alabilir miyim?", "Nasıl fiyat alırım?"]
     },
     en: {
       launch: "Any questions?",
       title: "Sales assistant",
-      subtitle: "Automated answers &middot; 24/7",
+      subtitle: "Automated answers",
       close: "Close chat",
       placeholder: "Type your question…",
       send: "Send",
       note: "This is an automated assistant; its answers come from this site.",
-      welcome: "Hello! I am Aegean Sun's automated sales assistant. I can answer what this site says about our products, minimum order, incoterms, samples and certificates.",
-      chips: ["What do you sell?", "Minimum order quantity", "Can I get a sample?", "Price list"]
+      welcome: "Hello! I am Aegean Sun’s automated sales assistant. I can answer what this site says about our products, minimum order, incoterms, samples and certificates.",
+      chips: ["What do you sell?", "Minimum order quantity", "Can I get a sample?", "How do I get a price?"]
     }
   };
 
@@ -67,31 +67,31 @@
 
       { id: "fig",
         k: ["kuru incir", "incir kal", "lerida", "protoben", "incir hakkinda", "incir hakkında"],
-        a: "Kuru incirimiz Aydın Nazilli'deki fabrikamızda üretiliyor. Doğal Lerida ve Protoben çeşitleri tahta tepsilerde güneşte kurutuluyor, sonra elde altı kaliteye ayrılıyor.",
+        a: "Kuru incirimiz Aydın Nazilli’deki fabrikamızda üretiliyor. Doğal Lerida ve Protoben çeşitleri tahta tepsilerde güneşte kurutuluyor, sonra elle altı kalibreye ayrılıyor.",
         links: [["Kuru İncir sayfası", L.fig]],
-        next: ["Ambalaj seçenekleri", "Teslim süresi", "Fiyat listesi"] },
+        next: ["Ambalaj seçenekleri", "Teslim süresi", "Nasıl fiyat alırım?"] },
 
       { id: "salami",
         k: ["salam", "sucuk", "sucuğ", "180"],
-        a: "İncir salamı Atina'daki üretim tesisimizde yapılıyor. Altı çeşidi var, hepsi 180 g çubuk; şeker ilavesiz ve katkısız.",
+        a: "İncir salamı Atina’daki üretim tesisimizde yapılıyor. Altı çeşidi var, hepsi 180 g çubuk; şeker ilavesiz ve katkısız.",
         links: [["İncir Salamı sayfası", L.salami]],
         next: ["Çeşitler ve içerikler", "Minimum sipariş miktarı", "Numune alabilir miyim?"] },
 
       { id: "apricot",
         k: ["kayis", "kayıs", "malatya", "apricot"],
-        a: "Kuru kayısı Malatya'dan geliyor; kükürtlü sarı ve doğal koyu tipler. Bütün yarımlar kilodaki adet sayısına göre, jumbodan küçüğe satılıyor; ayrıca sanayi için kesim, küp ve püre yapıyoruz.",
+        a: "Kuru kayısı Malatya’dan geliyor; kükürtlü sarı ve doğal koyu tipler. Bütün yarımlar kilodaki adet sayısına göre, jumbodan küçüğe satılıyor; ayrıca sanayi için kesim, küp ve püre yapıyoruz.",
         links: [["Kuru Kayısı sayfası", L.apricot]],
-        next: ["Minimum sipariş miktarı", "Teslim süresi", "Fiyat listesi"] },
+        next: ["Minimum sipariş miktarı", "Teslim süresi", "Nasıl fiyat alırım?"] },
 
       { id: "mulberry",
         k: ["dut", "mulberry"],
         a: "Kuru dut, ürün yelpazemizin dördüncü ürünü; güneş ve rüzgârla kurutuluyor.",
         links: [["Kuru Dut sayfası", L.mulberry]],
-        next: ["Ambalaj seçenekleri", "Numune alabilir miyim?", "Fiyat listesi"] },
+        next: ["Ambalaj seçenekleri", "Numune alabilir miyim?", "Nasıl fiyat alırım?"] },
 
       { id: "moq",
         k: ["minimum", "moq", "en az", "asgari", "alt sinir", "alt sınır", "kac kilo", "kaç kilo", "palet", "konteyner"],
-        a: "Stoklu perakende formatlarında bir palet (yaklaşık 500 kg), özel marka üretiminde bir tam konteyner. Numunede alt sınır yok.",
+        a: "Stoklu perakende formatlarında bir palet (yaklaşık 500 kg), özel marka üretiminde bir tam konteyner.",
         links: [["Sık sorulanlar", L.faq]],
         next: ["Özel marka üretimi", "Teslim süresi", "Numune alabilir miyim?"] },
 
@@ -105,25 +105,25 @@
         k: ["incoterm", "teslim sekl", "teslim şekl", "exw", "fob", "cif", "ddp", "navlun", "nakliye", "kargo", "hava"],
         a: "EXW, FOB İzmir, CIF ve DDP ile çalışıyoruz. Numuneler ve acil tamamlamalar için hava kargo da mümkün.",
         links: [["Sık sorulanlar", L.faq]],
-        next: ["Teslim süresi", "Minimum sipariş miktarı", "Fiyat listesi"] },
+        next: ["Teslim süresi", "Minimum sipariş miktarı", "Nasıl fiyat alırım?"] },
 
       { id: "delivery",
         k: ["teslim sure", "teslim süre", "ne kadar sur", "ne kadar sür", "termin", "transit", "sevkiyat ne zaman", "kac gun", "kaç gün", "lead time"],
-        a: "Stoklu formatlar, sipariş onayından sonra genellikle 10 iş günü içinde tesisten çıkar. Deniz yolu transit süresi Kuzey Avrupa'ya yaklaşık 7–12 gün, Kuzey Amerika'ya 25–35 gündür.",
+        a: "Stoklu formatlar, sipariş onayından sonra genellikle 10 iş günü içinde tesisten çıkar. Deniz yolu transit süresi Kuzey Avrupa’ya yaklaşık 7–12 gün, Kuzey Amerika’ya 25–35 gündür.",
         links: [["Sık sorulanlar", L.faq]],
-        next: ["Teslim şekilleri", "Fiyat listesi", "İletişim bilgileri"] },
+        next: ["Teslim şekilleri", "Nasıl fiyat alırım?", "İletişim bilgileri"] },
 
       { id: "certs",
-        k: ["sertifika", "belge", "analiz", "brcgs", "iso", "organik", "koser", "koşer", "helal", "mensei", "menşe", "saglik", "sağlık"],
+        k: ["sertifika", "belge", "analiz", "brcgs", "iso", "koser", "koşer", "helal", "mensei", "menşe", "saglik", "sağlık"],
         a: "Her sevkiyat analiz raporu, menşe şahadetnamesi ve sağlık sertifikasıyla birlikte yola çıkar. BRCGS, ISO 22000, organik, Koşer ve Helal belgelerini talep üzerine önceden paylaşıyoruz.",
         links: [["Belge talebi", L.form]],
         next: ["Teslim şekilleri", "Minimum sipariş miktarı", "İletişim bilgileri"] },
 
       { id: "sample",
         k: ["numune", "sample", "deneme kutu", "tadim", "tadım"],
-        a: "Numune kutusu gönderiyoruz; numune ücretlidir ve miktar alt sınırı yoktur. Formda ürünü ve varış noktasını belirtirseniz hemen dönelim.",
+        a: "Kalibreli numune setleri, nitelikli ticari alıcılara ücretsizdir. Formda ürünü ve varış noktasını belirtirseniz size dönelim.",
         links: [["Numune isteyin", L.form]],
-        next: ["Fiyat listesi", "Minimum sipariş miktarı", "Teslim süresi"] },
+        next: ["Nasıl fiyat alırım?", "Minimum sipariş miktarı", "Teslim süresi"] },
 
       { id: "price",
         k: ["fiyat", "teklif", "price", "quote", "ucret", "ücret", "maliyet", "liste"],
@@ -131,17 +131,41 @@
         links: [["Teklif formu", L.form], ["E-posta: " + MAIL, "mailto:" + MAIL]],
         next: ["Minimum sipariş miktarı", "Teslim şekilleri", "Numune alabilir miyim?"] },
 
+      { id: "shipping",
+        k: ["sevkiyat", "gonderim", "gönderim", "ulke", "ülke", "hedef", "varis noktasi", "varış noktası"],
+        a: "24 ülkeye ihracat yapıyoruz. Teslim şekilleri EXW, FOB İzmir, CIF ve DDP; numuneler ve acil tamamlamalar için hava kargo da mümkün. Deniz yolu transit süresi Kuzey Avrupa’ya yaklaşık 7–12 gün, Kuzey Amerika’ya 25–35 gündür.",
+        links: [["Sık sorulanlar", L.faq]],
+        next: ["Teslim süresi", "Minimum sipariş miktarı", "Nasıl fiyat alırım?"] },
+
+      { id: "shelf",
+        k: ["raf omru", "raf ömrü", "saklama", "muhafaza", "saklan", "depolama"],
+        a: "4–18 °C ve %65 bağıl nemde raf ömrü: kuru incir ve incir salamı 12 ay, kuru kayısı 18 ay. Kuru dut için sitede bir raf ömrü belirtmiyoruz; ihtiyacınız olursa ekibimize sorun.",
+        links: [["Teklif formu", L.form]],
+        next: ["Ambalaj seçenekleri", "Sertifikalarınız", "Nasıl fiyat alırım?"] },
+
+      { id: "diet",
+        k: ["vegan", "gluten", "glutensiz", "vejetaryen", "seker ilave", "şeker ilave", "katki", "katkı"],
+        a: "İncir salamının altı çeşidi de %100 vegan ve glutensiz; şeker ilavesi ve koruyucu yok. Kuru dut %100 kuru meyvedir, şeker ve katkı içermez. Diğer ürünler için bilgiyi ekibimizden teyit edebilirsiniz.",
+        links: [["İncir Salamı sayfası", L.salami], ["Teklif formu", L.form]],
+        next: ["Çeşitler ve içerikler", "Sertifikalarınız", "Numune alabilir miyim?"] },
+
+      { id: "organic",
+        k: ["organik"],
+        a: "Sertifikalı organik seçenek var: kuru incir konvansiyonel veya organik olarak sunuluyor; kayısıda AB ve USDA NOP sertifikalı organik partiler sınırlı hacimde, sezonluk olarak tahsis ediliyor. Belgeleri talep üzerine önceden paylaşıyoruz.",
+        links: [["Kuru Kayısı sayfası", L.apricot], ["Kuru İncir sayfası", L.fig], ["Belge talebi", L.form]],
+        next: ["Sertifikalarınız", "Minimum sipariş miktarı", "Nasıl fiyat alırım?"] },
+
       { id: "contact",
         k: ["iletisim", "iletişim", "telefon", "whatsapp", "mail", "e-posta", "eposta", "ulas", "ulaş", "numara", "kiminle"],
-        a: "Satış ve ihracat: Muzaffer Türkekul. E-posta " + MAIL + " — mesajlarınıza 7 gün 24 saat cevap veriyoruz. Telefon ve WhatsApp " + TEL + ".",
+        a: "Satış ve ihracat: Muzaffer Türkekul. E-posta " + MAIL + " — bir iş günü içinde yanıt veriyoruz. Telefon ve WhatsApp " + TEL + ".",
         links: [["E-posta gönderin", "mailto:" + MAIL], ["Telefon / WhatsApp", "tel:+905078634045"], ["İletişim sayfası", L.contact]],
-        next: ["Temsilcilikleriniz", "Çalışma saatleri", "Fiyat listesi"] },
+        next: ["Temsilcilikleriniz", "Çalışma saatleri", "Nasıl fiyat alırım?"] },
 
       { id: "reps",
         k: ["temsilci", "kanada", "canada", "toronto", "yunanistan", "atina", "ontario", "cetin", "çetin", "filiz"],
-        a: "Yurt dışı temsilciliklerimiz: Kanada / Toronto — Çetin Onur, +1 548 255 6022. Yunanistan / Atina — Filiz Tipos, +30 693 285 0255. İkisine de telefon ve WhatsApp'tan ulaşabilirsiniz.",
+        a: "Yurt dışı temsilciliklerimiz: Kanada / Toronto — Çetin Onur, +1 548 255 6022. Yunanistan / Atina — Filiz Tipos, +30 693 285 0255. İkisine de telefon ve WhatsApp’tan ulaşabilirsiniz.",
         links: [["İletişim sayfası", L.contact]],
-        next: ["İletişim bilgileri", "Fiyat listesi", "Nerede üretiyorsunuz?"] },
+        next: ["İletişim bilgileri", "Nasıl fiyat alırım?", "Nerede üretiyorsunuz?"] },
 
       { id: "where",
         k: ["nerede", "adres", "fabrika", "tesis", "ofis", "konum", "ziyaret", "aydin", "aydın", "nazilli", "istanbul"],
@@ -159,31 +183,31 @@
         k: ["sezon", "hasat", "2026", "yeni mahsul", "rekolte"],
         a: "2026 sezon hasatları başlamıştır. Kurutma işlemi yapılıp alıcılara ulaştırılacaktır.",
         links: [["Kuru İncir sayfası", L.fig]],
-        next: ["Fiyat listesi", "Teslim süresi", "Numune alabilir miyim?"] },
+        next: ["Nasıl fiyat alırım?", "Teslim süresi", "Numune alabilir miyim?"] },
 
       { id: "hours",
         k: ["saat", "ne zaman acik", "ne zaman açık", "mesai", "cevap ne zaman", "gun icinde", "gün içinde"],
-        a: "Telefon Pazartesi–Cuma 08:30–18:00 (GMT+3) arasında açık. E-postalarınıza 7 gün 24 saat cevap veriyoruz.",
+        a: "Telefon Pazartesi–Cuma 08:30–18:00 (GMT+3) arasında açık. Bir iş günü içinde yanıt veriyoruz.",
         links: [["İletişim sayfası", L.contact]],
-        next: ["İletişim bilgileri", "Temsilcilikleriniz", "Fiyat listesi"] },
+        next: ["İletişim bilgileri", "Temsilcilikleriniz", "Nasıl fiyat alırım?"] },
 
       { id: "langs",
         k: ["dil", "language", "ingilizce", "almanca", "yunanca", "konusuyor", "konuşuyor"],
         a: "Türkçe, İngilizce, Almanca ve Yunanca konuşuyoruz.",
         links: [["İletişim sayfası", L.contact]],
-        next: ["İletişim bilgileri", "Temsilcilikleriniz", "Fiyat listesi"] },
+        next: ["İletişim bilgileri", "Temsilcilikleriniz", "Nasıl fiyat alırım?"] },
 
       { id: "hello",
         k: ["merhaba", "selam", "gunaydin", "günaydın", "iyi gunler", "iyi günler", "hello", "hi "],
         a: "Merhaba! Hangi ürünle ilgileniyorsunuz?",
         links: [],
-        next: ["Ürünleriniz neler?", "Fiyat listesi", "Numune alabilir miyim?"] },
+        next: ["Ürünleriniz neler?", "Nasıl fiyat alırım?", "Numune alabilir miyim?"] },
 
       { id: "thanks",
         k: ["tesekkur", "teşekkür", "sagol", "sağol", "eyvallah", "thanks"],
         a: "Rica ederim. Başka bir sorunuz olursa buradayım.",
         links: [],
-        next: ["Ürünleriniz neler?", "İletişim bilgileri", "Fiyat listesi"] }
+        next: ["Ürünleriniz neler?", "İletişim bilgileri", "Nasıl fiyat alırım?"] }
     ],
 
     en: [
@@ -195,9 +219,9 @@
 
       { id: "fig",
         k: ["dried fig", "lerida", "protoben", "fig grade", "about figs"],
-        a: "Our dried figs are produced at our factory in Nazilli, Aydin. Natural Lerida and Protoben are sun-dried on wooden trays and then hand-sorted into six grades.",
+        a: "Our dried figs are produced at our factory in Nazilli, Aydın. Natural Lerida and Protoben are sun-dried on wooden trays and then hand-graded into six calibres.",
         links: [["Dried Fig page", L.fig]],
-        next: ["Packaging formats", "Delivery time", "Price list"] },
+        next: ["Packaging formats", "Delivery time", "How do I get a price?"] },
 
       { id: "salami",
         k: ["salami", "salam", "180 g", "180g"],
@@ -209,17 +233,17 @@
         k: ["apricot", "malatya"],
         a: "Our dried apricots come from Malatya, in sulphured golden and natural dark types. Whole halves are sold by count per kilo, from jumbo downwards; below that we cut, dice and purée to industrial specification.",
         links: [["Dried Apricot page", L.apricot]],
-        next: ["Minimum order quantity", "Delivery time", "Price list"] },
+        next: ["Minimum order quantity", "Delivery time", "How do I get a price?"] },
 
       { id: "mulberry",
         k: ["mulberry", "mulberries"],
         a: "Dried mulberry is the fourth product in our range; it is dried by sun and wind.",
         links: [["Dried Mulberry page", L.mulberry]],
-        next: ["Packaging formats", "Can I get a sample?", "Price list"] },
+        next: ["Packaging formats", "Can I get a sample?", "How do I get a price?"] },
 
       { id: "moq",
         k: ["minimum", "moq", "smallest order", "how much do i have to", "pallet", "container"],
-        a: "One pallet (roughly 500 kg) for stocked retail formats, and one full container for private label runs. For samples there is no minimum.",
+        a: "One pallet (roughly 500 kg) for stocked retail formats, and one full container for private label runs.",
         links: [["FAQ", L.faq]],
         next: ["Do you supply private label?", "Delivery time", "Can I get a sample?"] },
 
@@ -231,27 +255,27 @@
 
       { id: "incoterms",
         k: ["incoterm", "exw", "fob", "cif", "ddp", "shipping term", "freight", "air freight"],
-        a: "We work with EXW, FOB Izmir, CIF and DDP. Air freight is available for samples and urgent top-ups.",
+        a: "We work with EXW, FOB İzmir, CIF and DDP. Air freight is available for samples and urgent top-ups.",
         links: [["FAQ", L.faq]],
-        next: ["Delivery time", "Minimum order quantity", "Price list"] },
+        next: ["Delivery time", "Minimum order quantity", "How do I get a price?"] },
 
       { id: "delivery",
         k: ["delivery", "how long", "lead time", "transit", "when can you ship", "dispatch"],
         a: "Stocked formats normally leave our facility within 10 working days of a confirmed order. Sea transit is roughly 7–12 days to Northern Europe and 25–35 days to North America.",
         links: [["FAQ", L.faq]],
-        next: ["Which incoterms?", "Price list", "Contact details"] },
+        next: ["Which incoterms?", "How do I get a price?", "Contact details"] },
 
       { id: "certs",
-        k: ["certificate", "certification", "analysis", "brcgs", "iso", "organic", "kosher", "halal", "origin", "health certificate", "document"],
+        k: ["certificate", "certification", "analysis", "brcgs", "iso", "kosher", "halal", "origin", "health certificate", "document"],
         a: "Every shipment travels with its analysis report, certificate of origin and health certificate. BRCGS, ISO 22000, organic, Kosher and Halal documents are shared on request beforehand.",
         links: [["Request documents", L.form]],
         next: ["Which incoterms?", "Minimum order quantity", "Contact details"] },
 
       { id: "sample",
         k: ["sample", "trial box", "tasting", "try your"],
-        a: "We do send sample boxes. Samples are charged, and there is no minimum quantity. Tell us the product and the destination in the form and we will come back to you.",
+        a: "Graded sample sets are free for qualified trade buyers. Tell us the product and the destination in the form and we will come back to you.",
         links: [["Request a sample", L.form]],
-        next: ["Price list", "Minimum order quantity", "Delivery time"] },
+        next: ["How do I get a price?", "Minimum order quantity", "Delivery time"] },
 
       { id: "price",
         k: ["price", "quote", "cost", "how much", "rate", "offer sheet", "price list"],
@@ -259,21 +283,45 @@
         links: [["Enquiry form", L.form], ["Email: " + MAIL, "mailto:" + MAIL]],
         next: ["Minimum order quantity", "Which incoterms?", "Can I get a sample?"] },
 
+      { id: "shipping",
+        k: ["ship", "ship to", "shipping", "destination", "deliver to", "country", "countries"],
+        a: "We export to 24 countries. Terms are EXW, FOB İzmir, CIF and DDP, and air freight is available for samples and urgent top-ups. Sea transit is roughly 7–12 days to Northern Europe and 25–35 days to North America.",
+        links: [["FAQ", L.faq]],
+        next: ["Delivery time", "Minimum order quantity", "How do I get a price?"] },
+
+      { id: "shelf",
+        k: ["shelf life", "storage", "how long does it keep", "best before"],
+        a: "Shelf life at 4–18 °C and 65% relative humidity: dried figs and fig salami 12 months, dried apricots 18 months. The site gives no shelf life for dried mulberry, so please ask our team for that one.",
+        links: [["Enquiry form", L.form]],
+        next: ["Packaging formats", "Your certificates", "How do I get a price?"] },
+
+      { id: "diet",
+        k: ["vegan", "gluten", "vegetarian", "sugar free", "additive", "preservative"],
+        a: "All six fig salami varieties are 100% vegan and gluten free, with no added sugar and no preservatives. Dried mulberry is 100% dried fruit with no added sugar or additives. For the other products, ask our team and we will confirm.",
+        links: [["Fig Salami page", L.salami], ["Enquiry form", L.form]],
+        next: ["Varieties and ingredients", "Your certificates", "Can I get a sample?"] },
+
+      { id: "organic",
+        k: ["organic"],
+        a: "Certified organic is available: dried figs come conventional or organic, and organic apricot lots (EU and USDA NOP certified) are offered in limited volume, allocated by season. Documents are shared on request beforehand.",
+        links: [["Dried Apricot page", L.apricot], ["Dried Fig page", L.fig], ["Request documents", L.form]],
+        next: ["Your certificates", "Minimum order quantity", "How do I get a price?"] },
+
       { id: "contact",
         k: ["contact", "phone", "whatsapp", "email", "mail", "reach you", "talk to", "call you"],
-        a: "Sales and export: Muzaffer Türkekul. Email " + MAIL + " — we reply to messages 24/7. Phone and WhatsApp " + TEL + ".",
+        a: "Sales and export: Muzaffer Türkekul. Email " + MAIL + " — we reply within one working day. Phone and WhatsApp " + TEL + ".",
         links: [["Send an email", "mailto:" + MAIL], ["Phone / WhatsApp", "tel:+905078634045"], ["Contact page", L.contact]],
-        next: ["Your representatives", "Opening hours", "Price list"] },
+        next: ["Your representatives", "Opening hours", "How do I get a price?"] },
 
       { id: "reps",
         k: ["representative", "agent", "canada", "toronto", "greece", "athens", "ontario", "cetin", "filiz"],
         a: "Our representatives abroad: Canada / Toronto — Çetin Onur, +1 548 255 6022. Greece / Athens — Filiz Tipos, +30 693 285 0255. Both are reachable by phone and WhatsApp.",
         links: [["Contact page", L.contact]],
-        next: ["Contact details", "Price list", "Where do you produce?"] },
+        next: ["Contact details", "How do I get a price?", "Where do you produce?"] },
 
       { id: "where",
         k: ["where are you", "address", "factory", "facility", "office", "location", "visit", "aydin", "nazilli", "istanbul"],
-        a: "Our sales office is in Kagithane, Istanbul, the factory is in Nazilli, Aydin, and the production plant is in Athens, Greece. Orchard and facility visits are welcome.",
+        a: "Our sales office is in Kağıthane, Istanbul, the factory is in Nazilli, Aydın, and the production plant is in Athens, Greece. Orchard and facility visits are welcome.",
         links: [["Contact page", L.contact], ["About us", L.about]],
         next: ["Your representatives", "What is your capacity?", "Contact details"] },
 
@@ -287,44 +335,44 @@
         k: ["season", "harvest", "2026", "new crop"],
         a: "The 2026 season harvest has started. The fruit is being dried now and will be shipped to buyers.",
         links: [["Dried Fig page", L.fig]],
-        next: ["Price list", "Delivery time", "Can I get a sample?"] },
+        next: ["How do I get a price?", "Delivery time", "Can I get a sample?"] },
 
       { id: "hours",
         k: ["opening hour", "office hour", "when are you open", "what time", "how fast do you reply"],
-        a: "The phone is open Monday–Friday, 08:30–18:00 (GMT+3). We reply to e-mail 24/7.",
+        a: "The phone is open Monday–Friday, 08:30–18:00 (GMT+3). We reply within one working day.",
         links: [["Contact page", L.contact]],
-        next: ["Contact details", "Your representatives", "Price list"] },
+        next: ["Contact details", "Your representatives", "How do I get a price?"] },
 
       { id: "langs",
         k: ["language", "english", "german", "greek", "turkish", "do you speak"],
         a: "We speak Turkish, English, German and Greek.",
         links: [["Contact page", L.contact]],
-        next: ["Contact details", "Your representatives", "Price list"] },
+        next: ["Contact details", "Your representatives", "How do I get a price?"] },
 
       { id: "hello",
         k: ["hello", "hi ", "hey", "good morning", "good afternoon", "merhaba"],
         a: "Hello! Which product are you interested in?",
         links: [],
-        next: ["What do you sell?", "Price list", "Can I get a sample?"] },
+        next: ["What do you sell?", "How do I get a price?", "Can I get a sample?"] },
 
       { id: "thanks",
         k: ["thank", "thanks", "cheers", "appreciate"],
         a: "You are welcome. I am here if anything else comes up.",
         links: [],
-        next: ["What do you sell?", "Contact details", "Price list"] }
+        next: ["What do you sell?", "Contact details", "How do I get a price?"] }
     ]
   }[LANG];
 
   var FALLBACK = {
     tr: {
-      a: "Bunu sitedeki bilgilerden yanıtlayamadım. Sorunuzu doğrudan ekibimize iletelim; mesajlara 7 gün 24 saat dönüyoruz.",
+      a: "Bunu sitedeki bilgilerden yanıtlayamadım. Sorunuzu doğrudan ekibimize iletelim; bir iş günü içinde yanıt veriyoruz.",
       links: [["Teklif formu", L.form], ["E-posta: " + MAIL, "mailto:" + MAIL], ["Telefon / WhatsApp", "tel:+905078634045"]],
-      next: ["Ürünleriniz neler?", "Minimum sipariş miktarı", "Fiyat listesi"]
+      next: ["Ürünleriniz neler?", "Minimum sipariş miktarı", "Nasıl fiyat alırım?"]
     },
     en: {
-      a: "I could not answer that from what is on this site. Let us put your question straight to our team — we reply to messages 24/7.",
+      a: "I could not answer that from what is on this site. Let us put your question straight to our team — we reply within one working day.",
       links: [["Enquiry form", L.form], ["Email: " + MAIL, "mailto:" + MAIL], ["Phone / WhatsApp", "tel:+905078634045"]],
-      next: ["What do you sell?", "Minimum order quantity", "Price list"]
+      next: ["What do you sell?", "Minimum order quantity", "How do I get a price?"]
     }
   }[LANG];
 
@@ -342,13 +390,24 @@
       .replace(/\s+/g, " ");
   }
 
+  /* Short or ambiguous keywords that must match a whole word, not a prefix. */
+  var WHOLE = { hi: 1, iso: 1, moq: 1, cif: 1, ddp: 1, exw: 1, fob: 1, ton: 1, "180": 1 };
+
+  /* A keyword matches at the START of a word, never in the middle: plain
+     substring matching made "rate" fire inside "accurate" and "separate",
+     and "ton" inside "button". Prefix (not whole-word) still lets "sertifikalar",
+     "products" or "shipping" match their stems; WHOLE covers the short ones. */
+  function hasKeyword(q, kw) {
+    return WHOLE[kw] ? q.indexOf(" " + kw + " ") !== -1 : q.indexOf(" " + kw) !== -1;
+  }
+
   function answerFor(text) {
     var q = norm(text), best = null, bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
       var item = KB[i], score = 0;
       for (var j = 0; j < item.k.length; j++) {
         var kw = norm(item.k[j]).trim();
-        if (kw && q.indexOf(kw) !== -1) score += kw.length;
+        if (kw && hasKeyword(q, kw)) score += kw.length;
       }
       if (score > bestScore) { bestScore = score; best = item; }
     }
@@ -370,12 +429,17 @@
   var launcher = el("button", "chat__launcher");
   launcher.type = "button";
   launcher.setAttribute("aria-expanded", "false");
+  /* The visible text is hidden on phones, so the name is set explicitly and
+     stays the same whether the panel is open or shut. */
+  launcher.setAttribute("aria-label", T.launch);
+  launcher.setAttribute("aria-controls", "chat-panel");
   launcher.innerHTML =
     '<svg class="chat__launcher-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">' +
     '<path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 20.5l1.5-5A8.5 8.5 0 1 1 21 11.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' +
     '</svg><span class="chat__launcher-text">' + T.launch + "</span>";
 
   var panel = el("div", "chat__panel");
+  panel.id = "chat-panel";
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-label", T.title);
   panel.hidden = true;
@@ -462,7 +526,8 @@
     thinking = el("div", "chat__msg chat__msg--bot");
     var dots = el("p", "chat__bubble chat__typing");
     dots.innerHTML = "<span></span><span></span><span></span>";
-    dots.setAttribute("aria-label", "…");
+    /* Decorative: announcing "typing" on every answer is noise for screen readers. */
+    dots.setAttribute("aria-hidden", "true");
     thinking.appendChild(dots);
     log.appendChild(thinking);
     log.scrollTop = log.scrollHeight;
@@ -524,8 +589,20 @@
     if (e.key === "Escape" && !panel.hidden) close();
   });
 
+  /* On phones the launcher sits bottom-right, exactly where footer links are.
+     While the footer is on screen, hide it (CSS .is-near-footer) so it never
+     covers them; scrolling back up brings it back. */
+  function watchFooter() {
+    var footer = document.querySelector(".site-footer");
+    if (!footer || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entries) {
+      root.classList.toggle("is-near-footer", entries[0].isIntersecting);
+    }).observe(footer);
+  }
+
   function mount() {
     if (!root.parentNode) document.body.appendChild(root);
+    watchFooter();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mount);

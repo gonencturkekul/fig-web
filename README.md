@@ -19,6 +19,7 @@ page links to its counterpart in the other language.
 | `product-dried-mulberry.html` | `tr/kuru-dut.html` | Dried Mulberry — story, specification, packaging, uses |
 | `about.html` | `tr/hakkimizda.html` | About Us — history, values, quality & production, certifications |
 | `contact.html` | `tr/iletisim.html` | Contact Us — enquiry form, contact details, FAQ |
+| `404.html` | `tr/404.html` | Page not found — links to the four products and the enquiry form. `noindex`, not in the sitemap; Vercel serves `/404.html` automatically for unknown URLs (use the `tr/` one's link from Turkish pages) |
 
 The four products sit in a dropdown under **Products** / **Ürünler** in the main
 navigation on every page, alongside a link to the full products listing.
@@ -53,9 +54,10 @@ version they were linked to and switches by hand.
 assets/
   video/fig-journey.mp4   film: home page process section and Dried Fig pages
   css/styles.css   all styling for every page
-  js/main.js       mobile menu, products dropdown, contact form validation
+  js/main.js       mobile menu, products dropdown, contact form validation,
+                   `?product=` preselect, `data-since` year counters
                    (form messages are per-language, keyed off <html lang>)
-  js/chat.js       sales assistant widget, home pages only
+  js/chat.js       sales assistant widget, home and product pages
   js/consent.js    cookie bar; loads Google Analytics only on consent
   img/hero.jpg     home page hero photograph
   img/dried-fig-basket.jpg  dried fig photograph, home page card
@@ -69,9 +71,34 @@ assets/
   img/logo-mark.png         same emblem at 96 px, used as the favicon
   img/logo-caramel-fig.png  full Caramel Fig lockup (emblem + wordmark), not yet placed
   img/flag-tr.svg, flag-en.svg  language switcher flags
+  img/icons.svg             SVG icon sprite (see "Icons" below)
 sitemap.xml        all 16 URLs, with their language alternates
 robots.txt         points crawlers at the sitemap
 ```
+
+## Standing business facts
+
+Two statements are repeated across pages, the chat answers and the form messages,
+so change them everywhere together: **replies come within one working day** (office
+hours Mon-Fri 08:30-18:00 GMT+3, no 24/7 claim) and **graded sample sets are free
+for qualified trade buyers**. The product video is portrait 9:16, so `.video-frame`
+is portrait too (max 420px wide, 80vh tall).
+
+## Icons
+
+Icons are one SVG sprite, `assets/img/icons.svg`, used like this (root pages;
+under `tr/` the path is `../assets/img/icons.svg`):
+
+```html
+<span class="icon-badge" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-leaf"></use></svg></span>
+```
+
+Symbols: `leaf certificate truck pin globe mail phone whatsapp clock box factory
+shield scale handshake sun lab tag users document ship sparkle check`. They are
+24px line icons drawn with `currentColor`, so colour comes from the CSS of
+whatever wraps them. To add one, add a `<symbol id="i-NAME" viewBox="0 0 24 24">`
+with the same stroke style (1.75, round caps and joins, no fill). Do not use
+emoji as icons: they render differently on every device and cannot be themed.
 
 ## Running it locally
 
@@ -207,8 +234,15 @@ Details that are deliberate, not accidental, and should survive any redesign:
   to refuse as to give; a greyed-out or hidden "decline" invalidates it.
 - **Nothing is assumed from silence.** Closing or ignoring the bar is not
   consent, so the bar has no X and no "by continuing you agree".
-- **The choice can be withdrawn** from the *Cookie preferences* link in every
-  footer, which reopens the bar.
+- **The choice can be withdrawn** from the *Cookie preferences* button in every
+  footer (`data-consent-open`; it works on a `<button>` or an `<a>`), which
+  reopens the bar.
+- **Focus behaves politely.** The bar is a `role="region"` labelled by its
+  title, not a dialog: it does not trap focus. On first load focus is *not*
+  moved (it would pull a keyboard or screen-reader user off the page they just
+  opened). When the bar is reopened from the footer, focus goes to its title;
+  after a decision it returns to the control that opened it, or to `<main>`
+  if the bar had appeared by itself.
 - The bar lists the cookies by name, purpose and lifetime, and links to the
   privacy page.
 
@@ -317,11 +351,10 @@ complain.
 **This is not legal advice, and it is not finished until you check three
 things:**
 
-1. **The enquiry form and the newsletter are still in demo mode.** The page
-   says enquiries reach us and newsletter addresses are stored. That becomes
-   true when those forms are wired to a provider; until then the page
-   over-describes, and worse, a visitor who fills the form believes they have
-   contacted you when nothing was sent.
+1. **The enquiry form and the newsletter have no endpoint yet.** Without an
+   `action` they fall back to a pre-filled e-mail (see "Making the forms live"),
+   and the page says so plainly instead of claiming the message was received.
+   Check the privacy page wording still matches whichever way you go live.
 2. **Name the processors once chosen.** When the form and the list go live,
    add the provider (Formspree, Brevo, Mailchimp …) to the "who we share with"
    list — a processor that holds enquiry data has to be named.
@@ -334,14 +367,17 @@ registration obligations (VERBIS) which this page does not address.
 
 ## The sales assistant
 
-Both home pages load `assets/js/chat.js`, which puts a small assistant in the
+The two home pages and the four product pages load `assets/js/chat.js`, which puts a small assistant in the
 bottom right corner. It is deliberately plain: no backend, no API key and no
 third-party script, so it costs nothing and cannot leak anything. It matches
 the visitor's words against a list of keywords and replies with a fixed answer,
 picking Turkish or English from `<html lang>`.
 
 Every answer in it is a fact that already appears on this site — MOQ, incoterms,
-lead times, certificates, samples, addresses, the representatives. When nothing
+lead times, shipping destinations, shelf life, vegan/gluten-free status,
+organic availability, certificates, samples, addresses, the representatives. If
+you change a fact on a page (a shelf life, the sample policy, the reply time),
+change the matching `KB` answer too. When nothing
 matches, it says so and hands the visitor the enquiry form, the e-mail address
 and the phone number rather than guessing.
 
@@ -353,13 +389,25 @@ entry is:
   k:  ["minimum", "moq", "palet"],   // keywords, accent- and case-insensitive
   a:  "One pallet (roughly 500 kg) …", // the reply
   links: [["FAQ", L.faq]],             // buttons under the reply
-  next:  ["Delivery time", "Price list"] }  // suggested follow-up chips
+  next:  ["Delivery time", "How do I get a price?"] }  // suggested follow-up chips
 ```
+
+Matching happens at the **start of a word**, not anywhere inside it, so the
+keyword `rate` no longer fires on "accurate" or "separate", while stems such as
+`certificat` still catch "certificates". Very short keywords (`iso`, `moq`,
+`hi` …) are listed in `WHOLE` and must match a whole word. The longest matching
+keyword wins, so specific phrases ("shipping term") beat general ones
+("shipping").
+
+On phones the launcher hides itself while the footer is on screen
+(`IntersectionObserver`, class `is-near-footer`) so it never covers footer
+links.
 
 Keep `a` to something the site itself says; that is the whole point of it.
 
 To put it on more pages, add `<script src="assets/js/chat.js" defer></script>`
-to that page (`../assets/js/chat.js` under `tr/`).
+to that page (`../assets/js/chat.js` under `tr/`). The links it offers are bare
+file names, which resolve correctly from both the root and `tr/`.
 
 If you want a real AI assistant instead — one that answers in its own words —
 it needs a server to hold the API key, because anything in the browser is
@@ -369,8 +417,17 @@ job, and it costs per message.
 
 ## Making the forms live
 
-The form on `contact.html` validates in the browser and, with no `action` set,
-stays in demo mode: it shows a success message without sending anything.
+The form on `contact.html` validates in the browser. Invalid fields get
+`aria-invalid` and a message tied to the field with `aria-describedby`; the
+first invalid field takes focus and the status line (a polite live region)
+announces the problem.
+
+With no `action` set — today's state, because no endpoint exists — a valid
+submission opens a pre-filled `mailto:` to the sales address (subject and body
+built from the filled-in fields) and shows an honest status: the visitor's mail
+app should open and they must press Send there. The form is *not* cleared and
+never says the enquiry was "recorded" or "received". Product pages link here
+with `?product=fig|fig-salami|apricot|mulberry` to preselect the product.
 
 To receive real enquiries, set the form's `action` to your endpoint:
 
@@ -380,11 +437,14 @@ To receive real enquiries, set the form's `action` to your endpoint:
 
 Any form service (Formspree, Netlify Forms, Getform) or your own backend
 handler works — the script hands submission over to the browser as soon as an
-`action` is present, and the field `name` attributes (`name`, `company`, `email`,
+`action` is present (the submit button shows "Sending…" and is disabled until
+the page navigates), and the field `name` attributes (`name`, `company`, `email`,
 `phone`, `country`, `product`, `quantity`, `reason`, `message`) are posted as-is.
 
 The newsletter sign-up beside it (`#newsletter-form`, both contact pages) works
-the same way and is also in demo mode. Point its `action` at your mailing-list
+the same way. With no `action` it says "Sign-up isn't live yet" and offers an
+e-mail link (subject "Newsletter") instead of pretending the address was
+stored. Point its `action` at your mailing-list
 provider's subscribe endpoint (Mailchimp, Brevo, MailerLite, Buttondown …); it
 posts a single field, `email`. Remember to do it in `tr/iletisim.html` as well
 as `contact.html` — they are separate forms.

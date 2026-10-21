@@ -141,14 +141,18 @@
 
   function build() {
     bar = el("div", "consent");
-    bar.setAttribute("role", "dialog");
-    bar.setAttribute("aria-label", COPY.title);
-    bar.setAttribute("aria-live", "polite");
+    /* A region, not a dialog: the bar does not trap focus or block the page, so
+       claiming role=dialog would promise behaviour it does not have. No
+       aria-live either: announcing it on every page load is noise; focus moves
+       to the title only when the visitor asks to reopen it. */
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-labelledby", "consent-title");
 
     var inner = el("div", "consent__inner");
 
     var text = el("div", "consent__text");
     var h = el("strong", "consent__title", COPY.title);
+    h.id = "consent-title";
     h.setAttribute("tabindex", "-1");
     text.appendChild(h);
     var intro = el("p", null, COPY.body + " ");
@@ -206,12 +210,20 @@
     return bar;
   }
 
-  function show() {
+  /* Remembers what opened the bar so focus can go back there afterwards. */
+  var opener = null;
+
+  /* focusTitle is true only when the visitor reopened the bar on purpose. On a
+     first visit the bar appears by itself; stealing focus then would yank a
+     keyboard or screen-reader user away from the page they just arrived on. */
+  function show(focusTitle) {
     if (!bar) build();
     bar.hidden = false;
     measure();
-    var title = bar.querySelector(".consent__title");
-    if (title) title.focus();
+    if (focusTitle) {
+      var title = bar.querySelector(".consent__title");
+      if (title) title.focus();
+    }
   }
 
   function hide() {
@@ -220,9 +232,22 @@
     measure();
   }
 
+  /* Hiding the bar destroys the focused button; without help focus falls to
+     <body> and the next Tab starts from the top. Return it to the control that
+     opened the bar, or to <main> when the bar opened by itself. */
+  function restoreFocus() {
+    var target = opener && document.contains(opener) ? opener : document.getElementById("main");
+    opener = null;
+    if (!target) return;
+    if (target.id === "main" && !target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: target.id === "main" });
+  }
+
   function decide(value) {
     write(value);
+    var hadFocus = bar && bar.contains(document.activeElement);
     hide();
+    if (hadFocus) restoreFocus();
     /* Pushed before the container loads, so it is in the queue GTM reads and
        a trigger inside the container can fire on it. */
     window.dataLayer = window.dataLayer || [];
@@ -240,9 +265,11 @@
     var links = document.querySelectorAll("[data-consent-open]");
     Array.prototype.forEach.call(links, function (a) {
       a.textContent = COPY.reopen;
+      /* Works on <button> (current markup) and <a href="#"> (older pages). */
       a.addEventListener("click", function (e) {
         e.preventDefault();
-        show();
+        opener = a;
+        show(true);
       });
     });
   }

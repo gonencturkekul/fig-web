@@ -35,7 +35,8 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Eskimiş bir ahşap masanın üzerinde üst üste dizilmiş kuru incirler, biri ikiye ayrılmış">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#5b2c53">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#fdf8f1">
   <link rel="icon" href="../assets/img/logo-mark.png" type="image/png">
   <link rel="canonical" href="https://www.aegeansunfruit.com/tr/gizlilik.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/gizlilik.html">
@@ -52,25 +53,25 @@
 <a class="skip-link" href="#main">İçeriğe geç</a>
 <header class="site-header">
   <nav class="wrap nav" aria-label="Ana menü">
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Aegean Sun Kuru Meyve — Ana sayfa">
       <img class="brand__mark" src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
       <span>Aegean Sun<span class="brand__sub">Kuru Meyve</span></span>
     </a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
       <span></span><span></span><span></span>
     </button>
 
     <ul class="menu" id="primary-menu">
       <li><a href="index.html">Ana Sayfa</a></li>
       <li class="has-dropdown">
-        <button class="menu__button" type="button" aria-expanded="false">
+        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
           Ürünler
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
             <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
           </svg>
         </button>
-        <ul class="dropdown">
+        <ul class="dropdown" id="menu-products">
           <li><a href="urunler.html">Tüm Ürünler<small>Aegean Sun ürün yelpazesi</small></a></li>
           <li><a href="kuru-incir.html">Kuru İncir<small>Doğal Lerida ve Protoben</small></a></li>
           <li><a href="incir-salami.html">İncir Salamı<small>Altı çeşit, 180&nbsp;g</small></a></li>
@@ -84,13 +85,13 @@
     </ul>
 
       <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-label="Dil: Türkçe">
-          <img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>TR</span>
+        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="TR — Dil: Türkçe">
+          <img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
           <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
-        <ul class="dropdown">
-          <li><a href="../privacy.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" alt=""><span>English</span></a></li>
-          <li><a href="gizlilik.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" alt=""><span>Türkçe</span></a></li>
+        <ul class="dropdown" id="menu-lang">
+          <li><a href="../privacy.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+          <li><a href="gizlilik.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
         </ul>
       </div>
   </nav>
@@ -99,7 +100,7 @@
 
   <section class="page-banner">
     <div class="wrap">
-      <p class="breadcrumb"><a href="index.html">Ana Sayfa</a> &rsaquo; Gizlilik ve Çerezler</p>
+      <nav class="breadcrumb" aria-label="Sayfa yolu"><ol><li><a href="index.html">Ana Sayfa</a></li><li aria-current="page">Gizlilik ve Çerezler</li></ol></nav>
       <span class="eyebrow">Yasal</span>
       <h1>Gizlilik ve Çerezler</h1>
       <p>Bu sayfada, bu siteyi kullandığınızda hangi kişisel verilerinizi, neden ve ne kadar süreyle işlediğimizi anlatıyoruz.</p>
@@ -122,7 +123,7 @@
       </div>
 
       <h2>Veri sorumlusu kim?</h2>
-      <p>Bu sitede işlenen kişisel veriler bakımından veri sorumlusu <strong>Aegean Sun Kuru Meyve</strong>'dir.</p>
+      <p>Bu sitede işlenen kişisel veriler bakımından veri sorumlusu <strong>Aegean Sun Kuru Meyve</strong>’dir.</p>
       <ul>
         <li>Satış ofisi: İstanbul / Kağıthane, Türkiye</li>
         <li>Fabrika: Aydın / Nazilli, Türkiye</li>
@@ -131,7 +132,7 @@
         <li>Telefon: <a href="tel:+905078634045">+90 507 863 40 45</a></li>
         <li>Yetkili: Muzaffer Türkekul</li>
       </ul>
-      <p>Türkiye'de 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), Avrupa Birliği'nden siteye erişen ziyaretçiler bakımından ise Genel Veri Koruma Tüzüğü (GDPR) kapsamında hareket ediyoruz.</p>
+      <p>Türkiye’de 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK), Avrupa Birliği’nden siteye erişen ziyaretçiler bakımından ise Genel Veri Koruma Tüzüğü (GDPR) kapsamında hareket ediyoruz.</p>
 
       <h2>Hangi verileri, neden işliyoruz?</h2>
       <table class="spec-table">
@@ -161,13 +162,13 @@
             <th scope="row">Ziyaret istatistikleri (sayfa, ülke, yönlendiren site, cihaz türü)</th>
             <td>Sitenin hangi bölümlerinin işe yaradığını görmek</td>
             <td>Meşru menfaat &mdash; çerezsiz ve toplu veri, kişi tanımlanmaz</td>
-            <td>Vercel'in saklama süresi</td>
+            <td>Vercel’in saklama süresi</td>
           </tr>
           <tr>
             <th scope="row">Google Analytics verileri</th>
             <td>Ziyaretlerin ayrıntılı ölçümü</td>
             <td><strong>Yalnızca açık rızanız</strong> &mdash; reddederseniz hiç çalışmaz</td>
-            <td>Google Analytics'teki saklama ayarı kadar</td>
+            <td>Google Analytics’teki saklama ayarı kadar</td>
           </tr>
           <tr>
             <th scope="row">Sunucu kayıtları (IP adresi, tarayıcı bilgisi)</th>
@@ -177,10 +178,11 @@
           </tr>
         </tbody>
       </table>
+      <p>Teklif formu kendi başına hiçbir şey göndermez: mesajınız doldurulmuş olarak kendi e-posta programınızı açar ve biz onu ancak siz orada Gönder’e bastığınızda alırız. Bülten kaydı henüz açık değil.</p>
       <p>Bu sitede özel nitelikli kişisel veri toplamıyoruz; profil çıkarma veya otomatik karar verme yapmıyoruz. Site çocuklara yönelik değildir.</p>
 
       <h2>Çerezler</h2>
-      <p>Sitenin çalışması için çerez kullanmıyoruz. Yalnızca Google Analytics çerezleri vardır ve bunlar <strong>siz kabul etmeden yerleştirilmez</strong>; sayfa, onayınız gelene kadar Google'a istek dahi göndermez. Ölçüm etiketlerini yönetmek için kullandığımız Google Etiket Yöneticisi de aynı şekilde yalnızca onayınızdan sonra yüklenir.</p>
+      <p>Sitenin çalışması için çerez kullanmıyoruz. Yalnızca Google Analytics çerezleri vardır ve bunlar <strong>siz kabul etmeden yerleştirilmez</strong>; sayfa, onayınız gelene kadar Google’a istek dahi göndermez. Ölçüm etiketlerini yönetmek için kullandığımız Google Etiket Yöneticisi de aynı şekilde yalnızca onayınızdan sonra yüklenir.</p>
       <table class="spec-table">
         <thead>
           <tr><th scope="col">Çerez</th><th scope="col">Ne işe yarar</th><th scope="col">Süre</th></tr>
@@ -191,7 +193,7 @@
         </tbody>
       </table>
       <p>Verdiğiniz yanıt, tarayıcınızın yerel deposunda <code>aegeansun-cookie-consent</code> adıyla tutulur. Bu bir çerez değildir, bize gönderilmez ve yalnızca sizin cihazınızda kalır.</p>
-      <p><strong>Fikrinizi değiştirebilirsiniz.</strong> Her sayfanın en altındaki <a href="#" data-consent-open>Çerez tercihleri</a> bağlantısına tıklayarak kararınızı yeniden verebilirsiniz. Reddettiğinizde, daha önce yerleşmiş Google Analytics çerezleri de silinir.</p>
+      <p><strong>Fikrinizi değiştirebilirsiniz.</strong> Her sayfanın en altındaki <button type="button" class="linklike" data-consent-open>Çerez tercihleri</button> bağlantısına tıklayarak kararınızı yeniden verebilirsiniz. Reddettiğinizde, daha önce yerleşmiş Google Analytics çerezleri de silinir.</p>
 
       <h2>Kimlerle paylaşıyoruz?</h2>
       <p>Verilerinizi satmıyoruz ve pazarlama amacıyla kimseyle paylaşmıyoruz. Yalnızca sitenin ve işimizin yürümesi için kullandığımız hizmet sağlayıcılar söz konusudur:</p>
@@ -203,10 +205,10 @@
       <p>Ayrıca yetkili kamu kurumlarının hukuka uygun talepleri hâlinde paylaşım yapılabilir.</p>
 
       <h2>Yurt dışına aktarım</h2>
-      <p>Kullandığımız barındırma, e-posta ve ölçümleme hizmetleri Türkiye dışında, bir kısmı Amerika Birleşik Devletleri'nde bulunan sunucularda çalışır. Bu nedenle verileriniz yurt dışına aktarılabilir. Bu sağlayıcılar, AB'den yapılan aktarımlar için standart sözleşme hükümleri gibi mekanizmalara dayanır.</p>
+      <p>Kullandığımız barındırma, e-posta ve ölçümleme hizmetleri Türkiye dışında, bir kısmı Amerika Birleşik Devletleri’nde bulunan sunucularda çalışır. Bu nedenle verileriniz yurt dışına aktarılabilir. Bu sağlayıcılar, AB’den yapılan aktarımlar için standart sözleşme hükümleri gibi mekanizmalara dayanır.</p>
 
       <h2>Haklarınız</h2>
-      <p>KVKK'nın 11. maddesi ve GDPR kapsamında şu haklara sahipsiniz:</p>
+      <p>KVKK’nın 11. maddesi ve GDPR kapsamında şu haklara sahipsiniz:</p>
       <ul>
         <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme ve bir kopyasını isteme</li>
         <li>Yanlış veya eksik verilerin düzeltilmesini isteme</li>
@@ -216,7 +218,7 @@
         <li>Verdiğiniz rızayı dilediğiniz an geri çekme &mdash; geri çekmeden önceki işlemeyi etkilemez</li>
       </ul>
       <p>Bu haklarınızı kullanmak için <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a> adresine yazmanız yeterli. Başvurunuzu en geç 30 gün içinde yanıtlarız.</p>
-      <p>Yanıtımızı yeterli bulmazsanız Türkiye'de <strong>Kişisel Verileri Koruma Kurumu</strong>'na, Avrupa Birliği'nde ise bulunduğunuz ülkenin veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
+      <p>Yanıtımızı yeterli bulmazsanız Türkiye’de <strong>Kişisel Verileri Koruma Kurumu</strong>’na, Avrupa Birliği’nde ise bulunduğunuz ülkenin veri koruma otoritesine şikâyette bulunabilirsiniz.</p>
 
       <h2>Güvenlik</h2>
       <p>Site yalnızca şifreli bağlantı (HTTPS) üzerinden sunulur. E-posta kutularımız iki adımlı doğrulama ile korunur ve verilerinize yalnızca talebinizi yanıtlaması gereken kişiler erişir.</p>
@@ -236,14 +238,14 @@
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
+          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
           <span>Aegean Sun</span>
         </div>
         <p>Ege ve Doğu Anadolu bahçelerinden doğrudan gelen kuru incir, incir salamı, kuru kayısı ve kuru dut. Perakende, toplu tüketim ve sanayi için paketlenir.</p>
       </div>
 
       <div>
-        <h4>Ürünler</h4>
+        <h2 class="footer-title">Ürünler</h2>
         <ul>
           <li><a href="kuru-incir.html">Kuru İncir</a></li>
           <li><a href="incir-salami.html">İncir Salamı</a></li>
@@ -254,7 +256,7 @@
       </div>
 
       <div>
-        <h4>Kurumsal</h4>
+        <h2 class="footer-title">Kurumsal</h2>
         <ul>
           <li><a href="index.html">Ana Sayfa</a></li>
           <li><a href="hakkimizda.html">Hakkımızda</a></li>
@@ -264,26 +266,22 @@
       </div>
 
       <div>
-        <h4>Bize ulaşın</h4>
+        <h2 class="footer-title">Bize ulaşın</h2>
         <ul>
           <li>Muzaffer Türkekul</li>
           <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
           <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Satış ofisi: İstanbul / Kağıthane</li>
-          <li>Fabrika: Aydın / Nazilli</li>
-          <li>Üretim fabrikası: Atina / Yunanistan</li>
-          <li>Kanada: <a href="tel:+15482556022">+1 548 255 6022</a></li>
-          <li>Yunanistan: <a href="tel:+306932850255">+30 693 285 0255</a></li>
           <li>Pzt&ndash;Cum, 08:30&ndash;18:00 (GMT+3)</li>
+          <li><a href="iletisim.html">Tüm iletişim bilgileri &rarr;</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Aegean Sun Kuru Meyve. Tüm hakları saklıdır.</span>
-      <span>Türkiye'de hasat edilir &middot; Dünyaya gönderilir</span>
+      <span>Türkiye’de hasat edilir &middot; Dünyaya gönderilir</span>
       <span><a href="gizlilik.html">Gizlilik ve Çerezler</a></span>
-      <span><a href="#" data-consent-open>Çerez tercihleri</a></span>
+      <span><button type="button" class="linklike" data-consent-open>Çerez tercihleri</button></span>
     </div>
   </div>
 </footer>
