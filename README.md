@@ -503,6 +503,31 @@ confirmation (double opt-in) and put a working unsubscribe link in every
 issue; both are required under the GDPR for European subscribers. Google
 Forms does neither for you.
 
+### Auto-reply e-mails
+
+`google-apps-script/autoreply.gs` sends each person who submits a form one
+plain-text reply from the Google account that owns the forms (replies go to
+the sales address). Enquiries get a reply in English, or in Turkish when they
+came from a `/tr/` page, repeating the product, company, country and sample
+request; newsletter sign-ups get a short bilingual welcome that explains how
+to leave the list. At most one auto-reply per address per day. The folder is
+in `.vercelignore`, so it is not published with the site.
+
+Install it once in **each** form (Enquiry and Newsletter):
+
+1. Open the form in Google Forms → ⋮ (top right) → **Apps Script**.
+2. Delete what is in `Code.gs`, paste the whole of `autoreply.gs`, and save.
+3. Pick **install** in the function list at the top and press **Run**. Google
+   asks for permission (to read the form's responses and send e-mail as you):
+   choose your account → *Advanced* → *Go to … (unsafe)* → **Allow**. The
+   warning appears because the script is your own, not a published app.
+4. Send a test from the website and check the inbox you used.
+
+To change the wording, edit the file here and paste it again into both forms
+(no need to run install again). If a question in the Enquiry form is renamed,
+update the titles used in `onSubmit` / `enquiryMail` (`E-Mail`,
+`Name Surname`, `Interested Product(s)`, …).
+
 ## Before going live — replace the placeholders
 
 The copy is written as a complete, realistic site, but the company details are
