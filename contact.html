@@ -23,6 +23,7 @@
   </script>
   <title>Contact Us | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Contact Aegean Sun for dried figs, fig salami and dried apricots. Request a quote, samples or a factory visit. We reply within one working day.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:title" content="Contact Us | Aegean Sun Dried Fruits">
   <meta property="og:description" content="Contact Aegean Sun for dried figs, fig salami and dried apricots. Request a quote, samples or a factory visit. We reply within one working day.">
   <meta property="og:type" content="website">
@@ -42,227 +43,199 @@
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/contact.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/iletisim.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/contact.html">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/home.js" defer></script>
+  <!-- main.js drives the two forms on this page: validation, the ?product= preselect,
+       and the honest mailto fallback while the forms have no action. -->
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
+  <script src="assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
        so it 404s when the site is opened from a plain local server. -->
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
-      <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
-    </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, home"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Main">
+      <ul>
+        <li><a href="products.html">Products</a></li>
+        <li class="hide-s"><a href="about.html">Our story</a></li>
+        <li class="hide-s"><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="EN, language: English">
+        <img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="contact.html" hreflang="en" lang="en" aria-current="true"><img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="tr/iletisim.html" hreflang="tr" lang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+      </ul>
+    </div>
+    <a class="btn btn--fig bar__cta" href="#contact-form">Request a quote</a>
+  </header>
 
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Products
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
-          <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
-          <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot<small>Sulphured &amp; natural halves</small></a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry<small>Sun and wind dried, no processing</small></a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html" aria-current="page">Contact Us</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="contact.html#contact-form">Request a Quote</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="contact.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="tr/iletisim.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+  <main id="main">
+    <!-- PAGE HEAD. The title, what to write to us about, and the three facts a buyer wants before
+         writing (reply time, office hours, languages); the figs in the sun's round window on the right. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li aria-current="page">Contact</li></ol></nav>
+        <h1 id="page-title" class="display">Contact</h1>
+        <p class="phead__lead">Quotes, samples, specifications or a visit to the orchards: send us a line and a real person from the export team will answer.</p>
+        <ul class="phead__facts" aria-label="Key facts">
+          <li>Reply within one working day</li><li>Mon–Fri, 08:30–18:00 (GMT+3)</li><li>Turkish, English, German, Greek</li>
         </ul>
       </div>
-  </nav>
-</header>
-<main id="main">
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="assets/img/hero.webp" width="1536" height="1024" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
 
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Contact Us</li></ol></nav>
-      <span class="eyebrow">We would like to hear from you</span>
-      <h1>Contact Us</h1>
-      <p>Quotes, samples, specifications or a visit to the orchards &mdash; send us a line and a real person from the export team will answer. We reply within one working day.</p>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap contact-grid">
-
-      <div class="form-card">
-        <h2>Send us an enquiry</h2>
-        <p class="muted">Fields marked <span class="req">*</span> are required. The more you can tell us about volume and destination, the more useful our first reply will be.</p>
+    <!-- ENQUIRY. The form on the sun ground (the same carton-label colour as the home page enquiry),
+         with the direct lines beside it for buyers who would rather write or call a person.
+         The .reach wrapper is the 7 + 4 column split; its rules live with the contact styles. -->
+    <section class="reach" aria-labelledby="enquiry-title">
+      <div class="form-sheet" data-reveal>
+        <h2 id="enquiry-title" class="head">Send us an enquiry</h2>
+        <p>Fields marked <span class="req">*</span> are required. The more you can tell us about volume and destination, the more useful our first reply will be.</p>
 
         <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1"></div>
 
         <!-- To make this form live, set action="https://your-form-endpoint" below.
              Without an action, main.js opens the visitor's email app with the
              enquiry pre-filled instead, and says so honestly. -->
-        <form id="contact-form" method="post" novalidate>
-          <div class="field-row">
-            <div class="field">
-              <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="name" aria-describedby="err-name" name="name" autocomplete="name" required>
-              <span class="field__error" id="err-name"></span>
-            </div>
-            <div class="field">
-              <label for="company">Company</label>
-              <input type="text" id="company" aria-describedby="err-company" name="company" autocomplete="organization">
-              <span class="field__error" id="err-company"></span>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="email" spellcheck="false" aria-describedby="err-email" name="email" autocomplete="email" required>
-              <span class="field__error" id="err-email"></span>
-            </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" aria-describedby="err-phone" name="phone" autocomplete="tel">
-              <span class="field__error" id="err-phone"></span>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="country">Country of delivery</label>
-              <input type="text" id="country" aria-describedby="err-country" name="country" autocomplete="country-name">
-              <span class="field__error" id="err-country"></span>
-            </div>
-            <div class="field">
-              <label for="product">Product of interest <span class="req" aria-hidden="true">*</span></label>
-              <select id="product" aria-describedby="err-product" name="product" required>
-                <option value="">Please choose&hellip;</option>
-                <option value="dried-fig">Dried Fig</option>
-                <option value="fig-salami">Fig Salami</option>
-                <option value="dried-apricot">Dried Apricot</option>
-                <option value="dried-mulberry">Dried Mulberry</option>
-                <option value="multiple">Several products</option>
-                <option value="other">Something else</option>
-              </select>
-              <span class="field__error" id="err-product"></span>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="quantity">Estimated quantity</label>
-              <input type="text" id="quantity" aria-describedby="err-quantity" name="quantity" placeholder="e.g. 2 pallets, 1 FCL, 500 kg/month&hellip;">
-              <span class="field__error" id="err-quantity"></span>
-            </div>
-            <div class="field">
-              <label for="reason">How can we help?</label>
-              <select id="reason" aria-describedby="err-reason" name="reason">
-                <option value="quote">Request a quote</option>
-                <option value="samples">Request samples</option>
-                <option value="private-label">Private label enquiry</option>
-                <option value="documents">Certificates &amp; documents</option>
-                <option value="visit">Arrange a visit</option>
-                <option value="other">Other</option>
-              </select>
-              <span class="field__error" id="err-reason"></span>
-            </div>
-          </div>
-
+        <form id="contact-form" class="form-grid" method="post" novalidate>
           <div class="field">
+            <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" aria-describedby="err-name" name="name" autocomplete="name" required>
+            <span class="field__error" id="err-name"></span>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" aria-describedby="err-company" name="company" autocomplete="organization">
+            <span class="field__error" id="err-company"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" spellcheck="false" aria-describedby="err-email" name="email" autocomplete="email" required>
+            <span class="field__error" id="err-email"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" aria-describedby="err-phone" name="phone" autocomplete="tel">
+            <span class="field__error" id="err-phone"></span>
+          </div>
+          <div class="field">
+            <label for="country">Country of delivery</label>
+            <input type="text" id="country" aria-describedby="err-country" name="country" autocomplete="country-name">
+            <span class="field__error" id="err-country"></span>
+          </div>
+          <div class="field">
+            <label for="product">Product of interest <span class="req" aria-hidden="true">*</span></label>
+            <!-- Option values are what main.js matches for ?product= (fig, salami, apricot, mulberry are aliases). -->
+            <select id="product" aria-describedby="err-product" name="product" required>
+              <option value="">Please choose&hellip;</option>
+              <option value="dried-fig">Dried Fig</option>
+              <option value="fig-salami">Fig Salami</option>
+              <option value="dried-apricot">Dried Apricot</option>
+              <option value="dried-mulberry">Dried Mulberry</option>
+              <option value="multiple">Several products</option>
+              <option value="other">Something else</option>
+            </select>
+            <span class="field__error" id="err-product"></span>
+          </div>
+          <div class="field">
+            <label for="quantity">Estimated quantity</label>
+            <input type="text" id="quantity" aria-describedby="err-quantity" name="quantity" placeholder="e.g. 2 pallets, 1 FCL, 500 kg/month&hellip;">
+            <span class="field__error" id="err-quantity"></span>
+          </div>
+          <div class="field">
+            <label for="reason">How can we help?</label>
+            <select id="reason" aria-describedby="err-reason" name="reason">
+              <option value="quote">Request a quote</option>
+              <option value="samples">Request samples</option>
+              <option value="private-label">Private label enquiry</option>
+              <option value="documents">Certificates &amp; documents</option>
+              <option value="visit">Arrange a visit</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="field__error" id="err-reason"></span>
+          </div>
+          <div class="field field--wide">
             <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
             <textarea id="message" aria-describedby="err-message" name="message" required placeholder="Tell us about the product, packaging format, volume and delivery terms you need."></textarea>
             <span class="field__error" id="err-message"></span>
           </div>
 
-          <button class="btn btn--primary" type="submit">Send enquiry</button>
+          <button class="btn btn--ink" type="submit">Send enquiry</button>
           <p class="form-note">By sending this form you agree that we may store your details in order to answer your enquiry. We never share them with third parties.</p>
         </form>
       </div>
 
-      <aside>
-        <h2>Direct lines</h2>
-        <ul class="info-list">
-          <li>
-            <svg class="icon info-list__icon" aria-hidden="true"><use href="assets/img/icons.svg#i-mail"></use></svg>
-            <span><strong>Muzaffer T&uuml;rkekul &mdash; Export sales</strong><span class="rep-line">Quotes, samples, quality and documents</span><a class="rep-line" href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><a class="rep-line" href="tel:+905078634045">+90 507 863 40 45</a><span class="rep-line rep-note">Phone and WhatsApp &middot; Turkish, English, German, Greek</span><span class="rep-line rep-note">Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3). We reply within one working day.</span></span>
-          </li>
-          <li>
-            <svg class="icon info-list__icon" aria-hidden="true"><use href="assets/img/icons.svg#i-pin"></use></svg>
-            <span><strong>Office &amp; facility</strong><span>Sales office: Istanbul / Ka&#287;&#305;thane<br>Factory: Aydın / Nazilli<br>Production plant: Athens / Greece</span></span>
-          </li>
-        </ul>
-
-        <div class="card" style="margin-top:26px">
-          <h3>Visiting us</h3>
-          <p class="muted">Our factory is in Nazilli, in the province of Aydın, our sales office is in Ka&#287;&#305;thane, Istanbul, and our production plant is in Athens, Greece. The nearest airport to the factory is İzmir Adnan Menderes (ADB). Let us know your flight and we will arrange the transfer.</p>
-          <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Nazilli%20Aydin%20Turkiye" target="_blank" rel="noopener">Open in maps</a>
-        </div>
-
-        <div class="card" style="margin-top:26px">
-          <h3>Our representatives abroad</h3>
-          <ul class="info-list mb-0">
-            <li>
-              <svg class="icon info-list__icon" aria-hidden="true"><use href="assets/img/icons.svg#i-globe"></use></svg>
-              <span><strong>&Ccedil;etin Onur &mdash; Canada</strong><span class="rep-line">Toronto, Ontario</span><a class="rep-line" href="tel:+15482556022">+1 548 255 6022</a><span class="rep-line rep-note">Phone and WhatsApp</span></span>
-            </li>
-            <li>
-              <svg class="icon info-list__icon" aria-hidden="true"><use href="assets/img/icons.svg#i-globe"></use></svg>
-              <span><strong>Filiz Tipos &mdash; Greece</strong><span class="rep-line">Athens</span><a class="rep-line" href="tel:+306932850255">+30 693 285 0255</a><span class="rep-line rep-note">Phone and WhatsApp</span></span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Newsletter last: the enquiry form and direct lines are what most visitors came for. -->
-        <div class="card newsletter" id="newsletter">
-          <span class="eyebrow">Newsletter</span>
-          <h2>Join our e-mail newsletter</h2>
-          <p class="muted">Harvest news, new-season availability and price updates, straight to your inbox. One click unsubscribes you at any time.</p>
-
-          <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
-
-          <!-- To make this live, set action="https://your-list-endpoint" below.
-               Without an action, main.js says sign-up is not live yet and offers email. -->
-          <form id="newsletter-form" method="post" novalidate>
-            <div class="field">
-              <label for="newsletter-email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="newsletter-email" spellcheck="false" aria-describedby="err-newsletter-email" name="email" autocomplete="email" required placeholder="you@company.com">
-              <span class="field__error" id="err-newsletter-email"></span>
-            </div>
-            <button class="btn btn--primary" type="submit">Subscribe</button>
-            <p class="form-note mb-0">We use your address for the newsletter only and never share it with third parties.</p>
-          </form>
+      <!-- DIRECT LINES. The people behind the form, with the hours and languages they answer in,
+           then where the company sits and who represents it abroad. -->
+      <aside class="reach__side" aria-labelledby="lines-title" data-reveal>
+        <h2 id="lines-title" class="head">Direct lines</h2>
+        <div class="lines">
+          <div>
+            <h3 class="sub">Muzaffer Türkekul, export sales</h3>
+            <p>Quotes, samples, quality and documents<br>
+              <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+              <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+            <p>Phone and WhatsApp · Turkish, English, German, Greek<br>
+              Mon–Fri, 08:30–18:00 (GMT+3). We reply within one working day.</p>
+          </div>
+          <div>
+            <h3 class="sub">Office and facility</h3>
+            <p>Sales office: Istanbul / Kağıthane<br>Factory: Aydın / Nazilli<br>Production plant: Athens / Greece</p>
+          </div>
+          <div>
+            <h3 class="sub">Our representatives abroad</h3>
+            <p>Çetin Onur, Canada<br>Toronto, Ontario<br>
+              <a href="tel:+15482556022">+1 548 255 6022</a> · Phone and WhatsApp</p>
+            <p>Filiz Tipos, Greece<br>Athens<br>
+              <a href="tel:+306932850255">+30 693 285 0255</a> · Phone and WhatsApp</p>
+          </div>
         </div>
       </aside>
+    </section>
 
-    </div>
-  </section>
-
-  <section class="section section--sand" id="faq">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Before you write</span>
-        <h2>Frequently asked questions</h2>
+    <!-- VISITING. Where the factory, office and plant are, and how to get to Nazilli, beside a round
+         window on the drying fields around it. -->
+    <section class="duo" aria-labelledby="visit-title">
+      <div class="duo__pic" data-reveal>
+        <img src="assets/img/fig-drying.webp" width="800" height="450" alt="Women sitting among rows of drying trays in the field, sorting freshly harvested figs" loading="lazy" decoding="async">
       </div>
-      <div class="faq" style="max-width:820px;margin-inline:auto">
+      <div class="duo__text" data-reveal>
+        <h2 id="visit-title" class="head">Visiting us</h2>
+        <p>Our factory is in Nazilli, in the province of Aydın, our sales office is in Kağıthane, Istanbul, and our production plant is in Athens, Greece. The nearest airport to the factory is İzmir Adnan Menderes (ADB). Let us know your flight and we will arrange the transfer.</p>
+        <a class="textlink" href="https://www.openstreetmap.org/search?query=Nazilli%20Aydin%20Turkiye" target="_blank" rel="noopener">Open in maps</a>
+      </div>
+    </section>
+
+    <!-- QUESTIONS. The answers buyers ask for before writing, on the sand band. The faq id is the
+         target of the footer's "Buyer questions" link on every page. -->
+    <section class="sect sect--tone" id="faq" aria-labelledby="faq-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="faq-title" class="head">Before you write</h2>
+        <p class="lead">Frequently asked questions from trade buyers.</p>
+      </div>
+      <div class="sect__body faq">
         <details open>
           <summary>What is your minimum order quantity?</summary>
           <p>One pallet (roughly 500&nbsp;kg) for stocked retail formats, and one full container for private label runs. Graded sample sets are free for qualified trade buyers.</p>
@@ -277,78 +250,100 @@
         </details>
         <details>
           <summary>How long does delivery take?</summary>
-          <p>Stocked formats normally leave our facility within 10 working days of a confirmed order. Sea transit is roughly 7&ndash;12 days to Northern Europe and 25&ndash;35 days to North America.</p>
+          <p>Stocked formats normally leave our facility within 10 working days of a confirmed order. Sea transit is roughly 7–12 days to Northern Europe and 25–35 days to North America.</p>
         </details>
         <details>
           <summary>Can you send certificates and analysis reports?</summary>
-          <p>Every shipment travels with its analysis report, certificate of origin and health certificate. Certification documents &mdash; BRCGS, ISO 22000, organic, Kosher, Halal &mdash; are available on request beforehand.</p>
+          <p>Every shipment travels with its analysis report, certificate of origin and health certificate. Certification documents (BRCGS, ISO 22000, organic, Kosher, Halal) are available on request beforehand.</p>
         </details>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>Prefer to talk it through?</h2>
-        <p>We speak English, German, Turkish and Greek.</p>
+    <!-- NEWSLETTER. Last of the forms on purpose: the enquiry and the direct lines are what most
+         visitors came for. The newsletter id keeps old links to this block working. -->
+    <section class="sect" id="newsletter" aria-labelledby="newsletter-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="newsletter-title" class="head">Join our newsletter</h2>
       </div>
-      <a class="btn btn--primary" href="tel:+905078634045">+90 507 863 40 45</a>
-    </div>
-  </section>
+      <div class="sect__body signup">
+        <p>Harvest news, new-season availability and price updates, straight to your inbox. One click unsubscribes you at any time.</p>
 
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
+        <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+        <!-- To make this live, set action="https://your-list-endpoint" below.
+             Without an action, main.js says sign-up is not live yet and offers email. -->
+        <form id="newsletter-form" method="post" novalidate>
+          <div class="field">
+            <label for="newsletter-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="newsletter-email" spellcheck="false" aria-describedby="err-newsletter-email" name="email" autocomplete="email" required placeholder="you@company.com">
+            <span class="field__error" id="err-newsletter-email"></span>
+          </div>
+          <button class="btn btn--fig" type="submit">Subscribe</button>
+          <p class="form-note">We use your address for the newsletter only and never share it with third parties.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CLOSE. For buyers who would rather talk: the languages we speak and the number to call. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">Prefer to talk it through?</h2>
+          <p>We speak English, German, Turkish and Greek.</p>
         </div>
-        <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
+        <a class="btn btn--sun" href="tel:+905078634045">+90 507 863 40 45</a>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <h2 class="footer-title">Products</h2>
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Products">
+        <h2 class="foot__h">Products</h2>
         <ul>
-          <li><a href="product-dried-fig.html">Dried Fig</a></li>
-          <li><a href="product-fig-salami.html">Fig Salami</a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot</a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry</a></li>
-          <li><a href="products.html">All Products</a></li>
+          <li><a href="product-dried-fig.html">Dried fig</a></li>
+          <li><a href="product-fig-salami.html">Fig salami</a></li>
+          <li><a href="product-dried-apricot.html">Dried apricot</a></li>
+          <li><a href="product-dried-mulberry.html">Dried mulberry</a></li>
+          <li><a href="products.html">Compare all four</a></li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Company</h2>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot__h">Company</h2>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html#faq">FAQ</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#faq">Buyer questions</a></li>
+          <li><a class="foot__lang" href="tr/iletisim.html" lang="tr" hreflang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt="">Türkçe</a></li>
         </ul>
-      </div>
-
+      </nav>
       <div>
-        <h2 class="footer-title">Get in touch</h2>
-        <ul>
-          <li>Muzaffer T&uuml;rkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="contact.html">All contacts &rarr;</a></li>
-        </ul>
+        <h2 class="foot__h">Get in touch</h2>
+        <p>Muzaffer Türkekul, export sales<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli facility, Aydın, Türkiye<br>Shipping from İzmir</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
-      <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
-      <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Dried Fruits · <a href="privacy.html">Privacy and cookies</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Cookie preferences</button>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>

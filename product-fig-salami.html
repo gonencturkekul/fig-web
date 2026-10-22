@@ -23,6 +23,7 @@
   </script>
   <title>Fig Salami | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Fig salami: pressed dried fig paste worked with spices and nuts into a sliceable log. Six varieties, 180 g each, 100% vegan with no added sugar.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:title" content="Fig Salami | Aegean Sun Dried Fruits">
   <meta property="og:description" content="Fig salami: pressed dried fig paste worked with spices and nuts into a sliceable log. Six varieties, 180 g each, 100% vegan with no added sugar.">
   <meta property="og:type" content="website">
@@ -42,8 +43,15 @@
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-fig-salami.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/incir-salami.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-fig-salami.html">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/home.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
   <script src="assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
@@ -51,235 +59,206 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
-      <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
-    </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, home"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Main">
+      <ul>
+        <li><a href="products.html" aria-current="page">Products</a></li>
+        <li class="hide-s"><a href="about.html">Our story</a></li>
+        <li class="hide-s"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="EN, language: English">
+        <img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="product-fig-salami.html" hreflang="en" lang="en" aria-current="true"><img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="tr/incir-salami.html" hreflang="tr" lang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+      </ul>
+    </div>
+    <a class="btn btn--fig bar__cta" href="contact.html?product=salami#contact-form">Request a quote</a>
+  </header>
 
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Products
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
-          <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
-          <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot<small>Sulphured &amp; natural halves</small></a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry<small>Sun and wind dried, no processing</small></a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="contact.html#contact-form">Request a Quote</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="product-fig-salami.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="tr/incir-salami.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+  <main id="main">
+    <!-- PAGE HEAD. The title and what the product is on the left; a sliced log in the sun's round window on the right. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="products.html">Products</a></li><li aria-current="page">Fig salami</li></ol></nav>
+        <h1 id="page-title" class="display">Fig salami</h1>
+        <p class="phead__lead">Dried figs pressed into a dense paste, worked with spices or nuts and cured until it slices cleanly like charcuterie.</p>
+        <div class="phead__actions">
+          <a class="btn btn--fig" href="contact.html?product=salami#contact-form">Request a quote</a>
+          <a class="textlink" href="products.html">See the whole range</a>
+        </div>
+        <ul class="phead__facts" aria-label="Key facts">
+          <li>Six varieties</li><li>180&nbsp;g logs</li><li>Vegan, no added sugar</li><li>HS 2008.99</li>
         </ul>
       </div>
-  </nav>
-</header>
-<main id="main">
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="assets/img/fig-salami.webp" width="427" height="640" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
 
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li aria-current="page">Fig Salami</li></ol></nav>
-      <span class="eyebrow">Our signature product</span>
-      <h1>Fig Salami</h1>
-      <p>Known at home as <em>incir salamı</em>: dried figs pressed into a dense paste, worked with spices or nuts and cured until it slices cleanly like charcuterie. Six varieties, all 180&nbsp;g.</p>
-    </div>
-  </section>
+    <!-- THE ORIGIN. Where the product comes from: an Aegean way of keeping a good harvest. -->
+    <section class="sect" aria-labelledby="recipe-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="recipe-title" class="head">A village recipe, no shortcuts</h2>
+      </div>
+      <div class="sect__body prose">
+        <p class="statement">Known at home as <em lang="tr">incir salamı</em>, fig salami began as a way for Aegean families to keep the surplus of a good harvest.</p>
+        <p>Ripe figs were minced, packed into a cloth, tied with string and hung in the cellar until the log firmed up. Cut across, each slice showed a mosaic of walnut against dark fig.</p>
+      </div>
+    </section>
 
-  <section class="section section--white">
-    <div class="wrap split">
-      <div>
-        <h2>A village recipe, made at scale without shortcuts</h2>
-        <p>Fig salami began as a way for Aegean families to keep the surplus of a good harvest. Ripe figs were minced, packed into a cloth, tied with string and hung in the cellar until the log firmed up. Cut across, each slice showed a mosaic of walnut against dark fig.</p>
-        <p>We work the same way, only in a certified plant, and in place of the walnut we fold in six different spice and nut blends &mdash; ours in Athens, where the figs travel from Aydın to be pressed and cured: one ingredient list, no glucose syrup, no gelling agents, no preservatives. The firmness comes from pressing and curing, not from additives.</p>
-        <ul class="checklist">
+    <!-- HOW WE MAKE IT. The growers' figs in a round window beside the method: same recipe, certified plant, no additives. -->
+    <section class="duo" aria-labelledby="method-title">
+      <div class="duo__pic" data-reveal>
+        <img src="assets/img/fig-drying.webp" width="800" height="450" alt="Women from the growing families sorting figs on rows of drying trays in a field" loading="lazy">
+      </div>
+      <div class="duo__text" data-reveal>
+        <h2 id="method-title" class="head">Aydın figs, cured in Athens</h2>
+        <p>We work the same way, only in a certified plant, and in place of the walnut we fold in six different spice and nut blends. The figs travel from Aydın to our plant in Athens to be pressed and cured: one ingredient list, no glucose syrup, no gelling agents, no preservatives. The firmness comes from pressing and curing, not from additives.</p>
+        <ul class="dots">
           <li>A short ingredient list: dried figs and a few spices or nuts</li>
           <li>Cured 14&ndash;21 days for a clean, non-crumbling slice</li>
           <li>Naturally high in fibre, no added sugar</li>
           <li>All six varieties are 100% vegan and gluten free</li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="contact.html?product=fig-salami#contact-form">Request a quote</a>
-          <a class="btn btn--ghost" href="products.html">Back to products</a>
-        </div>
       </div>
-      <div class="split__art">
-        <img src="assets/img/fig-salami.webp" width="427" height="640" alt="A log of fig salami dusted with flour, part-sliced into rounds on brown paper with a fork">
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Specification</h3>
-          <table class="spec-table">
-            <tr><th scope="row">Product name</th><td>Fig salami (incir salamı)</td></tr>
-            <tr><th scope="row">Fig origin</th><td>Aydın, T&uuml;rkiye</td></tr>
-            <tr><th scope="row">Produced in</th><td>Athens, Greece</td></tr>
-            <tr><th scope="row">Ingredients</th><td>Dried figs, plus almonds, pistachios, orange, onion or spices depending on the variety</td></tr>
-            <tr><th scope="row">Variants</th><td>Smoked paprika, almond, pistachio, Moroccan spices, tikka masala, orange</td></tr>
-            <tr><th scope="row">Net weight</th><td>180&nbsp;g (all six varieties)</td></tr>
-            <tr><th scope="row">Log dimensions</th><td>&Oslash; 45&ndash;55&nbsp;mm, length 180&ndash;240&nbsp;mm</td></tr>
-            <tr><th scope="row">Moisture</th><td>18&ndash;22%</td></tr>
-            <tr><th scope="row">Additives</th><td>None. No added sugar, no preservatives.</td></tr>
-            <tr><th scope="row">Allergens</th><td>Tree nuts (almond and pistachio varieties only)</td></tr>
-            <tr><th scope="row">Shelf life</th><td>12 months at 4&ndash;18&nbsp;&deg;C, 65% RH</td></tr>
-            <tr><th scope="row">HS code</th><td>2008.99</td></tr>
-          </table>
-        </div>
-
-        <div>
-          <div class="card" style="margin-bottom:26px">
-            <h3>Packaging options</h3>
-            <ul class="checklist mb-0">
-              <li>180&nbsp;g logs, flow-wrapped and sleeved &mdash; all six varieties</li>
-              <li>Vacuum-packed logs for extended chilled display</li>
-              <li>Mixed cartons carrying all six varieties</li>
-              <li>Gift boxes pairing salami with dried figs</li>
-              <li>Private label sleeves printed to your artwork</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Serving suggestion</h3>
-            <p class="muted mb-0">Slice 5&ndash;7&nbsp;mm thick and serve chilled with aged cheese, blue cheese or cured meats. Also sold sliced as a lunchbox snack and used as a bakery inclusion.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Product range</span>
-        <h2>Our six varieties</h2>
+    <!-- VARIETIES. The six blends as a two-column list across the full frame; tree-nut varieties carry an allergen note. -->
+    <section class="sect sect--wide" aria-labelledby="range-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="range-title" class="head">Our six varieties</h2>
         <p class="lead">Every variety starts from the same fig paste; the spices and nuts we work into it make the difference. All six are produced as 180&nbsp;g logs.</p>
       </div>
-
-      <div class="format-grid">
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Smoked paprika</h3>
-          <p><strong>Ingredients:</strong> dried figs, Aleppo pepper, cinnamon, smoked paprika.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Almond</h3>
-          <p><strong>Ingredients:</strong> dried figs, almonds, black pepper.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Pistachio</h3>
-          <p><strong>Ingredients:</strong> dried figs, Aegina pistachios, Aleppo pepper, cinnamon, smoked paprika.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Moroccan spices</h3>
-          <p><strong>Ingredients:</strong> dried figs, onion, ras el hanout spice blend.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Tikka masala</h3>
-          <p><strong>Ingredients:</strong> dried figs, onion, tikka masala spices.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">180&nbsp;g</span>
-          <h3>Orange</h3>
-          <p><strong>Ingredients:</strong> dried figs, orange, black pepper.</p>
-        </article>
+      <div class="sect__body">
+        <ul class="items">
+          <li><h3>Smoked paprika</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, Aleppo pepper, cinnamon, smoked paprika.</p></li>
+          <li><h3>Almond</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, almonds, black pepper.</p><p class="items__note">Contains tree nuts</p></li>
+          <li><h3>Pistachio</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, Aegina pistachios, Aleppo pepper, cinnamon, smoked paprika.</p><p class="items__note">Contains tree nuts</p></li>
+          <li><h3>Moroccan spices</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, onion, ras el hanout spice blend.</p></li>
+          <li><h3>Tikka masala</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, onion, tikka masala spices.</p></li>
+          <li><h3>Orange</h3><span class="items__pack">180&nbsp;g</span><p>Dried figs, orange, black pepper.</p></li>
+        </ul>
       </div>
+    </section>
 
-      <p class="muted" style="margin-top:24px">All six are 100% vegan, with no added sugar, no preservatives and no gluten. Sleeves and boxes can be printed to your artwork, including multilingual labels and market-specific nutrition panels.</p>
-      <a class="btn btn--primary" href="contact.html?product=fig-salami#contact-form">Ask for the current price list</a>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>A shelf differentiator</h2>
-        <p>Fig salami is our fastest-growing line in specialty retail. Ask for the seasonal forecast.</p>
+    <!-- SPECIFICATION. A real table on the sand band: the facts a buyer copies into a purchase order. -->
+    <section class="sect sect--tone" aria-labelledby="spec-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="spec-title" class="head">Specification</h2>
+        <p class="lead">All six are 100% vegan, with no added sugar, no preservatives and no gluten.</p>
       </div>
-      <a class="btn btn--primary" href="contact.html?product=fig-salami#contact-form">Talk to sales</a>
-    </div>
-  </section>
+      <div class="sect__body">
+        <table class="spec">
+          <tr><th scope="row">Product name</th><td>Fig salami (incir salamı)</td></tr>
+          <tr><th scope="row">Fig origin</th><td>Aydın, Türkiye</td></tr>
+          <tr><th scope="row">Produced in</th><td>Athens, Greece</td></tr>
+          <tr><th scope="row">Ingredients</th><td>Dried figs, plus almonds, pistachios, orange, onion or spices depending on the variety</td></tr>
+          <tr><th scope="row">Variants</th><td>Smoked paprika, almond, pistachio, Moroccan spices, tikka masala, orange</td></tr>
+          <tr><th scope="row">Net weight</th><td>180&nbsp;g (all six varieties)</td></tr>
+          <tr><th scope="row">Log dimensions</th><td>&Oslash;&nbsp;45&ndash;55&nbsp;mm, length 180&ndash;240&nbsp;mm</td></tr>
+          <tr><th scope="row">Moisture</th><td>18&ndash;22%</td></tr>
+          <tr><th scope="row">Additives</th><td>None. No added sugar, no preservatives.</td></tr>
+          <tr><th scope="row">Allergens</th><td>Tree nuts (almond and pistachio varieties only)</td></tr>
+          <tr><th scope="row">Shelf life</th><td>12 months at 4&ndash;18&nbsp;&deg;C, 65% RH</td></tr>
+          <tr><th scope="row">HS code</th><td>2008.99</td></tr>
+        </table>
+      </div>
+    </section>
 
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
+    <!-- PACKS AND SERVING. Two short columns: how it ships, and how it is eaten. -->
+    <section class="sect" aria-labelledby="packs-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="packs-title" class="head">Packed for the shelf</h2>
+      </div>
+      <div class="sect__body cols">
+        <div>
+          <h3 class="sub">Packaging options</h3>
+          <ul class="dots">
+            <li>180&nbsp;g logs, flow-wrapped and sleeved, in all six varieties</li>
+            <li>Vacuum-packed logs for extended chilled display</li>
+            <li>Mixed cartons carrying all six varieties</li>
+            <li>Gift boxes pairing salami with dried figs</li>
+            <li>Private label sleeves printed to your artwork, including multilingual labels and market-specific nutrition panels</li>
+          </ul>
         </div>
-        <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
+        <div>
+          <h3 class="sub">Serving suggestion</h3>
+          <p>Slice 5&ndash;7&nbsp;mm thick and serve chilled with aged cheese, blue cheese or cured meats. Also sold sliced as a lunchbox snack and used as a bakery inclusion.</p>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h2 class="footer-title">Products</h2>
-        <ul>
-          <li><a href="product-dried-fig.html">Dried Fig</a></li>
-          <li><a href="product-fig-salami.html">Fig Salami</a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot</a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry</a></li>
-          <li><a href="products.html">All Products</a></li>
-        </ul>
+    <!-- CLOSE. One line, one action, on the fig ground with the sun rising at the edge. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">A shelf differentiator</h2>
+          <p>Fig salami is our fastest-growing line in specialty retail. Ask for the seasonal forecast and the current price list.</p>
+        </div>
+        <a class="btn btn--sun" href="contact.html?product=salami#contact-form">Talk to sales</a>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <h2 class="footer-title">Company</h2>
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Products">
+        <h2 class="foot__h">Products</h2>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html#faq">FAQ</a></li>
+          <li><a href="product-dried-fig.html">Dried fig</a></li>
+          <li><a href="product-fig-salami.html">Fig salami</a></li>
+          <li><a href="product-dried-apricot.html">Dried apricot</a></li>
+          <li><a href="product-dried-mulberry.html">Dried mulberry</a></li>
+          <li><a href="products.html">Compare all four</a></li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Get in touch</h2>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot__h">Company</h2>
         <ul>
-          <li>Muzaffer T&uuml;rkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="contact.html">All contacts &rarr;</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#faq">Buyer questions</a></li>
+          <li><a class="foot__lang" href="tr/incir-salami.html" lang="tr" hreflang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt="">Türkçe</a></li>
         </ul>
+      </nav>
+      <div>
+        <h2 class="foot__h">Get in touch</h2>
+        <p>Muzaffer Türkekul, export sales<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli facility, Aydın, Türkiye<br>Shipping from İzmir</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
-      <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
-      <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Dried Fruits · <a href="privacy.html">Privacy and cookies</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Cookie preferences</button>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>

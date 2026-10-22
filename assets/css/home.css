@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Aegean Sun home pages (index.html and tr/index.html), 2026 redesign
-   ("One motif: the sun"). The other pages still use styles.css; this file
-   is the home pages' only stylesheet, so it also carries the consent bar and
-   chat widget styles at the end (copied from styles.css, see that section).
+   Aegean Sun site stylesheet, 2026 redesign ("One motif: the sun").
+   Every page (home and inner pages, EN and TR) loads this file and fonts.css.
+   It also carries the consent bar and chat widget styles at the end (first
+   copied from the retired styles.css, see that section).
    The sun that dries the fruit, and names the company, is the only shape with
    character on the page: a giant disc in the hero, the round window every
    photograph sits in, the dot used as a bullet, the pill button, the footer
@@ -74,7 +74,7 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
 .skip:hover { color: #fff; }
 
 /* Display and heading faces */
-.display, .head, .sub, .bar__brand, .btn, .cell, .foot__name, .foot__h, .cat__count, .items h4, .items__pack, .field label, .label dt, .film__tabs button, .range__jump a {
+.display, .head, .sub, .bar__brand, .btn, .cell, .foot__name, .foot__h, .cat__count, .items h4, .items h3, .items__pack, .field label, .label dt, .film__tabs button, .range__jump a {
   font-family: var(--face-display);
   font-weight: 700;
 }
@@ -239,7 +239,7 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
   padding-left: 32px;
 }
 .items li::before { content: ""; position: absolute; left: 0; top: .42em; width: 14px; height: 14px; border-radius: 50%; background: var(--sun); }
-.items h4 { font-size: var(--step-body); line-height: 1.25; color: var(--fig-dark); letter-spacing: -.01em; }
+.items h4, .items h3 { font-size: var(--step-body); line-height: 1.25; color: var(--fig-dark); letter-spacing: -.01em; }
 .items__pack { font-size: 1rem; color: var(--fig); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .items p { grid-column: 1 / -1; margin-top: 6px; font-size: 1rem; line-height: 1.5; max-width: 52ch; }
 .items .items__note { margin-top: 4px; color: var(--apricot-ink); font-family: var(--face-display); font-weight: 700; font-size: var(--step-small); }
@@ -563,10 +563,288 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
 }
 
 /* ==========================================================================
+   Inner pages (products, the four product pages, about, contact, privacy, 404;
+   EN and TR). Same tokens, faces, bar and footer as the home page; these are
+   the extra parts an inner page needs. Same rules too: the sun is the only
+   shape with character (round photo windows, sun dots for bullets), surfaces
+   are separated by tone, not lines or shadows, and every section sits on the
+   one 12-column frame with the --m outer margins.
+   ========================================================================== */
+
+/* Current page in the bar: fig text with the sun underline. */
+.bar__nav a[aria-current="page"] { color: var(--fig); text-decoration: underline; text-decoration-color: var(--sun); text-decoration-thickness: 3px; text-underline-offset: .45em; }
+
+/* ---- Page head: breadcrumb, title, one sentence, the action; the product in the sun on the right ---- */
+.phead {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap);
+  align-items: center; padding: clamp(24px, 4vw, 56px) var(--m) 0; position: relative; overflow: hidden;
+}
+.phead__copy { grid-column: 1 / span 7; padding-bottom: clamp(32px, 5vw, 72px); position: relative; z-index: 2; }
+/* A page head without a picture (privacy, 404) keeps a wider text column. */
+.phead--text .phead__copy { grid-column: 1 / span 9; }
+.crumbs ol { display: flex; flex-wrap: wrap; align-items: center; gap: 0 .5em; font-size: var(--step-small); color: var(--muted); }
+/* A small sun dot separates the trail, instead of a slash or chevron. */
+.crumbs li + li::before { content: ""; display: inline-block; width: .42em; height: .42em; margin-right: .5em; border-radius: 50%; background: var(--sun); vertical-align: middle; }
+.crumbs a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); }
+.crumbs a:hover { color: var(--fig-dark); }
+.crumbs [aria-current] { color: var(--ink); }
+.phead h1 { margin-top: clamp(12px, 2vw, 28px); }
+/* Inner-page titles are one step smaller than the home display, so long product names fit in two lines. */
+.phead .display { font-size: clamp(2.75rem, 1rem + 4.6vw, 5.5rem); }
+.phead__lead { margin-top: 28px; max-width: 38ch; font-size: var(--step-lead); line-height: 1.4; }
+.phead__actions { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+/* Key facts as sand pills under the lead (variety, origin, HS code). Facts, not labels: sentence case. */
+.phead__facts { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 8px; }
+.phead__facts li { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; background: var(--sand); color: var(--fig-dark); font-family: var(--face-display); font-weight: 700; font-size: 1rem; }
+/* The sun disc, cropped by the right edge, with the photograph in a concentric round window (as in the home hero). */
+.phead__sun {
+  grid-column: 8 / -1; justify-self: end; align-self: end;
+  width: min(46vw, 640px); aspect-ratio: 1; margin-right: calc(var(--m) * -1 - 6vw); margin-bottom: -10%;
+  border-radius: 50%; background: var(--sun); display: grid; place-items: center;
+}
+.phead__window { width: 70%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--sand); transform: translateX(-8%); }
+.phead__window img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---- Section frame: heading in the left third (sticky while its content scrolls), content in the right two thirds ---- */
+.sect { padding: var(--section) var(--m) 0; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap); row-gap: 32px; align-items: start; }
+.sect > .sect__head { grid-column: 1 / span 5; position: sticky; top: 96px; }
+.sect > .sect__body { grid-column: 7 / -1; }
+/* Section titles beside content stop at 56px, so a six-word title holds two lines in five columns. */
+.sect > .sect__head .head { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem); }
+/* Wide variant: heading across the top, content across the whole frame (lists of grades, comparison tables). */
+.sect--wide > .sect__head { grid-column: 1 / span 8; position: static; }
+.sect--wide > .sect__body { grid-column: 1 / -1; }
+.sect__head .lead { margin-top: 20px; font-size: var(--step-body); line-height: 1.5; max-width: 34ch; }
+.sect--wide .sect__head .lead { max-width: 52ch; }
+/* Tone variant: a full-width sand band, the one way a section changes ground. */
+.sect--tone { margin-top: var(--section); padding-bottom: var(--section); background: var(--sand); }
+.prose p + p { margin-top: 1em; }
+.prose p { max-width: 62ch; }
+.prose .statement { font-size: var(--step-lead); line-height: 1.35; color: var(--fig-dark); max-width: 30ch; margin-bottom: 28px; }
+
+/* Lists with the sun dot where a bullet would be. */
+.dots { display: grid; gap: 14px; }
+.dots li { position: relative; padding-left: 30px; max-width: 60ch; }
+.dots li::before { content: ""; position: absolute; left: 0; top: .45em; width: 13px; height: 13px; border-radius: 50%; background: var(--sun); }
+.dots--leaf li::before { background: var(--leaf); }
+.prose + .dots, .prose .dots { margin-top: 28px; }
+
+/* ---- Specification table: a real table, so it may have rows; rows are tone steps, not hairlines ---- */
+.spec { width: 100%; border-collapse: separate; border-spacing: 0 4px; font-size: 1rem; }
+.spec th, .spec td { text-align: left; vertical-align: top; padding: 14px 18px; background: var(--sand); }
+.spec th { width: 34%; font-family: var(--face-display); font-weight: 700; color: var(--fig-dark); }
+.spec tr > :first-child { border-radius: 14px 0 0 14px; }
+.spec tr > :last-child { border-radius: 0 14px 14px 0; }
+.spec thead th { background: var(--fig-dark); color: var(--pale); width: auto; }
+.sect--tone .spec th, .sect--tone .spec td { background: var(--ground); }
+.sect--tone .spec thead th { background: var(--fig-dark); }
+/* Wide tables scroll inside their own box on a phone; give the wrapper tabindex="0" and a label. */
+.spec-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.spec-scroll:focus-visible { outline-offset: 4px; }
+.spec--compare { min-width: 720px; }
+.spec--compare th { width: auto; }
+.spec caption { text-align: left; padding-bottom: 12px; color: var(--muted); font-size: var(--step-small); }
+
+/* ---- Two or three columns of short blocks ---- */
+.cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px clamp(32px, 4vw, 64px); }
+.cols--3 { grid-template-columns: repeat(3, 1fr); }
+.cols h3 { margin-bottom: 12px; }
+.cols p { font-size: 1rem; max-width: 46ch; }
+.cols .dots { font-size: 1rem; }
+
+/* ---- Picture and text: a round window beside the words ---- */
+.duo { padding: var(--section) var(--m) 0; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap); row-gap: 40px; align-items: center; }
+.duo__pic { grid-column: 1 / span 5; aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--sand); }
+.duo__pic img { width: 100%; height: 100%; object-fit: cover; }
+.duo__text { grid-column: 7 / -1; }
+.duo--flip .duo__pic { grid-column: 8 / -1; grid-row: 1; }
+.duo--flip .duo__text { grid-column: 1 / span 6; grid-row: 1; }
+.duo__text .head + * { margin-top: 28px; }
+.duo__text .btn, .duo__text .textlink { margin-top: 28px; }
+
+/* ---- Figures: big numbers set in the display face ---- */
+.figures { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px var(--gap); }
+.figures__n { display: block; font-family: var(--face-display); font-weight: 700; font-size: clamp(2.75rem, 1.5rem + 3vw, 4.5rem); line-height: 1; letter-spacing: -.04em; color: var(--fig); }
+.figures p { margin-top: 10px; font-size: 1rem; max-width: 24ch; }
+
+/* ---- Questions: each answer behind its own question, on a sand step; the sun dot grows when open ---- */
+.faq { display: grid; gap: 8px; }
+.faq details { background: var(--sand); border-radius: 14px; }
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 22px;
+  font-family: var(--face-display); font-weight: 700; font-size: var(--step-body); color: var(--fig-dark); cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--sun); transition: transform .2s var(--ease); }
+.faq details[open] summary::after { transform: scale(1.5); }
+.faq details > :not(summary) { padding: 0 22px 20px; max-width: 64ch; font-size: 1rem; }
+.sect--tone .faq details { background: var(--ground); }
+
+/* ---- The closing panel: fig ground, one line, one action, the sun rising at the edge ---- */
+.closer { padding: var(--section) var(--m) var(--section); }
+.closer__panel {
+  position: relative; overflow: hidden; background: var(--fig-dark); color: var(--pale);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap); align-items: center;
+  padding: clamp(40px, 6vw, 96px) clamp(24px, 4vw, 64px); min-height: 360px;
+}
+.closer__panel :focus-visible { outline-color: var(--sun-lt); }
+.closer__panel::after { content: ""; position: absolute; right: -9%; bottom: -55%; width: min(48vw, 640px); aspect-ratio: 1; border-radius: 50%; background: var(--sun); }
+.closer__text { grid-column: 1 / span 7; position: relative; z-index: 1; }
+.closer__text .head { color: var(--pale); }
+.closer__text p { margin-top: 20px; max-width: 40ch; }
+.closer__panel .btn { grid-column: 9 / span 3; justify-self: start; position: relative; z-index: 1; }
+
+/* ---- Contact: the enquiry form on a sun ground (like the home carton label), direct lines beside it ---- */
+.form-sheet { background: var(--sun); padding: clamp(24px, 4vw, 56px); }
+.form-sheet :focus-visible { outline-color: var(--fig-dark); }
+.form-sheet .head { color: var(--fig-dark); }
+.form-sheet > p { margin-top: 16px; max-width: 46ch; }
+.form-grid { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+.form-grid .field--wide, .form-grid > .btn, .form-grid > .form-note { grid-column: 1 / -1; }
+.field textarea {
+  width: 100%; min-height: 140px; padding: 12px 14px; resize: vertical;
+  font: 400 1rem/1.5 var(--face-text); color: var(--ink);
+  background: var(--ground); border: 0; border-bottom: 3px solid var(--fig-dark); border-radius: 0;
+}
+.field textarea:hover { background-color: #fff; }
+.field textarea:focus-visible { outline: 3px solid var(--fig-dark); outline-offset: 0; background-color: #fff; }
+/* main.js marks invalid fields with .has-error on the .field wrapper and aria-invalid on the control. */
+.field.has-error input, .field.has-error select, .field.has-error textarea, .field textarea[aria-invalid="true"], .field select[aria-invalid="true"] { border-bottom-color: var(--error); background-color: #fff3f1; }
+.field__error:empty { display: none; }
+.form-note { font-size: var(--step-small); }
+/* main.js shows the status box by adding .is-visible plus --ok or --err. */
+.form-status { display: none; padding: 14px 18px; border-radius: 14px; font-weight: 600; }
+.form-status.is-visible { display: block; margin-top: 20px; }
+.form-status--ok { background: var(--ground); color: var(--leaf-dark); }
+.form-status--err { background: #fff3f1; color: #7d1a14; }
+.form-status:focus { outline: none; }
+.form-status a { color: inherit; }
+.lines { display: grid; gap: 36px; }
+.lines h3 { margin-bottom: 10px; }
+.lines p { font-size: 1rem; }
+.lines a { display: inline-block; padding: 8px 0; margin: -8px 0; }
+.signup { background: var(--sand); padding: clamp(24px, 3vw, 40px); }
+.signup form { margin-top: 20px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+.signup .field input { background: var(--ground); }
+
+/* ---- Legal text: one readable column, the summary on a sand step ---- */
+.legal { padding: var(--section) var(--m) var(--section); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap); }
+.legal__body { grid-column: 3 / span 8; }
+.legal__body h2 { font-family: var(--face-display); font-weight: 700; font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem); line-height: 1.1; letter-spacing: -.02em; color: var(--fig-dark); margin: 56px 0 16px; }
+.legal__body h3 { font-family: var(--face-display); font-weight: 700; font-size: var(--step-body); color: var(--fig-dark); margin: 28px 0 8px; }
+.legal__body p, .legal__body ul { max-width: 68ch; margin-bottom: 1em; }
+.legal__body ul { display: grid; gap: 8px; }
+.legal__body ul li { position: relative; padding-left: 26px; }
+.legal__body ul li::before { content: ""; position: absolute; left: 0; top: .5em; width: 11px; height: 11px; border-radius: 50%; background: var(--sun); }
+.legal__summary { background: var(--sand); padding: clamp(20px, 3vw, 36px); border-radius: 14px; }
+.legal__summary h2 { margin-top: 0; }
+.legal__updated { color: var(--muted); font-size: var(--step-small); }
+.legal .spec-scroll { margin: 16px 0 24px; }
+/* A button that reads as a text link (the "cookie preferences" link inside running text). */
+.linkbutton { padding: 0; border: 0; background: none; font: inherit; color: var(--fig); text-decoration: underline; text-underline-offset: .18em; cursor: pointer; min-height: 44px; }
+.linkbutton:hover { color: var(--fig-dark); }
+
+/* ---- Inner pages: tablet ---- */
+@media (max-width: 980px) {
+  .phead { display: block; }
+  .phead__sun { width: 92vw; margin: 8px 0 -24vw auto; margin-right: calc(var(--m) * -1 - 14vw); }
+  .sect > .sect__head, .sect > .sect__body, .sect--wide > .sect__head { grid-column: 1 / -1; position: static; }
+  .duo__pic, .duo--flip .duo__pic { grid-column: 2 / span 10; grid-row: auto; }
+  .duo__text, .duo--flip .duo__text { grid-column: 1 / -1; grid-row: auto; }
+  .figures { grid-template-columns: 1fr 1fr; }
+  .cols--3 { grid-template-columns: 1fr 1fr; }
+  .closer__text { grid-column: 1 / -1; }
+  .closer__panel .btn { grid-column: 1 / -1; margin-top: 32px; }
+  .closer__panel::after { width: 70vw; right: -30%; bottom: -60%; }
+  .legal__body { grid-column: 1 / -1; }
+}
+
+/* ---- Inner pages: phone ---- */
+@media (max-width: 640px) {
+  .phead .display { font-size: 12vw; }
+  .phead__lead { font-size: 1.125rem; margin-top: 20px; }
+  .phead__sun { width: 104vw; margin-right: calc(var(--m) * -1 - 22vw); margin-bottom: -30vw; }
+  .cols, .cols--3 { grid-template-columns: 1fr; }
+  .spec th, .spec td { padding: 12px 14px; }
+  .spec:not(.spec--compare) th { width: 40%; }
+  .duo__pic, .duo--flip .duo__pic { grid-column: 1 / -1; width: 86%; }
+  .form-grid { grid-template-columns: 1fr; }
+  .signup form { grid-template-columns: 1fr; }
+  .closer { padding-left: 10px; padding-right: 10px; }
+}
+
+/* ---- Contact page (contact.html, tr/iletisim.html): extra rules for the home.css "Inner pages" section ---- */
+
+/* The enquiry section: the sun form sheet on the left 7 columns, the direct lines on the right 4,
+   on the same 12-column frame and --m margins as .sect. */
+.reach { padding: var(--section) var(--m) 0; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gap); row-gap: 56px; align-items: start; }
+/* The form is why most visitors open this page, so it follows the page head closely
+   instead of a full --section gap. */
+.phead + .reach { padding-top: clamp(40px, 5vw, 80px); }
+.reach > .form-sheet { grid-column: 1 / span 7; }
+.reach > .reach__side { grid-column: 9 / -1; position: sticky; top: 96px; }
+
+/* Headings inside the sheet and beside it stop at the .sect title size, so they sit within 7 and 4 columns. */
+.form-sheet .head, .reach__side .head { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.5rem); }
+.reach__side .lines { margin-top: 32px; }
+.lines p + p { margin-top: 12px; }
+
+/* The send button on the sun sheet sizes to its text instead of spanning the grid (home.css spans it). */
+.form-grid > .btn { justify-self: start; margin-top: 8px; }
+
+/* Error red (#7d1a14) and the asterisk are under 4.5:1 on the sun ground (about 3.9:1).
+   On the sheet the asterisk takes the fig-dark ink, and an error message sits on a small cream step,
+   where the same red reads at over 9:1. */
+.form-sheet .req { color: var(--fig-dark); }
+.form-sheet .field__error:not(:empty) { align-self: flex-start; padding: 4px 10px; border-radius: 8px; background: var(--ground); }
+/* main.js clears .has-error when a field is corrected but leaves the old message text in the slot,
+   so a message only shows while its field is still marked invalid. */
+.form-sheet .field:not(.has-error) .field__error, .signup .field:not(.has-error) .field__error { display: none; }
+
+/* Newsletter: the note under the field and button spans both grid columns of the .signup form;
+   the button lines up with the input, not with an error message under it. */
+.signup form { align-items: start; }
+.signup form > .btn { margin-top: calc(1rem * 1.55 + 6px); min-height: 52px; }
+.signup .form-note { grid-column: 1 / -1; }
+
+/* Tablet: the direct lines drop under the form and stop being sticky. */
+@media (max-width: 980px) {
+  .reach > .form-sheet, .reach > .reach__side { grid-column: 1 / -1; position: static; }
+}
+
+/* Phone: the newsletter button falls under the field, so it loses the label offset. */
+@media (max-width: 640px) {
+  .signup form > .btn { margin-top: 0; }
+}
+/* ---- Privacy pages (privacy.html, tr/gizlilik.html): extra rules for the legal column ----
+
+/* 1. Phone overflow. The legal column is a grid item, so its minimum width defaults to its
+      min-content. The long e-mail address in "In short" (and the 720px four-column table)
+      pushed the column wider than the screen: text ended 7-11px from the right edge at 390px.
+      min-width: 0 lets the column shrink to the frame; .spec-scroll then scrolls on its own. */
+.legal__body { min-width: 0; }
+
+/* 2. The e-mail address is one unbreakable word. Let links in legal text wrap anywhere,
+      so the address breaks instead of pushing past the margin. */
+.legal__body a { overflow-wrap: anywhere; }
+
+/* 3. In-text "Cookie preferences" button. .linkbutton has min-height: 44px, which on an inline
+      button inside a paragraph opens a tall gap above and below that line. An inline text link
+      is exempt from the target-size rule (WCAG 2.5.8), so inside running text it can be the
+      height of the line, like every other link in the paragraph. */
+.legal__body p .linkbutton { min-height: 0; line-height: inherit; vertical-align: baseline; }
+
+/* 4. The gap under a text-only page head. .phead__copy keeps its bottom padding (sized for the
+      photograph beside it) and .legal adds a full --section on top, so about 150px of empty
+      ground sits between the lead and "Last updated" at 1440px. With no picture, one step is enough. */
+.phead--text + .legal { padding-top: clamp(8px, 2vw, 24px); }
+
+
+/* ==========================================================================
    Shared widgets: cookie consent bar (consent.js) and sales assistant (chat.js)
-   Copied verbatim from styles.css so both scripts render the same as on every
-   other page. Keep the two copies in step until all pages move to the new
-   design. The scripts build their own markup; nothing here is page-specific.
+   First copied from the old styles.css (retired in October 2026, now that every
+   page uses this file); this is now the only copy. The scripts build their own
+   markup; nothing here is page-specific.
    The old token names they use are mapped onto this page's tokens on each
    widget's root, so they do not leak into the rest of the page.
    ========================================================================== */

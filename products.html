@@ -23,6 +23,7 @@
   </script>
   <title>Products | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Dried figs, fig salami, dried apricots and dried mulberries from Türkiye. Grades, calibres, packaging formats and private label options for wholesale buyers.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:title" content="Products | Aegean Sun Dried Fruits">
   <meta property="og:description" content="Dried figs, fig salami, dried apricots and dried mulberries from Türkiye. Grades, calibres, packaging formats and private label options for wholesale buyers.">
   <meta property="og:type" content="website">
@@ -42,207 +43,183 @@
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/products.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/urunler.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/products.html">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/home.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
+  <script src="assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
        so it 404s when the site is opened from a plain local server. -->
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
-      <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
-    </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Products
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
-          <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
-          <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot<small>Sulphured &amp; natural halves</small></a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry<small>Sun and wind dried, no processing</small></a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="contact.html#contact-form">Request a Quote</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="products.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="tr/urunler.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
-        </ul>
-      </div>
-  </nav>
-</header>
-<main id="main">
-
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Products</li></ol></nav>
-      <span class="eyebrow">Our range</span>
-      <h1>Products</h1>
-      <p>Four specialities, dried and packed by us in T&uuml;rkiye. Every grade below is available in retail, food-service and industrial formats, with private label on request.</p>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <h2>The range</h2>
-      </div>
-      <div class="grid grid--4">
-        <article class="product-card">
-          <div class="product-card__media"><img src="assets/img/dried-fig.webp" width="1280" height="1280" alt="Whole sun-dried figs with two halves cut open to show the seeded flesh" loading="lazy" decoding="async"></div>
-          <div class="product-card__body">
-            <span class="tag">Aydın, Aegean region</span>
-            <h3>Dried Fig</h3>
-            <p>Whole natural figs, sun-dried and hand-graded into eight grades, from Lerida and Protoben to diced. Soft, honeyed and packed without additives.</p>
-            <p class="muted" style="font-size:.9rem"><strong>Formats:</strong> 200&nbsp;g / 500&nbsp;g retail &middot; 5&nbsp;kg catering &middot; 10&nbsp;kg bulk</p>
-            <a class="product-card__link" href="product-dried-fig.html">Full specification &rarr;</a>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__media"><img src="assets/img/fig-salami.webp" width="427" height="640" alt="A log of fig salami dusted with flour, part-sliced into rounds on brown paper with a fork" loading="lazy" decoding="async"></div>
-          <div class="product-card__body">
-            <span class="tag">Signature product</span>
-            <h3>Fig Salami</h3>
-            <p>Pressed fig paste worked with spices or nuts into a firm log and cured until sliceable. Six varieties, all 180&nbsp;g and free of added sugar.</p>
-            <p class="muted" style="font-size:.9rem"><strong>Formats:</strong> 180&nbsp;g logs &middot; six varieties &middot; mixed cartons</p>
-            <a class="product-card__link" href="product-fig-salami.html">Full specification &rarr;</a>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <div class="product-card__media"><img src="assets/img/dried-apricot.webp" width="600" height="400" alt="A dark bowl heaped with golden dried apricot halves on a weathered wooden table" loading="lazy" decoding="async"></div>
-          <div class="product-card__body">
-            <span class="tag">Malatya, Eastern Anatolia</span>
-            <h3>Dried Apricot</h3>
-            <p>Apricot halves in sulphured golden and natural dark grades, sized No.1 to No.6, soft-textured and free of stones.</p>
-            <p class="muted" style="font-size:.9rem"><strong>Formats:</strong> 200&nbsp;g / 500&nbsp;g retail &middot; 5&nbsp;kg catering &middot; 12.5&nbsp;kg bulk</p>
-            <a class="product-card__link" href="product-dried-apricot.html">Full specification &rarr;</a>
-          </div>
-        </article>
-        <article class="product-card">
-          <div class="product-card__media"><img src="assets/img/dried-mulberry.webp" width="612" height="408" alt="A wide bowl heaped with pale golden dried white mulberries" loading="lazy" decoding="async"></div>
-          <div class="product-card__body">
-            <span class="tag">Anatolia</span>
-            <h3>Dried Mulberry</h3>
-            <p>Left to ripen fully on the tree, then dried in the sun and wind with nothing done to it. Fumigated, cleaned and packed at our plant.</p>
-            <p class="muted" style="font-size:.9rem"><strong>Formats:</strong> 12.5&nbsp;kg bulk &middot; any grammage to order</p>
-            <a class="product-card__link" href="product-dried-mulberry.html">Full specification &rarr;</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap split">
-      <div>
-        <span class="eyebrow">Packaging</span>
-        <h2>Your format, your label</h2>
-        <p>We run our own packing line, so a pallet can leave as a supermarket-ready retail pack or as a plain industrial carton for further processing.</p>
-        <ul class="checklist">
-          <li><strong>Retail:</strong> printed pouches, corrugated trays, PET jars and gift boxes.</li>
-          <li><strong>Food service:</strong> 5&nbsp;kg and 10&nbsp;kg cartons with food-grade liners.</li>
-          <li><strong>Industrial:</strong> 12.5&nbsp;kg blocks, IQF-compatible and paste formats.</li>
-          <li><strong>Private label:</strong> artwork, barcodes and multilingual labels handled in house.</li>
-        </ul>
-        <a class="btn btn--primary" href="contact.html#contact-form">Discuss your packaging</a>
-      </div>
-      <div class="split__art">
-        <img src="assets/img/fig-box.webp" width="1000" height="1000" alt="Whole dried figs packed in rows in a wooden box, with bay leaves laid between them" loading="lazy" decoding="async">
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Wholesale &amp; export</span>
-        <h2>Built for buyers who order by the pallet</h2>
-        <p class="lead">We are a wholesale supplier, not a shop. Everything below is set up around container loads, repeat programmes and the paperwork that has to travel with them.</p>
-      </div>
-
-      <ul class="feature-list">
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-box"></use></svg></span>
-          <div>
-            <h3>Bulk formats</h3>
-            <p class="muted mb-0">5&nbsp;kg, 10&nbsp;kg and 12.5&nbsp;kg lined cardboard cartons as standard, wooden crates on request, stacked on heat-treated ISPM&nbsp;15 pallets and stretch-wrapped for sea freight.</p>
-          </div>
-        </li>
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-tag"></use></svg></span>
-          <div>
-            <h3>Private label</h3>
-            <p class="muted mb-0">We print pouches, sleeves and cartons to your artwork, handle barcodes and multilingual nutrition panels, and hold the plates for repeat runs.</p>
-          </div>
-        </li>
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-document"></use></svg></span>
-          <div>
-            <h3>Export documentation</h3>
-            <p class="muted mb-0">Certificate of origin, health certificate, analysis report and phytosanitary papers travel with every shipment. ATR and EUR.1 issued where applicable.</p>
-          </div>
-        </li>
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-scale"></use></svg></span>
-          <div>
-            <h3>Order sizes</h3>
-            <p class="muted mb-0">From one pallet of a stocked format up to full container loads. Mixed containers across the four product lines are welcome.</p>
-          </div>
-        </li>
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-ship"></use></svg></span>
-          <div>
-            <h3>Terms &amp; routes</h3>
-            <p class="muted mb-0">EXW, FOB İzmir, CIF and DDP. Sea freight from İzmir, road groupage into Europe, air freight for samples and urgent top-ups.</p>
-          </div>
-        </li>
-        <li class="feature-list__item">
-          <span class="icon-badge feature__icon" aria-hidden="true"><svg class="icon"><use href="assets/img/icons.svg#i-check"></use></svg></span>
-          <div>
-            <h3>Specification first</h3>
-            <p class="muted mb-0">Send us your spec &mdash; calibre, moisture, SO&#8322; limit, packaging &mdash; and we will confirm in writing what we can hold, lot after lot.</p>
-          </div>
-        </li>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, home"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Main">
+      <ul>
+        <li><a href="products.html" aria-current="page">Products</a></li>
+        <li class="hide-s"><a href="about.html">Our story</a></li>
+        <li class="hide-s"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="EN, language: English">
+        <img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="products.html" hreflang="en" lang="en" aria-current="true"><img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="tr/urunler.html" hreflang="tr" lang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
       </ul>
     </div>
-  </section>
+    <a class="btn btn--fig bar__cta" href="contact.html#contact-form">Request a quote</a>
+  </header>
 
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">At a glance</span>
-        <h2>Compare the range</h2>
+  <main id="main">
+    <!-- PAGE HEAD. What the range is, in one sentence, with the figs in the sun's round window on the right. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li aria-current="page">Products</li></ol></nav>
+        <h1 id="page-title" class="display">Four dried fruits</h1>
+        <p class="phead__lead">Four specialities, dried and packed by us in Türkiye. Every grade is available in retail, food-service and industrial formats, with private label on request.</p>
+        <div class="phead__actions">
+          <a class="btn btn--fig" href="contact.html#contact-form">Request a quote</a>
+          <a class="textlink" href="#compare">Compare the range</a>
+        </div>
+        <ul class="phead__facts" aria-label="Key facts">
+          <li>Retail</li><li>Food service</li><li>Industrial</li><li>Private label</li>
+        </ul>
       </div>
-      <div class="card table-scroll" tabindex="0" role="region" aria-label="Product comparison">
-        <table class="spec-table">
-          <caption class="sr-only">Origin, grades and shelf life of the four Aegean Sun products</caption>
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="assets/img/hero-800.webp" width="800" height="533" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- THE RANGE. The home page's trade catalogue, heads only: each product with its photo, where it comes from,
+         what it is, the formats it ships in, and the link to its full specification. Not a card grid. -->
+    <section class="range" id="range" aria-labelledby="range-title">
+      <div class="range__head" data-reveal>
+        <h2 id="range-title" class="head">The range</h2>
+        <p class="lead">Each product has its own page with grades, calibres and the full specification.</p>
+        <nav class="range__jump" aria-label="Jump to a product">
+          <a href="#fig">Dried fig</a><a href="#salami">Fig salami</a><a href="#apricot">Dried apricot</a><a href="#mulberry">Dried mulberry</a>
+        </nav>
+      </div>
+
+      <article class="cat" id="fig" aria-labelledby="fig-name">
+        <header class="cat__head" data-reveal>
+          <img class="cat__photo" src="assets/img/dried-fig.webp" width="1280" height="1280" alt="Whole sun-dried figs with two halves cut open to show the seeded flesh" loading="lazy">
+          <h3 id="fig-name" class="head">Dried fig</h3>
+          <p class="cat__count">Aydın, Aegean region</p>
+          <p class="cat__facts">Whole natural figs, sun-dried and hand-graded into eight grades, from Lerida and Protoben to diced. Soft, honeyed and packed without additives.<br>Formats: 200 g and 500 g retail · 5 kg catering · 10 kg bulk</p>
+          <a class="textlink cat__more" href="product-dried-fig.html">Full dried fig specification</a>
+        </header>
+      </article>
+
+      <article class="cat" id="salami" aria-labelledby="salami-name">
+        <header class="cat__head" data-reveal>
+          <img class="cat__photo" src="assets/img/fig-salami.webp" width="427" height="640" alt="A log of fig salami dusted with flour, part-sliced into rounds on brown paper" loading="lazy">
+          <h3 id="salami-name" class="head">Fig salami</h3>
+          <p class="cat__count">Signature product</p>
+          <p class="cat__facts">Pressed fig paste worked with spices or nuts into a firm log and cured until sliceable. Six varieties, all 180 g and free of added sugar.<br>Formats: 180 g logs · six varieties · mixed cartons</p>
+          <a class="textlink cat__more" href="product-fig-salami.html">Full fig salami specification</a>
+        </header>
+      </article>
+
+      <article class="cat" id="apricot" aria-labelledby="apricot-name">
+        <header class="cat__head" data-reveal>
+          <img class="cat__photo" src="assets/img/dried-apricot.webp" width="600" height="400" alt="A dark bowl heaped with golden dried apricot halves" loading="lazy">
+          <h3 id="apricot-name" class="head">Dried apricot</h3>
+          <p class="cat__count">Malatya, Eastern Anatolia</p>
+          <p class="cat__facts">Apricot halves in sulphured golden and natural dark grades, sized No.1 to No.6, soft-textured and free of stones.<br>Formats: 200 g and 500 g retail · 5 kg catering · 12.5 kg bulk</p>
+          <a class="textlink cat__more" href="product-dried-apricot.html">Full dried apricot specification</a>
+        </header>
+      </article>
+
+      <article class="cat" id="mulberry" aria-labelledby="mulberry-name">
+        <header class="cat__head" data-reveal>
+          <img class="cat__photo" src="assets/img/dried-mulberry.webp" width="612" height="408" alt="A wide bowl heaped with pale golden dried white mulberries" loading="lazy">
+          <h3 id="mulberry-name" class="head">Dried mulberry</h3>
+          <p class="cat__count">Anatolia</p>
+          <p class="cat__facts">Left to ripen fully on the tree, then dried in the sun and wind with nothing done to it. Fumigated, cleaned and packed at our plant.<br>Formats: 12.5 kg bulk · any grammage to order</p>
+          <a class="textlink cat__more" href="product-dried-mulberry.html">Full dried mulberry specification</a>
+        </header>
+      </article>
+    </section>
+
+    <!-- PACKAGING. A round window on the packed fruit beside the four ways a pallet can leave our packing line. -->
+    <section class="duo" aria-labelledby="pack-title">
+      <div class="duo__pic" data-reveal>
+        <img src="assets/img/fig-box-crop.webp" width="600" height="600" alt="Whole dried figs packed in rows in a box, with bay leaves laid between them" loading="lazy">
+      </div>
+      <div class="duo__text" data-reveal>
+        <h2 id="pack-title" class="head">Your format, your label</h2>
+        <div class="prose">
+          <p>We run our own packing line, so a pallet can leave as a supermarket-ready retail pack or as a plain industrial carton for further processing.</p>
+          <ul class="dots">
+            <li><strong>Retail:</strong> printed pouches, corrugated trays, PET jars and gift boxes.</li>
+            <li><strong>Food service:</strong> 5&nbsp;kg and 10&nbsp;kg cartons with food-grade liners.</li>
+            <li><strong>Industrial:</strong> 12.5&nbsp;kg blocks, IQF-compatible and paste formats.</li>
+            <li><strong>Private label:</strong> artwork, barcodes and multilingual labels handled in house.</li>
+          </ul>
+        </div>
+        <a class="btn btn--fig" href="contact.html#contact-form">Discuss your packaging</a>
+      </div>
+    </section>
+
+    <!-- WHOLESALE. Six short blocks in three columns: what a buyer ordering by the pallet needs to know. -->
+    <section class="sect sect--wide" aria-labelledby="trade-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="trade-title" class="head">Built for pallet buyers</h2>
+        <p class="lead">We are a wholesale supplier, not a shop. Everything here is set up around container loads, repeat programmes and the paperwork that has to travel with them.</p>
+      </div>
+      <div class="sect__body cols cols--3">
+        <div>
+          <h3 class="sub">Bulk formats</h3>
+          <p>5&nbsp;kg, 10&nbsp;kg and 12.5&nbsp;kg lined cardboard cartons as standard, wooden crates on request, stacked on heat-treated ISPM&nbsp;15 pallets and stretch-wrapped for sea freight.</p>
+        </div>
+        <div>
+          <h3 class="sub">Private label</h3>
+          <p>We print pouches, sleeves and cartons to your artwork, handle barcodes and multilingual nutrition panels, and hold the plates for repeat runs.</p>
+        </div>
+        <div>
+          <h3 class="sub">Export documentation</h3>
+          <p>Certificate of origin, health certificate, analysis report and phytosanitary papers travel with every shipment. ATR and EUR.1 issued where applicable.</p>
+        </div>
+        <div>
+          <h3 class="sub">Order sizes</h3>
+          <p>From one pallet of a stocked format up to full container loads. Mixed containers across the four product lines are welcome.</p>
+        </div>
+        <div>
+          <h3 class="sub">Terms and routes</h3>
+          <p>EXW, FOB İzmir, CIF and DDP. Sea freight from İzmir, road groupage into Europe, air freight for samples and urgent top-ups.</p>
+        </div>
+        <div>
+          <h3 class="sub">Specification first</h3>
+          <p>Send us your spec (calibre, moisture, SO&#8322; limit, packaging) and we will confirm in writing what we can hold, lot after lot.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON. The four products side by side in one real table on the sand band; it scrolls in its own box on a phone. -->
+    <section class="sect sect--wide sect--tone" id="compare" aria-labelledby="compare-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="compare-title" class="head">Compare the range</h2>
+        <p class="lead" id="compare-lead">Origin, grades and shelf life of the four products, side by side.</p>
+      </div>
+      <div class="sect__body spec-scroll" tabindex="0" role="region" aria-label="Product comparison">
+        <table class="spec spec--compare" aria-labelledby="compare-title" aria-describedby="compare-lead">
           <thead>
             <tr>
               <th scope="col">Product</th>
@@ -253,25 +230,25 @@
           </thead>
           <tbody>
             <tr>
-              <th scope="row"><a href="product-dried-fig.html">Dried Fig</a></th>
+              <th scope="row"><a href="product-dried-fig.html">Dried fig</a></th>
               <td>Aydın</td>
               <td>Lerida, Protoben, Bağlama, Garland</td>
               <td>12 months</td>
             </tr>
             <tr>
-              <th scope="row"><a href="product-fig-salami.html">Fig Salami</a></th>
+              <th scope="row"><a href="product-fig-salami.html">Fig salami</a></th>
               <td>Aydın figs, made in Athens</td>
-              <td>6 varieties (spiced, almond, pistachio&hellip;)</td>
+              <td>6 varieties (spiced, almond, pistachio and more)</td>
               <td>12 months</td>
             </tr>
             <tr>
-              <th scope="row"><a href="product-dried-apricot.html">Dried Apricot</a></th>
+              <th scope="row"><a href="product-dried-apricot.html">Dried apricot</a></th>
               <td>Malatya</td>
-              <td>Sulphured No.1&ndash;No.6, natural dark, organic</td>
+              <td>Sulphured No.1 to No.6, natural dark, organic</td>
               <td>18 months</td>
             </tr>
             <tr>
-              <th scope="row"><a href="product-dried-mulberry.html">Dried Mulberry</a></th>
+              <th scope="row"><a href="product-dried-mulberry.html">Dried mulberry</a></th>
               <td>Anatolia</td>
               <td>Whole, sun and wind dried</td>
               <td>On request</td>
@@ -279,71 +256,68 @@
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>Not sure which grade fits?</h2>
-        <p>Tell us the application and we will recommend a calibre. Graded sample sets are free for qualified trade buyers.</p>
-      </div>
-      <a class="btn btn--primary" href="contact.html#contact-form">Ask our team</a>
-    </div>
-  </section>
-
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
+    <!-- CLOSE. One line, one action, on the fig ground with the sun rising at the edge. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">Not sure which grade fits?</h2>
+          <p>Tell us the application and we will recommend a calibre. Graded sample sets are free for qualified trade buyers.</p>
         </div>
-        <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
+        <a class="btn btn--sun" href="contact.html#contact-form">Ask our team</a>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <h2 class="footer-title">Products</h2>
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Products">
+        <h2 class="foot__h">Products</h2>
         <ul>
-          <li><a href="product-dried-fig.html">Dried Fig</a></li>
-          <li><a href="product-fig-salami.html">Fig Salami</a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot</a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry</a></li>
-          <li><a href="products.html">All Products</a></li>
+          <li><a href="product-dried-fig.html">Dried fig</a></li>
+          <li><a href="product-fig-salami.html">Fig salami</a></li>
+          <li><a href="product-dried-apricot.html">Dried apricot</a></li>
+          <li><a href="product-dried-mulberry.html">Dried mulberry</a></li>
+          <li><a href="products.html">Compare all four</a></li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Company</h2>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot__h">Company</h2>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html#faq">FAQ</a></li>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#faq">Buyer questions</a></li>
+          <li><a class="foot__lang" href="tr/urunler.html" lang="tr" hreflang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt="">Türkçe</a></li>
         </ul>
-      </div>
-
+      </nav>
       <div>
-        <h2 class="footer-title">Get in touch</h2>
-        <ul>
-          <li>Muzaffer T&uuml;rkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="contact.html">All contacts &rarr;</a></li>
-        </ul>
+        <h2 class="foot__h">Get in touch</h2>
+        <p>Muzaffer Türkekul, export sales<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli facility, Aydın, Türkiye<br>Shipping from İzmir</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
-      <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
-      <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Dried Fruits · <a href="privacy.html">Privacy and cookies</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Cookie preferences</button>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>

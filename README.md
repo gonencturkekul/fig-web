@@ -53,19 +53,22 @@ version they were linked to and switches by hand.
 ```
 assets/
   video/fig-journey.mp4   film: home page process section and Dried Fig pages
-  css/styles.css   all styling for every page except the two home pages
-  css/home.css     the home pages (index.html, tr/index.html), 2026 redesign;
-                   ends with a copy of the consent-bar and chat styles from
-                   styles.css, so keep those two copies in step
-  css/fonts.css    @font-face for the self-hosted home-page fonts
+  css/home.css     the only stylesheet, loaded by every page (2026 redesign):
+                   tokens, home sections, the "Inner pages" components
+                   (page head, sections, spec tables, closer, contact form,
+                   legal text) and, at the end, the consent-bar and chat
+                   styles. product-dried-mulberry.html is the reference
+                   inner page. (styles.css was retired in October 2026.)
+  css/fonts.css    @font-face for the self-hosted fonts
   fonts/           Libre Franklin 700 and Source Serif 4 (latin + latin-ext,
                    which carries the Turkish letters), served from our domain
-  js/main.js       mobile menu, products dropdown, contact form validation,
+  js/main.js       contact and about pages only: contact form validation,
                    `?product=` preselect, `data-since` year counters
                    (form messages are per-language, keyed off <html lang>)
-  js/chat.js       sales assistant widget, home and product pages
+  js/chat.js       sales assistant widget, every page except privacy and 404
   js/consent.js    cookie bar; loads Google Analytics only on consent
-  js/home.js       home pages only: section entrances, the carton-label
+  js/home.js       every page: section entrances, the flag language switcher;
+                   home pages also: the carton-label
                    enquiry form (mailto, EN/TR from <html lang>), the film
                    loop, caption tabs and the flag language switcher
   img/hero.jpg     home page hero photograph (og:image, JPEG fallback)
@@ -396,7 +399,7 @@ registration obligations (VERBIS) which this page does not address.
 
 ## The sales assistant
 
-The two home pages and the four product pages load `assets/js/chat.js`, which puts a small assistant in the
+Every page except the privacy and 404 pages loads `assets/js/chat.js`, which puts a small assistant in the
 bottom right corner. It is deliberately plain: no backend, no API key and no
 third-party script, so it costs nothing and cannot leak anything. It matches
 the visitor's words against a list of keywords and replies with a fixed answer,

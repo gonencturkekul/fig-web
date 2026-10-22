@@ -23,6 +23,7 @@
   </script>
   <title>Kuru Kayısı | Aegean Sun Kuru Meyve</title>
   <meta name="description" content="Malatya kuru kayısısı. Kükürtlü sarı ve doğal koyu yarımlar, 1 numaradan 6 numaraya kadar, perakende ve 12,5 kg dökme ambalaj.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:title" content="Kuru Kayısı | Aegean Sun Kuru Meyve">
   <meta property="og:description" content="Malatya kuru kayısısı. Kükürtlü sarı ve doğal koyu yarımlar, 1 numaradan 6 numaraya kadar, perakende ve 12,5 kg dökme ambalaj.">
   <meta property="og:type" content="website">
@@ -35,15 +36,22 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Eskimiş bir ahşap masanın üzerinde üst üste dizilmiş kuru incirler, biri ikiye ayrılmış">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#fdf8f1">
+  <meta name="color-scheme" content="light">
   <link rel="icon" href="../assets/img/logo-mark.png" type="image/png">
   <link rel="canonical" href="https://www.aegeansunfruit.com/tr/kuru-kayisi.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-kayisi.html">
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-apricot.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-apricot.html">
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <script src="../assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="../assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../assets/js/home.js" defer></script>
   <script src="../assets/js/consent.js" defer></script>
   <script src="../assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
@@ -51,242 +59,208 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">İçeriğe geç</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Ana menü">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Kuru Meyve — Ana sayfa">
-      <img class="brand__mark" src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Kuru Meyve</span></span>
-    </a>
+  <a class="skip" href="#main">İçeriğe geç</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Ana Sayfa</a></li>
-      <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Ürünler
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="urunler.html">Tüm Ürünler<small>Aegean Sun ürün yelpazesi</small></a></li>
-          <li><a href="kuru-incir.html">Kuru İncir<small>Doğal Lerida ve Protoben</small></a></li>
-          <li><a href="incir-salami.html">İncir Salamı<small>Altı çeşit, 180&nbsp;g</small></a></li>
-          <li><a href="kuru-kayisi.html">Kuru Kayısı<small>Kükürtlü ve doğal kayısı</small></a></li>
-          <li><a href="kuru-dut.html">Kuru Dut<small>Güneş ve rüzgârla kurutulur</small></a></li>
-        </ul>
-      </li>
-      <li><a href="hakkimizda.html">Hakkımızda</a></li>
-      <li><a href="iletisim.html">İletişim</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="iletisim.html#contact-form">Teklif Alın</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="TR — Dil: Türkçe">
-          <img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="../product-dried-apricot.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="kuru-kayisi.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
-        </ul>
-      </div>
-  </nav>
-</header>
-<main id="main">
-
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Sayfa yolu"><ol><li><a href="index.html">Ana Sayfa</a></li><li><a href="urunler.html">Ürünler</a></li><li aria-current="page">Kuru Kayısı</li></ol></nav>
-      <span class="eyebrow">Malatya, Doğu Anadolu</span>
-      <h1>Kuru Kayısı</h1>
-      <p>Fırat’ın yukarısındaki teraslardan çekirdeksiz kayısı yarımları &mdash; dünyada tüketilen kuru kayısının yaklaşık beşte dördünün kaynağı.</p>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, ana sayfa"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Ana menü">
+      <ul>
+        <li><a href="urunler.html" aria-current="page">Ürünler</a></li>
+        <li class="hide-s"><a href="hakkimizda.html">Hikâyemiz</a></li>
+        <li class="hide-s"><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="TR, dil: Türkçe">
+        <img src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="../product-dried-apricot.html" hreflang="en" lang="en"><img src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="kuru-kayisi.html" hreflang="tr" lang="tr" aria-current="true"><img src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+      </ul>
     </div>
-  </section>
+    <a class="btn btn--fig bar__cta" href="iletisim.html?product=apricot#contact-form">Teklif alın</a>
+  </header>
 
-  <section class="section section--white">
-    <div class="wrap split">
-      <div class="split__art">
-        <img src="../assets/img/dried-apricot.webp" width="600" height="400" alt="Eskimiş ahşap bir masada, koyu renkli kâsede tepeleme duran altın sarısı kuru kayısı yarımları">
+  <main id="main">
+    <!-- PAGE HEAD. The title and what the product is on the left; the apricot halves in the sun's round window on the right. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Sayfa yolu"><ol><li><a href="./">Ana sayfa</a></li><li><a href="urunler.html">Ürünler</a></li><li aria-current="page">Kuru kayısı</li></ol></nav>
+        <h1 id="page-title" class="display">Kuru kayısı</h1>
+        <p class="phead__lead">Fırat’ın yukarısındaki teraslardan çekirdeksiz kayısı yarımları; dünyada tüketilen kuru kayısının yaklaşık beşte dördü buradan gelir.</p>
+        <div class="phead__actions">
+          <a class="btn btn--fig" href="iletisim.html?product=apricot#contact-form">Teklif alın</a>
+          <a class="textlink" href="urunler.html">Tüm ürünleri görün</a>
+        </div>
+        <ul class="phead__facts" aria-label="Öne çıkan bilgiler">
+          <li>Hacıhaliloğlu</li><li>Malatya, Türkiye</li><li>GTİP 0813.10</li>
+        </ul>
       </div>
-      <div>
-        <h2>Sarı ya da doğal &mdash; ikisi de aynı meyve</h2>
-        <p>Malatya’nın Hacıhaliloğlu kayısısı tam renginde toplanır, ikiye ayrılır, çekirdeği çıkarılır ve rakımlı kurutma alanlarına serilir. Ürün buradan ikiye ayrılır.</p>
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="../assets/img/dried-apricot.webp" width="600" height="400" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CHOICE. One fruit, two ways of drying it: the decision every apricot buyer makes first. -->
+    <section class="sect" aria-labelledby="types-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="types-title" class="head">Sarı ya da doğal, aynı meyve</h2>
+      </div>
+      <div class="sect__body prose">
+        <p class="statement">Malatya’nın Hacıhaliloğlu kayısısı tam renginde toplanır, ikiye ayrılır, çekirdeği çıkarılır ve rakımlı kurutma alanlarına serilir. Ürün buradan ikiye ayrılır.</p>
         <p><strong>Kükürtlü</strong> kayısı, kurutulmadan önce gıda sınıfı kükürt dioksitle işlem görür; bu, parlak turuncu rengi ve daha yumuşak dokuyu korur. <strong>Doğal</strong> kayısı bu adımı hiç görmez ve daha karamelimsi bir tatla koyu maun rengine kurur. İkisini de satıyoruz ve hangisinin pazarınıza uyduğunu dürüstçe söylüyoruz.</p>
-        <ul class="checklist">
+        <ul class="dots">
           <li>1 numaradan (jumbo) 6 numaraya kadar boylar, ayrıca sanayi küpü ve ezmesi</li>
           <li>İstediğiniz ppm hedefine göre kükürtlü ya da tamamen kükürtsüz doğal</li>
           <li>Sınırlı miktarda sertifikalı organik partiler</li>
           <li>Serbest bırakılmadan önce kalıntı ve ağır metal testi</li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="iletisim.html?product=apricot#contact-form">Teklif alın</a>
-          <a class="btn btn--ghost" href="urunler.html">Ürünlere dön</a>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Teknik bilgiler</h3>
-          <table class="spec-table">
-            <tr><th scope="row">Botanik adı</th><td>Prunus armeniaca, Hacıhaliloğlu çeşidi</td></tr>
-            <tr><th scope="row">Menşe</th><td>Malatya, Türkiye</td></tr>
-            <tr><th scope="row">Tipler</th><td>Kükürtlü (sarı), doğal (koyu), organik</td></tr>
-            <tr><th scope="row">Boylar</th><td>1 numara (&le;60 adet/kg) ile 6 numara (&le;180 adet/kg) arası</td></tr>
-            <tr><th scope="row">Nem</th><td>%20&ndash;24</td></tr>
-            <tr><th scope="row">SO&#8322; seviyesi</th><td>Alıcı spesifikasyonuna göre (genellikle 1.500&ndash;2.000&nbsp;ppm); doğalda 0&nbsp;ppm</td></tr>
-            <tr><th scope="row">Hasat</th><td>Temmuz &ndash; Ağustos, yıl boyu sevkiyat</td></tr>
-            <tr><th scope="row">Raf ömrü</th><td>4&ndash;18&nbsp;&deg;C ve %65 bağıl nemde 18 ay</td></tr>
-            <tr><th scope="row">GTİP kodu</th><td>0813.10</td></tr>
-          </table>
-        </div>
-
-        <div>
-          <div class="card" style="margin-bottom:26px">
-            <h3>Ambalaj seçenekleri</h3>
-            <ul class="checklist mb-0">
-              <li>200&nbsp;g ve 500&nbsp;g kilitli perakende doypack</li>
-              <li>Şarküteri teşhiri için 1&nbsp;kg PET kavanoz</li>
-              <li>5&nbsp;kg toplu tüketim kolisi</li>
-              <li>Çift iç torbalı 12,5&nbsp;kg sanayi kolisi</li>
-              <li>Sanayi alıcıları için küp ve ezme formatları</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Kullanım alanları</h3>
-            <p class="muted mb-0">Atıştırmalık ve kuruyemiş karışımları, kahvaltılık gevrek ve bar, fırıncılık ve pastacılık dolguları, komposto ve et yemekleri, bebek maması ve meyve püreleri.</p>
-          </div>
-        </div>
+    <!-- THE PLACE. The orchards in a round window beside the facts of the region (the same facts the home page gives). -->
+    <section class="duo duo--flip" aria-labelledby="origin-title">
+      <div class="duo__pic" data-reveal>
+        <img src="../assets/img/malatya-orchards.webp" width="1000" height="614" alt="Malatya Battalgazi’de kurak bir yamaçta kayısı bahçeleri" loading="lazy">
       </div>
-    </div>
-  </section>
+      <div class="duo__text" data-reveal>
+        <h2 id="origin-title" class="head">Fırat’ın üstündeki bahçeler</h2>
+        <p>Rakım ve kısa, yoğun bir mevsim, Hacıhaliloğlu kayısısına yoğunluğunu ve dayanıklılığını verir. Sarı ve doğal kayısıyı Temmuz ve Ağustos hasadında Malatya çevresindeki üreticilerden doğrudan alıyor, yıl boyu sevk ediyoruz.</p>
+      </div>
+    </section>
 
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Ürün yelpazesi</span>
-        <h2>Paketlediğimiz kaliteler ve kesimler</h2>
+    <!-- GRADES AND CUTS. Every size, type and format as a two-column list across the full frame. -->
+    <section class="sect sect--wide" aria-labelledby="range-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="range-title" class="head">Kaliteler ve kesimler</h2>
         <p class="lead">Bütün yarımlar kilodaki adet sayısına göre satılır; jumbodan küçüğe. Onun altında sanayi spesifikasyonuna göre kesim, küp ve püre yapıyoruz.</p>
       </div>
-
-      <div class="format-grid">
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; 12,5&nbsp;kg</span>
-          <h3>Jumbo 1&ndash;2 numara</h3>
-          <p>En iri, parlak ve dolgun yarımlar. Hediyelik paketler, üst segment perakende ve meyvenin bütün göründüğü her yer için alınır.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; 12,5&nbsp;kg</span>
-          <h3>Standart 3&ndash;4 numara</h3>
-          <p>Pazarın büyük kısmını taşıyan orta kalibreler. Tutarlı boy, fiyat ve görünüm arasındaki en iyi denge.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">12,5&nbsp;kg dökme</span>
-          <h3>Küçük 5&ndash;6 numara</h3>
-          <p>Zaten kesilerek ya da harmanlanarak kullanılan karışımlar, gevrekler ve barlar için daha küçük yarımlar.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; 12,5&nbsp;kg</span>
-          <h3>Doğal (kükürtsüz)</h3>
-          <p>Hiçbir şey eklenmeden kurutulur; koyu kahve renkli ve karamel tatlılığında. Temiz etiket ve organik gruplar için doğru kalite.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; sertifikalı</span>
-          <h3>Organik</h3>
-          <p>Sözleşmeli organik bahçelerden AB ve USDA NOP sertifikalı partiler. Miktar sınırlıdır ve sezona göre tahsis edilir.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">10&nbsp;kg dökme</span>
-          <h3>Küp 10&times;12&nbsp;mm</h3>
-          <p>Fırıncılık, müsli ve şekerleme için pirinç unlu küpler. 8&times;10&nbsp;mm ve 6&times;6&nbsp;mm kesimler de yapılır.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">200&nbsp;g &middot; 500&nbsp;g</span>
-          <h3>Perakende doypack</h3>
-          <p>Kükürtlü ya da doğal kalitede, kilitli ve baskılı doypack. Kendi markanızla ya da bizimkiyle rafa hazır.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">20&nbsp;kg aseptik</span>
-          <h3>Püre ve ezme</h3>
-          <p>Süt ürünleri, bebek maması ve içecek hatları için, istediğiniz briks değerinde üretilen pürüzsüz kayısı püresi.</p>
-        </article>
+      <div class="sect__body">
+        <ul class="items">
+          <li><h3>Jumbo 1&ndash;2 numara</h3><span class="items__pack">5&nbsp;kg · 12,5&nbsp;kg</span><p>En iri, parlak ve dolgun yarımlar. Hediyelik paketler, üst segment perakende ve meyvenin bütün göründüğü her yer için alınır.</p></li>
+          <li><h3>Standart 3&ndash;4 numara</h3><span class="items__pack">5&nbsp;kg · 12,5&nbsp;kg</span><p>Pazarın büyük kısmını taşıyan orta kalibreler. Tutarlı boy, fiyat ve görünüm arasındaki en iyi denge.</p></li>
+          <li><h3>Küçük 5&ndash;6 numara</h3><span class="items__pack">12,5&nbsp;kg dökme</span><p>Zaten kesilerek ya da harmanlanarak kullanılan karışımlar, gevrekler ve barlar için daha küçük yarımlar.</p></li>
+          <li><h3>Doğal, kükürtsüz</h3><span class="items__pack">5&nbsp;kg · 12,5&nbsp;kg</span><p>Hiçbir şey eklenmeden kurutulur; koyu kahve renkli ve karamel tatlılığında. Temiz etiket ve organik gruplar için doğru kalite.</p></li>
+          <li><h3>Organik</h3><span class="items__pack">5&nbsp;kg, sertifikalı</span><p>Sözleşmeli organik bahçelerden AB ve USDA NOP sertifikalı partiler. Miktar sınırlıdır ve sezona göre tahsis edilir.</p></li>
+          <li><h3>Küp 10&times;12&nbsp;mm</h3><span class="items__pack">10&nbsp;kg dökme</span><p>Fırıncılık, müsli ve şekerleme için pirinç unlu küpler. 8&times;10&nbsp;mm ve 6&times;6&nbsp;mm kesimler de yapılır.</p></li>
+          <li><h3>Perakende doypack</h3><span class="items__pack">200&nbsp;g · 500&nbsp;g</span><p>Kükürtlü ya da doğal kalitede, kilitli ve baskılı doypack. Kendi markanızla ya da bizimkiyle rafa hazır.</p></li>
+          <li><h3>Püre ve ezme</h3><span class="items__pack">20&nbsp;kg aseptik</span><p>Süt ürünleri, bebek maması ve içecek hatları için, istediğiniz briks değerinde üretilen pürüzsüz kayısı püresi.</p></li>
+        </ul>
       </div>
+    </section>
 
-      <p class="muted" style="margin-top:24px">Dökme kaliteler çift iç torbalı kolilerde, ısıl işlemli paletler üzerinde sevk edilir; talebe göre ahşap kasa sunulur.</p>
-      <a class="btn btn--primary" href="iletisim.html?product=apricot#contact-form">Güncel fiyat listesini isteyin</a>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>Belirli bir SO&#8322; hedefiniz mi var?</h2>
-        <p>Pazarınızın limitlerine göre işliyor ve her partiyi belgeliyoruz.</p>
+    <!-- SPECIFICATION. A real table on the sand band: the facts a buyer copies into a purchase order. -->
+    <section class="sect sect--tone" aria-labelledby="spec-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="spec-title" class="head">Teknik bilgiler</h2>
+        <p class="lead">Serbest bırakılmadan önce kalıntı ve ağır metal testi; her parti belgelenir.</p>
       </div>
-      <a class="btn btn--primary" href="iletisim.html?product=apricot#contact-form">Spesifikasyonunuzu gönderin</a>
-    </div>
-  </section>
+      <div class="sect__body">
+        <table class="spec">
+          <tr><th scope="row">Botanik adı</th><td>Prunus armeniaca, Hacıhaliloğlu çeşidi</td></tr>
+          <tr><th scope="row">Menşe</th><td>Malatya, Türkiye</td></tr>
+          <tr><th scope="row">Tipler</th><td>Kükürtlü (sarı), doğal (koyu), organik</td></tr>
+          <tr><th scope="row">Boylar</th><td>1 numara (&le;60&nbsp;adet/kg) ile 6 numara (&le;180&nbsp;adet/kg) arası</td></tr>
+          <tr><th scope="row">Nem</th><td>%20&ndash;24</td></tr>
+          <tr><th scope="row">SO&#8322; seviyesi</th><td>Alıcı spesifikasyonuna göre (genellikle 1.500&ndash;2.000&nbsp;ppm); doğalda 0&nbsp;ppm</td></tr>
+          <tr><th scope="row">Hasat</th><td>Temmuz&ndash;Ağustos, yıl boyu sevkiyat</td></tr>
+          <tr><th scope="row">Raf ömrü</th><td>4&ndash;18&nbsp;&deg;C ve %65 bağıl nemde 18 ay</td></tr>
+          <tr><th scope="row">GTİP kodu</th><td>0813.10</td></tr>
+        </table>
+      </div>
+    </section>
 
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
+    <!-- PACKS AND USES. Two short columns: how it ships, and where buyers use it. -->
+    <section class="sect" aria-labelledby="packs-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="packs-title" class="head">Doypack’ten palete</h2>
+      </div>
+      <div class="sect__body cols">
+        <div>
+          <h3 class="sub">Ambalaj seçenekleri</h3>
+          <ul class="dots">
+            <li>200&nbsp;g ve 500&nbsp;g kilitli perakende doypack</li>
+            <li>Şarküteri teşhiri için 1&nbsp;kg PET kavanoz</li>
+            <li>5&nbsp;kg toplu tüketim kolisi</li>
+            <li>Çift iç torbalı 12,5&nbsp;kg sanayi kolisi</li>
+            <li>Sanayi alıcıları için küp ve ezme formatları</li>
+            <li>Dökme kaliteler ısıl işlemli paletlerde; talebe göre ahşap kasa</li>
+          </ul>
         </div>
-        <p>Ege ve Doğu Anadolu bahçelerinden doğrudan gelen kuru incir, incir salamı, kuru kayısı ve kuru dut. Perakende, toplu tüketim ve sanayi için paketlenir.</p>
+        <div>
+          <h3 class="sub">Kullanım alanları</h3>
+          <p>Atıştırmalık ve kuruyemiş karışımları, kahvaltılık gevrek ve bar, fırıncılık ve pastacılık dolguları, komposto ve et yemekleri, bebek maması ve meyve püreleri.</p>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h2 class="footer-title">Ürünler</h2>
+    <!-- CLOSE. One line, one action, on the fig ground with the sun rising at the edge. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">Belirli bir SO&#8322; hedefi mi?</h2>
+          <p>Pazarınızın limitlerine göre işliyor ve her partiyi belgeliyoruz. Spesifikasyonunuzu gönderin ya da güncel fiyat listesini isteyin.</p>
+        </div>
+        <a class="btn btn--sun" href="iletisim.html?product=apricot#contact-form">Spesifikasyonunuzu gönderin</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Ürünler">
+        <h2 class="foot__h">Ürünler</h2>
         <ul>
-          <li><a href="kuru-incir.html">Kuru İncir</a></li>
-          <li><a href="incir-salami.html">İncir Salamı</a></li>
-          <li><a href="kuru-kayisi.html">Kuru Kayısı</a></li>
-          <li><a href="kuru-dut.html">Kuru Dut</a></li>
-          <li><a href="urunler.html">Tüm Ürünler</a></li>
+          <li><a href="kuru-incir.html">Kuru incir</a></li>
+          <li><a href="incir-salami.html">İncir salamı</a></li>
+          <li><a href="kuru-kayisi.html">Kuru kayısı</a></li>
+          <li><a href="kuru-dut.html">Kuru dut</a></li>
+          <li><a href="urunler.html">Dördünü karşılaştırın</a></li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Kurumsal</h2>
+      </nav>
+      <nav aria-label="Kurumsal">
+        <h2 class="foot__h">Kurumsal</h2>
         <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="hakkimizda.html">Hikâyemiz</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
-          <li><a href="iletisim.html#faq">Sık Sorulanlar</a></li>
+          <li><a href="iletisim.html#faq">Alıcıların soruları</a></li>
+          <li><a class="foot__lang" href="../product-dried-apricot.html" lang="en" hreflang="en"><img src="../assets/img/flag-en.svg" width="20" height="14" alt="">English</a></li>
         </ul>
-      </div>
-
+      </nav>
       <div>
-        <h2 class="footer-title">Bize ulaşın</h2>
-        <ul>
-          <li>Muzaffer Türkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Pzt&ndash;Cum, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="iletisim.html">Tüm iletişim bilgileri &rarr;</a></li>
-        </ul>
+        <h2 class="foot__h">Bize ulaşın</h2>
+        <p>Muzaffer Türkekul, ihracat satış<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli tesisi, Aydın, Türkiye<br>İzmir’den sevkiyat</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Kuru Meyve. Tüm hakları saklıdır.</span>
-      <span>Türkiye’de hasat edilir &middot; Dünyaya gönderilir</span>
-      <span><a href="gizlilik.html">Gizlilik ve Çerezler</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Çerez tercihleri</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Kuru Meyve · <a href="gizlilik.html">Gizlilik ve çerezler</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Çerez tercihleri</button>
     </div>
-  </div>
-</footer>
+    <!-- The orchard photograph above is CC BY-SA, so its credit has to travel with the page (wording as on the home page). -->
+    <p class="foot__credits">Bahçe fotoğrafı: Zeynel Cebeci’nin “Apricot orchards, Malatya 2018-09-29 02” adlı fotoğrafı, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Apricot_orchards,_Malatya_2018-09-29_02.jpg">Wikimedia Commons</a> üzerinden. Daire biçiminde kırpılmıştır.</p>
+  </footer>
+
 </body>
 </html>

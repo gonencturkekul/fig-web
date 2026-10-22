@@ -42,248 +42,265 @@
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/privacy.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/gizlilik.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/privacy.html">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/home.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
        so it 404s when the site is opened from a plain local server. -->
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
-      <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
-    </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Products
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
-          <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
-          <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot<small>Sulphured &amp; natural halves</small></a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry<small>Sun and wind dried, no processing</small></a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="contact.html#contact-form">Request a Quote</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="privacy.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="tr/gizlilik.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
-        </ul>
-      </div>
-  </nav>
-</header>
-<main id="main">
-
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Privacy &amp; Cookies</li></ol></nav>
-      <span class="eyebrow">Legal</span>
-      <h1>Privacy &amp; Cookies</h1>
-      <p>What personal data we handle when you use this site, why we handle it, and how long we keep it.</p>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap legal">
-
-      <p class="legal__updated">Last updated: 15 October 2026</p>
-
-      <div class="card legal__summary">
-        <h2>In short</h2>
-        <ul>
-          <li>You can browse this site without telling us anything.</li>
-          <li>Tracking cookies are placed <strong>only if you accept them</strong>. Decline and none are placed; the site works exactly the same.</li>
-          <li>What you write to us is used only to answer you. <strong>We never sell it and never pass it to third parties for marketing.</strong></li>
-          <li>You can ask us to delete your data at any time: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-        </ul>
-      </div>
-
-      <h2>Who is responsible</h2>
-      <p>The controller of personal data processed through this site is <strong>Aegean Sun Dried Fruits</strong>.</p>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, home"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Main">
       <ul>
-        <li>Sales office: Ka&#287;&#305;thane, Istanbul, T&uuml;rkiye</li>
-        <li>Factory: Nazilli, Aydın, T&uuml;rkiye</li>
-        <li>Production plant: Athens, Greece</li>
-        <li>Email: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-        <li>Phone: <a href="tel:+905078634045">+90 507 863 40 45</a></li>
-        <li>Responsible person: Muzaffer T&uuml;rkekul</li>
+        <li><a href="products.html">Products</a></li>
+        <li class="hide-s"><a href="about.html">Our story</a></li>
+        <li class="hide-s"><a href="contact.html">Contact</a></li>
       </ul>
-      <p>We work under Turkish Law No. 6698 on the Protection of Personal Data (KVKK) and, for visitors reaching the site from the European Union, under the General Data Protection Regulation (GDPR).</p>
-
-      <h2>What we collect and why</h2>
-      <table class="spec-table">
-        <thead>
-          <tr><th scope="col">Data</th><th scope="col">Why</th><th scope="col">Legal basis</th><th scope="col">Kept for</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Enquiry form: name, company, email, phone, country, product, volume, message</th>
-            <td>To answer your enquiry and send prices and samples</td>
-            <td>Steps prior to a contract / your consent</td>
-            <td>Until the enquiry is settled; if it becomes an order, for the business relationship and the retention periods that apply to it</td>
-          </tr>
-          <tr>
-            <th scope="row">Newsletter: your email address</th>
-            <td>To send harvest, season and price news</td>
-            <td>Your consent</td>
-            <td>Until you unsubscribe</td>
-          </tr>
-          <tr>
-            <th scope="row">Email, phone and WhatsApp correspondence</th>
-            <td>To answer you and run the order</td>
-            <td>Contract / legitimate interest</td>
-            <td>For the business relationship and the retention periods that apply to it</td>
-          </tr>
-          <tr>
-            <th scope="row">Visit statistics (page, country, referring site, device type)</th>
-            <td>To see which parts of the site are useful</td>
-            <td>Legitimate interest &mdash; cookie-free and aggregate; no individual is identified</td>
-            <td>Vercel’s retention period</td>
-          </tr>
-          <tr>
-            <th scope="row">Google Analytics data</th>
-            <td>Detailed measurement of visits</td>
-            <td><strong>Your consent only</strong> &mdash; if you decline it never runs</td>
-            <td>The retention setting in Google Analytics</td>
-          </tr>
-          <tr>
-            <th scope="row">Server logs (IP address, browser information)</th>
-            <td>To deliver the page, for security and fault finding</td>
-            <td>Legitimate interest</td>
-            <td>The hosting provider’s log retention</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>The enquiry form sends nothing by itself: it opens your own email program with your message filled in, and we receive it only when you press Send there. Newsletter sign-up is not live yet.</p>
-      <p>We collect no special categories of personal data through this site, and we do no profiling or automated decision-making. The site is not aimed at children.</p>
-
-      <h2>Cookies</h2>
-      <p>No cookie is needed for the site to work. The only cookies are Google Analytics’, and they are <strong>not placed unless you accept</strong>; until you answer, the page does not even send a request to Google. Google Tag Manager, which we use to manage the measurement tags, is likewise loaded only after you accept.</p>
-      <table class="spec-table">
-        <thead>
-          <tr><th scope="col">Cookie</th><th scope="col">What it does</th><th scope="col">Lifetime</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">_ga</th><td>Tells visitors apart</td><td>2 years</td></tr>
-          <tr><th scope="row">_ga_YSX5V6H7JQ</th><td>Keeps session state</td><td>2 years</td></tr>
-        </tbody>
-      </table>
-      <p>Your answer is stored in your browser’s local storage as <code>aegeansun-cookie-consent</code>. It is not a cookie, it is never sent to us, and it stays on your device.</p>
-      <p><strong>You can change your mind.</strong> The <button type="button" class="linklike" data-consent-open>Cookie preferences</button> link at the bottom of every page reopens the choice. If you decline, any Google Analytics cookie placed earlier is deleted.</p>
-
-      <h2>Who we share with</h2>
-      <p>We do not sell your data and we share it with nobody for marketing. The only recipients are the providers we need to run the site and the business:</p>
-      <ul>
-        <li><strong>Vercel</strong> &mdash; hosting of this site and the visit statistics.</li>
-        <li><strong>Google</strong> &mdash; our email infrastructure (Google Workspace) and, only if you accept, Google Analytics and Google Tag Manager.</li>
-        <li><strong>Our representatives abroad</strong> &mdash; if your enquiry concerns the Canadian or Greek market, it may be passed to that representative so you get a faster answer.</li>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="EN, language: English">
+        <img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="privacy.html" hreflang="en" lang="en" aria-current="true"><img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="tr/gizlilik.html" hreflang="tr" lang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
       </ul>
-      <p>We may also disclose data where a public authority lawfully requires it.</p>
-
-      <h2>Transfers outside T&uuml;rkiye</h2>
-      <p>The hosting, email and measurement services we use run on servers outside T&uuml;rkiye, some of them in the United States, so your data may be transferred abroad. These providers rely on mechanisms such as the standard contractual clauses for transfers from the EU.</p>
-
-      <h2>Your rights</h2>
-      <p>Under Article 11 of the KVKK and under the GDPR you have the right to:</p>
-      <ul>
-        <li>learn whether we process your personal data, and ask for a copy</li>
-        <li>have inaccurate or incomplete data corrected</li>
-        <li>ask for your data to be erased</li>
-        <li>ask us to restrict processing, and object to processing</li>
-        <li>receive your data in a structured form (portability)</li>
-        <li>withdraw consent at any time &mdash; which does not affect processing carried out before you withdrew it</li>
-      </ul>
-      <p>To exercise any of these, write to <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a>. We answer within 30 days at the latest.</p>
-      <p>If our answer does not satisfy you, you can complain to the <strong>Turkish Personal Data Protection Authority</strong>, or, in the European Union, to the data protection authority of your country.</p>
-
-      <h2>Security</h2>
-      <p>The site is served only over an encrypted connection (HTTPS). Our mailboxes are protected with two-step verification, and your data is reachable only by the people who need it to answer you.</p>
-
-      <h2>Changes to this text</h2>
-      <p>We update this page whenever the data we collect or the services we use change. The date at the top is the date of the current version.</p>
-
-      <h2>Contact</h2>
-      <p>For any privacy question: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a> &middot; <a href="tel:+905078634045">+90 507 863 40 45</a></p>
-
     </div>
-  </section>
+    <a class="btn btn--fig bar__cta" href="contact.html#contact-form">Request a quote</a>
+  </header>
 
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
-        </div>
-        <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
+  <main id="main">
+    <!-- PAGE HEAD. Text only: the title and one sentence on what this page covers. No picture, the legal text is the content. -->
+    <section class="phead phead--text" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li aria-current="page">Privacy and cookies</li></ol></nav>
+        <h1 id="page-title" class="display">Privacy and cookies</h1>
+        <p class="phead__lead">What personal data we handle when you use this site, why we handle it, and how long we keep it.</p>
       </div>
+    </section>
 
-      <div>
-        <h2 class="footer-title">Products</h2>
-        <ul>
-          <li><a href="product-dried-fig.html">Dried Fig</a></li>
-          <li><a href="product-fig-salami.html">Fig Salami</a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot</a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry</a></li>
-          <li><a href="products.html">All Products</a></li>
-        </ul>
-      </div>
+    <!-- LEGAL TEXT. One readable column. Every sentence below describes what the site actually does
+         (CLAUDE.md: the privacy pages must stay true), so change the wording only when the data flows change. -->
+    <div class="legal">
+      <div class="legal__body">
 
-      <div>
-        <h2 class="footer-title">Company</h2>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html#faq">FAQ</a></li>
-        </ul>
-      </div>
+        <p class="legal__updated">Last updated: 15 October 2026</p>
 
-      <div>
-        <h2 class="footer-title">Get in touch</h2>
-        <ul>
-          <li>Muzaffer T&uuml;rkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="contact.html">All contacts &rarr;</a></li>
-        </ul>
+        <!-- IN SHORT. The four points a visitor needs, on a sand step, before the detail. -->
+        <section class="legal__summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">In short</h2>
+          <ul>
+            <li>You can browse this site without telling us anything.</li>
+            <li>Tracking cookies are placed <strong>only if you accept them</strong>. Decline and none are placed; the site works exactly the same.</li>
+            <li>What you write to us is used only to answer you. <strong>We never sell it and never pass it to third parties for marketing.</strong></li>
+            <li>You can ask us to delete your data at any time: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
+          </ul>
+        </section>
+
+        <!-- CONTROLLER. Who is legally responsible for the data, and under which laws. -->
+        <section aria-labelledby="controller-title">
+          <h2 id="controller-title">Who is responsible</h2>
+          <p>The controller of personal data processed through this site is <strong>Aegean Sun Dried Fruits</strong>.</p>
+          <ul>
+            <li>Sales office: Ka&#287;&#305;thane, Istanbul, T&uuml;rkiye</li>
+            <li>Factory: Nazilli, Aydın, T&uuml;rkiye</li>
+            <li>Production plant: Athens, Greece</li>
+            <li>Email: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
+            <li>Phone: <a href="tel:+905078634045">+90 507 863 40 45</a></li>
+            <li>Responsible person: Muzaffer T&uuml;rkekul</li>
+          </ul>
+          <p>We work under Turkish Law No. 6698 on the Protection of Personal Data (KVKK) and, for visitors reaching the site from the European Union, under the General Data Protection Regulation (GDPR).</p>
+        </section>
+
+        <!-- DATA WE COLLECT. Four columns, so the table scrolls inside its own box on a phone. -->
+        <section aria-labelledby="data-title">
+          <h2 id="data-title">What we collect and why</h2>
+          <div class="spec-scroll" tabindex="0" role="region" aria-label="What we collect and why (scrolls sideways)">
+            <table class="spec spec--compare">
+              <thead>
+                <tr><th scope="col">Data</th><th scope="col">Why</th><th scope="col">Legal basis</th><th scope="col">Kept for</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Enquiry form: name, company, email, phone, country, product, volume, message</th>
+                  <td>To answer your enquiry and send prices and samples</td>
+                  <td>Steps prior to a contract / your consent</td>
+                  <td>Until the enquiry is settled; if it becomes an order, for the business relationship and the retention periods that apply to it</td>
+                </tr>
+                <tr>
+                  <th scope="row">Newsletter: your email address</th>
+                  <td>To send harvest, season and price news</td>
+                  <td>Your consent</td>
+                  <td>Until you unsubscribe</td>
+                </tr>
+                <tr>
+                  <th scope="row">Email, phone and WhatsApp correspondence</th>
+                  <td>To answer you and run the order</td>
+                  <td>Contract / legitimate interest</td>
+                  <td>For the business relationship and the retention periods that apply to it</td>
+                </tr>
+                <tr>
+                  <th scope="row">Visit statistics (page, country, referring site, device type)</th>
+                  <td>To see which parts of the site are useful</td>
+                  <td>Legitimate interest &mdash; cookie-free and aggregate; no individual is identified</td>
+                  <td>Vercel’s retention period</td>
+                </tr>
+                <tr>
+                  <th scope="row">Google Analytics data</th>
+                  <td>Detailed measurement of visits</td>
+                  <td><strong>Your consent only</strong> &mdash; if you decline it never runs</td>
+                  <td>The retention setting in Google Analytics</td>
+                </tr>
+                <tr>
+                  <th scope="row">Server logs (IP address, browser information)</th>
+                  <td>To deliver the page, for security and fault finding</td>
+                  <td>Legitimate interest</td>
+                  <td>The hosting provider’s log retention</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The enquiry form sends nothing by itself: it opens your own email program with your message filled in, and we receive it only when you press Send there. Newsletter sign-up is not live yet.</p>
+          <p>We collect no special categories of personal data through this site, and we do no profiling or automated decision-making. The site is not aimed at children.</p>
+        </section>
+
+        <!-- COOKIES. What is placed, only after Accept, and how to change the answer. The in-text button
+             reopens the consent bar (consent.js listens for data-consent-open), styled as a link. -->
+        <section id="cookies" aria-labelledby="cookies-title">
+          <h2 id="cookies-title">Cookies</h2>
+          <p>No cookie is needed for the site to work. The only cookies are Google Analytics’, and they are <strong>not placed unless you accept</strong>; until you answer, the page does not even send a request to Google. Google Tag Manager, which we use to manage the measurement tags, is likewise loaded only after you accept.</p>
+          <div class="spec-scroll" tabindex="0" role="region" aria-label="Cookies (scrolls sideways)">
+            <table class="spec">
+              <thead>
+                <tr><th scope="col">Cookie</th><th scope="col">What it does</th><th scope="col">Lifetime</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">_ga</th><td>Tells visitors apart</td><td>2 years</td></tr>
+                <tr><th scope="row">_ga_YSX5V6H7JQ</th><td>Keeps session state</td><td>2 years</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Your answer is stored in your browser’s local storage as aegeansun-cookie-consent. It is not a cookie, it is never sent to us, and it stays on your device.</p>
+          <p><strong>You can change your mind.</strong> The <button type="button" class="linkbutton" data-consent-open>Cookie preferences</button> link at the bottom of every page reopens the choice. If you decline, any Google Analytics cookie placed earlier is deleted.</p>
+        </section>
+
+        <!-- RECIPIENTS. The only providers that receive data, and why. -->
+        <section aria-labelledby="share-title">
+          <h2 id="share-title">Who we share with</h2>
+          <p>We do not sell your data and we share it with nobody for marketing. The only recipients are the providers we need to run the site and the business:</p>
+          <ul>
+            <li><strong>Vercel</strong> &mdash; hosting of this site and the visit statistics.</li>
+            <li><strong>Google</strong> &mdash; our email infrastructure (Google Workspace) and, only if you accept, Google Analytics and Google Tag Manager.</li>
+            <li><strong>Our representatives abroad</strong> &mdash; if your enquiry concerns the Canadian or Greek market, it may be passed to that representative so you get a faster answer.</li>
+          </ul>
+          <p>We may also disclose data where a public authority lawfully requires it.</p>
+        </section>
+
+        <!-- TRANSFERS. Where the servers are, since some providers are outside Türkiye. -->
+        <section aria-labelledby="transfers-title">
+          <h2 id="transfers-title">Transfers outside T&uuml;rkiye</h2>
+          <p>The hosting, email and measurement services we use run on servers outside T&uuml;rkiye, some of them in the United States, so your data may be transferred abroad. These providers rely on mechanisms such as the standard contractual clauses for transfers from the EU.</p>
+        </section>
+
+        <!-- RIGHTS. What a visitor can ask for under the KVKK and the GDPR, and how. -->
+        <section aria-labelledby="rights-title">
+          <h2 id="rights-title">Your rights</h2>
+          <p>Under Article 11 of the KVKK and under the GDPR you have the right to:</p>
+          <ul>
+            <li>learn whether we process your personal data, and ask for a copy</li>
+            <li>have inaccurate or incomplete data corrected</li>
+            <li>ask for your data to be erased</li>
+            <li>ask us to restrict processing, and object to processing</li>
+            <li>receive your data in a structured form (portability)</li>
+            <li>withdraw consent at any time &mdash; which does not affect processing carried out before you withdrew it</li>
+          </ul>
+          <p>To exercise any of these, write to <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a>. We answer within 30 days at the latest.</p>
+          <p>If our answer does not satisfy you, you can complain to the <strong>Turkish Personal Data Protection Authority</strong>, or, in the European Union, to the data protection authority of your country.</p>
+        </section>
+
+        <!-- SECURITY. How the site and the mailboxes are protected. -->
+        <section aria-labelledby="security-title">
+          <h2 id="security-title">Security</h2>
+          <p>The site is served only over an encrypted connection (HTTPS). Our mailboxes are protected with two-step verification, and your data is reachable only by the people who need it to answer you.</p>
+        </section>
+
+        <!-- CHANGES. Why the date at the top matters. -->
+        <section aria-labelledby="changes-title">
+          <h2 id="changes-title">Changes to this text</h2>
+          <p>We update this page whenever the data we collect or the services we use change. The date at the top is the date of the current version.</p>
+        </section>
+
+        <!-- CONTACT. One line for privacy questions. -->
+        <section aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <p>For any privacy question: <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a> &middot; <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        </section>
+
       </div>
     </div>
+  </main>
 
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
-      <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
-      <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Products">
+        <h2 class="foot__h">Products</h2>
+        <ul>
+          <li><a href="product-dried-fig.html">Dried fig</a></li>
+          <li><a href="product-fig-salami.html">Fig salami</a></li>
+          <li><a href="product-dried-apricot.html">Dried apricot</a></li>
+          <li><a href="product-dried-mulberry.html">Dried mulberry</a></li>
+          <li><a href="products.html">Compare all four</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot__h">Company</h2>
+        <ul>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#faq">Buyer questions</a></li>
+          <li><a class="foot__lang" href="tr/gizlilik.html" lang="tr" hreflang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt="">Türkçe</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="foot__h">Get in touch</h2>
+        <p>Muzaffer Türkekul, export sales<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli facility, Aydın, Türkiye<br>Shipping from İzmir</p>
+      </div>
     </div>
-  </div>
-</footer>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Dried Fruits · <a href="privacy.html">Privacy and cookies</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Cookie preferences</button>
+    </div>
+  </footer>
+
 </body>
 </html>

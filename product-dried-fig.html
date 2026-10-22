@@ -23,6 +23,7 @@
   </script>
   <title>Dried Fig | Aegean Sun Dried Fruits</title>
   <meta name="description" content="Whole sun-dried Turkish figs from Aydın. Lerida and Protoben grades, six calibres, retail and bulk packaging, aflatoxin tested on every lot.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta property="og:title" content="Dried Fig | Aegean Sun Dried Fruits">
   <meta property="og:description" content="Whole sun-dried Turkish figs from Aydın. Lerida and Protoben grades, six calibres, retail and bulk packaging, aflatoxin tested on every lot.">
   <meta property="og:type" content="website">
@@ -42,8 +43,15 @@
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-fig.html">
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-incir.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-fig.html">
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <script src="assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="assets/js/home.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
   <script src="assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
@@ -51,268 +59,238 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Dried Fruits &mdash; Home">
-      <img class="brand__mark" src="assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Dried Fruits</span></span>
-    </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Home</a></li>
-      <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Products
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="products.html">All Products<small>The full Aegean Sun range</small></a></li>
-          <li><a href="product-dried-fig.html">Dried Fig<small>Whole natural Lerida &amp; Protoben</small></a></li>
-          <li><a href="product-fig-salami.html">Fig Salami<small>Six varieties, 180&nbsp;g</small></a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot<small>Sulphured &amp; natural halves</small></a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry<small>Sun and wind dried, no processing</small></a></li>
-        </ul>
-      </li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="contact.html#contact-form">Request a Quote</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="EN &mdash; Language: English">
-          <img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="product-dried-fig.html" hreflang="en" lang="en" aria-current="true"><img class="lang-flag" src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="tr/kuru-incir.html" hreflang="tr" lang="tr"><img class="lang-flag" src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
-        </ul>
-      </div>
-  </nav>
-</header>
-<main id="main">
-
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li aria-current="page">Dried Fig</li></ol></nav>
-      <span class="eyebrow">Aydın, Aegean region</span>
-      <h1>Dried Fig</h1>
-      <p>Whole natural figs, ripened on the tree, sun-dried on open trays and graded by hand. Nothing added &mdash; the sweetness is entirely the fruit’s own.</p>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, home"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Main">
+      <ul>
+        <li><a href="products.html" aria-current="page">Products</a></li>
+        <li class="hide-s"><a href="about.html">Our story</a></li>
+        <li class="hide-s"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="EN, language: English">
+        <img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>EN</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="product-dried-fig.html" hreflang="en" lang="en" aria-current="true"><img src="assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="tr/kuru-incir.html" hreflang="tr" lang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+      </ul>
     </div>
-  </section>
+    <a class="btn btn--fig bar__cta" href="contact.html?product=fig#contact-form">Request a quote</a>
+  </header>
 
-  <section class="section section--white">
-    <div class="wrap split">
-      <div class="split__art">
-        <img src="assets/img/dried-fig.webp" width="1280" height="1280" alt="Whole sun-dried figs with two halves cut open to show the seeded flesh">
+  <main id="main">
+    <!-- PAGE HEAD. The title and what the product is on the left; the fruit in the sun's round window on the right. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="products.html">Products</a></li><li aria-current="page">Dried fig</li></ol></nav>
+        <h1 id="page-title" class="display">Dried fig</h1>
+        <p class="phead__lead">Whole natural figs from Aydın, ripened on the tree, sun-dried on open trays and graded by hand.</p>
+        <div class="phead__actions">
+          <a class="btn btn--fig" href="contact.html?product=fig#contact-form">Request a quote</a>
+          <a class="textlink" href="products.html">See the whole range</a>
+        </div>
+        <ul class="phead__facts" aria-label="Key facts">
+          <li>Sarılop variety</li><li>Aydın, Türkiye</li><li>HS 0804.20</li>
+        </ul>
       </div>
-      <div>
-        <h2>The fig that gave the region its name</h2>
-        <p>The Sarılop variety grown around Aydın and the Büyük Menderes valley is the reference point for dried figs worldwide. Warm days, dry nights and calcareous soil concentrate the sugars until the fruit dries to a deep amber with a chewy, jam-like centre.</p>
-        <p>We contract our gardens by the tree rather than by the tonne, which means growers can leave the fruit to fall naturally instead of picking early. It costs more and it is the single biggest reason our figs taste the way they do.</p>
-        <ul class="checklist">
-          <li>Sun-dried 5&ndash;7 days, finished to 22&ndash;24% moisture</li>
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="assets/img/dried-fig.webp" width="1280" height="1280" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CLAIM. Why this fig is the reference: the variety, the valley's climate, and what we promise on every lot. -->
+    <section class="sect" aria-labelledby="origin-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="origin-title" class="head">The fig that named the region</h2>
+      </div>
+      <div class="sect__body prose">
+        <p class="statement">Warm days, dry nights and calcareous soil concentrate the sugars until the fruit dries to a deep amber with a chewy, jam-like centre.</p>
+        <p>The Sarılop variety grown around Aydın and the Büyük Menderes valley is the reference point for dried figs worldwide. Nothing is added: the sweetness is entirely the fruit’s own.</p>
+        <ul class="dots">
+          <li>Sun-dried 5–7 days, finished to 22–24% moisture</li>
           <li>Hand-graded into six calibres for consistent packs</li>
           <li>Aflatoxin tested lot by lot, certificate with every shipment</li>
           <li>Conventional and certified organic available</li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="contact.html?product=fig#contact-form">Request a quote</a>
-          <a class="btn btn--ghost" href="products.html">Back to products</a>
+      </div>
+    </section>
+
+    <!-- THE GARDENS. Picture and text: the drying field beside the one sourcing choice that shapes the taste. -->
+    <section class="duo" aria-labelledby="garden-title" data-reveal>
+      <div class="duo__pic">
+        <img src="assets/img/fig-drying.webp" width="800" height="450" alt="Women from the growing families sorting figs on rows of drying trays in a field" loading="lazy">
+      </div>
+      <div class="duo__text">
+        <h2 id="garden-title" class="head">Left on the tree to fall</h2>
+        <p>We contract our gardens by the tree rather than by the tonne, which means growers can leave the fruit to fall naturally instead of picking early. It costs more, and it is the single biggest reason our figs taste the way they do.</p>
+      </div>
+    </section>
+
+    <!-- SPECIFICATION. A real table on the sand band: the facts a buyer copies into a purchase order.
+         The film's second button links back here (#spec-title). -->
+    <section class="sect sect--tone" aria-labelledby="spec-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="spec-title" class="head">Specification</h2>
+        <p class="lead">Typical values. An aflatoxin certificate travels with every shipment.</p>
+      </div>
+      <div class="sect__body">
+        <table class="spec">
+          <tr><th scope="row">Botanical name</th><td>Ficus carica, Sarılop variety</td></tr>
+          <tr><th scope="row">Origin</th><td>Aydın, Türkiye</td></tr>
+          <tr><th scope="row">Produced in</th><td>Our Nazilli facility, Aydın</td></tr>
+          <tr><th scope="row">Grades</th><td>Lerida, Protoben, Bağlama, Garland, Pulled, Layer, Makaroni, Diced</td></tr>
+          <tr><th scope="row">Calibre</th><td>No.1 (&le;38&nbsp;pcs/kg) to No.6 (&le;110&nbsp;pcs/kg)</td></tr>
+          <tr><th scope="row">Moisture</th><td>22–24%</td></tr>
+          <tr><th scope="row">Ingredients</th><td>100% dried figs (natural grades). Sulphur-free.</td></tr>
+          <tr><th scope="row">Harvest</th><td>August – September, shipped year-round</td></tr>
+          <tr><th scope="row">Shelf life</th><td>12 months at 4–18&nbsp;°C, 65% RH</td></tr>
+          <tr><th scope="row">HS code</th><td>0804.20</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- THE FILM. Same markup and ids as the home page, so assets/js/home.js drives it (muted loop on screen,
+         caption tabs, "Play with sound"). It sits after the specification on purpose: buyers come for the
+         spec and the grades first; the film backs those up rather than delaying them. -->
+    <section class="film" aria-labelledby="film-title">
+      <div class="film__plate" data-reveal>
+        <div class="film__frame">
+          <video id="film" muted playsinline loop preload="none" poster="assets/img/video-poster.webp" width="720" height="1280">
+            <source src="assets/video/fig-journey.mp4" type="video/mp4">
+            <track kind="captions" src="assets/video/fig-journey.en.vtt" srclang="en" label="English">
+            <track kind="captions" src="assets/video/fig-journey.tr.vtt" srclang="tr" label="Türkçe">
+            <a href="assets/video/fig-journey.mp4">Download the film.</a>
+          </video>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Specification</h3>
-          <table class="spec-table">
-            <tr><th scope="row">Botanical name</th><td>Ficus carica, Sarılop variety</td></tr>
-            <tr><th scope="row">Origin</th><td>Aydın, T&uuml;rkiye</td></tr>
-            <tr><th scope="row">Produced in</th><td>Our Nazilli facility, Aydın</td></tr>
-            <tr><th scope="row">Grades</th><td>Lerida, Protoben, Bağlama, Garland, Pulled, Layer, Makaroni, Diced</td></tr>
-            <tr><th scope="row">Calibre</th><td>No.1 (&le;38 pcs/kg) to No.6 (&le;110 pcs/kg)</td></tr>
-            <tr><th scope="row">Moisture</th><td>22&ndash;24%</td></tr>
-            <tr><th scope="row">Ingredients</th><td>100% dried figs (natural grades). Sulphur-free.</td></tr>
-            <tr><th scope="row">Harvest</th><td>August &ndash; September, shipped year-round</td></tr>
-            <tr><th scope="row">Shelf life</th><td>12 months at 4&ndash;18&nbsp;&deg;C, 65% RH</td></tr>
-            <tr><th scope="row">HS code</th><td>0804.20</td></tr>
-          </table>
+      <div class="film__side" data-reveal>
+        <div class="film__tabs" role="tablist" aria-label="Film captions">
+          <button role="tab" id="tab-en" aria-selected="true" aria-controls="film-panel" data-track="en">English captions</button>
+          <button role="tab" id="tab-tr" aria-selected="false" aria-controls="film-panel" data-track="tr" lang="tr" tabindex="-1">Türkçe altyazı</button>
+          <button role="tab" id="tab-tx" aria-selected="false" aria-controls="film-panel" data-track="transcript" tabindex="-1">Transcript</button>
         </div>
-
-        <div>
-          <div class="card" style="margin-bottom:26px">
-            <h3>Packaging options</h3>
-            <ul class="checklist mb-0">
-              <li>200&nbsp;g and 500&nbsp;g printed retail pouches</li>
-              <li>1&nbsp;kg corrugated tray, shrink-wrapped</li>
-              <li>5&nbsp;kg and 10&nbsp;kg catering cartons with liner</li>
-              <li>12.5&nbsp;kg industrial carton for further processing</li>
-              <li>Private label and gift packaging on request</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Typical uses</h3>
-            <p class="muted mb-0">Snacking and cheese boards, breakfast cereals and bars, bakery fillings and pastes, confectionery inclusions, fig-based beverages and infusions.</p>
-          </div>
+        <div id="film-panel" role="tabpanel" aria-labelledby="tab-en" class="film__panel">
+          <h2 id="film-title" class="head">See a fig go from tree to carton</h2>
+          <p class="film__text" data-for="caption">A narrated 74-second film shot in the gardens, the drying yard and the plant: picking at dawn, drying on raised frames, sorting on the line, loading the truck.</p>
+          <p class="film__text" data-for="transcript" hidden>Ripe figs hang in Aegean orchards and a grower checks them for ripeness. Figs are hand-picked into a basket at dawn, laid out on raised wooden mesh frames to dry in the sun and wind, then inspected by hand and packed into wooden crates. A truck carries the crates down a mountain road to a processing plant, where a worker in a hairnet and white coat sorts figs on a conveyor. It ends with boxes stacked in a warehouse and a twine-tied pack of figs.</p>
+        </div>
+        <div class="film__cells">
+          <button class="cell cell--ink" type="button" id="film-play">Play with sound</button>
+          <a class="cell cell--tone" href="#spec-title">Back to the specification</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- The film sits after the specification on purpose: buyers come for the spec
-       table and the grades first; the film backs those up rather than delaying them. -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">From the garden to your container</span>
-        <h2>See the journey your figs make</h2>
-        <p class="lead">Harvest, drying, grading and loading &mdash; the route every carton takes before it reaches you, filmed where it happens.</p>
+    <!-- GRADES. Wide section: Turkish figs are traded by shape and presentation, so every form we pack
+         is listed with its usual pack size (the same grade list as on the home page, in full). -->
+    <section class="sect sect--wide" aria-labelledby="grades-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="grades-title" class="head">Every grade we prepare</h2>
+        <p class="lead">Turkish dried figs are traded by shape and presentation as much as by size. Each form is available as a retail unit or as bulk for further processing.</p>
       </div>
-
-      <div class="video-frame video-frame--narrow">
-        <video controls preload="metadata" playsinline poster="assets/img/video-poster.webp">
-          <source src="assets/video/fig-journey.mp4" type="video/mp4">
-          <track kind="captions" src="assets/video/fig-journey.en.vtt" srclang="en" label="English">
-          Your browser cannot play this video.
-          <a href="assets/video/fig-journey.mp4">Download the film</a>.
-        </video>
-      </div>
-      <details class="video-transcript">
-        <summary>What the film shows</summary>
-        <p>A narrated 74-second film following the Sarılop fig from tree to table. Ripe figs hang in Aegean orchards and a grower checks them for ripeness. Figs are hand-picked into a basket at dawn, laid out on raised wooden mesh frames to dry in the sun and wind, then inspected by hand and packed into wooden crates. A truck carries the crates down a mountain road to a processing plant, where a worker in a hairnet and white coat sorts figs on a conveyor. It ends with boxes stacked in a warehouse and a twine-tied pack of figs.</p>
-      </details>
-    </div>
-  </section>
-
-  <section class="section section--white">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Product range</span>
-        <h2>Every grade we prepare</h2>
-        <p class="lead">Turkish dried figs are traded by shape and presentation as much as by size. These are the forms we pack &mdash; each one available as a retail unit or as bulk for further processing.</p>
-      </div>
-
-      <div class="format-grid">
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; 10&nbsp;kg carton</span>
-          <h3>Lerida</h3>
-          <p>Our premium grade. Large, pale figs pressed into an even round and laid in a single layer. The presentation buyers choose for gift and premium retail lines.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">500&nbsp;g &middot; 5&nbsp;kg</span>
-          <h3>Protoben</h3>
-          <p>Whole figs shaped by hand, a step below Lerida in calibre and uniformity but the same fruit. The workhorse grade for everyday retail packs.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg carton</span>
-          <h3>Ba&#287;lama</h3>
-          <p>Figs pressed and packed in tied, layered rows &mdash; the traditional Aegean market presentation, still the format many wholesalers ask for by name.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">4.5&nbsp;kg carton</span>
-          <h3>Garland</h3>
-          <p>Figs threaded into a ring the way village households have stored them for generations. A strong seasonal and delicatessen line.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">800&nbsp;g &middot; 5&nbsp;kg</span>
-          <h3>Pulled</h3>
-          <p>Figs opened and flattened by hand, which gives a softer bite and a fast-selling bagged format for supermarket shelves.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">250&nbsp;g tray</span>
-          <h3>Layer</h3>
-          <p>Selected figs laid flat in a shallow tray so the fruit arrives unmarked. Our best-looking small pack, and the one we recommend for gifting.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">5&nbsp;kg &middot; 10&nbsp;kg</span>
-          <h3>Makaroni</h3>
-          <p>Smaller, elongated figs in bulk cartons. Priced for industrial buyers making pastes, fillings, bars and infusions.</p>
-        </article>
-        <article class="format-card">
-          <span class="format-card__meta">10&nbsp;kg bulk</span>
-          <h3>Diced 8&times;10&nbsp;mm</h3>
-          <p>Rice-floured fig dice cut to a consistent cube for bakery, cereal and confectionery lines. Other cut sizes on request.</p>
-        </article>
-      </div>
-
-      <p class="muted" style="margin-top:24px">Every grade ships in food-grade lined cardboard cartons, with wooden crates available for bulk lots. Retail units can carry your own label and barcode.</p>
-      <a class="btn btn--primary" href="contact.html?product=fig#contact-form">Ask for the current price list</a>
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>Try before you commit</h2>
-        <p>Graded sample sets are free for qualified trade buyers.</p>
-      </div>
-      <a class="btn btn--primary" href="contact.html?product=fig#contact-form">Request samples</a>
-    </div>
-  </section>
-
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
-        </div>
-        <p>Grower-direct dried figs, fig salami, dried apricots and dried mulberries from the orchards of the Aegean and Eastern Anatolia. Packed for retail, food service and industry.</p>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Products</h2>
-        <ul>
-          <li><a href="product-dried-fig.html">Dried Fig</a></li>
-          <li><a href="product-fig-salami.html">Fig Salami</a></li>
-          <li><a href="product-dried-apricot.html">Dried Apricot</a></li>
-          <li><a href="product-dried-mulberry.html">Dried Mulberry</a></li>
-          <li><a href="products.html">All Products</a></li>
+      <div class="sect__body">
+        <ul class="items">
+          <li><h3>Lerida</h3><span class="items__pack">5&nbsp;kg · 10&nbsp;kg carton</span><p>Our premium grade. Large, pale figs pressed into an even round and laid in a single layer. The presentation buyers choose for gift and premium retail lines.</p></li>
+          <li><h3>Protoben</h3><span class="items__pack">500&nbsp;g · 5&nbsp;kg</span><p>Whole figs shaped by hand, a step below Lerida in calibre and uniformity but the same fruit. The workhorse grade for everyday retail packs.</p></li>
+          <li><h3>Bağlama</h3><span class="items__pack">5&nbsp;kg carton</span><p>Figs pressed and packed in tied, layered rows: the traditional Aegean market presentation, still the format many wholesalers ask for by name.</p></li>
+          <li><h3>Garland</h3><span class="items__pack">4.5&nbsp;kg carton</span><p>Figs threaded into a ring the way village households have stored them for generations. A strong seasonal and delicatessen line.</p></li>
+          <li><h3>Pulled</h3><span class="items__pack">800&nbsp;g · 5&nbsp;kg</span><p>Figs opened and flattened by hand, which gives a softer bite and a fast-selling bagged format for supermarket shelves.</p></li>
+          <li><h3>Layer</h3><span class="items__pack">250&nbsp;g tray</span><p>Selected figs laid flat in a shallow tray so the fruit arrives unmarked. Our best-looking small pack, and the one we recommend for gifting.</p></li>
+          <li><h3>Makaroni</h3><span class="items__pack">5&nbsp;kg · 10&nbsp;kg</span><p>Smaller, elongated figs in bulk cartons. Priced for industrial buyers making pastes, fillings, bars and infusions.</p></li>
+          <li><h3>Diced 8×10&nbsp;mm</h3><span class="items__pack">10&nbsp;kg bulk</span><p>Rice-floured fig dice cut to a consistent cube for bakery, cereal and confectionery lines. Other cut sizes on request.</p></li>
         </ul>
       </div>
+    </section>
 
-      <div>
-        <h2 class="footer-title">Company</h2>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="contact.html#faq">FAQ</a></li>
-        </ul>
+    <!-- PACKING AND USES. Picture and text, flipped: the packed carton beside where buyers use the fruit,
+         how every grade ships, the pack formats, and the price-list action. -->
+    <section class="duo duo--flip" aria-labelledby="packs-title" data-reveal>
+      <div class="duo__pic">
+        <img src="assets/img/fig-box.webp" width="1000" height="1000" alt="Dried figs packed in rows in a carton, with bay leaves laid between them" loading="lazy">
       </div>
-
-      <div>
-        <h2 class="footer-title">Get in touch</h2>
-        <ul>
-          <li>Muzaffer T&uuml;rkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Mon&ndash;Fri, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="contact.html">All contacts &rarr;</a></li>
+      <div class="duo__text prose">
+        <h2 id="packs-title" class="head">Packed the way you sell</h2>
+        <p>Buyers use our figs for snacking and cheese boards, breakfast cereals and bars, bakery fillings and pastes, confectionery inclusions, and fig-based beverages and infusions.</p>
+        <p>Every grade ships in food-grade lined cardboard cartons, with wooden crates available for bulk lots. Retail units can carry your own label and barcode.</p>
+        <ul class="dots">
+          <li>200&nbsp;g and 500&nbsp;g printed retail pouches</li>
+          <li>1&nbsp;kg corrugated tray, shrink-wrapped</li>
+          <li>5&nbsp;kg and 10&nbsp;kg catering cartons with liner</li>
+          <li>12.5&nbsp;kg industrial carton for further processing</li>
+          <li>Private label and gift packaging on request</li>
         </ul>
+        <a class="btn btn--fig" href="contact.html?product=fig#contact-form">Ask for the current price list</a>
+      </div>
+    </section>
+
+    <!-- CLOSE. One line, one action, on the fig ground with the sun rising at the edge. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">Try before you commit</h2>
+          <p>Graded sample sets are free for qualified trade buyers.</p>
+        </div>
+        <a class="btn btn--sun" href="contact.html?product=fig#contact-form">Request samples</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Products">
+        <h2 class="foot__h">Products</h2>
+        <ul>
+          <li><a href="product-dried-fig.html">Dried fig</a></li>
+          <li><a href="product-fig-salami.html">Fig salami</a></li>
+          <li><a href="product-dried-apricot.html">Dried apricot</a></li>
+          <li><a href="product-dried-mulberry.html">Dried mulberry</a></li>
+          <li><a href="products.html">Compare all four</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Company">
+        <h2 class="foot__h">Company</h2>
+        <ul>
+          <li><a href="about.html">Our story</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html#faq">Buyer questions</a></li>
+          <li><a class="foot__lang" href="tr/kuru-incir.html" lang="tr" hreflang="tr"><img src="assets/img/flag-tr.svg" width="20" height="14" alt="">Türkçe</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="foot__h">Get in touch</h2>
+        <p>Muzaffer Türkekul, export sales<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli facility, Aydın, Türkiye<br>Shipping from İzmir</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Dried Fruits. All rights reserved.</span>
-      <span>Harvested in T&uuml;rkiye &middot; Shipped worldwide</span>
-      <span><a href="privacy.html">Privacy &amp; Cookies</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Cookie preferences</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Dried Fruits · <a href="privacy.html">Privacy and cookies</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Cookie preferences</button>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>

@@ -404,7 +404,7 @@ A fixed white bar with a hairline top and the Consent edge shadow. Accept is a f
 
 ## Home pages (2026 redesign): "One motif, the sun"
 
-`index.html` and `tr/index.html` use their own stylesheet, `assets/css/home.css`, and a stricter, flatter version of this system. When the inner pages are redesigned they should move to it. Colours are the same brand palette; the type, shapes and depth rules below replace the ones above **on the home pages only**.
+Since October 2026 **every page** (home and inner pages, EN and TR) uses `assets/css/home.css`, a stricter, flatter version of this system; the old `styles.css` is retired. Colours are the same brand palette; the type, shapes and depth rules below replace the ones above (which now describe the retired design and are kept for history; the consent bar and chat widget still follow them).
 
 **The idea.** The sun that dries the fruit, which also names the company, is the only shape with character. It appears at four scales: the giant apricot disc in the hero (about 120vh across, cropped by the viewport, rising into place on load); the round window every photograph sits in; the filled dot used as a bullet and beside the wordmark; and the footer sunrise behind a row of drying trays. Do not add a second motif (no blobs, arches or hexagons).
 
@@ -420,4 +420,6 @@ A fixed white bar with a hairline top and the Consent edge shadow. Accept is a f
 
 **Motion.** Sections enter once, their parts rising 24px in sequence. The hero sun rises into place; the hero photo is visible from the first frame (it is the LCP) and only settles from a slight zoom. Region photos drift with scroll where supported. Everything has a `prefers-reduced-motion` fallback.
 
-**Shared widgets.** The consent bar and chat widget keep their existing design; `home.css` carries a copy of their styles from `styles.css`, mapping the old token names on each widget's root.
+**Inner pages.** `product-dried-mulberry.html` is the reference. Each inner page is: the bar (with `aria-current` on its section) → `.phead` (breadcrumb `.crumbs` with sun-dot separators, an uppercase `display` h1 one step smaller than the home hero, one-sentence lead, one action, fact pills, and the product photo in a round window inside a sun disc cropped by the right edge; `.phead--text` when there is no picture) → `.sect` blocks (heading in the left five columns, sticky on desktop; content in the right six; `--wide` for grade lists and comparison tables; `--tone` for the one sand band, usually the specification) → `.duo` picture-and-text rows with round photos → `.closer` (fig-dark panel, one line, one sun-coloured action, the sun rising at the corner) → the footer. Grade lists reuse the home `.items` with `h3` names. Specification tables are real tables whose rows are sand tone steps with 14px rounded ends, not hairlines. Contact puts the form on a sun-coloured `.form-sheet` beside the direct lines (`.reach`); FAQ answers sit in sand `<details>` whose sun dot grows when open. Privacy uses `.legal` (one centred reading column, summary on a sand step).
+
+**Shared widgets.** The consent bar and chat widget keep their existing design; their styles sit at the end of `home.css`, mapping the old token names on each widget's root.

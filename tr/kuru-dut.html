@@ -42,8 +42,15 @@
   <link rel="alternate" hreflang="tr" href="https://www.aegeansunfruit.com/tr/kuru-dut.html">
   <link rel="alternate" hreflang="en" href="https://www.aegeansunfruit.com/product-dried-mulberry.html">
   <link rel="alternate" hreflang="x-default" href="https://www.aegeansunfruit.com/product-dried-mulberry.html">
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <script src="../assets/js/main.js" defer></script>
+  <!-- Fonts are self-hosted (assets/css/fonts.css), so no request reaches Google before consent. -->
+  <link rel="preload" href="../assets/fonts/libre-franklin-normal-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/source-serif-4-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
+       Without JavaScript the class is never added and every section simply shows. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../assets/js/home.js" defer></script>
   <script src="../assets/js/consent.js" defer></script>
   <script src="../assets/js/chat.js" defer></script>
   <!-- Vercel Web Analytics. The /_vercel/ path is served by Vercel itself,
@@ -51,183 +58,171 @@
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
-<a class="skip-link" href="#main">İçeriğe geç</a>
-<header class="site-header">
-  <nav class="wrap nav" aria-label="Ana menü">
-    <a class="brand" href="index.html" aria-label="Aegean Sun Kuru Meyve — Ana sayfa">
-      <img class="brand__mark" src="../assets/img/logo-mark.webp" width="400" height="400" alt="">
-      <span>Aegean Sun<span class="brand__sub">Kuru Meyve</span></span>
-    </a>
+  <a class="skip" href="#main">İçeriğe geç</a>
 
-    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Menüyü aç" data-label-open="Menüyü aç" data-label-close="Menüyü kapat">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="menu" id="primary-menu">
-      <li><a href="index.html">Ana Sayfa</a></li>
-      <li class="has-dropdown is-active">
-        <button class="menu__button" type="button" aria-expanded="false" aria-controls="menu-products">
-          Ürünler
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true">
-            <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul class="dropdown" id="menu-products">
-          <li><a href="urunler.html">Tüm Ürünler<small>Aegean Sun ürün yelpazesi</small></a></li>
-          <li><a href="kuru-incir.html">Kuru İncir<small>Doğal Lerida ve Protoben</small></a></li>
-          <li><a href="incir-salami.html">İncir Salamı<small>Altı çeşit, 180&nbsp;g</small></a></li>
-          <li><a href="kuru-kayisi.html">Kuru Kayısı<small>Kükürtlü ve doğal kayısı</small></a></li>
-          <li><a href="kuru-dut.html">Kuru Dut<small>Güneş ve rüzgârla kurutulur</small></a></li>
-        </ul>
-      </li>
-      <li><a href="hakkimizda.html">Hakkımızda</a></li>
-      <li><a href="iletisim.html">İletişim</a></li>
-      <li class="nav__cta"><a class="btn btn--primary" href="iletisim.html#contact-form">Teklif Alın</a></li>
-    </ul>
-
-      <div class="lang-switch has-dropdown">
-        <button class="lang-switch__button menu__button" type="button" aria-expanded="false" aria-controls="menu-lang" aria-label="TR — Dil: Türkçe">
-          <img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
-          <svg class="menu__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </button>
-        <ul class="dropdown" id="menu-lang">
-          <li><a href="../product-dried-mulberry.html" hreflang="en" lang="en"><img class="lang-flag" src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
-          <li><a href="kuru-dut.html" hreflang="tr" lang="tr" aria-current="true"><img class="lang-flag" src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
-        </ul>
-      </div>
-  </nav>
-</header>
-<main id="main">
-
-  <section class="page-banner">
-    <div class="wrap">
-      <nav class="breadcrumb" aria-label="Sayfa yolu"><ol><li><a href="index.html">Ana Sayfa</a></li><li><a href="urunler.html">Ürünler</a></li><li aria-current="page">Kuru Dut</li></ol></nav>
-      <span class="eyebrow">Anadolu</span>
-      <h1>Kuru Dut</h1>
-      <p>Dalında tam olgunluğa ulaşan dutlar, hiçbir işlemden geçirilmeden Anadolu güneşinde ve rüzgârında kurutulur.</p>
+  <!-- Plain bar, the same on every page: wordmark, three links, the language switcher, one action. -->
+  <header class="bar">
+    <a class="bar__brand" href="./" aria-label="Aegean Sun, ana sayfa"><span class="dot" aria-hidden="true"></span>Aegean Sun</a>
+    <nav class="bar__nav" aria-label="Ana menü">
+      <ul>
+        <li><a href="urunler.html" aria-current="page">Ürünler</a></li>
+        <li class="hide-s"><a href="hakkimizda.html">Hikâyemiz</a></li>
+        <li class="hide-s"><a href="iletisim.html">İletişim</a></li>
+      </ul>
+    </nav>
+    <div class="lang">
+      <button class="lang__button" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="TR, dil: Türkçe">
+        <img src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>TR</span>
+        <svg class="lang__caret" width="10" height="7" viewBox="0 0 10 7" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <ul class="lang__menu" id="lang-menu" hidden>
+        <li><a href="../product-dried-mulberry.html" hreflang="en" lang="en"><img src="../assets/img/flag-en.svg" width="20" height="14" alt=""><span>English</span></a></li>
+        <li><a href="kuru-dut.html" hreflang="tr" lang="tr" aria-current="true"><img src="../assets/img/flag-tr.svg" width="20" height="14" alt=""><span>Türkçe</span></a></li>
+      </ul>
     </div>
-  </section>
+    <a class="btn btn--fig bar__cta" href="iletisim.html?product=mulberry#contact-form">Teklif alın</a>
+  </header>
 
-  <section class="section section--white">
-    <div class="wrap split">
-      <div class="split__art">
-        <img src="../assets/img/dried-mulberry.webp" width="612" height="408" alt="Geniş bir tepside tepeleme duran altın sarısı kuru beyaz dut">
+  <main id="main">
+    <!-- SAYFA BAŞI. Solda başlık ve ürünün ne olduğu; sağda güneşin yuvarlak penceresinde meyve. -->
+    <section class="phead" aria-labelledby="page-title">
+      <div class="phead__copy" data-reveal>
+        <nav class="crumbs" aria-label="Sayfa yolu"><ol><li><a href="./">Ana sayfa</a></li><li><a href="urunler.html">Ürünler</a></li><li aria-current="page">Kuru dut</li></ol></nav>
+        <h1 id="page-title" class="display">Kuru dut</h1>
+        <p class="phead__lead">Dalında tam olgunluğa ulaşan dutlar, hiçbir işlemden geçirilmeden Anadolu güneşinde ve rüzgârında kurutulur.</p>
+        <div class="phead__actions">
+          <a class="btn btn--fig" href="iletisim.html?product=mulberry#contact-form">Teklif alın</a>
+          <a class="textlink" href="urunler.html">Tüm ürünleri görün</a>
+        </div>
+        <ul class="phead__facts" aria-label="Temel bilgiler">
+          <li>Morus alba</li><li>Türkiye</li><li>GTİP 0813.40</li>
+        </ul>
       </div>
-      <div>
-        <h2>Beş kilo taze dut, bir kilo kuru dut</h2>
-        <p>Taze dut ağırlığının ortalama %80’i sudur. Yaz aylarının sıcağında güneşte ve rüzgârda kuruyan meyveden geriye bu suyun neredeyse tamamı gider: bir kilo kuru dut için yaklaşık beş kilo taze dut gerekir. Tatlılığın bu kadar yoğun olmasının nedeni de bu.</p>
-        <p>Kurutma bittikten sonra dutlar üretim tesisimize alınır; fümigasyon ve temizleme aşamalarından geçirilerek paketlenir. İstediğiniz ambalaj ve gramaja göre hazırlanır.</p>
-        <ul class="checklist">
+      <div class="phead__sun" aria-hidden="true">
+        <div class="phead__window">
+          <img src="../assets/img/dried-mulberry.webp" width="612" height="408" alt="" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- İDDİA. Meyvenin neden bu kadar tatlı olduğu, üreticinin hesabıyla. -->
+    <section class="sect" aria-labelledby="yield-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="yield-title" class="head">Beş kilo taze, bir kilo kuru</h2>
+      </div>
+      <div class="sect__body prose">
+        <p class="statement">Taze dut ağırlığının ortalama %80’i sudur. Güneş ve rüzgâr bu suyun neredeyse tamamını alır; tatlılığın bu kadar yoğun olmasının nedeni de bu.</p>
+        <p>Dutlar yaz aylarının sıcağında kurur: bir kilo kuru dut için yaklaşık beş kilo taze dut gerekir. Kurutma bittikten sonra dutlar üretim tesisimize alınır; fümigasyon ve temizleme aşamalarından geçirilerek paketlenir. İstediğiniz ambalaj ve gramaja göre hazırlanır.</p>
+        <ul class="dots">
           <li>Dalında tam olgunlaşır, işlem görmeden kurutulur</li>
           <li>Güneş ve rüzgârla doğal kurutma; ilave şeker ve katkı yok</li>
           <li>Tesiste fümigasyon ve temizleme sonrası paketleme</li>
           <li>Talep edilen ambalaj ve gramaja göre hazırlanır</li>
         </ul>
-        <div class="btn-row">
-          <a class="btn btn--primary" href="iletisim.html?product=mulberry#contact-form">Teklif alın</a>
-          <a class="btn btn--ghost" href="urunler.html">Ürünlere dön</a>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section--sand">
-    <div class="wrap">
-      <div class="grid grid--2">
-        <div class="card">
-          <h3>Teknik bilgiler</h3>
-          <table class="spec-table">
-            <tr><th scope="row">Botanik adı</th><td>Morus alba (beyaz dut)</td></tr>
-            <tr><th scope="row">Menşe</th><td>Türkiye</td></tr>
-            <tr><th scope="row">İçindekiler</th><td>%100 kuru dut. İlave şeker ve katkı maddesi içermez.</td></tr>
-            <tr><th scope="row">Kurutma</th><td>Güneş ve rüzgârla doğal kurutma, işlem uygulanmaz</td></tr>
-            <tr><th scope="row">Verim</th><td>Yaklaşık 5&nbsp;kg taze duttan 1&nbsp;kg kuru dut</td></tr>
-            <tr><th scope="row">İşleme</th><td>Fümigasyon ve temizleme sonrası paketleme</td></tr>
-            <tr><th scope="row">Hasat</th><td>Yaz ayları, yıl boyu sevkiyat</td></tr>
-            <tr><th scope="row">GTİP kodu</th><td>0813.40</td></tr>
-          </table>
-        </div>
+    <!-- TEKNİK BİLGİLER. Kum bandında gerçek bir tablo: alıcının satın alma siparişine aktardığı bilgiler. -->
+    <section class="sect sect--tone" aria-labelledby="spec-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="spec-title" class="head">Teknik bilgiler</h2>
+        <p class="lead">Güncel ürün için tipik değerler. Sertifikalar her sevkiyatla birlikte gönderilir.</p>
+      </div>
+      <div class="sect__body">
+        <table class="spec">
+          <tr><th scope="row">Botanik adı</th><td>Morus alba (beyaz dut)</td></tr>
+          <tr><th scope="row">Menşe</th><td>Türkiye</td></tr>
+          <tr><th scope="row">İçindekiler</th><td>%100 kuru dut. İlave şeker ve katkı maddesi içermez.</td></tr>
+          <tr><th scope="row">Kurutma</th><td>Güneş ve rüzgârla doğal kurutma, işlem uygulanmaz</td></tr>
+          <tr><th scope="row">Verim</th><td>Yaklaşık 5&nbsp;kg taze duttan 1&nbsp;kg kuru dut</td></tr>
+          <tr><th scope="row">İşleme</th><td>Fümigasyon ve temizleme sonrası paketleme</td></tr>
+          <tr><th scope="row">Hasat</th><td>Yaz ayları, yıl boyu sevkiyat</td></tr>
+          <tr><th scope="row">GTİP kodu</th><td>0813.40</td></tr>
+        </table>
+      </div>
+    </section>
 
+    <!-- AMBALAJ VE KULLANIM. İki kısa sütun: nasıl sevk edildiği ve alıcıların nerede kullandığı. -->
+    <section class="sect" aria-labelledby="packs-title" data-reveal>
+      <div class="sect__head">
+        <h2 id="packs-title" class="head">Gramajınıza göre paketlenir</h2>
+      </div>
+      <div class="sect__body cols">
         <div>
-          <div class="card" style="margin-bottom:26px">
-            <h3>Ambalaj seçenekleri</h3>
-            <ul class="checklist mb-0">
-              <li>12,5&nbsp;kg dökme koli</li>
-              <li>Talep ettiğiniz ambalaj ve gramajda hazırlanan formatlar</li>
-              <li>Kendi etiketinizle perakende paket</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Kullanım alanları</h3>
-            <p class="muted mb-0">Atıştırmalık ve kuruyemiş karışımları, kahvaltılık gevrek ve bar, pekmez ve dut kurusu tozu, fırıncılık ve tatlı üretimi.</p>
-          </div>
+          <h3 class="sub">Ambalaj seçenekleri</h3>
+          <ul class="dots">
+            <li>12,5&nbsp;kg dökme koli</li>
+            <li>Talep ettiğiniz ambalaj ve gramajda hazırlanan formatlar</li>
+            <li>Kendi etiketinizle perakende paket</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="sub">Kullanım alanları</h3>
+          <p>Atıştırmalık ve kuruyemiş karışımları, kahvaltılık gevrek ve bar, pekmez ve dut kurusu tozu, fırıncılık ve tatlı üretimi.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-band">
-    <div class="wrap cta-band__inner">
-      <div>
-        <h2>Gramajı siz söyleyin</h2>
-        <p>Kuru dutu istediğiniz ambalaj ve gramajda hazırlıyoruz.</p>
-      </div>
-      <a class="btn btn--primary" href="iletisim.html?product=mulberry#contact-form">Teklif alın</a>
-    </div>
-  </section>
-
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="../assets/img/logo-mark.webp" width="400" height="400" alt="" loading="lazy" decoding="async">
-          <span>Aegean Sun</span>
+    <!-- KAPANIŞ. Bir cümle, bir eylem; incir zemininde, kenarda doğan güneşle. -->
+    <section class="closer" aria-labelledby="close-title">
+      <div class="closer__panel" data-reveal>
+        <div class="closer__text">
+          <h2 id="close-title" class="head">Gramajı siz söyleyin</h2>
+          <p>Kuru dutu istediğiniz ambalaj ve gramajda hazırlıyoruz; bir iş günü içinde yanıt veriyoruz.</p>
         </div>
-        <p>Ege ve Doğu Anadolu bahçelerinden doğrudan gelen kuru incir, incir salamı, kuru kayısı ve kuru dut. Perakende, toplu tüketim ve sanayi için paketlenir.</p>
+        <a class="btn btn--sun" href="iletisim.html?product=mulberry#contact-form">Teklif alın</a>
       </div>
+    </section>
+  </main>
 
-      <div>
-        <h2 class="footer-title">Ürünler</h2>
+  <!-- FOOTER. The mark built large: the sun rising behind a row of drying trays, then the name at full width. -->
+  <footer class="foot site-footer">
+    <svg class="foot__mark" viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <circle cx="600" cy="260" r="230" fill="#e08b3c"/>
+      <g fill="#5b2c53">
+        <rect x="0" y="196" width="96" height="64"/><rect x="100" y="176" width="96" height="84"/>
+        <rect x="200" y="206" width="96" height="54"/><rect x="300" y="186" width="96" height="74"/>
+        <rect x="400" y="216" width="96" height="44"/><rect x="500" y="200" width="96" height="60"/>
+        <rect x="600" y="200" width="96" height="60"/><rect x="700" y="216" width="96" height="44"/>
+        <rect x="800" y="186" width="96" height="74"/><rect x="900" y="206" width="96" height="54"/>
+        <rect x="1000" y="176" width="96" height="84"/><rect x="1100" y="196" width="100" height="64"/>
+      </g>
+    </svg>
+    <p class="foot__name" aria-hidden="true">Aegean Sun</p>
+    <div class="foot__cols">
+      <nav aria-label="Ürünler">
+        <h2 class="foot__h">Ürünler</h2>
         <ul>
-          <li><a href="kuru-incir.html">Kuru İncir</a></li>
-          <li><a href="incir-salami.html">İncir Salamı</a></li>
-          <li><a href="kuru-kayisi.html">Kuru Kayısı</a></li>
-          <li><a href="kuru-dut.html">Kuru Dut</a></li>
-          <li><a href="urunler.html">Tüm Ürünler</a></li>
+          <li><a href="kuru-incir.html">Kuru incir</a></li>
+          <li><a href="incir-salami.html">İncir salamı</a></li>
+          <li><a href="kuru-kayisi.html">Kuru kayısı</a></li>
+          <li><a href="kuru-dut.html">Kuru dut</a></li>
+          <li><a href="urunler.html">Dördünü karşılaştırın</a></li>
         </ul>
-      </div>
-
-      <div>
-        <h2 class="footer-title">Kurumsal</h2>
+      </nav>
+      <nav aria-label="Kurumsal">
+        <h2 class="foot__h">Kurumsal</h2>
         <ul>
-          <li><a href="index.html">Ana Sayfa</a></li>
-          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="hakkimizda.html">Hikâyemiz</a></li>
           <li><a href="iletisim.html">İletişim</a></li>
-          <li><a href="iletisim.html#faq">Sık Sorulanlar</a></li>
+          <li><a href="iletisim.html#faq">Alıcıların soruları</a></li>
+          <li><a class="foot__lang" href="../product-dried-mulberry.html" lang="en" hreflang="en"><img src="../assets/img/flag-en.svg" width="20" height="14" alt="">English</a></li>
         </ul>
-      </div>
-
+      </nav>
       <div>
-        <h2 class="footer-title">Bize ulaşın</h2>
-        <ul>
-          <li>Muzaffer Türkekul</li>
-          <li><a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a></li>
-          <li><a href="tel:+905078634045">+90 507 863 40 45</a></li>
-          <li>Pzt&ndash;Cum, 08:30&ndash;18:00 (GMT+3)</li>
-          <li><a href="iletisim.html">Tüm iletişim bilgileri &rarr;</a></li>
-        </ul>
+        <h2 class="foot__h">Bize ulaşın</h2>
+        <p>Muzaffer Türkekul, ihracat satış<br>
+          <a href="mailto:muzaffer.turkekul@aegeansunfruit.com">muzaffer.turkekul@aegeansunfruit.com</a><br>
+          <a href="tel:+905078634045">+90 507 863 40 45</a></p>
+        <p>Nazilli tesisi, Aydın, Türkiye<br>İzmir’den sevkiyat</p>
       </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> Aegean Sun Kuru Meyve. Tüm hakları saklıdır.</span>
-      <span>Türkiye’de hasat edilir &middot; Dünyaya gönderilir</span>
-      <span><a href="gizlilik.html">Gizlilik ve Çerezler</a></span>
-      <span><button type="button" class="linklike" data-consent-open>Çerez tercihleri</button></span>
+    <div class="foot__last">
+      <p>© 2026 Aegean Sun Kuru Meyve · <a href="gizlilik.html">Gizlilik ve çerezler</a></p>
+      <!-- Reopens the consent bar (assets/js/consent.js listens for data-consent-open). -->
+      <button type="button" class="btn btn--sun btn--small" data-consent-open>Çerez tercihleri</button>
     </div>
-  </div>
-</footer>
+  </footer>
+
 </body>
 </html>
