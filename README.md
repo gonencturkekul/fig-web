@@ -509,8 +509,8 @@ Forms does neither for you.
 plain-text reply from the Google account that owns the forms (replies go to
 the sales address). Enquiries get a reply in English, or in Turkish when they
 came from a `/tr/` page, repeating the product, company, country and sample
-request; newsletter sign-ups get a short bilingual welcome that explains how
-to leave the list. At most one auto-reply per address per day. The folder is
+request; newsletter sign-ups get a confirmation link instead (see the next
+section). At most one e-mail of each kind per address per day. The folder is
 in `.vercelignore`, so it is not published with the site.
 
 Install it once in **each** form (Enquiry and Newsletter):
@@ -540,6 +540,68 @@ To change the wording, edit the file here and paste it again into both forms
 (no need to run install again). If a question in the Enquiry form is renamed,
 update the titles used in `onSubmit` / `enquiryMail` (`E-Mail`,
 `Name Surname`, `Interested Product(s)`, …).
+
+### Newsletter: double opt-in and unsubscribe
+
+The same script runs the newsletter list, so nobody is mailed who did not
+confirm, and every e-mail has a working unsubscribe link:
+
+1. A sign-up on the contact page lands in the Newsletter form. The script
+   adds the address to a **Subscribers** spreadsheet in your Drive (created
+   on the first `install`; `install` logs its link) as `pending`, and sends a
+   bilingual e-mail with a confirmation link.
+2. The link opens a small page served by the script (a Google "web app") with
+   a **Confirm** button. Only the button press confirms: mail security
+   scanners open every link in an e-mail, and a link that confirmed on its own
+   would subscribe people who never clicked. The row becomes `confirmed` and a
+   welcome e-mail with the person's unsubscribe link goes out.
+3. Sign-ups that are never confirmed are deleted after 30 days (daily
+   `cleanup` trigger), together with their form responses.
+4. The unsubscribe link (same page, **Unsubscribe** button) marks the row
+   `unsubscribed`, keeps the address and dates as a record that the request
+   was honoured, and deletes the address's Newsletter form responses.
+
+One-time setup, in the **Newsletter** form's script only (after pasting the
+latest `autoreply.gs` and running `install` again):
+
+1. **Deploy → New deployment** → gear icon → **Web app**. *Execute as*:
+   **Me**; *Who has access*: **Anyone**. Press **Deploy**, allow access, and
+   copy the **Web app URL** (it ends in `/exec`).
+2. Paste it into `NEWSLETTER_APP_URL` at the top of the script and save.
+   Also paste it into this repo's copy, so the two stay the same.
+3. Run `sendTest`: you get the confirmation e-mail; open its link to see the
+   page (pressing Confirm on the test link says it is not valid, which is
+   expected: it belongs to no subscriber).
+4. Sign up on the website with a fresh address and go through confirm and
+   unsubscribe once.
+
+After every later change to the script, update the web app too: **Deploy →
+Manage deployments → ✏️ → Version: New version → Deploy**. The URL stays the
+same; without this the confirm/unsubscribe page keeps running the old code.
+
+**Sending a newsletter.** Write it in Gmail (in the account that owns the
+forms) as a draft whose subject starts with `[Newsletter]`, e.g.
+`[Newsletter] New-season figs, September 2027`; leave the *To* field empty.
+Then, in the Newsletter form's script, run `sendNewsletter`. It sends the
+draft (without the `[Newsletter]` prefix) to every confirmed subscriber, one
+e-mail each, and adds that person's unsubscribe link at the bottom. It
+records the subject per person, so running it again never sends twice; if
+the daily Gmail quota runs out, the log says so, and running it the next day
+continues. Use a new subject for each newsletter. Pictures: use linked
+images; pasted inline images are not carried over. The first run asks for
+Gmail permission (to read the draft).
+
+Abuse limits: at most 40 enquiry replies and 40 confirmation requests a day
+in total (`DAILY_CAP`), so a stranger filling the public forms with other
+people's addresses cannot use up the Gmail quota that real replies and
+newsletters need; replies only repeat short, link-free versions of what the
+visitor typed. Only the owner can run `install`, `sendTest` and `sendNewsletter`. Every
+helper function name ends in `_`, because Apps Script lets visitors of the
+web app call any other function from their browser.
+
+Sign-ups made before this was installed are not in the Subscribers sheet;
+ask them to sign up again, or add them by hand only if they confirmed in
+writing.
 
 ## Before going live — replace the placeholders
 
