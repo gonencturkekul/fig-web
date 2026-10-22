@@ -27,6 +27,8 @@ var SITE = 'https://www.aegeansunfruit.com';
 /** Run once in each form's script editor: creates the "on form submit" trigger. */
 function install() {
   var form = FormApp.getActiveForm();
+  // A project made at script.google.com is not attached to a form, so there is nothing to listen to.
+  if (!form) throw new Error('Open this script from the form itself (form → ⋮ → Apps Script), not from script.google.com.');
   ScriptApp.getProjectTriggers().forEach(function (t) {
     if (t.getHandlerFunction() === 'onSubmit') ScriptApp.deleteTrigger(t);   // never install twice
   });
@@ -34,8 +36,22 @@ function install() {
   Logger.log('Auto-reply installed for: ' + form.getTitle());
 }
 
+/** Run by hand to check that this account may send e-mail: mails a sample reply to yourself.
+    Uses MailApp directly, so the once-a-day limit in reply() does not hide the result. */
+function sendTest() {
+  var me = Session.getEffectiveUser().getEmail();
+  var form = FormApp.getActiveForm();
+  var isNewsletter = form && form.getItems().some(function (i) { return i.getTitle().trim() === 'E-Mail Address'; });
+  var mail = isNewsletter ? newsletterMail() : enquiryMail({ 'Name Surname': 'Test', 'Interested Product(s)': 'Dried fig', 'Do you require samples': 'No' });
+  MailApp.sendEmail({ to: me, subject: '[TEST] ' + mail.subject, body: mail.body, name: SENDER_NAME, replyTo: SALES });
+  Logger.log('Test sent to ' + me + '. Triggers on this project: ' +
+    ScriptApp.getProjectTriggers().map(function (t) { return t.getHandlerFunction() + '/' + t.getEventType(); }).join(', '));
+}
+
 /** Trigger handler: works out which form this is from its questions, then replies. */
 function onSubmit(e) {
+  // Pressing Run on onSubmit has no submission to read; it only runs from the trigger that install() creates.
+  if (!e || !e.response) throw new Error('onSubmit runs on its own after a form submission. Run install() once, then send a test.');
   var answers = {};
   e.response.getItemResponses().forEach(function (r) {
     answers[r.getItem().getTitle().trim()] = String(r.getResponse() || '').trim();
@@ -50,13 +66,15 @@ function onSubmit(e) {
 
 /** Sends one plain-text reply, at most once a day per address. */
 function reply(to, mail) {
-  if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) return;
+  // Each outcome is logged so the Executions page (Apps Script → Executions) shows why a reply did or did not go out.
+  if (!to || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) { Logger.log('Skipped: no valid e-mail address (' + to + ')'); return; }
   var props = PropertiesService.getScriptProperties();
   var key = 'sent:' + to.toLowerCase();
   var today = Utilities.formatDate(new Date(), 'Europe/Istanbul', 'yyyy-MM-dd');
-  if (props.getProperty(key) === today) return;
+  if (props.getProperty(key) === today) { Logger.log('Skipped: already replied to ' + to + ' today'); return; }
   MailApp.sendEmail({ to: to, subject: mail.subject, body: mail.body, name: SENDER_NAME, replyTo: SALES });
   props.setProperty(key, today);
+  Logger.log('Auto-reply sent to ' + to);
 }
 
 /** The enquiry reply, in Turkish when the enquiry came from a Turkish page. */

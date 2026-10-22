@@ -523,6 +523,19 @@ Install it once in **each** form (Enquiry and Newsletter):
    warning appears because the script is your own, not a published app.
 4. Send a test from the website and check the inbox you used.
 
+If no reply arrives, open the script (form → ⋮ → Apps Script):
+
+- **Triggers** (clock icon, left) must list one `onSubmit` / *From form* /
+  *On form submit*. If it is empty, `install` was not run in this form.
+- **Run `sendTest`** mails a sample reply to your own account. If that fails,
+  the permission step was not completed; if it arrives, sending works.
+- **Executions** (left) lists every run. A failed `onSubmit` shows the error;
+  a successful one logs *Auto-reply sent to …* or why it skipped (no valid
+  address, or already replied to that address today — test with a fresh
+  address each time).
+- Check the spam folder: the reply comes from a Gmail account but names the
+  company, which some filters dislike.
+
 To change the wording, edit the file here and paste it again into both forms
 (no need to run install again). If a question in the Enquiry form is renamed,
 update the titles used in `onSubmit` / `enquiryMail` (`E-Mail`,
