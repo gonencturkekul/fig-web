@@ -1,4 +1,49 @@
+# Search engines and AI assistants are welcome to read and cite the whole site.
+# AI search/answer crawlers (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+# Claude-User, PerplexityBot, Perplexity-User) fetch pages to cite them.
+# GPTBot, ClaudeBot, Google-Extended and Applebot-Extended are model-training
+# tokens: allowing them lets future AI models learn the company's facts.
+# To opt out of training only, change those four to "Disallow: /"; search
+# and citations are not affected.
+# A plain-text summary for AI assistants is at /llms.txt.
+
 User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://www.aegeansunfruit.com/sitemap.xml

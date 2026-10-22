@@ -14,7 +14,7 @@ This project uses OpenWolf for context management. Read and follow .wolf/OPENWOL
 
 # Project
 
-Bilingual (EN/TR) static marketing site for **Aegean Sun**, a Turkish dried fruit exporter, deployed on Vercel at `https://www.aegeansunfruit.com`. Plain HTML, one CSS file, vanilla JS. There is no build step, no package.json, no tests and no linter. `README.md` is the detailed operating manual. Read the relevant section of it before you change analytics, consent, forms or the chat widget.
+Bilingual (EN/TR) static marketing site for **Aegean Sun**, a Turkish dried fruit exporter, deployed on Vercel at `https://www.aegeansunfruit.com`. Plain HTML, vanilla JS, and two stylesheets: `styles.css` for every page except the two home pages, which use `home.css` (the 2026 redesign, self-hosted Libre Franklin + Source Serif 4). `home.css` ends with a copy of the consent-bar and chat styles; keep it in step with `styles.css`. There is no build step, no package.json, no tests and no linter. `README.md` is the detailed operating manual. Read the relevant section of it before you change analytics, consent, forms or the chat widget.
 
 ## Running locally
 

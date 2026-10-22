@@ -53,13 +53,31 @@ version they were linked to and switches by hand.
 ```
 assets/
   video/fig-journey.mp4   film: home page process section and Dried Fig pages
-  css/styles.css   all styling for every page
+  css/styles.css   all styling for every page except the two home pages
+  css/home.css     the home pages (index.html, tr/index.html), 2026 redesign;
+                   ends with a copy of the consent-bar and chat styles from
+                   styles.css, so keep those two copies in step
+  css/fonts.css    @font-face for the self-hosted home-page fonts
+  fonts/           Libre Franklin 700 and Source Serif 4 (latin + latin-ext,
+                   which carries the Turkish letters), served from our domain
   js/main.js       mobile menu, products dropdown, contact form validation,
                    `?product=` preselect, `data-since` year counters
                    (form messages are per-language, keyed off <html lang>)
   js/chat.js       sales assistant widget, home and product pages
   js/consent.js    cookie bar; loads Google Analytics only on consent
-  img/hero.jpg     home page hero photograph
+  js/home.js       home pages only: section entrances, the carton-label
+                   enquiry form (mailto, EN/TR from <html lang>), the film
+                   loop, caption tabs and the flag language switcher
+  img/hero.jpg     home page hero photograph (og:image, JPEG fallback)
+  img/hero.webp, hero-800.webp  the same hero as WebP, 1536 and 800 px wide
+  img/fig-box-crop.webp     boxed figs cropped into the fruit, home pages
+  img/menderes-valley.webp  Büyük Menderes valley at Kuyucak (Wikimedia
+                            Commons, Volker Höhfeld, CC BY-SA 4.0), home pages
+  img/malatya-orchards.webp apricot orchards at Battalgazi, Malatya (Wikimedia
+                            Commons, Zeynel Cebeci, CC BY-SA 4.0), home pages
+                            Both are credited in the home-page footers; keep
+                            the credit if you keep the photo, or replace them
+                            with our own shoot.
   img/dried-fig-basket.jpg  dried fig photograph, home page card
   img/dried-fig.webp        dried fig photograph, products pages
   img/dried-apricot.webp    dried apricot photograph
@@ -73,7 +91,9 @@ assets/
   img/flag-tr.svg, flag-en.svg  language switcher flags
   img/icons.svg             SVG icon sprite (see "Icons" below)
 sitemap.xml        all 16 URLs, with their language alternates
-robots.txt         points crawlers at the sitemap
+robots.txt         allows all crawlers, names the AI search crawlers, points at the sitemap
+llms.txt           plain-text summary of the company, products and pages for
+                   AI assistants (keep its facts in step with the pages)
 ```
 
 ## Standing business facts
@@ -120,7 +140,16 @@ link pasted into WhatsApp, LinkedIn or Slack shows the hero photograph and the
 page title. `sitemap.xml` lists all 16 URLs with their language alternates, and
 `robots.txt` points at it. The two home pages also carry an `Organization`
 JSON-LD block (address, factory, plant, phone, e-mail, the three sales
-contacts).
+contacts). Since the 2026 redesign the home pages add a second JSON-LD block:
+`WebSite`, `WebPage` (with the four products as an `ItemList`) and a
+`VideoObject` for the fig film with its transcript.
+
+For AI search and assistants (ChatGPT, Claude, Perplexity, Google AI
+Overviews), `robots.txt` names their crawlers and allows them, and `llms.txt`
+at the root holds a short factual summary with links. The home pages also put
+the specifications in plain text on the page (grades, calibres, packs, HS
+codes, terms), which is what those assistants quote. If a fact changes, change
+it on the page, in `llms.txt` and in `chat.js`.
 
 Two things to do on the hosting side, once:
 

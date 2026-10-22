@@ -17,7 +17,37 @@ colors:
   border: "#e6d8c6"
   input-border: "#9c8b78"
   error: "#b3261e"
+  leaf-dark: "#33502a"
+  pale: "#fbeedd"
+  muted: "#5e534c"
 typography:
+  home-display:
+    fontFamily: "\"Libre Franklin\", \"Arial Narrow\", Arial, sans-serif"
+    fontSize: "clamp(3.1rem, 1rem + 5vw, 6.25rem)"
+    fontWeight: 700
+    lineHeight: 0.92
+    letterSpacing: "-0.035em"
+  home-head:
+    fontFamily: "\"Libre Franklin\", \"Arial Narrow\", Arial, sans-serif"
+    fontSize: "clamp(2rem, 1.3rem + 3.2vw, 4rem)"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.03em"
+  home-lead:
+    fontFamily: "\"Libre Franklin\", \"Arial Narrow\", Arial, sans-serif"
+    fontSize: "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)"
+    fontWeight: 700
+    lineHeight: 1.1
+  home-body:
+    fontFamily: "\"Source Serif 4\", Georgia, \"Times New Roman\", serif"
+    fontSize: "clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem)"
+    fontWeight: 400
+    lineHeight: 1.55
+  home-small:
+    fontFamily: "\"Source Serif 4\", Georgia, \"Times New Roman\", serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.5
   display:
     fontFamily: "Georgia, \"Times New Roman\", serif"
     fontSize: "clamp(2.1rem, 5vw, 3.3rem)"
@@ -249,7 +279,7 @@ A warm, earthy palette: one fig-plum family for ink and action, one apricot fami
 - **Label** (700, 0.75rem, 0.08em, uppercase): product tags, format meta, table column heads and footer column titles (0.82rem, 0.14em). 12px is the smallest text on the site.
 
 ### Named Rules
-**The No-Webfont Rule.** Display is Georgia and body is the system stack, by decision. Do not add a webfont request.
+**The No-Webfont Rule.** On every page except the two home pages, display is Georgia and body is the system stack, by decision. The home pages (2026 redesign) use Libre Franklin and Source Serif 4, self-hosted from `assets/fonts/` (latin + latin-ext, about 85 KB on an English page). Never load fonts from Google's servers: that would reach Google before consent.
 
 **The 16px Floor Rule.** Every input, select and textarea is at least 1rem, so iOS never zooms on focus. Nothing on the site is smaller than 12px (0.75rem).
 
@@ -366,8 +396,28 @@ A fixed white bar with a hairline top and the Consent edge shadow. Accept is a f
 - **Don't** use emoji, icon fonts or one-off inline SVGs as icons.
 - **Don't** build rows of decorative look-alike cards for benefits or contact details.
 - **Don't** use side-stripe or border-left accents on quotes, callouts or cards; the quote uses its apricot opening mark instead.
-- **Don't** load webfonts; Georgia and the system stack are the decided type.
+- **Don't** load webfonts from a third-party host. Georgia and the system stack are the type for inner pages; the home pages' self-hosted Libre Franklin and Source Serif 4 are the only webfonts.
 - **Don't** add per-component focus styles or remove the ring.
 - **Don't** give the consent bar a close button, demote Decline, or add "by continuing you agree" text.
 - **Don't** put the portrait film in a 16:9 frame.
 - **Don't** use pure white as the page ground or pure black shadows.
+
+## Home pages (2026 redesign): "One motif, the sun"
+
+`index.html` and `tr/index.html` use their own stylesheet, `assets/css/home.css`, and a stricter, flatter version of this system. When the inner pages are redesigned they should move to it. Colours are the same brand palette; the type, shapes and depth rules below replace the ones above **on the home pages only**.
+
+**The idea.** The sun that dries the fruit, which also names the company, is the only shape with character. It appears at four scales: the giant apricot disc in the hero (about 120vh across, cropped by the viewport, rising into place on load); the round window every photograph sits in; the filled dot used as a bullet and beside the wordmark; and the footer sunrise behind a row of drying trays. Do not add a second motif (no blobs, arches or hexagons).
+
+**Type.** Libre Franklin 700 for display, headings, buttons and labels; Source Serif 4 for reading. Five steps (`home-*` in the frontmatter). The hero h1 is uppercase; every other heading is sentence case. Every heading stays at two lines or fewer at every width, in both languages.
+
+**Colour roles.** Cream ground; Walnut Ink text; Fig Plum for every action; Sun Apricot as the motif fill and as whole fields (the hero sun, the film plate, the enquiry coupon); Dried Fig Skin for the chain panel and footer; Leaf Dark (#33502a) for the regions band; Pale (#fbeedd) for text on dark fields; Muted (#5e534c, 6.9:1 on cream) for secondary notes.
+
+**Shapes and depth.** Photographs are round (`border-radius: 50%`). Actions are pills. Panels and fields are square-cornered. No gradients, no shadows at rest, no hairline dividers, no icon cards, no eyebrow labels. The only shadows are on things that truly float: the language menu, the consent bar and the chat panel. Surfaces are separated by a change of field colour.
+
+**Sections.** Hero (sun) → the range as a two-column trade catalogue with sun-dot bullets → the chain (inset fig panel, round photo cropped by its edge) → process tiles that grow in size → the film on a square apricot plate with caption tabs → the regions band → buyer quotes (portrait and offset quotation) → the enquiry coupon → the footer mark.
+
+**The live enquiry label.** The enquiry form is drawn as a carton label: choices fill the label on the left, sending opens a pre-written e-mail (no form backend yet). Grades and packs per product live in `CATALOGUES` in `assets/js/home.js` in both languages; keep them in step with the product pages.
+
+**Motion.** Sections enter once, their parts rising 24px in sequence. The hero sun rises into place; the hero photo is visible from the first frame (it is the LCP) and only settles from a slight zoom. Region photos drift with scroll where supported. Everything has a `prefers-reduced-motion` fallback.
+
+**Shared widgets.** The consent bar and chat widget keep their existing design; `home.css` carries a copy of their styles from `styles.css`, mapping the old token names on each widget's root.
