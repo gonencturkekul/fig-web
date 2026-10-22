@@ -54,6 +54,8 @@
   <script src="../assets/js/home.js" defer></script>
   <!-- main.js drives the two forms on this page: validation (Turkish messages, from <html lang="tr">),
        the ?product= preselect, and the honest mailto fallback while the forms have no action. -->
+  <!-- gforms.js sends the forms to the company's Google Forms; it must load before the script that uses it. -->
+  <script src="../assets/js/gforms.js" defer></script>
   <script src="../assets/js/main.js" defer></script>
   <script src="../assets/js/consent.js" defer></script>
   <script src="../assets/js/chat.js" defer></script>
@@ -116,18 +118,21 @@
 
         <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1"></div>
 
-        <!-- Formu canlıya almak için aşağıya action="https://form-adresiniz" ekleyin.
-             action yokken main.js hiçbir şeyi sunucuya göndermez: doğrulamadan sonra
-             ziyaretçinin e-posta uygulamasını doldurulmuş bir taslakla (mailto) açar. -->
+        <!-- action bilerek yok: main.js bu formu şirketin talep Google Formu'na gönderir
+             (adres ve alan eşleşmesi assets/js/gforms.js içinde). Gönderim başarısız olursa
+             ziyaretçinin e-posta uygulamasını doldurulmuş bir taslakla (mailto) açar.
+             Buraya action="https://…" eklenirse form o adrese gönderilir. -->
         <form id="contact-form" class="form-grid" method="post" novalidate>
+          <!-- Spam trap: people never see this field; bots that fill it are ignored (assets/js/gforms.js). -->
+          <div class="hp" aria-hidden="true"><label>Bu alanı boş bırakın <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="field">
             <label for="name">Ad soyad <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="err-name">
             <span class="field__error" id="err-name"></span>
           </div>
           <div class="field">
-            <label for="company">Firma</label>
-            <input type="text" id="company" name="company" autocomplete="organization" aria-describedby="err-company">
+            <label for="company">Firma <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" aria-describedby="err-company" required>
             <span class="field__error" id="err-company"></span>
           </div>
           <div class="field">
@@ -141,8 +146,8 @@
             <span class="field__error" id="err-phone"></span>
           </div>
           <div class="field">
-            <label for="country">Teslim ülkesi</label>
-            <input type="text" id="country" name="country" autocomplete="country-name" aria-describedby="err-country">
+            <label for="country">Teslim ülkesi <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="country" name="country" autocomplete="country-name" aria-describedby="err-country" required>
             <span class="field__error" id="err-country"></span>
           </div>
           <div class="field">
@@ -183,7 +188,7 @@
           </div>
 
           <button class="btn btn--ink" type="submit">Talebi gönder</button>
-          <p class="form-note">Bu formu göndererek, talebinizi yanıtlayabilmemiz için bilgilerinizi saklamamızı kabul etmiş olursunuz. Bilgilerinizi hiçbir zaman üçüncü taraflarla paylaşmayız.</p>
+          <p class="form-note">Bu formu göndererek, talebinizi yanıtlayabilmemiz için bilgilerinizi saklamamızı kabul etmiş olursunuz. Bilgileriniz, talepleri almak için kullandığımız Google Forms’ta saklanır ve hiçbir zaman pazarlama amacıyla paylaşılmaz.</p>
         </form>
       </div>
 
@@ -270,16 +275,18 @@
 
         <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
 
-        <!-- Bülteni canlıya almak için aşağıdaki forma action="https://liste-adresiniz" ekleyin.
-             action yokken main.js kaydın henüz açık olmadığını söyler ve e-posta bağlantısı verir. -->
+        <!-- action bilerek yok: main.js adresi şirketin bülten Google Formu'na gönderir
+             (assets/js/gforms.js). Başarısız olursa bunu söyler ve e-posta bağlantısı verir. -->
         <form id="newsletter-form" method="post" novalidate>
+          <!-- Spam trap: people never see this field; bots that fill it are ignored (assets/js/gforms.js). -->
+          <div class="hp" aria-hidden="true"><label>Bu alanı boş bırakın <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="field">
             <label for="newsletter-email">E-posta <span class="req" aria-hidden="true">*</span></label>
             <input type="email" id="newsletter-email" spellcheck="false" name="email" autocomplete="email" required placeholder="siz@firmaniz.com" aria-describedby="err-newsletter-email">
             <span class="field__error" id="err-newsletter-email"></span>
           </div>
           <button class="btn btn--fig" type="submit">Bültene katılın</button>
-          <p class="form-note">Adresinizi yalnızca bülten için kullanırız, hiçbir zaman üçüncü taraflarla paylaşmayız.</p>
+          <p class="form-note">Adresinizi yalnızca bülten için kullanırız. Google Forms’ta saklanır ve hiçbir zaman pazarlama amacıyla paylaşılmaz.</p>
         </form>
       </div>
     </section>

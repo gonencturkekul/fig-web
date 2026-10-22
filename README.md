@@ -66,6 +66,8 @@ assets/
                    `?product=` preselect, `data-since` year counters
                    (form messages are per-language, keyed off <html lang>)
   js/chat.js       sales assistant widget, every page except privacy and 404
+  js/gforms.js     sends the enquiry and newsletter forms to the company's
+                   Google Forms (addresses and field mapping live here)
   js/consent.js    cookie bar; loads Google Analytics only on consent
   js/home.js       every page: section entrances, the flag language switcher;
                    home pages also: the carton-label
@@ -383,13 +385,11 @@ complain.
 **This is not legal advice, and it is not finished until you check three
 things:**
 
-1. **The enquiry form and the newsletter have no endpoint yet.** Without an
-   `action` they fall back to a pre-filled e-mail (see "Making the forms live"),
-   and the page says so plainly instead of claiming the message was received.
-   Check the privacy page wording still matches whichever way you go live.
-2. **Name the processors once chosen.** When the form and the list go live,
-   add the provider (Formspree, Brevo, Mailchimp …) to the "who we share with"
-   list — a processor that holds enquiry data has to be named.
+1. **The forms send to Google Forms** (see "The forms (Google Forms)"), and
+   the privacy pages say so. If you change the provider, change that wording.
+2. **Name every processor.** Google (Forms and Sheets) is named in the "who we
+   share with" list; any new provider that holds enquiry or newsletter data
+   (Brevo, Mailchimp …) has to be added there too.
 3. **Retention periods are stated in general terms** ("until the enquiry is
    settled", "until you unsubscribe"). If you want firm periods, set them and
    replace that wording.
@@ -447,44 +447,61 @@ public. On Vercel that is one serverless function under `api/`, the key stored
 as an environment variable, and `chat.js` posting to it. That is a separate
 job, and it costs per message.
 
-## Making the forms live
+## The forms (Google Forms)
 
-The form on `contact.html` validates in the browser. Invalid fields get
-`aria-invalid` and a message tied to the field with `aria-describedby`; the
-first invalid field takes focus and the status line (a polite live region)
-announces the problem.
+Three forms collect data: the carton-label enquiry on both home pages
+(`#enquiry-form`, `assets/js/home.js`), the enquiry form on both contact pages
+(`#contact-form`, `assets/js/main.js`) and the newsletter sign-up on both contact
+pages (`#newsletter-form`, `main.js`). All three post to two Google Forms owned
+by the company; responses land in each form's **Responses** tab (or the Google
+Sheet linked to it). Turn on *Responses → ⋮ → Get email notifications for new
+responses* in both forms so new enquiries are noticed.
 
-With no `action` set — today's state, because no endpoint exists — a valid
-submission opens a pre-filled `mailto:` to the sales address (subject and body
-built from the filled-in fields) and shows an honest status: the visitor's mail
-app should open and they must press Send there. The form is *not* cleared and
-never says the enquiry was "recorded" or "received". Product pages link here
-with `?product=fig|fig-salami|apricot|mulberry` to preselect the product.
+- **Enquiry form:** https://forms.gle/qJRTMzmaduVEyT5d9
+- **Newsletter form:** https://forms.gle/wrXFGHuErAcqNfZR8
 
-To receive real enquiries, set the form's `action` to your endpoint:
+`assets/js/gforms.js` is the only file that knows the form addresses and which
+site field goes to which Google question (`entry.NNN`). It must load before
+`home.js` / `main.js` on the four pages with forms. How a submission travels:
 
-```html
-<form id="contact-form" method="post" action="https://formspree.io/f/XXXXXXX">
-```
+1. The page script validates in the browser (invalid fields get `aria-invalid`
+   and a linked message; the first one takes focus).
+2. It calls `AegeanForms.send('enquiry' | 'newsletter', values)`, which POSTs to
+   the form's `/formResponse` address with `mode: "no-cors"` and no cookies.
+   Google does not let another site read its reply, so success means
+   "delivered", not "accepted"; Google drops a response that misses a required
+   answer, so `send()` fills any blank required answer with `-`.
+3. On success the visitor sees a thank-you and the form resets. If the request
+   fails (offline, blocked), the enquiry forms open a pre-filled `mailto:` to
+   the sales address and say so; the newsletter offers an e-mail link.
 
-Any form service (Formspree, Netlify Forms, Getform) or your own backend
-handler works — the script hands submission over to the browser as soon as an
-`action` is present (the submit button shows "Sending…" and is disabled until
-the page navigates), and the field `name` attributes (`name`, `company`, `email`,
-`phone`, `country`, `product`, `quantity`, `reason`, `message`) are posted as-is.
+Field mapping. The Google enquiry form has fewer questions than the site
+forms, so: product, grade and pack (home label) travel together in
+*Interested Product(s)*; quantity, "how can we help", volume, terms and the
+page/language go into *Additional Message*; *Do you require samples* is "Yes"
+when the visitor ticks the sample box (home) or picks "Request samples"
+(contact). Name, company, e-mail and country are required on the site because
+they are required in the Google Form.
 
-The newsletter sign-up beside it (`#newsletter-form`, both contact pages) works
-the same way. With no `action` it says "Sign-up isn't live yet" and offers an
-e-mail link (subject "Newsletter") instead of pretending the address was
-stored. Point its `action` at your mailing-list
-provider's subscribe endpoint (Mailchimp, Brevo, MailerLite, Buttondown …); it
-posts a single field, `email`. Remember to do it in `tr/iletisim.html` as well
-as `contact.html` — they are separate forms.
+Spam: every form has a hidden `website` field (`.hp`, off-screen). A form sent
+with it filled, or within 2.5 seconds of the page opening, shows the normal
+thank-you but sends nothing.
 
-Two things worth doing before you start collecting addresses: send a
-confirmation e-mail (double opt-in) and put a working unsubscribe link in every
-newsletter. The card promises one, and both are required under GDPR for
-European subscribers. Any of the providers above does this for you.
+**Changing a Google Form.** If you add, rename or delete a question, or make
+one required, update `FORMS` in `gforms.js`: in Google Forms open ⋮ → *Get
+pre-filled link*, fill every field, click *Get link*, and read the
+`entry.NNN` numbers from the link. A required question the site does not send
+makes Google silently drop every response. Test after any change.
+
+**Moving to another provider.** Setting an `action="https://…"` on a contact
+page form makes `main.js` hand the form to that endpoint instead (Formspree,
+Brevo, your own handler); the field `name`s are posted as-is. Update the
+privacy pages to name the new processor.
+
+Newsletter law: before sending the first newsletter, send each subscriber a
+confirmation (double opt-in) and put a working unsubscribe link in every
+issue; both are required under the GDPR for European subscribers. Google
+Forms does neither for you.
 
 ## Before going live — replace the placeholders
 

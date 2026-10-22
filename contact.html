@@ -54,6 +54,8 @@
   <script src="assets/js/home.js" defer></script>
   <!-- main.js drives the two forms on this page: validation, the ?product= preselect,
        and the honest mailto fallback while the forms have no action. -->
+  <!-- gforms.js sends the forms to the company's Google Forms; it must load before the script that uses it. -->
+  <script src="assets/js/gforms.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/consent.js" defer></script>
   <script src="assets/js/chat.js" defer></script>
@@ -116,18 +118,21 @@
 
         <div class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1"></div>
 
-        <!-- To make this form live, set action="https://your-form-endpoint" below.
-             Without an action, main.js opens the visitor's email app with the
-             enquiry pre-filled instead, and says so honestly. -->
+        <!-- No action on purpose: main.js sends this form to the company's enquiry Google Form
+             (assets/js/gforms.js holds the address and field mapping). If sending fails it opens
+             the visitor's email app with the enquiry pre-filled instead, and says so honestly.
+             Setting action="https://…" here hands the form to that endpoint instead. -->
         <form id="contact-form" class="form-grid" method="post" novalidate>
+          <!-- Spam trap: people never see this field; bots that fill it are ignored (assets/js/gforms.js). -->
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="field">
             <label for="name">Full name <span class="req" aria-hidden="true">*</span></label>
             <input type="text" id="name" aria-describedby="err-name" name="name" autocomplete="name" required>
             <span class="field__error" id="err-name"></span>
           </div>
           <div class="field">
-            <label for="company">Company</label>
-            <input type="text" id="company" aria-describedby="err-company" name="company" autocomplete="organization">
+            <label for="company">Company <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="company" aria-describedby="err-company" name="company" autocomplete="organization" required>
             <span class="field__error" id="err-company"></span>
           </div>
           <div class="field">
@@ -141,8 +146,8 @@
             <span class="field__error" id="err-phone"></span>
           </div>
           <div class="field">
-            <label for="country">Country of delivery</label>
-            <input type="text" id="country" aria-describedby="err-country" name="country" autocomplete="country-name">
+            <label for="country">Country of delivery <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="country" aria-describedby="err-country" name="country" autocomplete="country-name" required>
             <span class="field__error" id="err-country"></span>
           </div>
           <div class="field">
@@ -183,7 +188,7 @@
           </div>
 
           <button class="btn btn--ink" type="submit">Send enquiry</button>
-          <p class="form-note">By sending this form you agree that we may store your details in order to answer your enquiry. We never share them with third parties.</p>
+          <p class="form-note">By sending this form you agree that we may store your details in order to answer your enquiry. They are stored with Google Forms, which we use to receive enquiries, and never shared for marketing.</p>
         </form>
       </div>
 
@@ -270,16 +275,18 @@
 
         <div class="form-status" id="newsletter-status" role="status" aria-live="polite" tabindex="-1"></div>
 
-        <!-- To make this live, set action="https://your-list-endpoint" below.
-             Without an action, main.js says sign-up is not live yet and offers email. -->
+        <!-- No action on purpose: main.js sends the address to the company's newsletter Google Form
+             (assets/js/gforms.js). If that fails it says so and offers an e-mail link instead. -->
         <form id="newsletter-form" method="post" novalidate>
+          <!-- Spam trap: people never see this field; bots that fill it are ignored (assets/js/gforms.js). -->
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="field">
             <label for="newsletter-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input type="email" id="newsletter-email" spellcheck="false" aria-describedby="err-newsletter-email" name="email" autocomplete="email" required placeholder="you@company.com">
             <span class="field__error" id="err-newsletter-email"></span>
           </div>
           <button class="btn btn--fig" type="submit">Subscribe</button>
-          <p class="form-note">We use your address for the newsletter only and never share it with third parties.</p>
+          <p class="form-note">We use your address for the newsletter only. It is stored with Google Forms and never shared for marketing.</p>
         </form>
       </div>
     </section>

@@ -840,6 +840,9 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
 .phead--text + .legal { padding-top: clamp(8px, 2vw, 24px); }
 
 
+/* Spam trap field in every form (see assets/js/gforms.js): off-screen, never shown, not announced. */
+.hp { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
 /* ==========================================================================
    Shared widgets: cookie consent bar (consent.js) and sales assistant (chat.js)
    First copied from the old styles.css (retired in October 2026, now that every

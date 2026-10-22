@@ -2,8 +2,8 @@
    Aegean Sun home pages (EN and TR): behaviour. Language from <html lang>.
    1. Entrances: blocks marked data-reveal show their parts in sequence, once.
    2. The live carton label: the enquiry form rewrites the label as you choose,
-      and sending opens an e-mail with the label as its body. The site has no
-      form backend yet, so mailto is the honest route (same as the live site).
+      and sending posts it to the company's enquiry Google Form (gforms.js).
+      If that fails, it opens an e-mail with the label as its body instead.
    3. The film: a muted loop while it is on screen; "Play with sound" restarts
       it with controls; the tabs switch caption language or show the transcript.
    No dependencies; everything degrades to plain, visible content without JS.
@@ -115,7 +115,10 @@
   var WORDS = {
     en: {
       volume: 'To be agreed', dest: 'Your port', sampleYes: 'Yes, a graded sample set', sampleNo: 'No',
-      missing: 'One thing is missing: your e-mail address.',
+      missing: 'A few details are missing: see the marked fields.',
+      sending: 'Sending…',
+      sent: 'Thank you, your enquiry has been sent to our export team. We reply within one working day with a price, a lead time and a sample offer.',
+      failed: 'We could not send the form just now, so your e-mail app should open with the label filled in instead. ',
       opening: 'Opening your e-mail app…',
       opened: 'Your e-mail app should now show the enquiry, ready to send. If it did not open, write to ',
       from: 'Enquiry from aegeansunfruit.com', subject: 'Enquiry: ',
@@ -124,7 +127,10 @@
     },
     tr: {
       volume: 'Görüşülecek', dest: 'Limanınız', sampleYes: 'Evet, sınıflandırılmış numune seti', sampleNo: 'Hayır',
-      missing: 'Bir eksik var: e-posta adresiniz.',
+      missing: 'Birkaç bilgi eksik: işaretli alanlara bakın.',
+      sending: 'Gönderiliyor…',
+      sent: 'Teşekkürler, talebiniz ihracat ekibimize gönderildi. Bir iş günü içinde fiyat, teslim süresi ve numune teklifiyle dönüyoruz.',
+      failed: 'Form şu anda gönderilemedi; bunun yerine e-posta uygulamanız etiket doldurulmuş olarak açılmalı. ',
       opening: 'E-posta uygulamanız açılıyor…',
       opened: 'E-posta uygulamanızda talebiniz gönderilmeye hazır olmalı. Açılmadıysa şu adrese yazın: ',
       from: 'aegeansunfruit.com üzerinden gelen talep', subject: 'Fiyat talebi: ',
@@ -140,7 +146,10 @@
   if (form) {
     var f = form.elements;
     var status = document.getElementById('enquiry-status');
-    var emailErr = document.getElementById('f-email-err');
+    // Required fields, each with its own error line (#f-<field>-err). They match the
+    // questions the enquiry Google Form requires, so Google never drops a response.
+    var REQUIRED = ['name', 'company', 'dest', 'email'];
+    var EMAIL_OK = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     var out = {};
     document.querySelectorAll('[data-out]').forEach(function (dd) { out[dd.getAttribute('data-out')] = dd; });
 
@@ -185,24 +194,33 @@
       a.addEventListener('click', function () { f.sample.checked = true; label(); });
     });
 
-    f.email.addEventListener('input', function () {
-      if (f.email.getAttribute('aria-invalid') === 'true' && f.email.validity.valid) {
-        f.email.removeAttribute('aria-invalid'); emailErr.hidden = true;
-      }
+    function fieldOk(key) {
+      var v = f[key].value.trim();
+      return key === 'email' ? EMAIL_OK.test(v) : v !== '';
+    }
+    function mark(key, bad) {
+      var err = document.getElementById('f-' + key + '-err');
+      if (bad) f[key].setAttribute('aria-invalid', 'true'); else f[key].removeAttribute('aria-invalid');
+      if (err) err.hidden = !bad;
+    }
+    // An error clears as soon as the field is fixed.
+    REQUIRED.forEach(function (key) {
+      f[key].addEventListener('input', function () {
+        if (f[key].getAttribute('aria-invalid') === 'true' && fieldOk(key)) mark(key, false);
+      });
     });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       status.className = 'coupon__status'; status.textContent = '';
-      var email = f.email.value.trim();
-      if (!email || !f.email.validity.valid) {
-        f.email.setAttribute('aria-invalid', 'true');
-        emailErr.hidden = false;
+      var bad = REQUIRED.filter(function (key) { var b = !fieldOk(key); mark(key, b); return b; });
+      if (bad.length) {
         status.classList.add('is-error');
         status.textContent = W.missing;
-        f.email.focus();
+        f[bad[0]].focus();
         return;
       }
+      var email = f.email.value.trim();
       // The e-mail body is the label, line by line, so nothing typed is lost.
       var lines = [
         W.from,
@@ -221,17 +239,55 @@
       ];
       var subject = W.subject + out.product.textContent + ', ' + out.grade.textContent;
       var send = form.querySelector('.coupon__send');
-      send.setAttribute('aria-busy', 'true');
-      status.textContent = W.opening;
-      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-      setTimeout(function () {
-        send.removeAttribute('aria-busy');
+
+      // Fallback: the label as a pre-written e-mail (used if gforms.js is missing or sending fails).
+      function viaMail(prefix) {
+        send.setAttribute('aria-busy', 'true');
+        status.textContent = prefix + W.opening;
+        window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+        setTimeout(function () {
+          send.removeAttribute('aria-busy');
+          status.classList.add('is-ok');
+          status.innerHTML = '';
+          status.appendChild(document.createTextNode(prefix + W.opened));
+          var a = document.createElement('a'); a.href = 'mailto:' + EMAIL; a.textContent = EMAIL;
+          status.appendChild(a); status.appendChild(document.createTextNode('.'));
+        }, 900);
+      }
+      function thanks() {
         status.classList.add('is-ok');
-        status.innerHTML = '';
-        status.appendChild(document.createTextNode(W.opened));
-        var a = document.createElement('a'); a.href = 'mailto:' + EMAIL; a.textContent = EMAIL;
-        status.appendChild(a); status.appendChild(document.createTextNode('.'));
-      }, 900);
+        status.textContent = W.sent;
+        form.reset();
+        product();   // refill grade and pack lists and redraw the label from the reset form
+      }
+
+      var G = window.AegeanForms;
+      if (!G) { viaMail(''); return; }
+      if (G.looksAutomated(form)) { thanks(); return; }   // bot: show success, send nothing
+
+      // The Google Form asks for product(s) in one line, so product, grade and pack travel together;
+      // volume, terms and the page go in the message.
+      send.setAttribute('aria-busy', 'true');
+      status.textContent = W.sending;
+      G.send('enquiry', {
+        name: f.name.value,
+        company: f.company.value,
+        email: email,
+        country: f.dest.value,
+        product: out.product.textContent + ': ' + out.grade.textContent + ', ' + out.pack.textContent,
+        samples: f.sample.checked ? 'Yes' : 'No',
+        message: [
+          W.vol + ': ' + out.volume.textContent,
+          W.terms + ': ' + out.terms.textContent,
+          'Page: ' + location.pathname + ' (' + LANG + ')'
+        ].join('\n')
+      }).then(function () {
+        send.removeAttribute('aria-busy');
+        thanks();
+      }, function () {
+        send.removeAttribute('aria-busy');
+        viaMail(W.failed);
+      });
     });
   }
 

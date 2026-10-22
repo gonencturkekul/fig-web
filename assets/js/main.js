@@ -143,6 +143,10 @@
       newsletterMailto: "Sign-up isn’t live yet — email us and we’ll add you.",
       newsletterLink: "Email us to subscribe",
       sending: "Sending…",
+      sent: "Thank you, your enquiry has been sent to our export team. We reply within one working day.",
+      sendFailed: "We could not send the form just now, so your email app should open with the enquiry filled in instead. Press Send there to reach us, or write to " + MAIL + ".",
+      newsletterSent: "Thank you, you are on the list. Harvest news will come to this address.",
+      newsletterFailed: "We could not sign you up just now.",
       subjectEnquiry: "Website enquiry",
       subjectNewsletter: "Newsletter"
     },
@@ -155,6 +159,10 @@
       newsletterMailto: "Bülten kayıtları henüz açık değil — bize e-posta gönderin, sizi listeye ekleyelim.",
       newsletterLink: "Abone olmak için e-posta gönderin",
       sending: "Gönderiliyor…",
+      sent: "Teşekkürler, talebiniz ihracat ekibimize gönderildi. Bir iş günü içinde yanıt veriyoruz.",
+      sendFailed: "Form şu anda gönderilemedi; bunun yerine e-posta uygulamanız talebiniz doldurulmuş olarak açılmalı. Bize ulaşmak için orada Gönder’e basın ya da " + MAIL + " adresine yazın.",
+      newsletterSent: "Teşekkürler, listeye eklendiniz. Hasat haberleri bu adrese gelecek.",
+      newsletterFailed: "Kaydınızı şu anda alamadık.",
       subjectEnquiry: "Web sitesi talebi",
       subjectNewsletter: "Bülten"
     }
@@ -339,23 +347,74 @@
         return;
       }
 
-      /* No endpoint wired up yet: open a pre-filled e-mail instead. */
+      /* No `action` on the form: send it to the company's Google Form
+         (assets/js/gforms.js). If that script is missing or the request
+         fails, fall back to the pre-filled e-mail, so nothing is lost. */
       if (!form.getAttribute("action")) {
         event.preventDefault();
-        var mail = buildMail();
-        showStatus(status, T.mailto, "ok", true);
-        openMailto(mail.subject, mail.lines);
+        if (!window.AegeanForms) {
+          var mail = buildMail();
+          showStatus(status, T.mailto, "ok", true);
+          openMailto(mail.subject, mail.lines);
+          return;
+        }
+        sendToGoogle();
         return;
       }
 
       lockWhileSending(form);
     });
+
+    /* The Google Form has fewer questions than this form: quantity and
+       "how can we help" travel inside the message, and "samples" is Yes when
+       the visitor picked "Request samples". */
+    function sendToGoogle() {
+      var el = form.elements;
+      var btn = form.querySelector('[type="submit"]');
+      var label = btn.textContent;
+      function text(field) { return field ? (field.value || "").trim() : ""; }
+      function chosen(field) { return field && field.value ? field.options[field.selectedIndex].text.trim() : ""; }
+      function done() { btn.disabled = false; btn.textContent = label; }
+
+      /* A bot (hidden trap field filled, or sent within seconds): show success, send nothing. */
+      if (window.AegeanForms.looksAutomated(form)) { showStatus(status, T.sent, "ok", true); form.reset(); return; }
+
+      var extra = [];
+      if (text(el.quantity)) extra.push(labelFor(el.quantity) + ": " + text(el.quantity));
+      if (el.reason) extra.push(labelFor(el.reason) + ": " + chosen(el.reason));
+      extra.push("Page: " + location.pathname + " (" + (document.documentElement.lang || "en") + ")");
+      var message = text(el.message) + "\n\n" + extra.join("\n");
+
+      btn.disabled = true;
+      btn.textContent = T.sending;
+      window.AegeanForms.send("enquiry", {
+        name: text(el.name),
+        company: text(el.company),
+        email: text(el.email),
+        phone: text(el.phone),
+        country: text(el.country),
+        product: chosen(el.product),
+        samples: el.reason && el.reason.value === "samples" ? "Yes" : "No",
+        message: message
+      }).then(function () {
+        done();
+        showStatus(status, T.sent, "ok", true);
+        form.reset();
+      }, function () {
+        /* Delivery failed (offline, blocked): hand the visitor the e-mail route instead. */
+        done();
+        var mail = buildMail();
+        showStatus(status, T.sendFailed, "err", true);
+        openMailto(mail.subject, mail.lines);
+      });
+    }
   }
 
   /* ---------- Newsletter sign-up ---------- */
-  /* Same contract as the enquiry form: validate here, hand off to whatever
-     `action` is set on the form. With none, say plainly that sign-up is not
-     live and offer an e-mail instead of pretending the address was stored. */
+  /* Same contract as the enquiry form: validate here; with an `action` set,
+     hand off to the browser. With none, send the address to the company's
+     newsletter Google Form (assets/js/gforms.js); if that fails, say so and
+     offer an e-mail instead of pretending the address was stored. */
   function initNewsletter() {
     var form = document.getElementById("newsletter-form");
     if (!form) return;
@@ -395,13 +454,30 @@
 
       if (!form.getAttribute("action")) {
         event.preventDefault();
-        showStatus(status, T.newsletterMailto + " ", "ok", true);
-        /* Built with DOM nodes, not innerHTML: the address is user input. */
-        var link = document.createElement("a");
-        link.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(T.subjectNewsletter) +
-          "&body=" + encodeURIComponent(value);
-        link.textContent = T.newsletterLink;
-        status.appendChild(link);
+        /* Shown when sending is impossible or failed: an e-mail link instead.
+           Built with DOM nodes, not innerHTML: the address is user input. */
+        var offerMail = function (message, kind) {
+          showStatus(status, message + " ", kind, true);
+          var link = document.createElement("a");
+          link.href = "mailto:" + MAIL + "?subject=" + encodeURIComponent(T.subjectNewsletter) +
+            "&body=" + encodeURIComponent(value);
+          link.textContent = T.newsletterLink;
+          status.appendChild(link);
+        };
+        if (!window.AegeanForms) { offerMail(T.newsletterMailto, "ok"); return; }
+        if (window.AegeanForms.looksAutomated(form)) { showStatus(status, T.newsletterSent, "ok", true); form.reset(); return; }
+        var btn = form.querySelector('[type="submit"]');
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = T.sending;
+        window.AegeanForms.send("newsletter", { email: value }).then(function () {
+          btn.disabled = false; btn.textContent = label;
+          showStatus(status, T.newsletterSent, "ok", true);
+          form.reset();
+        }, function () {
+          btn.disabled = false; btn.textContent = label;
+          offerMail(T.newsletterFailed, "err");
+        });
         return;
       }
 

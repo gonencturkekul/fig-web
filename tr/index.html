@@ -56,6 +56,8 @@
   <!-- Marks the page as script-capable before first paint, so entrance animations can start hidden.
        Without JavaScript the class is never added and every section simply shows. -->
   <script>document.documentElement.classList.add('js');</script>
+  <!-- gforms.js sends the forms to the company's Google Forms; it must load before the script that uses it. -->
+  <script src="../assets/js/gforms.js" defer></script>
   <script src="../assets/js/home.js" defer></script>
   <script src="../assets/js/consent.js" defer></script>
   <script src="../assets/js/chat.js" defer></script>
@@ -492,6 +494,8 @@
 
         <!-- method="post": if the script ever fails, the fields never land in a URL (and so never in logs or analytics). -->
         <form class="coupon__form" id="enquiry-form" method="post" novalidate>
+          <!-- Spam trap: people never see this field; bots that fill it are ignored (assets/js/gforms.js). -->
+          <div class="hp" aria-hidden="true"><label>Bu alanı boş bırakın <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="field">
             <label for="f-product">Ürün</label>
             <select id="f-product" name="product">
@@ -523,16 +527,19 @@
             <input id="f-volume" name="volume" type="text" autocomplete="off" placeholder="örn. bir adet 20 ft konteyner">
           </div>
           <div class="field">
-            <label for="f-dest">Varış</label>
-            <input id="f-dest" name="dest" type="text" autocomplete="country-name" placeholder="Liman ya da ülke">
+            <label for="f-dest">Varış <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-dest" name="dest" type="text" autocomplete="country-name" required aria-describedby="f-dest-err" placeholder="Liman ya da ülke">
+            <p class="field__error" id="f-dest-err" hidden>Sevkiyatın gideceği liman ya da ülkeyi yazın.</p>
           </div>
           <div class="field">
-            <label for="f-name">Adınız</label>
-            <input id="f-name" name="name" type="text" autocomplete="name">
+            <label for="f-name">Adınız <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" hidden>Adınızı yazın.</p>
           </div>
           <div class="field">
-            <label for="f-company">Firma</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization">
+            <label for="f-company">Firma <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required aria-describedby="f-company-err">
+            <p class="field__error" id="f-company-err" hidden>Firma adınızı yazın.</p>
           </div>
           <div class="field field--wide">
             <label for="f-email">E-posta <span class="req" aria-hidden="true">*</span></label>
