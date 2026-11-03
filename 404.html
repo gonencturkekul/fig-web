@@ -6,12 +6,14 @@
   <!-- 404 page: Vercel serves it for any missed URL, at that URL, so all links
        below are root-absolute (/assets/..., /products.html) rather than relative. -->
 
-  <!-- Google Tag Manager (GTM-P398DTWM). The loader is not here on purpose:
-       consent starts denied below, and assets/js/consent.js fetches gtm.js
-       only once the visitor accepts. The <noscript> iframe is left out as
-       well — it would reach Google for visitors who cannot be shown the
-       consent bar at all. Google Analytics 4 is a tag inside the container,
-       so there is no gtag.js loader and no config call anywhere in the site. -->
+  <!-- Google Tag Manager (GTM-P398DTWM) loads on every page, from the snippet
+       below. Consent Mode keeps it from storing anything: the defaults are set
+       to denied BEFORE gtm.js loads, so GA4 (a tag inside the container) sets
+       no cookie until the visitor accepts, and assets/js/consent.js then sends
+       consent 'update' (analytics_storage only). consent.js no longer loads
+       GTM itself; a second loader would count every page view twice.
+       The <noscript> iframe is left out: it would reach Google for visitors
+       who cannot be shown the consent bar at all. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -22,6 +24,15 @@
       analytics_storage: 'denied',
       wait_for_update: 500
     });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P398DTWM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    /* The gtm.js event that Google's standard GTM snippet pushes; GTM's
+       "Initialization" and "All Pages" triggers fire on it. */
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
   </script>
   <title>Page not found | Aegean Sun Dried Fruits</title>
   <meta name="description" content="The page you were looking for is not on this site. Find our dried figs, fig salami, dried apricots and dried mulberries from here.">

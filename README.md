@@ -68,7 +68,7 @@ assets/
   js/chat.js       sales assistant widget, every page except privacy and 404
   js/gforms.js     sends the enquiry and newsletter forms to the company's
                    Google Forms (addresses and field mapping live here)
-  js/consent.js    cookie bar; loads Google Analytics only on consent
+  js/consent.js    cookie bar; grants analytics consent on Accept (GTM loads in <head>)
   js/home.js       every page: section entrances, the flag language switcher;
                    home pages also: the carton-label
                    enquiry form (mailto, EN/TR from <html lang>), the film
@@ -241,26 +241,43 @@ ask. It is independent of the Vercel counter above; running both is fine, and
 their numbers will not agree — they count differently and are blocked by
 different things.
 
-**GA4 sets cookies** (`_ga` and `_ga_<id>`) and sends visitor data to Google,
-so EU visitors have to consent before any of it loads. Nothing Google-related
-is therefore in the markup. The `<head>` of every page only declares denied
-defaults and queues `gtag()`:
+**GA4 sets cookies** (`_ga` and `_ga_<id>`), so EU visitors have to consent
+before any of them is stored. Since November 2026 the site uses **advanced
+consent mode**: Google Tag Manager loads on every page, but the consent
+defaults are declared denied *before* it, so no tag stores or reads a cookie
+until the visitor accepts. The top of every page's `<head>` holds, in this
+order:
 
 ```html
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', { analytics_storage: 'denied', ... });
+  gtag('consent', 'default', { analytics_storage: 'denied', ... , wait_for_update: 500 });
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P398DTWM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
 </script>
 ```
 
-`assets/js/consent.js` shows the bar, remembers the answer, and only on
-**Accept** sends `consent update` and then loads the Tag Manager container —
-in that order, so the tags inside it start granted instead of firing denied
-and being corrected. On **Decline** nothing is fetched from Google at all, and
-any `_ga` cookie a previous visit left is deleted. The answer is kept in
-`localStorage` under `aegeansun-cookie-consent` — not a cookie, never sent to
-the server, which is why it needs no consent itself.
+The order matters: the denied defaults must be in the data layer before
+`gtm.js` runs, or the tags start granted. The `gtm.start` push is the event
+Google's standard GTM snippet sends; the container's "Initialization" and
+"All Pages" triggers fire on it.
+
+`assets/js/consent.js` shows the bar, remembers the answer, and on **Accept**
+sends `consent update` (`analytics_storage: granted`); tags already in the
+container then start storing cookies. It does **not** load GTM: the head
+already does, and a second loader would count every page view twice. On
+**Decline** nothing is granted, and any `_ga` cookie a previous visit left is
+deleted. Before an answer (and after Decline) the tags may still send Google
+cookieless pings, and the browser contacts Google to fetch `gtm.js`; the
+privacy pages say so. The answer is kept in `localStorage` under
+`aegeansun-cookie-consent`: not a cookie, never sent to the server, which is
+why it needs no consent itself.
 
 Details that are deliberate, not accidental, and should survive any redesign:
 
@@ -285,24 +302,20 @@ which holds both languages.
 
 ### Google Tag Manager
 
-Container `GTM-P398DTWM` is loaded by `assets/js/consent.js` too, next to GA4
-and under the same condition: nothing until Accept. Google's own instructions
-put the loader at the top of `<head>`, which here would reach Google before
-the visitor had answered the bar and make the privacy page untrue, so the
-snippet lives in `consent.js` instead. It is the same code Google gives, only
-moved.
+Container `GTM-P398DTWM` is loaded by the snippet in every page's `<head>`
+(all 20 HTML files, 404 pages included), right after the denied consent
+defaults. Until November 2026 it was loaded by `consent.js` only after Accept
+("basic" consent mode); the owner chose to load it on every page instead.
 
 **The `<noscript>` iframe is deliberately not installed.** It exists to fire
-tags for visitors without JavaScript — exactly the visitors who can never be
-shown the consent bar, so it would be the one path around it. Measurement
-through GTM needs JavaScript anyway, so little is lost. Add it only if you
-decide that trade is worth it.
+tags for visitors without JavaScript, who are exactly the visitors who can
+never be shown the consent bar, so it would be a path around it.
 
 **GA4 lives inside the container.** There is no `gtag.js` loader and no
 `gtag("config", ...)` call anywhere in the site: the measurement id
 `G-YSX5V6H7JQ` appears in `consent.js` only to name the cookie the bar lists.
 A GA4 configuration tag in the container is therefore the one thing that
-counts a page view — add a second one anywhere and every view is counted
+counts a page view. Add a second one anywhere and every view is counted
 twice.
 
 So the container must actually contain that tag, or nothing is measured at
@@ -311,63 +324,36 @@ all. In Tag Manager: a **Google Tag** with id `G-YSX5V6H7JQ`, triggered on
 container that has never been published serves an empty response, which is
 why the site can look wired up and still report nothing.
 
-### Against Google's basic consent mode guide
+Tags you add inside GTM inherit the consent state: `analytics_storage` starts
+denied and becomes granted on Accept. Ad consent types are never granted. A
+tag that needs ad storage would need its own consent category, which this bar
+does not offer, since it asks one yes/no question about measurement.
 
-Checked step by step against Google's "Set up consent mode" page. Where this
-site departs from the sample, it is on purpose:
+### Against Google's consent mode guide
 
 | Guide says | Here |
 | --- | --- |
-| Set the defaults in the data layer before the banner, with `wait_for_update` | Done, in the `<head>` of all 18 pages. `wait_for_update: 500` is inert in a basic setup — the container only loads after the update — but it is kept so the block matches the documented one if a tag is ever added earlier. |
+| Set the defaults in the data layer before the container, with `wait_for_update` | Done, in the `<head>` of every page, before the GTM snippet. `wait_for_update: 500` gives a returning visitor's stored Accept time to arrive from `consent.js` before tags fire. |
 | Save the interaction in `localStorage` or a cookie | `localStorage`, under `aegeansun-cookie-consent`. |
 | Give every banner button an identifier | `#consent-accept` and `#consent-decline`. |
-| Push the banner interaction to the data layer | `{event: "consent_decision", consent_decision: "granted"\|"denied"}`, pushed before the container loads so a trigger inside it can fire on the event. |
-| Load the Google tag once consent is granted | `consent.js` sends the update, then loads `gtm.js`. |
-| Sample grants `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` on accept | **Only `analytics_storage`.** The bar asks one question, about measurement, and the privacy page describes only Analytics. Granting advertising consent nobody was asked for would be a false signal — and the guide itself says to decide this from your own policy rather than from the sample. Adding ad tags means asking about them in the bar first. |
-| With Tag Manager, the recommended approach is to load your banner *through* the container | **Not followed.** The container would have to load before the banner could ask anything, which is the one thing this setup refuses to do. The bar is part of the site instead: it works with the container unpublished, it is bilingual from `<html lang>`, and it is styled with the site's own CSS. |
-| Install the Google tag on every page (gtag.js route) | Not applicable — GA4 is a tag inside the container, so there is no `gtag.js` on any page. |
+| Push the banner interaction to the data layer | `{event: "consent_decision", consent_decision: "granted"\|"denied"}`, which a trigger inside the container can fire on. |
+| Sample grants `ad_storage`, `ad_user_data`, `ad_personalization` and `analytics_storage` on accept | **Only `analytics_storage`.** The bar asks one question, about measurement, and the privacy page describes only Analytics. Granting advertising consent nobody was asked for would be a false signal. Adding ad tags means asking about them in the bar first. |
+| With Tag Manager, load your banner *through* the container | **Not followed.** The bar is part of the site: it works with the container unpublished, it is bilingual from `<html lang>`, and it is styled with the site's own CSS. |
 
-### Why consent mode stays "basic"
+### Advanced vs basic consent mode
 
-Google offers two shapes of consent mode, and this site deliberately uses the
-stricter one.
+- **Basic** (used until November 2026): no Google tag loads until the visitor
+  accepts; nothing about a visitor who declines reaches Google.
+- **Advanced** (used now): the container loads for everyone and, while
+  consent is denied, may send cookieless pings that Google can use to *model*
+  the missing visitors. Google only models once the property passes its
+  traffic thresholds, so a small site may get no modelled data.
 
-- **Basic** (what we do): no Google tag loads until the visitor accepts. A
-  visitor who declines, or ignores the bar, is never counted and nothing about
-  them reaches Google.
-- **Advanced**: the container loads for everyone immediately and, while
-  consent is denied, sends cookieless pings. Google then *models* the missing
-  visitors to fill the gap.
-
-Advanced measures more, and it is tempting for a site with worldwide traffic,
-where many visitors never touch the bar. It was weighed and rejected:
-
-1. **The modelling would not run.** Google only models once the property is
-   over its thresholds — reported by third-party guides as roughly 1,000
-   events a day from declining visitors for 7 days, and around 1,000 daily
-   consenting users across 7 of the last 28 days. A B2B exporter's site is
-   orders of magnitude below that, so advanced mode would buy the extra
-   exposure and deliver no modelled data at all.
-2. **It would contradict a published promise.** The privacy page states that
-   until you answer, the page does not even send a request to Google. Advanced
-   mode makes that false, and the page would have to be rewritten.
-3. **The company is Turkish and sells into the EU.** Both the KVKK's cookie
-   guidance and the EU ePrivacy rules point the same way: ask first.
-
-`region`-scoped defaults — `gtag('consent','default',{…, region:['DE','FR']})`
-— only change *which default applies where*; the tags still load everywhere,
-so they are a feature of advanced mode and do nothing in ours.
-
-If the picture changes (serious traffic, or an ads campaign that needs
-conversion modelling), switching is small: declare granted defaults outside
-the regulated regions, load the container in the head as Google documents,
-and update the privacy page to match. It is a legal decision before it is a
-technical one.
-
-Tags you add inside GTM inherit the consent state: the container only loads
-after Accept, and `analytics_storage` is granted at that moment. A tag that
-needs ad storage would need its own consent category, which this bar does not
-offer — it asks one yes/no question.
+Going back to basic is small: remove the GTM snippet (the second and third
+`<script>` blocks) from every `<head>`, make `grantAnalytics()` in
+`consent.js` load `gtm.js` again after the consent update, and restore the
+privacy pages' "no request to Google before you answer" wording. Which mode
+to use is a legal decision (KVKK, EU ePrivacy) before it is a technical one.
 
 ## Privacy & Cookies page
 

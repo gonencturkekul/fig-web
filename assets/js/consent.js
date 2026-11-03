@@ -1,11 +1,11 @@
 /* ==========================================================================
    Aegean Sun — cookie consent
-   Google Tag Manager is NOT loaded by the page itself. The head only declares
-   denied consent defaults and queues gtag(); this file shows the choice,
-   remembers it, and loads the container only once the visitor accepts.
-   Google Analytics 4 is configured inside that container, not here, so there
-   is exactly one place that counts a page view.
-   Declining loads nothing and clears any cookie a previous visit left.
+   Google Tag Manager is loaded by the snippet in every page's <head>, right
+   after the denied consent defaults. This file shows the choice, remembers
+   it, and on Accept sends consent 'update' so the tags inside the container
+   (GA4 included) may start storing cookies. It does NOT load GTM: the head
+   already does, and a second loader would count each page view twice.
+   Declining grants nothing and clears any cookie a previous visit left.
    The choice is kept in localStorage, which is not a cookie and never
    reaches the server.
    ========================================================================== */
@@ -15,7 +15,6 @@
   /* GA4 runs from inside the container; the id is kept only to name the
      cookie it sets, which the bar lists. */
   var GA_ID = "G-YSX5V6H7JQ";
-  var GTM_ID = "GTM-P398DTWM";
   var KEY = "aegeansun-cookie-consent";
   var LANG = (document.documentElement.lang || "en").slice(0, 2).toLowerCase() === "tr" ? "tr" : "en";
 
@@ -71,13 +70,13 @@
     return function () { (window.dataLayer = window.dataLayer || []).push(arguments); };
   }
 
-  var loaded = false;
-  function loadAnalytics() {
-    if (loaded) return;
-    loaded = true;
+  var granted = false;
+  function grantAnalytics() {
+    if (granted) return;
+    granted = true;
 
-    /* Granted before the container loads, so the tags inside it start in the
-       right state rather than firing denied and being corrected.
+    /* GTM is already running (see the <head> snippet) with analytics_storage
+       denied; this update lets the tags inside it start storing cookies.
 
        Google's sample grants ad_storage, ad_user_data and ad_personalization
        here as well. Ours does not, and that is the point: this bar asks one
@@ -89,16 +88,6 @@
     gtagSafe()("consent", "update", {
       analytics_storage: "granted"
     });
-
-    /* Google Tag Manager. This is the snippet Google hands out, moved out of
-       the markup: in the <head> it would reach Google before the visitor had
-       answered the bar. Everything measured, GA4 included, is a tag inside
-       this container. */
-    window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-    var gtm = document.createElement("script");
-    gtm.async = true;
-    gtm.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
-    document.head.appendChild(gtm);
   }
 
   /* A visitor who accepted and then changed their mind keeps the cookies from
@@ -248,12 +237,12 @@
     var hadFocus = bar && bar.contains(document.activeElement);
     hide();
     if (hadFocus) restoreFocus();
-    /* Pushed before the container loads, so it is in the queue GTM reads and
-       a trigger inside the container can fire on it. */
+    /* GTM is already listening, so a trigger inside the container can fire
+       on this event. */
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "consent_decision", consent_decision: value });
     if (value === "granted") {
-      loadAnalytics();
+      grantAnalytics();
     } else {
       clearAnalyticsCookies();
     }
@@ -278,7 +267,7 @@
     initReopenLinks();
     var choice = read();
     if (choice === "granted") {
-      loadAnalytics();
+      grantAnalytics();
     } else if (choice !== "denied") {
       show();
     }

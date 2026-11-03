@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Tag Manager (GTM-P398DTWM). The loader is not here on purpose:
-       consent starts denied below, and assets/js/consent.js fetches gtm.js
-       only once the visitor accepts. The <noscript> iframe is left out as
-       well — it would reach Google for visitors who cannot be shown the
-       consent bar at all. Google Analytics 4 is a tag inside the container,
-       so there is no gtag.js loader and no config call anywhere in the site. -->
+  <!-- Google Tag Manager (GTM-P398DTWM) loads on every page, from the snippet
+       below. Consent Mode keeps it from storing anything: the defaults are set
+       to denied BEFORE gtm.js loads, so GA4 (a tag inside the container) sets
+       no cookie until the visitor accepts, and assets/js/consent.js then sends
+       consent 'update' (analytics_storage only). consent.js no longer loads
+       GTM itself; a second loader would count every page view twice.
+       The <noscript> iframe is left out: it would reach Google for visitors
+       who cannot be shown the consent bar at all. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -20,6 +22,15 @@
       analytics_storage: 'denied',
       wait_for_update: 500
     });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P398DTWM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    /* The gtm.js event that Google's standard GTM snippet pushes; GTM's
+       "Initialization" and "All Pages" triggers fire on it. */
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
   </script>
   <title>Privacy &amp; Cookies | Aegean Sun Dried Fruits</title>
   <meta name="description" content="How Aegean Sun handles personal data from this site: enquiry forms, the newsletter, cookies and analytics, who we share with, and your rights under the KVKK and the GDPR.">
@@ -181,7 +192,7 @@
              reopens the consent bar (consent.js listens for data-consent-open), styled as a link. -->
         <section id="cookies" aria-labelledby="cookies-title">
           <h2 id="cookies-title">Cookies</h2>
-          <p>No cookie is needed for the site to work. The only cookies are Google Analytics’, and they are <strong>not placed unless you accept</strong>; until you answer, the page does not even send a request to Google. Google Tag Manager, which we use to manage the measurement tags, is likewise loaded only after you accept.</p>
+          <p>No cookie is needed for the site to work. The only cookies are Google Analytics’, and they are <strong>not placed unless you accept</strong>; Google Tag Manager, which we use to manage the measurement tags, loads on every page, so your browser contacts Google (which sees your IP address and browser details) before you answer. Until you accept, Google’s consent mode keeps the tags from placing or reading any cookie; they may send Google basic, cookie-free signals, such as that a page was viewed.</p>
           <div class="spec-scroll" tabindex="0" role="region" aria-label="Cookies (scrolls sideways)">
             <table class="spec">
               <thead>
@@ -203,7 +214,7 @@
           <p>We do not sell your data and we share it with nobody for marketing. The only recipients are the providers we need to run the site and the business:</p>
           <ul>
             <li><strong>Vercel</strong> &mdash; hosting of this site and the visit statistics.</li>
-            <li><strong>Google</strong> &mdash; our email infrastructure (Google Workspace), Google Forms and Google Sheets, which receive and store what you send through the enquiry and newsletter forms, and, only if you accept, Google Analytics and Google Tag Manager.</li>
+            <li><strong>Google</strong> &mdash; our email infrastructure (Google Workspace), Google Forms and Google Sheets, which receive and store what you send through the enquiry and newsletter forms, Google Tag Manager, which loads on every page, and Google Analytics, which places cookies only if you accept.</li>
             <li><strong>Our representatives abroad</strong> &mdash; if your enquiry concerns the Canadian or Greek market, it may be passed to that representative so you get a faster answer.</li>
           </ul>
           <p>We may also disclose data where a public authority lawfully requires it.</p>

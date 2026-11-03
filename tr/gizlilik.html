@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Tag Manager (GTM-P398DTWM). The loader is not here on purpose:
-       consent starts denied below, and assets/js/consent.js fetches gtm.js
-       only once the visitor accepts. The <noscript> iframe is left out as
-       well — it would reach Google for visitors who cannot be shown the
-       consent bar at all. Google Analytics 4 is a tag inside the container,
-       so there is no gtag.js loader and no config call anywhere in the site. -->
+  <!-- Google Tag Manager (GTM-P398DTWM) loads on every page, from the snippet
+       below. Consent Mode keeps it from storing anything: the defaults are set
+       to denied BEFORE gtm.js loads, so GA4 (a tag inside the container) sets
+       no cookie until the visitor accepts, and assets/js/consent.js then sends
+       consent 'update' (analytics_storage only). consent.js no longer loads
+       GTM itself; a second loader would count every page view twice.
+       The <noscript> iframe is left out: it would reach Google for visitors
+       who cannot be shown the consent bar at all. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -20,6 +22,15 @@
       analytics_storage: 'denied',
       wait_for_update: 500
     });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P398DTWM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    /* The gtm.js event that Google's standard GTM snippet pushes; GTM's
+       "Initialization" and "All Pages" triggers fire on it. */
+    dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
   </script>
   <title>Gizlilik ve Çerezler | Aegean Sun Kuru Meyve</title>
   <meta name="description" content="Aegean Sun bu siteden gelen kişisel verileri nasıl işliyor: teklif formu, bülten, çerezler ve ölçümleme, kimlerle paylaşıldığı ve KVKK ile GDPR kapsamındaki haklarınız.">
@@ -181,7 +192,7 @@
              düğme çerez çubuğunu yeniden açar (consent.js data-consent-open'ı dinler); bağlantı gibi görünür. -->
         <section id="cerezler" aria-labelledby="cookies-title">
           <h2 id="cookies-title">Çerezler</h2>
-          <p>Sitenin çalışması için çerez kullanmıyoruz. Yalnızca Google Analytics çerezleri vardır ve bunlar <strong>siz kabul etmeden yerleştirilmez</strong>; sayfa, onayınız gelene kadar Google’a istek dahi göndermez. Ölçüm etiketlerini yönetmek için kullandığımız Google Etiket Yöneticisi de aynı şekilde yalnızca onayınızdan sonra yüklenir.</p>
+          <p>Sitenin çalışması için çerez kullanmıyoruz. Yalnızca Google Analytics çerezleri vardır ve bunlar <strong>siz kabul etmeden yerleştirilmez</strong>; Ölçüm etiketlerini yönetmek için kullandığımız Google Etiket Yöneticisi her sayfada yüklenir; bu nedenle tarayıcınız, siz yanıt vermeden önce Google’a bağlanır (Google IP adresinizi ve tarayıcı bilgilerinizi görür). Kabul edene kadar Google’ın izin modu, etiketlerin çerez yerleştirmesini veya okumasını engeller; etiketler Google’a bir sayfanın görüntülendiği gibi çerezsiz, temel sinyaller gönderebilir.</p>
           <div class="spec-scroll" tabindex="0" role="region" aria-label="Çerezler (yana kaydırılabilir)">
             <table class="spec">
               <thead>
@@ -203,7 +214,7 @@
           <p>Verilerinizi satmıyoruz ve pazarlama amacıyla kimseyle paylaşmıyoruz. Yalnızca sitenin ve işimizin yürümesi için kullandığımız hizmet sağlayıcılar söz konusudur:</p>
           <ul>
             <li><strong>Vercel</strong> &mdash; sitenin barındırılması ve ziyaret istatistikleri.</li>
-            <li><strong>Google</strong> &mdash; e-posta altyapımız (Google Workspace), teklif ve bülten formlarıyla gönderdiklerinizi alan ve saklayan Google Forms ile Google E-Tablolar ve, yalnızca kabul etmeniz hâlinde, Google Analytics ile Google Etiket Yöneticisi (Tag Manager).</li>
+            <li><strong>Google</strong> &mdash; e-posta altyapımız (Google Workspace), teklif ve bülten formlarıyla gönderdiklerinizi alan ve saklayan Google Forms ile Google E-Tablolar her sayfada yüklenen Google Etiket Yöneticisi (Tag Manager) ve yalnızca kabul etmeniz hâlinde çerez yerleştiren Google Analytics.</li>
             <li><strong>Yurt dışı temsilcilerimiz</strong> &mdash; talebiniz Kanada veya Yunanistan pazarıyla ilgiliyse, size daha hızlı dönebilmek için ilgili temsilcimize iletilebilir.</li>
           </ul>
           <p>Ayrıca yetkili kamu kurumlarının hukuka uygun talepleri hâlinde paylaşım yapılabilir.</p>
