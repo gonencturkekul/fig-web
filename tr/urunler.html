@@ -100,8 +100,8 @@
     <section class="phead" aria-labelledby="page-title">
       <div class="phead__copy" data-reveal>
         <nav class="crumbs" aria-label="Sayfa yolu"><ol><li><a href="./">Ana sayfa</a></li><li aria-current="page">Ürünler</li></ol></nav>
-        <h1 id="page-title" class="display">Dört kuru meyve</h1>
-        <p class="phead__lead">Dört uzmanlık ürününü Türkiye’de kendimiz kurutup paketliyoruz. Tüm kaliteleri perakende, toplu tüketim ve sanayi formatlarında, talebe göre özel markayla sunuyoruz.</p>
+        <h1 id="page-title" class="display">Ürünlerimiz</h1>
+        <p class="phead__lead">Uzmanlık ürünlerimizi Türkiye’de kendimiz kurutup paketliyoruz. Tüm kaliteleri perakende, toplu tüketim ve sanayi formatlarında, talebe göre özel markayla sunuyoruz.</p>
         <div class="phead__actions">
           <a class="btn btn--fig" href="iletisim.html#contact-form">Teklif alın</a>
           <a class="textlink" href="#compare">Ürünleri karşılaştırın</a>
@@ -124,7 +124,7 @@
         <h2 id="range-title" class="head">Ürün yelpazesi</h2>
         <p class="lead">Her ürünün kaliteleri, kalibreleri ve tüm teknik bilgileri kendi sayfasında.</p>
         <nav class="range__jump" aria-label="Bir ürüne geçin">
-          <a href="#fig">Kuru incir</a><a href="#salami">İncir salamı</a><a href="#apricot">Kuru kayısı</a><a href="#mulberry">Kuru dut</a>
+          <a href="#fig">Kuru incir</a><a href="#salami">İncir salamı</a><a href="#apricot">Kuru kayısı</a><a href="#mulberry">Kuru dut</a><a href="#powders">Meyve tozları</a><a href="#lokum">İncir lokumu</a>
         </nav>
       </div>
 
@@ -165,6 +165,29 @@
           <p class="cat__count">Anadolu</p>
           <p class="cat__facts">Dalında tam olgunlaşır, hiçbir işlem görmeden güneş ve rüzgârda kurutulur. Tesisimizde fümigasyon ve temizleme sonrası paketlenir.<br>Formatlar: 12,5 kg dökme · istenen gramaj</p>
           <a class="textlink cat__more" href="kuru-dut.html">Kuru dutun tüm teknik bilgileri</a>
+        </header>
+      </article>
+
+      <!-- YENİ: meyve tozları. Şimdilik yalnızca başlık — yuvarlak görsel, menşe satırı,
+           tanıtım metni ve teknik bilgi bağlantısı, fotoğraf ve metin gelince doldurulacak. -->
+      <article class="cat" id="powders" aria-labelledby="powders-name">
+        <header class="cat__head" data-reveal>
+          <div class="cat__photo" aria-hidden="true"></div>
+          <h3 id="powders-name" class="head">Meyve tozları</h3>
+          <!-- <p class="cat__count">Menşe</p> -->
+          <!-- <p class="cat__facts">Ürün nedir, nasıl üretilir.<br>Formatlar: …</p> -->
+          <!-- <a class="textlink cat__more" href="meyve-tozlari.html">Meyve tozlarının tüm teknik bilgileri</a> -->
+        </header>
+      </article>
+
+      <!-- YENİ: incir lokumu. Aynı şekilde, fotoğraf ve metin bekliyor. -->
+      <article class="cat" id="lokum" aria-labelledby="lokum-name">
+        <header class="cat__head" data-reveal>
+          <div class="cat__photo" aria-hidden="true"></div>
+          <h3 id="lokum-name" class="head">İncir lokumu</h3>
+          <!-- <p class="cat__count">Menşe</p> -->
+          <!-- <p class="cat__facts">Ürün nedir, nasıl üretilir.<br>Formatlar: …</p> -->
+          <!-- <a class="textlink cat__more" href="incir-lokumu.html">İncir lokumunun tüm teknik bilgileri</a> -->
         </header>
       </article>
     </section>
@@ -210,7 +233,7 @@
         </div>
         <div>
           <h3 class="sub">Sipariş büyüklüğü</h3>
-          <p>Stoklu formatlarda tek paletten tam konteynere kadar. Dört ürün grubunu aynı yüklemede birleştiren karma konteynerleri de memnuniyetle hazırlıyoruz.</p>
+          <p>Stoklu formatlarda tek paletten tam konteynere kadar. Ürün gruplarını aynı yüklemede birleştiren karma konteynerleri de memnuniyetle hazırlıyoruz.</p>
         </div>
         <div>
           <h3 class="sub">Teslim şekli ve rotalar</h3>
@@ -223,11 +246,12 @@
       </div>
     </section>
 
-    <!-- COMPARISON. The four products side by side in one real table on the sand band; it scrolls in its own box on a phone. -->
+    <!-- COMPARISON. The four dried fruits side by side in one real table on the sand band; it scrolls in its own box on a phone.
+         Fruit powders and fig lokum join it once their specifications exist. -->
     <section class="sect sect--wide sect--tone" id="compare" aria-labelledby="compare-title" data-reveal>
       <div class="sect__head">
         <h2 id="compare-title" class="head">Ürünleri karşılaştırın</h2>
-        <p class="lead" id="compare-lead">Dört ürünün menşe, kalite ve raf ömrü yan yana.</p>
+        <p class="lead" id="compare-lead">Dört kuru meyvenin menşe, kalite ve raf ömrü yan yana.</p>
       </div>
       <div class="sect__body spec-scroll" tabindex="0" role="region" aria-label="Ürün karşılaştırması">
         <table class="spec spec--compare" aria-labelledby="compare-title" aria-describedby="compare-lead">
@@ -303,7 +327,7 @@
           <li><a href="incir-salami.html">İncir salamı</a></li>
           <li><a href="kuru-kayisi.html">Kuru kayısı</a></li>
           <li><a href="kuru-dut.html">Kuru dut</a></li>
-          <li><a href="urunler.html">Dördünü karşılaştırın</a></li>
+          <li><a href="urunler.html">Tüm ürün yelpazesi</a></li>
         </ul>
       </nav>
       <nav aria-label="Kurumsal">

@@ -24,6 +24,21 @@ page links to its counterpart in the other language.
 The four products sit in a dropdown under **Products** / **Ürünler** in the main
 navigation on every page, alongside a link to the full products listing.
 
+### Two entries awaiting content
+
+The range on `products.html` / `tr/urunler.html` also lists **Fruit powders**
+(`#powders`) and **Fig lokum** (`#lokum`). They are headings only: an empty
+round sand window where the photograph goes, and the origin line, the facts
+paragraph and the specification link commented out in place beneath each one.
+Uncomment and fill them when the photo and copy arrive.
+
+These two are deliberately *not* in: the comparison table (it has no specs for
+them), the home page range, the footer product list, the chat assistant's
+answers, `llms.txt`'s fact list, the page meta descriptions, or the sitemap —
+there is no page for either yet. Wire those up in the same pass that fills the
+copy, and give each product its own page on the `product-dried-mulberry.html`
+pattern if it needs one.
+
 ## Language switching
 
 The switcher sits at the top right of the header: a button showing the current
