@@ -209,11 +209,19 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
 .hero__window img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 60%; }
 /* A second, smaller round window in front of the first: the fig as powder,
    overlapping the lower edge of the fruit. Same motif, one step down in scale. */
+/* The powder stands apart from the fruit, on the sun's lower-left edge. It only
+   appears from 1200px up: below that the sun is cropped too hard for two
+   separate circles, and the powder has its own place in the range instead. */
 .hero__inset {
+  display: none;
   position: absolute; z-index: 2;
-  width: 25%; aspect-ratio: 1;
-  left: 13%; top: 42%;
+  width: 20%; aspect-ratio: 1;
+  left: 0; top: 62%;
   border-radius: 50%; object-fit: cover; background: var(--sand);
+}
+@media (min-width: 1200px) {
+  .hero__window { width: 58%; }
+  .hero__inset { display: block; }
 }
 
 /* ---- The range ----------------------------------------------------------- */
@@ -497,12 +505,6 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
   .js [data-reveal] > * { transition: opacity .3s linear; }
 }
 
-/* Between 981 and 1199 the fruit's window all but touches the copy column, so
-   the powder sits further into the photograph rather than over the text. */
-@media (min-width: 981px) and (max-width: 1199px) {
-  .hero__inset { left: 18%; top: 44%; }
-}
-
 /* ---- Tablet ------------------------------------------------------------- */
 @media (max-width: 980px) {
   .hide-s { display: none; }
@@ -511,7 +513,6 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
   .hero__copy { padding: 40px 0 0; }
   .hero h1 { font-size: 10vw; }
   .hero__sun { --d: 130vw; position: relative; left: 50%; top: auto; margin: 40px 0 calc(var(--d) * -0.42); translate: -50% 0; }
-  .hero__inset { left: 23%; top: 6%; }
   .range__head h2, .range__head .lead { grid-column: 1 / -1; }
   .items { grid-template-columns: 1fr; }
   .chain__panel { display: flex; flex-direction: column; min-height: 0; }
