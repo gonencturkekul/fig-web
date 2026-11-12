@@ -243,6 +243,16 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
 .items__pack { font-size: 1rem; color: var(--fig); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .items p { grid-column: 1 / -1; margin-top: 6px; font-size: 1rem; line-height: 1.5; max-width: 52ch; }
 .items .items__note { margin-top: 4px; color: var(--apricot-ink); font-family: var(--face-display); font-weight: 700; font-size: var(--step-small); }
+
+/* The sun dot becomes the fruit: each item carries its own round photo in the
+   bullet's place, at the same left edge. Used by the fruit powders. */
+.items--photo li { padding-left: 76px; min-height: 60px; }
+.items--photo li::before { content: none; }
+.items__pic {
+  position: absolute; left: 0; top: 0;
+  width: 60px; height: 60px;
+  border-radius: 50%; object-fit: cover; background: var(--sand);
+}
 .cat__more { grid-column: 3; justify-self: end; align-self: start; margin-top: 4px; white-space: nowrap; }
 
 /* ---- The chain (inset fig panel) ---------------------------------------- */
@@ -531,6 +541,9 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
   .cat__more { grid-column: 1 / -1; justify-self: start; margin-top: 8px; white-space: normal; }
   .items li { padding-left: 26px; }
   .items li::before { width: 12px; height: 12px; }
+  /* the photo bullet keeps its room; it is a picture, not a dot */
+  .items--photo li { padding-left: 64px; }
+  .items__pic { width: 52px; height: 52px; }
   .cat__more { margin-left: 26px; }
 
   .chain__panel { margin: 0 10px; }

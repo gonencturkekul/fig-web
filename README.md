@@ -27,15 +27,32 @@ navigation on every page, alongside a link to the full products listing.
 ### Two entries awaiting content
 
 The range on `products.html` / `tr/urunler.html` also lists **Fruit powders**
-(`#powders`) and **Fig lokum** (`#lokum`). They are headings only: an empty
-round sand window where the photograph goes, and the origin line, the facts
-paragraph and the specification link commented out in place beneath each one.
-Uncomment and fill them when the photo and copy arrive.
+(`#powders`) and **Fig lokum** (`#lokum`).
 
-These two are deliberately *not* in: the comparison table (it has no specs for
-them), the home page range, the footer product list, the chat assistant's
-answers, `llms.txt`'s fact list, the page meta descriptions, or the sitemap —
-there is no page for either yet. Wire those up in the same pass that fills the
+**Fruit powders** is filled in: a photo of three bowls at the head and an
+`.items items--photo` list of seven powders — fig, orange, mandarin,
+blackberry, blueberry, kiwi, banana — each with its own round photo and two
+sentences. The copy describes only the fruit, its colour, its taste and what
+the trade uses it for. Nothing is claimed about how the powders are made,
+their mesh, moisture, shelf life, origin or packaging, because none of that
+has been supplied; the head paragraph asks the buyer to write for
+specifications instead, and there is no specification page yet (the link to
+one is commented out in place).
+
+The photographs were cropped square from the supplied marketing images, which
+carry the brand name and the web address across the top; those bands are
+cropped out. Sources are in the `img/powder-*.webp` and `img/fruit-powders.webp`
+files.
+
+**Fig lokum** is still a heading only: an empty round sand window where the
+photograph goes, and the origin line, the facts paragraph and the
+specification link commented out in place. Uncomment and fill them when the
+photo and copy arrive.
+
+Neither is in: the comparison table (there are no specs to compare), the home
+page range, the footer product list, the chat assistant's answers, `llms.txt`'s
+fact list, the page meta descriptions, or the sitemap — there is no page for
+either yet. Wire those up in the same pass that fills the
 copy, and give each product its own page on the `product-dried-mulberry.html`
 pattern if it needs one.
 
