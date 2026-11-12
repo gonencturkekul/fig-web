@@ -54,11 +54,13 @@ Two things about that source are worth keeping in mind. İnas sells it under
 their registered name **"İncirleme"** and their **"Ocak İncir"** brand, and
 their page states that the right to both the name and the recipe is theirs
 alone, so this site calls the product by the generic *fig lokum / incir
-lokumu* and must keep doing so. And the photograph on their page is a licensed
-iStock stock image (`iStock-1415186774.jpg`), not their own photography: a
-stock licence does not transfer to a customer, so it is **not** used here. The
-entry still shows an empty round sand window, waiting for a photograph the
-company owns or has licensed itself.
+lokumu* and must keep doing so. The photograph in the entry
+(`img/fig-lokum.webp`) is the same image that appears on the supplier's page,
+which is a licensed iStock stock photograph (`iStock-1415186774.jpg`) rather
+than the supplier's own photography. That was raised with the owner, who
+supplied the file and confirmed it should be used; a stock licence does not
+pass from one company to another, so whoever publishes it needs their own
+licence for it.
 
 Both also appear in the home page range, in the same order and with the same
 content: the powders complete with their seven items, fig lokum as a heading
