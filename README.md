@@ -32,12 +32,26 @@ The range on `products.html` / `tr/urunler.html` also lists **Fruit powders**
 **Fruit powders** is filled in: a photo of three bowls at the head and an
 `.items items--photo` list of seven powders — fig, orange, mandarin,
 blackberry, blueberry, kiwi, banana — each with its own round photo and two
-sentences. The copy describes only the fruit, its colour, its taste and what
-the trade uses it for. Nothing is claimed about how the powders are made,
-their mesh, moisture, shelf life, origin or packaging, because none of that
-has been supplied; the head paragraph asks the buyer to write for
-specifications instead, and there is no specification page yet (the link to
-one is commented out in place).
+sentences. The copy describes only the fruit, its colour, its taste, what
+the trade uses it for, and why a buyer chooses powder over fresh fruit or
+purée: it carries no water into a recipe, a small dose goes a long way, and it
+removes the batch-to-batch variation of fresh fruit.
+
+**Nothing is claimed about how the powders are made, or about mesh, moisture,
+shelf life, origin, certification or packaging.** The owner was asked directly
+and answered that neither the production method nor the pack sizes are settled
+yet, so the head paragraph invites the buyer to write for specifications
+instead, and there is no specification page (the link to one is commented out
+in place).
+
+Three supplier pages were read as background for this section — haphug.com.tr,
+labari.com.tr and refreshfreezedry.com — but they are other companies, not
+Aegean Sun's suppliers, and they all describe **freeze-dried** powders. Their
+figures (97% nutrient retention, 2–3% moisture, two-year shelf life, 10 kg of
+fresh fruit to 1 kg of powder, 200 g and 1 kg wholesale packs) belong to those
+companies' products and must not be repeated here until Aegean Sun's own
+method and specification exist. `claims_test.js` in the scratchpad guards the
+section against exactly those words.
 
 The photographs were cropped square from the supplied marketing images, which
 carry the brand name and the web address across the top; those bands are
