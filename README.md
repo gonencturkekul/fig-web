@@ -44,10 +44,21 @@ carry the brand name and the web address across the top; those bands are
 cropped out. Sources are in the `img/powder-*.webp` and `img/fruit-powders.webp`
 files.
 
-**Fig lokum** is still a heading only: an empty round sand window where the
-photograph goes, and the origin line, the facts paragraph and the
-specification link commented out in place. Uncomment and fill them when the
-photo and copy arrive.
+**Fig lokum** has its copy and its four pack sizes (500 g tin, 500 g carton,
+340 g, 150 g), written from the supplier's own product page at
+inasgida.com.tr — İnas Gıda supplies this product, which the owner confirmed.
+The description was rewritten rather than copied, and the hazelnut allergen is
+stated because the product contains whole hazelnuts.
+
+Two things about that source are worth keeping in mind. İnas sells it under
+their registered name **"İncirleme"** and their **"Ocak İncir"** brand, and
+their page states that the right to both the name and the recipe is theirs
+alone, so this site calls the product by the generic *fig lokum / incir
+lokumu* and must keep doing so. And the photograph on their page is a licensed
+iStock stock image (`iStock-1415186774.jpg`), not their own photography: a
+stock licence does not transfer to a customer, so it is **not** used here. The
+entry still shows an empty round sand window, waiting for a photograph the
+company owns or has licensed itself.
 
 Both also appear in the home page range, in the same order and with the same
 content: the powders complete with their seven items, fig lokum as a heading
