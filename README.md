@@ -49,10 +49,15 @@ photograph goes, and the origin line, the facts paragraph and the
 specification link commented out in place. Uncomment and fill them when the
 photo and copy arrive.
 
-Neither is in: the comparison table (there are no specs to compare), the home
-page range, the footer product list, the chat assistant's answers, `llms.txt`'s
-fact list, the page meta descriptions, or the sitemap — there is no page for
-either yet. Wire those up in the same pass that fills the
+Both also appear in the home page range, in the same order and with the same
+content: the powders complete with their seven items, fig lokum as a heading
+over an empty window.
+
+Neither is in: the comparison table (there are no specs to compare), the
+footer product list, the chat assistant's answers, `llms.txt`'s fact list, the
+page meta descriptions, or the sitemap — there is no page for either yet. The
+two copies of each entry (products page and home page) have to be edited
+together, like every other piece of shared markup in this repo. Wire those up in the same pass that fills the
 copy, and give each product its own page on the `product-dried-mulberry.html`
 pattern if it needs one.
 
