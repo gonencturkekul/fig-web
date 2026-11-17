@@ -70,8 +70,12 @@ three are ordinary work for this kind of consultancy and match what the site
 already says the company handles for its own shipments. **Strike any of them
 the company does not actually offer.**
 
-It has no photograph; the round sand window is the placeholder. Its call to
-action points at the enquiry form (`contact.html#contact-form` on the inner
+Its photograph is the owner's own portrait
+(`img/consultancy-portrait.webp`), cropped square and shown in the same round
+window as the products. The alt text does not name him, because the site has
+never been told which of the two Türkekuls in the account runs this service —
+add the name to both the alt text and the copy once that is settled, since a
+consultancy sells on the person. Its call to action points at the enquiry form (`contact.html#contact-form` on the inner
 pages, `#enquiry` on the home pages), not at a specification page, because
 there is nothing to specify.
 
