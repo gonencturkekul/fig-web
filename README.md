@@ -135,9 +135,15 @@ Both also appear in the home page range, in the same order and with the same
 content: the powders complete with their seven items, fig lokum as a heading
 over an empty window.
 
-Neither is in: the comparison table (there are no specs to compare), the
-footer product list, the chat assistant's answers, `llms.txt`'s fact list, the
-page meta descriptions, or the sitemap — there is no page for either yet. The
+Both are now in the comparison table too. The owner gave Aydın and 12 months
+for the lokum, and 18 months for the powders with no other detail, so the
+powders' origin cell is an em dash rather than a guess and their grades cell
+says only how many there are. Those two rows link to the entries further up
+the same page, since neither has a page of its own.
+
+Neither is in: the footer product list, the chat assistant's answers,
+`llms.txt`'s fact list, the page meta descriptions, or the sitemap — there is
+no page for either yet. The
 two copies of each entry (products page and home page) have to be edited
 together, like every other piece of shared markup in this repo. Wire those up in the same pass that fills the
 copy, and give each product its own page on the `product-dried-mulberry.html`
