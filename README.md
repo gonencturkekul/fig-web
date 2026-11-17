@@ -24,6 +24,26 @@ page links to its counterpart in the other language.
 The four products sit in a dropdown under **Products** / **Ürünler** in the main
 navigation on every page, alongside a link to the full products listing.
 
+### The consultancy entry
+
+The range ends with **Sourcing consultancy for Türkiye** / **Türkiye
+alışverişinize danışmanlık** (`#consultancy`), on both products pages and both
+home pages. It is a service rather than a product, and the first line of its
+copy says so, because everything above it in that list is a thing in a carton.
+
+The owner asked for market research, finding reliable suppliers, finding
+reliable buyers and broad research on those subjects, and invited additions.
+The six areas listed are those four plus comparing samples and offers,
+contract/delivery/payment terms, and export documents and shipping — the last
+three are ordinary work for this kind of consultancy and match what the site
+already says the company handles for its own shipments. **Strike any of them
+the company does not actually offer.**
+
+It has no photograph; the round sand window is the placeholder. Its call to
+action points at the enquiry form (`contact.html#contact-form` on the inner
+pages, `#enquiry` on the home pages), not at a specification page, because
+there is nothing to specify.
+
 ### Two entries awaiting content
 
 The range on `products.html` / `tr/urunler.html` also lists **Fruit powders**
