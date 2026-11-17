@@ -87,6 +87,17 @@
         name: 'Dried mulberry',
         grades: ['Whole, sun and wind dried'],
         packs: ['12.5 kg bulk carton', 'Your grammage', 'Own-label retail']
+      },
+      lokum: {
+        name: 'Fig lokum',
+        grades: ['With hazelnuts, coconut-coated'],
+        packs: ['500 g tin', '500 g carton', '340 g', '150 g']
+      },
+      powders: {
+        name: 'Fruit powders',
+        grades: ['Fig powder', 'Orange powder', 'Mandarin powder', 'Blackberry powder', 'Blueberry powder', 'Kiwi powder', 'Banana powder', 'Mixed, tell us'],
+        /* Pack sizes are not settled yet, so the label says so rather than naming one. */
+        packs: ['To your requirement']
       }
     },
     tr: {
@@ -109,6 +120,17 @@
         name: 'Kuru dut',
         grades: ['Bütün, güneş ve rüzgârla kurutulmuş'],
         packs: ['12,5 kg dökme koli', 'İstediğiniz gramaj', 'Kendi etiketinizle perakende']
+      },
+      lokum: {
+        name: 'İncir lokumu',
+        grades: ['Fındıklı, hindistan cevizi kaplı'],
+        packs: ['500 g metal kutu', '500 g karton kutu', '340 g', '150 g']
+      },
+      powders: {
+        name: 'Meyve tozları',
+        grades: ['İncir tozu', 'Portakal tozu', 'Mandalina tozu', 'Böğürtlen tozu', 'Yaban mersini tozu', 'Kivi tozu', 'Muz tozu', 'Karışık, siz söyleyin'],
+        /* Ambalaj ölçüleri henüz kesinleşmedi; etikette bir gramaj uydurmak yerine bunu yazıyoruz. */
+        packs: ['Talebinize göre']
       }
     }
   };

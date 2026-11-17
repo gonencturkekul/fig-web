@@ -24,6 +24,37 @@ page links to its counterpart in the other language.
 The four products sit in a dropdown under **Products** / **Ürünler** in the main
 navigation on every page, alongside a link to the full products listing.
 
+### Services in the bar
+
+Every page's bar carries **Services** / **Hizmet** next to Products, pointing
+at `#consultancy` on the home pages and `products.html#consultancy` /
+`urunler.html#consultancy` elsewhere. There is no services page; the entry in
+the range is the destination.
+
+Below 640px the bar drops every nav link, brand, language and the one action
+being all that fits — that rule used to hide only the first item, which left
+the new one to overflow the bar on a phone, so it now hides them all. The
+footer's product column carries the consultancy link instead, which is where a
+phone visitor looks anyway.
+
+### The products in the two enquiry forms
+
+Both forms now offer everything in the range:
+
+- The home carton label (`#f-product`) gained **Fig lokum** and **Fruit
+  powders**. Their grades and packs come from `CATALOGUES` in
+  `assets/js/home.js` like the others: lokum offers its four pack sizes, and
+  the powders list all seven varieties as grades. The powders' only pack option
+  reads "To your requirement" / "Talebinize göre" because the pack sizes are
+  not settled — do not put a gram figure there until they are.
+- The contact page select gained fig lokum, and the seven powders inside an
+  `<optgroup>` so the list stays readable, plus a "more than one" entry.
+
+The Google Form behind both receives `product` as free text (the home form
+sends "Product: grade, pack" in one line), so new options need no change on
+Google's side. If that question is ever turned into a multiple-choice one,
+every value here has to exist there or Google drops the response.
+
 ### The consultancy entry
 
 The range ends with **Sourcing consultancy for Türkiye** / **Türkiye

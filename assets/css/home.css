@@ -526,7 +526,8 @@ a:not(.btn):not(.cell):hover { color: var(--fig-dark); }
   .bar__cta { padding: 10px 14px; white-space: nowrap; }
   .bar__nav { margin-left: auto; }
   .lang { margin-left: auto; }
-  .bar__nav li:first-child { display: none; }
+  /* On a phone the bar carries no links at all: brand, language and the one action. */
+  .bar__nav li { display: none; }
   .lang__button span { display: none; }
   .lang__button { padding: 0 12px; gap: 6px; }
 
