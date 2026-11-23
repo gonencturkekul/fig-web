@@ -289,6 +289,18 @@ Two things to do on the hosting side, once:
 - submit `https://www.aegeansunfruit.com/sitemap.xml` in Google Search Console
   and Bing Webmaster Tools.
 
+`vercel.json` holds the site's only server rules: two permanent (308)
+redirects, `/index.html` → `/` and `/tr/index.html` → `/tr/`. Without them the
+two home pages answered on two addresses each, and Search Console listed
+`/index.html` under *Alternate page with proper canonical tag* (Nov 2026).
+Internal links already point at `./`, never at `index.html`; keep it that way.
+
+What Search Console reports under **Page with redirect** for
+`http://www.…`, `http://aegeansunfruit.com/` and `https://aegeansunfruit.com/`
+is expected and needs no fix: Vercel sends all three permanently to
+`https://www.aegeansunfruit.com/`, and Google never indexes a URL that
+redirects. After this change `/index.html` moves to that list too.
+
 ### Verifying the site with Google Search Console
 
 Search Console has to be shown that the domain is ours before it will report
